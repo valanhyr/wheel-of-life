@@ -1,0 +1,393 @@
+{
+  "schema_version": "0.2-poc",
+  "method": "Rueda de la Vida — 8 áreas · 32 dimensiones",
+  "notes": "Una pregunta por dimensión (4 por área) para no saturar la POC. Las preguntas de Finanzas y Trabajo proceden del piloto example/rueda_vida_demo_finanzas_trabajo.json.",
+  "scales": {
+    "frecuencia": {
+      "options": ["Nunca", "Rara vez", "A veces", "A menudo", "Siempre"],
+      "positive": { "Nunca": 0, "Rara vez": 2.5, "A veces": 5, "A menudo": 7.5, "Siempre": 10 },
+      "negative": { "Nunca": 10, "Rara vez": 7.5, "A veces": 5, "A menudo": 2.5, "Siempre": 0 }
+    },
+    "valoracion_1_10": {
+      "normalization": "(respuesta - 1) * 10 / 9",
+      "negative": "10 - normalizada"
+    }
+  },
+  "thresholds": {
+    "priority_score": 7,
+    "critical_score": 4,
+    "gap_neutral": 0.5,
+    "gap_strong": 2
+  },
+  "areas": [
+    {
+      "id": "salud",
+      "name": "Salud",
+      "fullName": "Salud y bienestar físico",
+      "color": "#ef4444",
+      "question": "¿Estoy cuidando mi cuerpo de una manera que me permita vivir como quiero?",
+      "desc": "Hábitos, energía y vitalidad, cuidado preventivo, relación con el cuerpo.",
+      "dimensions": ["Hábitos", "Energía y vitalidad", "Cuidado preventivo", "Relación con el cuerpo"]
+    },
+    {
+      "id": "emocional",
+      "name": "Emocional",
+      "fullName": "Bienestar emocional",
+      "color": "#f97316",
+      "question": "¿Cómo estoy por dentro y cómo gestiono lo que me ocurre?",
+      "desc": "Gestión emocional, estrés y carga mental, autoestima, calma y satisfacción.",
+      "dimensions": ["Gestión emocional", "Estrés y carga mental", "Autoestima", "Calma y satisfacción"]
+    },
+    {
+      "id": "relaciones",
+      "name": "Relaciones",
+      "fullName": "Relaciones",
+      "color": "#f59e0b",
+      "question": "¿Mis relaciones me aportan conexión, apoyo y equilibrio?",
+      "desc": "Calidad de los vínculos, comunicación, límites, apoyo y reciprocidad.",
+      "dimensions": ["Calidad de los vínculos", "Comunicación", "Límites", "Apoyo y reciprocidad"]
+    },
+    {
+      "id": "familia",
+      "name": "Familia",
+      "fullName": "Familia",
+      "color": "#eab308",
+      "question": "¿Cómo estoy viviendo mi papel dentro de mi familia?",
+      "desc": "Conexión, comunicación, reparto de responsabilidades, tiempo y presencia.",
+      "dimensions": ["Conexión", "Comunicación", "Reparto de responsabilidades", "Tiempo y presencia"]
+    },
+    {
+      "id": "trabajo",
+      "name": "Trabajo",
+      "fullName": "Trabajo y carrera profesional",
+      "color": "#84cc16",
+      "question": "¿Mi vida profesional está alineada con la vida que quiero construir?",
+      "desc": "Satisfacción, desarrollo, condiciones y proyección profesional.",
+      "dimensions": ["Satisfacción", "Desarrollo", "Condiciones", "Proyección"]
+    },
+    {
+      "id": "finanzas",
+      "name": "Finanzas",
+      "fullName": "Finanzas",
+      "color": "#10b981",
+      "question": "¿Tengo suficiente control sobre mi dinero para tomar decisiones con tranquilidad?",
+      "desc": "Control, seguridad, hábitos financieros y proyección. No se mide cuánto dinero tienes, sino tu relación con tus recursos.",
+      "dimensions": ["Control", "Seguridad", "Hábitos financieros", "Proyección"]
+    },
+    {
+      "id": "crecimiento",
+      "name": "Crecimiento",
+      "fullName": "Crecimiento personal",
+      "color": "#06b6d4",
+      "question": "¿Estoy evolucionando en una dirección que tiene sentido para mí?",
+      "desc": "Autoconocimiento, aprendizaje, objetivos y coherencia.",
+      "dimensions": ["Autoconocimiento", "Aprendizaje", "Objetivos", "Coherencia"]
+    },
+    {
+      "id": "ocio",
+      "name": "Ocio",
+      "fullName": "Ocio y tiempo personal",
+      "color": "#6366f1",
+      "question": "¿Tengo espacio para vivir, disfrutar y recuperar energía?",
+      "desc": "Tiempo disponible, disfrute, descanso y prioridad personal.",
+      "dimensions": ["Tiempo disponible", "Disfrute", "Descanso", "Prioridad personal"]
+    }
+  ],
+  "questions": [
+    {
+      "id": "SAL_HAB_01",
+      "areaId": "salud",
+      "dimension": "Hábitos",
+      "text": "Mantengo rutinas de alimentación, movimiento y sueño que me sostienen durante la semana.",
+      "type": "frecuencia",
+      "polarity": "positiva",
+      "factors": ["Hábitos / Consistencia", "Gestión de energía"]
+    },
+    {
+      "id": "SAL_ENE_01",
+      "areaId": "salud",
+      "dimension": "Energía y vitalidad",
+      "text": "Llego al final del día con energía suficiente para hacer algo que me importa.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Gestión de energía"]
+    },
+    {
+      "id": "SAL_PRE_01",
+      "areaId": "salud",
+      "dimension": "Cuidado preventivo",
+      "text": "Aplazo revisiones, molestias o señales del cuerpo hasta que se convierten en un problema.",
+      "type": "frecuencia",
+      "polarity": "negativa",
+      "factors": ["Proyección", "Hábitos / Consistencia"]
+    },
+    {
+      "id": "SAL_CUE_01",
+      "areaId": "salud",
+      "dimension": "Relación con el cuerpo",
+      "text": "Trato a mi cuerpo con respeto, sin exigirle por encima de lo que puede sostener.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Autoconocimiento", "Límites"]
+    },
+
+    {
+      "id": "EMO_GES_01",
+      "areaId": "emocional",
+      "dimension": "Gestión emocional",
+      "text": "Cuando algo me afecta, identifico lo que siento y puedo gestionarlo sin que me desborde.",
+      "type": "frecuencia",
+      "polarity": "positiva",
+      "factors": ["Autoconocimiento", "Control / Agencia"]
+    },
+    {
+      "id": "EMO_EST_01",
+      "areaId": "emocional",
+      "dimension": "Estrés y carga mental",
+      "text": "Siento que llevo demasiadas cosas en la cabeza y no consigo soltarlas.",
+      "type": "frecuencia",
+      "polarity": "negativa",
+      "factors": ["Gestión de energía", "Límites"]
+    },
+    {
+      "id": "EMO_AUT_01",
+      "areaId": "emocional",
+      "dimension": "Autoestima",
+      "text": "Me hablo a mí mismo/a con el mismo respeto con el que hablaría a alguien que aprecio.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Autoconocimiento"]
+    },
+    {
+      "id": "EMO_CAL_01",
+      "areaId": "emocional",
+      "dimension": "Calma y satisfacción",
+      "text": "Tengo momentos de calma real a lo largo de la semana, sin sensación de urgencia.",
+      "type": "frecuencia",
+      "polarity": "positiva",
+      "factors": ["Gestión de energía", "Perspectiva"]
+    },
+
+    {
+      "id": "REL_VIN_01",
+      "areaId": "relaciones",
+      "dimension": "Calidad de los vínculos",
+      "text": "Tengo relaciones en las que puedo mostrarme tal como soy.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Conexión / Apoyo"]
+    },
+    {
+      "id": "REL_COM_01",
+      "areaId": "relaciones",
+      "dimension": "Comunicación",
+      "text": "Digo lo que necesito antes de que la situación se acumule o estalle.",
+      "type": "frecuencia",
+      "polarity": "positiva",
+      "factors": ["Comunicación", "Límites"]
+    },
+    {
+      "id": "REL_LIM_01",
+      "areaId": "relaciones",
+      "dimension": "Límites",
+      "text": "Digo que sí a planes o peticiones aunque después me pesen o me dejen sin tiempo.",
+      "type": "frecuencia",
+      "polarity": "negativa",
+      "factors": ["Límites", "Gestión de energía"]
+    },
+    {
+      "id": "REL_APO_01",
+      "areaId": "relaciones",
+      "dimension": "Apoyo y reciprocidad",
+      "text": "Si necesitara ayuda, sé a quién podría acudir y creo que estaría.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Conexión / Apoyo"]
+    },
+
+    {
+      "id": "FAM_CON_01",
+      "areaId": "familia",
+      "dimension": "Conexión",
+      "text": "Me siento conectado/a con las personas de mi familia más cercana.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Conexión / Apoyo"]
+    },
+    {
+      "id": "FAM_COM_01",
+      "areaId": "familia",
+      "dimension": "Comunicación",
+      "text": "En mi familia evitamos hablar de los temas que realmente importan.",
+      "type": "frecuencia",
+      "polarity": "negativa",
+      "factors": ["Comunicación", "Perspectiva"]
+    },
+    {
+      "id": "FAM_RES_01",
+      "areaId": "familia",
+      "dimension": "Reparto de responsabilidades",
+      "text": "El reparto de tareas y responsabilidades en casa me parece equilibrado.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Límites", "Comunicación"]
+    },
+    {
+      "id": "FAM_TIE_01",
+      "areaId": "familia",
+      "dimension": "Tiempo y presencia",
+      "text": "Cuando estoy con mi familia estoy presente de verdad, sin la cabeza en otra parte.",
+      "type": "frecuencia",
+      "polarity": "positiva",
+      "factors": ["Gestión de energía", "Coherencia"]
+    },
+
+    {
+      "id": "TRA_SAT_01",
+      "areaId": "trabajo",
+      "dimension": "Satisfacción",
+      "text": "En conjunto, me siento satisfecho/a con mi situación profesional actual.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Coherencia"]
+    },
+    {
+      "id": "TRA_DES_01",
+      "areaId": "trabajo",
+      "dimension": "Desarrollo",
+      "text": "Estoy aprendiendo o mejorando habilidades útiles para mi futuro profesional.",
+      "type": "frecuencia",
+      "polarity": "positiva",
+      "factors": ["Proyección", "Hábitos / Consistencia"]
+    },
+    {
+      "id": "TRA_CON_03",
+      "areaId": "trabajo",
+      "dimension": "Condiciones",
+      "text": "Acepto tareas o responsabilidades adicionales aunque no tenga tiempo o capacidad real para asumirlas.",
+      "type": "frecuencia",
+      "polarity": "negativa",
+      "factors": ["Límites", "Gestión de energía"]
+    },
+    {
+      "id": "TRA_PRO_01",
+      "areaId": "trabajo",
+      "dimension": "Proyección",
+      "text": "Tengo bastante claro hacia dónde quiero avanzar profesionalmente en los próximos años.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Proyección", "Autoconocimiento"]
+    },
+
+    {
+      "id": "FIN_CON_01",
+      "areaId": "finanzas",
+      "dimension": "Control",
+      "text": "Reviso mis movimientos bancarios y sé en qué se ha ido mi dinero.",
+      "type": "frecuencia",
+      "polarity": "positiva",
+      "factors": ["Control / Agencia", "Hábitos / Consistencia"]
+    },
+    {
+      "id": "FIN_SEG_01",
+      "areaId": "finanzas",
+      "dimension": "Seguridad",
+      "text": "Puedo afrontar un gasto imprevisto necesario sin que desestabilice por completo mis finanzas.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Control / Agencia"]
+    },
+    {
+      "id": "FIN_HAB_03",
+      "areaId": "finanzas",
+      "dimension": "Hábitos financieros",
+      "text": "Hago compras que después me obligan a ajustar gastos importantes o me generan preocupación.",
+      "type": "frecuencia",
+      "polarity": "negativa",
+      "factors": ["Hábitos / Consistencia", "Control / Agencia"]
+    },
+    {
+      "id": "FIN_PRO_02",
+      "areaId": "finanzas",
+      "dimension": "Proyección",
+      "text": "Reviso periódicamente si mis decisiones económicas me acercan a mis objetivos.",
+      "type": "frecuencia",
+      "polarity": "positiva",
+      "factors": ["Proyección", "Hábitos / Consistencia"]
+    },
+
+    {
+      "id": "CRE_AUT_01",
+      "areaId": "crecimiento",
+      "dimension": "Autoconocimiento",
+      "text": "Entiendo con suficiente claridad qué quiero, qué necesito y qué me está pasando.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Autoconocimiento", "Perspectiva"]
+    },
+    {
+      "id": "CRE_APR_01",
+      "areaId": "crecimiento",
+      "dimension": "Aprendizaje",
+      "text": "Dedico tiempo a aprender algo que me interesa, aunque no sea urgente.",
+      "type": "frecuencia",
+      "polarity": "positiva",
+      "factors": ["Hábitos / Consistencia", "Proyección"]
+    },
+    {
+      "id": "CRE_OBJ_01",
+      "areaId": "crecimiento",
+      "dimension": "Objetivos",
+      "text": "Tengo objetivos personales concretos, no solo intenciones generales.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Proyección"]
+    },
+    {
+      "id": "CRE_COH_01",
+      "areaId": "crecimiento",
+      "dimension": "Coherencia",
+      "text": "Noto distancia entre lo que digo que quiero y cómo estoy viviendo en realidad.",
+      "type": "frecuencia",
+      "polarity": "negativa",
+      "factors": ["Coherencia", "Perspectiva"]
+    },
+
+    {
+      "id": "OCI_TIE_01",
+      "areaId": "ocio",
+      "dimension": "Tiempo disponible",
+      "text": "Tengo tiempo para mí durante la semana, no solo huecos sueltos.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "factors": ["Límites", "Gestión de energía"]
+    },
+    {
+      "id": "OCI_DIS_01",
+      "areaId": "ocio",
+      "dimension": "Disfrute",
+      "text": "Hago cosas que disfruto de verdad, no solo las que sirven para desconectar sin más.",
+      "type": "frecuencia",
+      "polarity": "positiva",
+      "factors": ["Coherencia", "Autoconocimiento"]
+    },
+    {
+      "id": "OCI_DES_01",
+      "areaId": "ocio",
+      "dimension": "Descanso",
+      "text": "Termino los fines de semana o mis días libres con la sensación de no haber descansado.",
+      "type": "frecuencia",
+      "polarity": "negativa",
+      "factors": ["Gestión de energía"]
+    },
+    {
+      "id": "OCI_PRI_01",
+      "areaId": "ocio",
+      "dimension": "Prioridad personal",
+      "text": "Mi tiempo personal es lo primero que sacrifico cuando algo se complica.",
+      "type": "frecuencia",
+      "polarity": "negativa",
+      "factors": ["Límites", "Control / Agencia"]
+    }
+  ]
+}
