@@ -1,3 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Base reset minimal. Enhanced styles for Wheel prototype. */
+:root{--accent-1:#6d28d9;--accent-2:#06b6d4}
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{margin:0;font-family:Inter, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;background:#071033;color:#e6eefc}
+
+/* minimal helpers used by App */
+.app-root{padding:18px}
+.container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(320px,520px) 1fr;gap:24px}
+.left{display:flex;flex-direction:column;gap:12px}
+.header{display:flex;justify-content:space-between;align-items:center}
+.title{font-size:20px;font-weight:700}
+.subtitle{font-size:13px;color:#94a3b8}
+.wheel{width:100%;height:520px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));box-shadow:0 30px 80px rgba(2,6,23,0.7);border:1px solid rgba(255,255,255,0.04)}
+.legend-box{display:flex;flex-direction:column;align-items:center}
+.controls{width:100%}
+.controls input[type=range]{width:180px}
+.right{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:12px;padding:16px;box-shadow:0 18px 50px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.04)}
+.question-card{border-radius:12px;padding:16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);margin-bottom:12px}
+.answers-card{display:flex;gap:8px;flex-wrap:wrap}
+.options label{display:inline-flex;align-items:center;justify-content:center;min-width:36px;padding:6px 8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.02);cursor:pointer}
+.options input{display:none}
+.options input:checked+div{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:white}
+.result-row{display:flex;justify-content:space-between;padding:8px;border-radius:8px;align-items:center;margin-bottom:8px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:1px solid rgba(255,255,255,0.02)}
+.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:white}
+.text-muted{color:#94a3b8}
+@media(max-width:1000px){.container{grid-template-columns:1fr}.wheel{height:420px}}
+
