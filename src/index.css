@@ -108,6 +108,14 @@ ul {
 
 .layout__wheel { grid-area: wheel; }
 .layout__aspects { grid-area: aspects; }
+
+/* collapsed: the panel becomes a full-width bar on top, wheel + quiz take the rest */
+.layout.is-compact {
+  grid-template-areas:
+    "aspects"
+    "wheel"
+    "quiz";
+}
 .layout__quiz {
   grid-area: quiz;
   display: flex;
@@ -706,6 +714,12 @@ ul {
   .layout__quiz { position: sticky; top: var(--gap); }
   .aspects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .results { grid-template-columns: minmax(0, 1fr); }
+
+  .layout.is-compact {
+    grid-template-areas:
+      "aspects aspects"
+      "wheel quiz";
+  }
 }
 
 /* ≥ 1280px — three columns: wheel · aspects sidebar · quiz */
@@ -722,6 +736,19 @@ ul {
   /* narrow sidebar: chips drop to their own row */
   .disclosure { flex-wrap: wrap; }
   .disclosure__preview { width: 100%; justify-content: space-between; }
+
+  /* collapsed: two columns, bar on top spanning both */
+  .layout.is-compact {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "aspects aspects"
+      "wheel quiz";
+  }
+
+  .layout.is-compact .layout__aspects { position: static; }
+  .layout.is-compact .disclosure { flex-wrap: nowrap; }
+  .layout.is-compact .disclosure__preview { width: auto; justify-content: flex-end; }
+  .layout.is-compact .wheel { max-width: 38rem; }
 }
 
 /* --------------------------------------------------------- preferences -- */
