@@ -1,6 +1,8 @@
 import data from "./questions.json";
+import guidance from "./actions.json";
 
 export const { areas, questions, scales, thresholds } = data;
+export const { interpretation, priority: priorityRules, gapPrompts, animals, shed } = guidance;
 
 export const areaIndexById = Object.fromEntries(areas.map((a, i) => [a.id, i]));
 
@@ -96,4 +98,32 @@ export function priorityOrder(scores, selfEval) {
     }))
     .filter((row) => row.score != null)
     .sort((a, b) => a.score - b.score || (a.gap.gap ?? 0) - (b.gap.gap ?? 0));
+}
+
+/** Banda de lectura del resultado según 07_INTERPRETACION. */
+export function interpretationFor(result) {
+  if (result == null) return null;
+  return interpretation.find((band) => result >= band.min && result <= band.max) ?? interpretation[interpretation.length - 1];
+}
+
+/**
+ * Reglas de prioridad de 06_PRIORIDAD.
+ * P1/P2/P3 son excluyentes entre sí; P4 se acumula cuando la brecha llega al umbral.
+ */
+export function priorityFor(result, gap) {
+  if (result == null) return [];
+  const byId = Object.fromEntries(priorityRules.map((r) => [r.id, r]));
+  const base = result <= 3 ? byId.P1 : result <= 6 ? byId.P2 : byId.P3;
+  const out = [base];
+  if (gap?.gap != null && Math.abs(gap.gap) >= thresholds.gap_strong) out.push(byId.P4);
+  return out;
+}
+
+/** Acciones y recursos del área para el tramo del resultado. */
+export function guidanceFor(areaId, result) {
+  const band = interpretationFor(result);
+  if (!band) return null;
+  const tier = guidance.areas[areaId]?.[band.tier];
+  if (!tier) return null;
+  return { band, tier: band.tier, actions: tier.actions, resources: tier.resources };
 }

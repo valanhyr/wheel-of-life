@@ -1,0 +1,234 @@
+{
+  "meta": {
+    "source": "example/06_PRIORIDAD.csv, example/07_INTERPRETACION.csv, example/08_RECOMENDACIONES.csv",
+    "note": "Las bandas de interpretación y las reglas de prioridad proceden del método. Los textos de acción por área son propios: el método los marca como pendientes."
+  },
+  "interpretation": [
+    { "key": "critica", "min": 0, "max": 2.9, "label": "Zona crítica", "text": "Requiere acción inmediata.", "tier": "critica" },
+    { "key": "mejora", "min": 3, "max": 5.9, "label": "Zona de mejora", "text": "Pide un plan de mejora sostenido.", "tier": "mejora" },
+    { "key": "buena", "min": 6, "max": 8.4, "label": "Zona buena", "text": "Mantener las prácticas que ya funcionan.", "tier": "mantener" },
+    { "key": "excelencia", "min": 8.5, "max": 10, "label": "Excelencia", "text": "Fortaleza consolidada: apóyate en ella para sostener otras áreas.", "tier": "mantener" }
+  ],
+  "priority": [
+    { "id": "P1", "rule": "score <= 3", "label": "Alta prioridad", "text": "Intervención inmediata." },
+    { "id": "P2", "rule": "score > 3 && score <= 6", "label": "Prioridad media", "text": "Plan de acción con plazo definido." },
+    { "id": "P3", "rule": "score > 6", "label": "Prioridad baja", "text": "Mantener y monitorizar." },
+    { "id": "P4", "rule": "abs(gap) >= 2", "label": "Revisar discrepancia", "text": "La distancia entre percepción y resultado merece exploración." }
+  ],
+  "gapPrompts": {
+    "down": "El resultado queda por debajo de tu percepción. Revisa qué te lleva a puntuarte más alto de lo que reflejan tus respuestas.",
+    "up": "El resultado supera tu percepción. Reconoce lo que ya sostienes aquí: suele ser una palanca para otras áreas.",
+    "even": "Percepción y resultado coinciden. Tu lectura del área es ajustada."
+  },
+  "animals": [
+    { "id": "oso", "name": "Oso", "verb": "Sostener", "question": "¿Qué necesito fortalecer, proteger, cambiar o limitar en esta área?" },
+    { "id": "lobo", "name": "Lobo", "verb": "Conectar", "question": "¿Qué papel tienen los demás en esta situación?" },
+    { "id": "cuervo", "name": "Cuervo", "verb": "Comprender", "question": "¿Qué estoy viendo, qué no estoy viendo y hacia dónde quiero ir?" }
+  ],
+  "shed": {
+    "main": "¿Qué has dejado guardado que sigue teniendo importancia para ti?",
+    "secondary": "¿Qué estás guardando que quizá ya no necesitas conservar?"
+  },
+  "areas": {
+    "salud": {
+      "critica": {
+        "actions": [
+          "Pide cita con un profesional de salud esta semana.",
+          "Fija una hora de acostarte y respétala 7 días seguidos.",
+          "Elige un único hábito mínimo (agua, caminar 15 min) y regístralo a diario."
+        ],
+        "resources": "Contactos de atención primaria · registro diario de hábitos"
+      },
+      "mejora": {
+        "actions": [
+          "Bloquea en la agenda 3 franjas de movimiento a la semana.",
+          "Revisa la revisión médica pendiente y agenda la fecha.",
+          "Detecta el hábito que más te desgasta y sustitúyelo, no lo elimines."
+        ],
+        "resources": "Plantilla de plan semanal · calendario de revisiones"
+      },
+      "mantener": {
+        "actions": [
+          "Conserva la rutina que ya funciona y anota qué la sostiene.",
+          "Anticipa las semanas de más carga para no perder la base."
+        ],
+        "resources": "Registro de seguimiento mensual"
+      }
+    },
+    "emocional": {
+      "critica": {
+        "actions": [
+          "Busca apoyo profesional: la carga sostenida no se resuelve sola.",
+          "Reduce una obligación concreta de la próxima semana.",
+          "Escribe cada noche 3 líneas sobre cómo te has sentido."
+        ],
+        "resources": "Directorio de psicología · diario emocional"
+      },
+      "mejora": {
+        "actions": [
+          "Identifica los 2 disparadores de estrés más frecuentes y su patrón horario.",
+          "Reserva 20 minutos diarios sin pantallas ni tareas.",
+          "Practica decir que no en una petición pequeña esta semana."
+        ],
+        "resources": "Registro de disparadores · ejercicios de respiración"
+      },
+      "mantener": {
+        "actions": [
+          "Sigue nombrando lo que sientes antes de reaccionar.",
+          "Revisa cada mes si la carga mental sigue en el nivel actual."
+        ],
+        "resources": "Revisión mensual de carga"
+      }
+    },
+    "relaciones": {
+      "critica": {
+        "actions": [
+          "Escribe hoy a la persona con la que más quieres recuperar contacto.",
+          "Identifica una relación que te drena y pon un límite concreto.",
+          "Acepta la próxima invitación en lugar de posponerla."
+        ],
+        "resources": "Ejercicios de comunicación · terapia de vínculo"
+      },
+      "mejora": {
+        "actions": [
+          "Agenda tiempo de calidad con una persona clave, con fecha y hora.",
+          "Expresa una necesidad sin rodeos en la próxima conversación difícil.",
+          "Revisa si estás dando mucho más de lo que recibes y con quién."
+        ],
+        "resources": "Guía de conversaciones difíciles"
+      },
+      "mantener": {
+        "actions": [
+          "Mantén el ritmo de contacto que ya funciona.",
+          "Agradece de forma explícita el apoyo que recibes."
+        ],
+        "resources": "Recordatorio de contacto periódico"
+      }
+    },
+    "familia": {
+      "critica": {
+        "actions": [
+          "Propón una conversación tranquila sobre el reparto de responsabilidades.",
+          "Reserva un rato semanal fijo de presencia real, sin móvil.",
+          "Nombra el conflicto que se está evitando."
+        ],
+        "resources": "Guía de mediación familiar"
+      },
+      "mejora": {
+        "actions": [
+          "Haz visible el reparto de tareas en una lista compartida.",
+          "Fija un plan mensual conjunto (comida, salida, proyecto).",
+          "Pregunta a cada miembro qué echa en falta."
+        ],
+        "resources": "Lista compartida de tareas · plan mensual"
+      },
+      "mantener": {
+        "actions": [
+          "Protege los rituales familiares que ya existen.",
+          "Revisa el reparto cuando cambie la carga de trabajo."
+        ],
+        "resources": "Revisión trimestral"
+      }
+    },
+    "trabajo": {
+      "critica": {
+        "actions": [
+          "Escribe qué condición concreta es insostenible y qué cambio pides.",
+          "Explora alternativas reales: 3 contactos o 3 ofertas esta semana.",
+          "Recupera un límite horario y no lo negocies."
+        ],
+        "resources": "Red de contactos · asesoría laboral"
+      },
+      "mejora": {
+        "actions": [
+          "Define un plan de desarrollo a 90 días con un objetivo medible.",
+          "Pide una conversación de expectativas con tu responsable.",
+          "Identifica la tarea que más valor aporta y protégele tiempo."
+        ],
+        "resources": "Plan 90 días · mentoría o formación"
+      },
+      "mantener": {
+        "actions": [
+          "Documenta qué hace que esta área funcione para poder replicarlo.",
+          "Revisa cada trimestre si la proyección sigue alineada."
+        ],
+        "resources": "Revisión trimestral de objetivos"
+      }
+    },
+    "finanzas": {
+      "critica": {
+        "actions": [
+          "Haz un inventario de ingresos, gastos fijos y deudas esta semana.",
+          "Corta el gasto recurrente más prescindible hoy mismo.",
+          "Busca asesoramiento si la deuda no es manejable sola."
+        ],
+        "resources": "Plantilla de presupuesto · asesor financiero"
+      },
+      "mejora": {
+        "actions": [
+          "Crea un fondo de emergencia con una aportación automática mensual.",
+          "Planifica con antelación los gastos grandes ya previsibles.",
+          "Revisa el presupuesto un día fijo al mes."
+        ],
+        "resources": "Plantilla de presupuesto · transferencia automática"
+      },
+      "mantener": {
+        "actions": [
+          "Mantén el colchón y revisa su cobertura en meses.",
+          "Ajusta la proyección a medio plazo una vez al año."
+        ],
+        "resources": "Cuadro de seguimiento anual"
+      }
+    },
+    "crecimiento": {
+      "critica": {
+        "actions": [
+          "Escribe qué quieres de verdad, sin filtrar por viabilidad.",
+          "Elige un solo objetivo y reduce su primer paso a 15 minutos.",
+          "Recupera un aprendizaje abandonado y dale una sesión."
+        ],
+        "resources": "Cuaderno de objetivos · el Cobertizo"
+      },
+      "mejora": {
+        "actions": [
+          "Convierte tu objetivo principal en un paso semanal concreto.",
+          "Reserva tiempo de aprendizaje en la agenda, no en los huecos.",
+          "Contrasta si tus acciones repetidas apoyan la vida que quieres."
+        ],
+        "resources": "Plan de aprendizaje · revisión semanal"
+      },
+      "mantener": {
+        "actions": [
+          "Mantén la práctica de revisión periódica.",
+          "Comparte lo aprendido: consolida y abre vínculos."
+        ],
+        "resources": "Revisión mensual"
+      }
+    },
+    "ocio": {
+      "critica": {
+        "actions": [
+          "Bloquea en la agenda un espacio propio esta semana y protégelo.",
+          "Recupera una actividad que disfrutabas y ya no practicas.",
+          "Deja un día sin tareas pendientes por completo."
+        ],
+        "resources": "Agenda con bloque personal fijo"
+      },
+      "mejora": {
+        "actions": [
+          "Planifica el tiempo libre con la misma seriedad que el trabajo.",
+          "Separa descanso de ocio: no siempre son lo mismo.",
+          "Prueba una actividad nueva al mes."
+        ],
+        "resources": "Plan mensual de ocio"
+      },
+      "mantener": {
+        "actions": [
+          "Defiende el espacio propio cuando aumente la carga.",
+          "Comprueba que el ocio descansa y no solo entretiene."
+        ],
+        "resources": "Revisión mensual"
+      }
+    }
+  }
+}

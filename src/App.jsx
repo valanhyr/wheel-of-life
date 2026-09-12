@@ -1,5 +1,19 @@
 import React, { useMemo, useState } from "react";
-import { areas, questions, areaScores, scoreLevel, gapStatus, optionsFor, priorityOrder } from "./data/scoring";
+import {
+  areas,
+  questions,
+  areaScores,
+  scoreLevel,
+  gapStatus,
+  optionsFor,
+  priorityOrder,
+  interpretationFor,
+  priorityFor,
+  guidanceFor,
+  gapPrompts,
+  animals,
+  shed,
+} from "./data/scoring";
 
 const RINGS = 10;
 const VIEW = 120;
@@ -259,16 +273,120 @@ function Quiz({ qIndex, setQIndex, answers, onAnswer }) {
   );
 }
 
+function ResultRow({ area, score, perception, open, onToggle }) {
+  const level = scoreLevel(score);
+  const gap = gapStatus(score, perception);
+  const band = interpretationFor(score);
+  const rules = priorityFor(score, gap);
+  const plan = guidanceFor(area.id, score);
+  const panelId = `result-${area.id}`;
+
+  return (
+    <li className={`result result--${level.tone}${open ? " is-open" : ""}`} style={{ "--aspect-color": area.color }}>
+      <button
+        type="button"
+        className="result__head"
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={onToggle}
+        disabled={score == null}
+      >
+        <span className="result__info">
+          <span className="result__name">
+            {area.name}
+            <span className={`dot dot--${level.tone}`} title={level.label} aria-label={level.label} />
+          </span>
+          <span className="result__meta">
+            Percepción {perception} · Resultado {score ?? "—"}
+          </span>
+        </span>
+        <span className={`badge badge--gap is-${gap.dir} is-${gap.strength}`} title={gap.label}>
+          {gap.gap == null ? "Sin responder" : `${gap.gap > 0 ? "+" : ""}${gap.gap}`}
+        </span>
+        <span className="result__chevron" aria-hidden="true" />
+      </button>
+
+      <div className="result__detail" id={panelId} hidden={!open}>
+        {band && (
+          <p className="result__band">
+            <strong>{band.label}.</strong> {band.text}
+          </p>
+        )}
+
+        <p className="result__gap">{gapPrompts[gap.dir === "none" ? "even" : gap.dir]}</p>
+
+        {rules.length > 0 && (
+          <p className="tags">
+            {rules.map((rule) => (
+              <span key={rule.id} className="tag" title={rule.text}>
+                {rule.id} · {rule.label}
+              </span>
+            ))}
+          </p>
+        )}
+
+        {plan && (
+          <>
+            <h4 className="result__subtitle">Acciones propuestas</h4>
+            <ul className="actions">
+              {plan.actions.map((action) => (
+                <li key={action}>{action}</li>
+              ))}
+            </ul>
+            <p className="result__resources">Recursos: {plan.resources}</p>
+          </>
+        )}
+      </div>
+    </li>
+  );
+}
+
+function Reflection() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className={`reflection${open ? " is-open" : ""}`}>
+      <button type="button" className="reflection__toggle" aria-expanded={open} aria-controls="reflection-body" onClick={() => setOpen((v) => !v)}>
+        <span>Para profundizar en cualquier área</span>
+        <span className="result__chevron" aria-hidden="true" />
+      </button>
+
+      <div className="reflection__body" id="reflection-body" hidden={!open}>
+        <p className="hint">
+          Los tres animales no puntúan: se aplican después del diagnóstico, sobre el área que decidas trabajar.
+        </p>
+
+        <ul className="animals">
+          {animals.map((animal) => (
+            <li key={animal.id} className={`animal animal--${animal.id}`}>
+              <span className="animal__name">
+                {animal.name} · {animal.verb}
+              </span>
+              <span className="animal__q">{animal.question}</span>
+            </li>
+          ))}
+        </ul>
+
+        <p className="result__shed">
+          <strong>Cobertizo.</strong> {shed.main}
+          <span className="result__shed-alt">{shed.secondary}</span>
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function Results({ selfEval, scores }) {
   const ranked = priorityOrder(scores, selfEval);
   const top = ranked[0];
+  const [openArea, setOpenArea] = useState(null);
 
   return (
     <>
       <p className="hint">
         La <strong>brecha</strong> compara resultado y percepción: verde si sale a favor, naranja si sale en contra, neutra
         si coinciden. El tono es suave por debajo de 2 puntos y marcado a partir de 2. Aparte, el resultado por debajo de 7
-        se señala como área a trabajar.
+        se señala como área a trabajar. Despliega un área para ver su lectura y sus acciones.
       </p>
 
       {top && (
@@ -278,28 +396,19 @@ function Results({ selfEval, scores }) {
       )}
 
       <ul className="results">
-        {areas.map((area, i) => {
-          const score = scores[i];
-          const level = scoreLevel(score);
-          const gap = gapStatus(score, selfEval[i]);
-          return (
-            <li key={area.id} className={`result result--${level.tone}`} style={{ "--aspect-color": area.color }}>
-              <div className="result__info">
-                <span className="result__name">
-                  {area.name}
-                  <span className={`dot dot--${level.tone}`} title={level.label} aria-label={level.label} />
-                </span>
-                <span className="result__meta">
-                  Percepción {selfEval[i]} · Resultado {score ?? "—"}
-                </span>
-              </div>
-              <span className={`badge badge--gap is-${gap.dir} is-${gap.strength}`} title={gap.label}>
-                {gap.gap == null ? "Sin responder" : `${gap.gap > 0 ? "+" : ""}${gap.gap}`}
-              </span>
-            </li>
-          );
-        })}
+        {areas.map((area, i) => (
+          <ResultRow
+            key={area.id}
+            area={area}
+            score={scores[i]}
+            perception={selfEval[i]}
+            open={openArea === area.id}
+            onToggle={() => setOpenArea((cur) => (cur === area.id ? null : area.id))}
+          />
+        ))}
       </ul>
+
+      <Reflection />
     </>
   );
 }
