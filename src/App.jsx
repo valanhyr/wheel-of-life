@@ -249,7 +249,7 @@ function Quiz({ qIndex, setQIndex, answers, onAnswer }) {
         <button
           type="button"
           className="btn"
-          disabled={qIndex >= questions.length - 1}
+          disabled={qIndex >= questions.length - 1 || answers[current.id] === undefined}
           onClick={() => setQIndex(qIndex + 1)}
         >
           Siguiente
