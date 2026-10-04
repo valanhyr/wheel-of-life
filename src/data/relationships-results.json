@@ -1,0 +1,212 @@
+{
+  "score_bands": [
+    {
+      "id": "critical",
+      "min": 0,
+      "max_exclusive": 4,
+      "label": "Atención alta"
+    },
+    {
+      "id": "attention",
+      "min": 4,
+      "max_exclusive": 6,
+      "label": "Necesita atención"
+    },
+    {
+      "id": "improvement",
+      "min": 6,
+      "max_exclusive": 7.5,
+      "label": "Área de mejora"
+    },
+    {
+      "id": "stable",
+      "min": 7.5,
+      "max_inclusive": 10,
+      "label": "Estable"
+    }
+  ],
+  "dimension_results": {
+    "Calidad de los vínculos": {
+      "critical": "Tus vínculos ofrecen poco espacio para mostrarte o sentirte escuchado/a. Identifica qué relación o tipo de conexión te gustaría cuidar.",
+      "attention": "Hay conexión en algunos vínculos, pero falta confianza o atención en otros. Revisa dónde puedes expresarte con mayor libertad.",
+      "improvement": "Cuentas con vínculos significativos. Puedes reforzar el tiempo y la atención que les dedicas.",
+      "stable": "Tus respuestas muestran relaciones con confianza, escucha y espacio para ser tú."
+    },
+    "Comunicación": {
+      "critical": "Las necesidades o desacuerdos parecen difíciles de expresar. Elige una conversación concreta y unas condiciones en las que puedas hablar con respeto.",
+      "attention": "Existe comunicación, pero algunas conversaciones se acumulan. Concretar lo que necesitas puede facilitar abordarlas.",
+      "improvement": "Tu comunicación tiene una base funcional. Puedes mejorar la escucha y la aclaración de malentendidos.",
+      "stable": "Expresas necesidades y desacuerdos y buscas comprender a la otra persona de forma habitual."
+    },
+    "Límites": {
+      "critical": "Los compromisos o las demandas parecen superar tu margen. Identifica un límite que necesites expresar o sostener.",
+      "attention": "Puedes poner algunos límites, aunque cuesta mantenerlos ante expectativas ajenas. Revisa tu disponibilidad antes de comprometerte.",
+      "improvement": "Tus límites son razonables, con margen para respetar mejor tu tiempo y el de otras personas.",
+      "stable": "Tus respuestas muestran límites claros y respeto por las decisiones propias y ajenas."
+    },
+    "Apoyo y reciprocidad": {
+      "critical": "El apoyo disponible parece escaso o desequilibrado. Revisa con quién podrías compartir una necesidad concreta.",
+      "attention": "Hay apoyo, pero no siempre puedes pedirlo o recibirlo. Conviene observar cómo se distribuye el cuidado en tus vínculos.",
+      "improvement": "Cuentas con una base de apoyo. Puedes reforzar la reciprocidad y hablar de necesidades cuando cambian.",
+      "stable": "Tus relaciones ofrecen apoyo mutuo y espacio para pedir y ofrecer ayuda de forma sostenible."
+    }
+  },
+  "area_results": {
+    "Relaciones": {
+      "critical": {
+        "headline": "El área de Relaciones necesita atención prioritaria.",
+        "body": "La lectura reúne calidad de los vínculos, comunicación, límites y apoyo. Describe tu experiencia de relación, sin juzgar cuántos vínculos tienes ni asignar responsabilidades a otras personas.",
+        "action_logic": "Empieza por la dimensión más baja y por un paso viable dentro de tu contexto."
+      },
+      "attention": {
+        "headline": "El área de Relaciones tiene aspectos importantes que revisar.",
+        "body": "La lectura reúne calidad de los vínculos, comunicación, límites y apoyo. Describe tu experiencia de relación, sin juzgar cuántos vínculos tienes ni asignar responsabilidades a otras personas.",
+        "action_logic": "Trabaja un punto de atención concreto y conserva lo que ya te sostiene."
+      },
+      "improvement": {
+        "headline": "El área de Relaciones tiene una base funcional, con margen de mejora.",
+        "body": "La lectura reúne calidad de los vínculos, comunicación, límites y apoyo. Describe tu experiencia de relación, sin juzgar cuántos vínculos tienes ni asignar responsabilidades a otras personas.",
+        "action_logic": "Elige una mejora que refuerce la dimensión más baja sin añadir una carga excesiva."
+      },
+      "stable": {
+        "headline": "El área de Relaciones muestra una base sólida.",
+        "body": "La lectura reúne calidad de los vínculos, comunicación, límites y apoyo. Describe tu experiencia de relación, sin juzgar cuántos vínculos tienes ni asignar responsabilidades a otras personas.",
+        "action_logic": "Mantén lo que te ayuda y revisa periódicamente si sigue encajando con tus necesidades."
+      }
+    }
+  },
+  "perception_results": [
+    {
+      "condition": "abs_gap < 1",
+      "id": "aligned",
+      "text": "Tu percepción inicial de Relaciones y el cuestionario están bastante alineados. Las dimensiones ayudan a concretar esa impresión."
+    },
+    {
+      "condition": "gap >= 1 and gap < 2",
+      "id": "perception_higher_moderate",
+      "text": "Tu percepción inicial de Relaciones es algo más positiva que el resultado estructurado. Revisa qué dimensiones explican esa diferencia moderada."
+    },
+    {
+      "condition": "gap >= 2",
+      "id": "perception_higher_high",
+      "text": "Tu percepción inicial de Relaciones es claramente más positiva que el resultado estructurado. Las dimensiones pueden señalar aspectos que estaban pasando desapercibidos, sin convertir una valoración en más verdadera que la otra."
+    },
+    {
+      "condition": "gap <= -1 and gap > -2",
+      "id": "perception_lower_moderate",
+      "text": "Tu percepción inicial de Relaciones es algo más negativa que lo que reflejan tus respuestas. Puede haber fortalezas que no estabas reconociendo."
+    },
+    {
+      "condition": "gap <= -2",
+      "id": "perception_lower_high",
+      "text": "Tu percepción inicial de Relaciones es bastante más exigente que el resultado estructurado. Revisa qué recursos aparecen en tus respuestas y cómo influye tu contexto en esa diferencia."
+    }
+  ],
+  "transversal_factor_results": {
+    "Conexión / Apoyo": {
+      "critical": "En Relaciones: la conexión o el apoyo disponible parecen escasos.",
+      "attention": "En Relaciones: hay vínculos o apoyos, pero no siempre resultan accesibles o suficientes.",
+      "improvement": "En Relaciones: cuentas con una base de conexión y apoyo que puedes cuidar.",
+      "stable": "En Relaciones: tus respuestas reflejan vínculos y apoyos que te sostienen."
+    },
+    "Comunicación": {
+      "critical": "En Relaciones: parece difícil expresar necesidades o conversar sobre asuntos importantes.",
+      "attention": "En Relaciones: existe comunicación, pero algunas necesidades o conversaciones quedan pendientes.",
+      "improvement": "En Relaciones: expresas parte de lo que necesitas y puedes reforzar la escucha y los acuerdos.",
+      "stable": "En Relaciones: tus respuestas muestran expresión de necesidades y disposición a escuchar y aclarar."
+    },
+    "Hábitos / Consistencia": {
+      "critical": "En Relaciones: las acciones útiles aparecen poco o de forma irregular.",
+      "attention": "En Relaciones: existen rutinas que ayudan, pero les falta continuidad.",
+      "improvement": "En Relaciones: tus rutinas son funcionales y pueden ganar regularidad.",
+      "stable": "En Relaciones: mantienes acciones útiles de forma consistente."
+    },
+    "Autoconocimiento": {
+      "critical": "En Relaciones: cuesta identificar o atender tus propias necesidades y preferencias.",
+      "attention": "En Relaciones: reconoces algunas necesidades, aunque todavía falta claridad o espacio para atenderlas.",
+      "improvement": "En Relaciones: tienes una idea razonable de tus necesidades, con margen para escucharte mejor.",
+      "stable": "En Relaciones: tus respuestas muestran atención y claridad sobre tus necesidades y preferencias."
+    },
+    "Límites": {
+      "critical": "En Relaciones: las demandas o expectativas parecen superar tus límites con frecuencia.",
+      "attention": "En Relaciones: puedes poner algunos límites, pero cuesta mantenerlos.",
+      "improvement": "En Relaciones: proteges parte de tu disponibilidad y puedes ajustar algunos compromisos.",
+      "stable": "En Relaciones: tus respuestas reflejan límites que respetan tu disponibilidad y tus necesidades."
+    },
+    "Coherencia": {
+      "critical": "En Relaciones: aparece distancia entre lo que te importa y cómo se organiza tu día a día.",
+      "attention": "En Relaciones: algunas decisiones encajan con tus prioridades y otras siguen la inercia.",
+      "improvement": "En Relaciones: tus decisiones reflejan buena parte de tus prioridades, con algunos ajustes pendientes.",
+      "stable": "En Relaciones: tus respuestas muestran un encaje consistente entre prioridades y decisiones."
+    },
+    "Perspectiva": {
+      "critical": "En Relaciones: aparecen pocas oportunidades para observar lo que ocurre y revisar tus decisiones.",
+      "attention": "En Relaciones: puedes ganar claridad revisando experiencias, expectativas y alternativas.",
+      "improvement": "En Relaciones: tienes una perspectiva razonable, con algunos patrones por revisar.",
+      "stable": "En Relaciones: observas tus experiencias y revisas tus decisiones con atención al contexto."
+    },
+    "Control / Agencia": {
+      "critical": "En Relaciones: tus respuestas muestran poco margen o pocas acciones para influir en tu situación.",
+      "attention": "En Relaciones: hay decisiones o apoyos que podrían ampliar tu margen de actuación.",
+      "improvement": "En Relaciones: cuentas con margen para actuar sobre algunos aspectos y puedes reforzarlo.",
+      "stable": "En Relaciones: identificas posibilidades y actúas sobre aquello que está a tu alcance."
+    },
+    "Gestión de energía": {
+      "critical": "En Relaciones: aparece poco margen de energía o recuperación.",
+      "attention": "En Relaciones: algunas demandas consumen más energía de la que consigues recuperar.",
+      "improvement": "En Relaciones: la energía disponible es razonable, con puntos de recuperación por reforzar.",
+      "stable": "En Relaciones: tus respuestas reflejan un equilibrio favorable entre demandas y recuperación."
+    }
+  },
+  "transversal_note": "Estas señales proceden solo de las respuestas de Relaciones y requieren al menos dos respuestas por factor. Son provisionales y no se combinan todavía con otras áreas.",
+  "relationships_patterns": [
+    {
+      "id": "dimension_1_strong_2_weak",
+      "condition": "Calidad de los vínculos >= 7.5 and Comunicación < 6",
+      "headline": "Hay vínculo, pero faltan conversaciones.",
+      "text": "La conexión existente puede ser una base para expresar necesidades o aclarar lo que se está acumulando."
+    },
+    {
+      "id": "dimension_2_strong_3_weak",
+      "condition": "Comunicación >= 7.5 and Límites < 6",
+      "headline": "Te comunicas, pero cuesta sostener tus límites.",
+      "text": "Explicar lo que necesitas no siempre se traduce en proteger tu disponibilidad. Revisa qué decisión necesita continuidad."
+    },
+    {
+      "id": "dimension_3_strong_4_weak",
+      "condition": "Límites >= 7.5 and Apoyo y reciprocidad < 6",
+      "headline": "Proteges tus límites, pero falta apoyo.",
+      "text": "El espacio propio puede convivir con una red poco disponible. Identifica una forma concreta de pedir o construir apoyo."
+    },
+    {
+      "id": "dimension_4_strong_1_weak",
+      "condition": "Apoyo y reciprocidad >= 7.5 and Calidad de los vínculos < 6",
+      "headline": "Recibes apoyo, pero falta conexión personal.",
+      "text": "La ayuda práctica no siempre equivale a sentirte comprendido/a. Revisa qué tipo de cercanía necesitas."
+    },
+    {
+      "id": "balanced_progress",
+      "condition": "all dimensions >= 6, after all_stable",
+      "headline": "En Relaciones hay una base equilibrada para mejorar.",
+      "text": "Las cuatro dimensiones tienen una base funcional. Elige un ajuste concreto en la más baja y conserva las prácticas que ya te ayudan."
+    },
+    {
+      "id": "all_low",
+      "condition": "all dimensions < 6",
+      "headline": "En Relaciones conviene empezar por una base pequeña y sostenible.",
+      "text": "Las cuatro dimensiones muestran puntos de atención. Revisa el contexto y empieza por el foco más bajo sin intentar cambiarlo todo a la vez."
+    },
+    {
+      "id": "all_stable",
+      "condition": "all dimensions >= 7.5",
+      "headline": "En Relaciones las cuatro dimensiones muestran una base sólida.",
+      "text": "Tus respuestas reflejan un equilibrio consistente. Puedes mantener lo que funciona y revisar cómo cambian tus necesidades."
+    },
+    {
+      "id": "mixed",
+      "condition": "fallback",
+      "headline": "En Relaciones aparecen fortalezas y necesidades diferentes.",
+      "text": "El promedio no cuenta toda la historia. Revisa la dimensión más baja junto con las demás y con tus circunstancias actuales."
+    }
+  ]
+}

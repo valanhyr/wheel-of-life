@@ -1,0 +1,212 @@
+{
+  "score_bands": [
+    {
+      "id": "critical",
+      "min": 0,
+      "max_exclusive": 4,
+      "label": "Atención alta"
+    },
+    {
+      "id": "attention",
+      "min": 4,
+      "max_exclusive": 6,
+      "label": "Necesita atención"
+    },
+    {
+      "id": "improvement",
+      "min": 6,
+      "max_exclusive": 7.5,
+      "label": "Área de mejora"
+    },
+    {
+      "id": "stable",
+      "min": 7.5,
+      "max_inclusive": 10,
+      "label": "Estable"
+    }
+  ],
+  "dimension_results": {
+    "Gestión emocional": {
+      "critical": "Reconocer o expresar lo que sientes está resultando difícil. Un primer foco puede ser identificar una emoción y un apoyo con quien compartirla.",
+      "attention": "Puedes gestionar algunas situaciones, pero otras te sobrepasan. Revisa qué te ayuda a hacer una pausa y expresar lo que necesitas.",
+      "improvement": "Cuentas con recursos para reconocer y expresar emociones. Puedes hacerlos más accesibles en momentos de tensión.",
+      "stable": "Tus respuestas muestran recursos consistentes para reconocer lo que sientes, hacer una pausa y buscar acompañamiento."
+    },
+    "Estrés y carga mental": {
+      "critical": "La carga mental ocupa mucho espacio y deja poco margen. Revisa qué demanda podría reducirse o compartirse.",
+      "attention": "Hay demandas que cuesta soltar o priorizar. Concretar límites y apoyos puede ayudarte a recuperar margen.",
+      "improvement": "Gestionas una parte importante de la carga, con margen para proteger la desconexión.",
+      "stable": "Tus respuestas reflejan capacidad para priorizar y proteger espacios frente a la carga cotidiana."
+    },
+    "Autoestima": {
+      "critical": "Tu diálogo contigo parece especialmente exigente. Observa cómo te hablas ante un error y qué necesidades quedan relegadas.",
+      "attention": "Reconoces parte de tu valor, aunque la autocrítica o la aprobación externa todavía pesan.",
+      "improvement": "Existe una base de respeto propio. Puedes reforzar el reconocimiento de tus esfuerzos y el permiso para pedir ayuda.",
+      "stable": "Te tratas con respeto y reconoces tus recursos sin exigir resultados perfectos."
+    },
+    "Calma y satisfacción": {
+      "critical": "Los momentos de calma o satisfacción aparecen escasos. Identifica qué espacio pequeño podrías recuperar con los apoyos disponibles.",
+      "attention": "Encuentras algunos momentos agradables, pero la urgencia interfiere. Revisa qué te permitiría estar más presente.",
+      "improvement": "Dispones de momentos de calma y satisfacción que puedes proteger con mayor regularidad.",
+      "stable": "Tus respuestas muestran espacios habituales de serenidad y disfrute en la vida cotidiana."
+    }
+  },
+  "area_results": {
+    "Emocional": {
+      "critical": {
+        "headline": "El área de Emocional necesita atención prioritaria.",
+        "body": "La lectura reúne gestión emocional, carga mental, autoestima y calma. Orienta una reflexión sobre tu experiencia actual; no establece diagnósticos ni mide tu valor personal.",
+        "action_logic": "Empieza por la dimensión más baja y por un paso viable dentro de tu contexto."
+      },
+      "attention": {
+        "headline": "El área de Emocional tiene aspectos importantes que revisar.",
+        "body": "La lectura reúne gestión emocional, carga mental, autoestima y calma. Orienta una reflexión sobre tu experiencia actual; no establece diagnósticos ni mide tu valor personal.",
+        "action_logic": "Trabaja un punto de atención concreto y conserva lo que ya te sostiene."
+      },
+      "improvement": {
+        "headline": "El área de Emocional tiene una base funcional, con margen de mejora.",
+        "body": "La lectura reúne gestión emocional, carga mental, autoestima y calma. Orienta una reflexión sobre tu experiencia actual; no establece diagnósticos ni mide tu valor personal.",
+        "action_logic": "Elige una mejora que refuerce la dimensión más baja sin añadir una carga excesiva."
+      },
+      "stable": {
+        "headline": "El área de Emocional muestra una base sólida.",
+        "body": "La lectura reúne gestión emocional, carga mental, autoestima y calma. Orienta una reflexión sobre tu experiencia actual; no establece diagnósticos ni mide tu valor personal.",
+        "action_logic": "Mantén lo que te ayuda y revisa periódicamente si sigue encajando con tus necesidades."
+      }
+    }
+  },
+  "perception_results": [
+    {
+      "condition": "abs_gap < 1",
+      "id": "aligned",
+      "text": "Tu percepción inicial de Emocional y el cuestionario están bastante alineados. Las dimensiones ayudan a concretar esa impresión."
+    },
+    {
+      "condition": "gap >= 1 and gap < 2",
+      "id": "perception_higher_moderate",
+      "text": "Tu percepción inicial de Emocional es algo más positiva que el resultado estructurado. Revisa qué dimensiones explican esa diferencia moderada."
+    },
+    {
+      "condition": "gap >= 2",
+      "id": "perception_higher_high",
+      "text": "Tu percepción inicial de Emocional es claramente más positiva que el resultado estructurado. Las dimensiones pueden señalar aspectos que estaban pasando desapercibidos, sin convertir una valoración en más verdadera que la otra."
+    },
+    {
+      "condition": "gap <= -1 and gap > -2",
+      "id": "perception_lower_moderate",
+      "text": "Tu percepción inicial de Emocional es algo más negativa que lo que reflejan tus respuestas. Puede haber fortalezas que no estabas reconociendo."
+    },
+    {
+      "condition": "gap <= -2",
+      "id": "perception_lower_high",
+      "text": "Tu percepción inicial de Emocional es bastante más exigente que el resultado estructurado. Revisa qué recursos aparecen en tus respuestas y cómo influye tu contexto en esa diferencia."
+    }
+  ],
+  "transversal_factor_results": {
+    "Autoconocimiento": {
+      "critical": "En Emocional: cuesta identificar o atender tus propias necesidades y preferencias.",
+      "attention": "En Emocional: reconoces algunas necesidades, aunque todavía falta claridad o espacio para atenderlas.",
+      "improvement": "En Emocional: tienes una idea razonable de tus necesidades, con margen para escucharte mejor.",
+      "stable": "En Emocional: tus respuestas muestran atención y claridad sobre tus necesidades y preferencias."
+    },
+    "Control / Agencia": {
+      "critical": "En Emocional: tus respuestas muestran poco margen o pocas acciones para influir en tu situación.",
+      "attention": "En Emocional: hay decisiones o apoyos que podrían ampliar tu margen de actuación.",
+      "improvement": "En Emocional: cuentas con margen para actuar sobre algunos aspectos y puedes reforzarlo.",
+      "stable": "En Emocional: identificas posibilidades y actúas sobre aquello que está a tu alcance."
+    },
+    "Perspectiva": {
+      "critical": "En Emocional: aparecen pocas oportunidades para observar lo que ocurre y revisar tus decisiones.",
+      "attention": "En Emocional: puedes ganar claridad revisando experiencias, expectativas y alternativas.",
+      "improvement": "En Emocional: tienes una perspectiva razonable, con algunos patrones por revisar.",
+      "stable": "En Emocional: observas tus experiencias y revisas tus decisiones con atención al contexto."
+    },
+    "Hábitos / Consistencia": {
+      "critical": "En Emocional: las acciones útiles aparecen poco o de forma irregular.",
+      "attention": "En Emocional: existen rutinas que ayudan, pero les falta continuidad.",
+      "improvement": "En Emocional: tus rutinas son funcionales y pueden ganar regularidad.",
+      "stable": "En Emocional: mantienes acciones útiles de forma consistente."
+    },
+    "Comunicación": {
+      "critical": "En Emocional: parece difícil expresar necesidades o conversar sobre asuntos importantes.",
+      "attention": "En Emocional: existe comunicación, pero algunas necesidades o conversaciones quedan pendientes.",
+      "improvement": "En Emocional: expresas parte de lo que necesitas y puedes reforzar la escucha y los acuerdos.",
+      "stable": "En Emocional: tus respuestas muestran expresión de necesidades y disposición a escuchar y aclarar."
+    },
+    "Conexión / Apoyo": {
+      "critical": "En Emocional: la conexión o el apoyo disponible parecen escasos.",
+      "attention": "En Emocional: hay vínculos o apoyos, pero no siempre resultan accesibles o suficientes.",
+      "improvement": "En Emocional: cuentas con una base de conexión y apoyo que puedes cuidar.",
+      "stable": "En Emocional: tus respuestas reflejan vínculos y apoyos que te sostienen."
+    },
+    "Gestión de energía": {
+      "critical": "En Emocional: aparece poco margen de energía o recuperación.",
+      "attention": "En Emocional: algunas demandas consumen más energía de la que consigues recuperar.",
+      "improvement": "En Emocional: la energía disponible es razonable, con puntos de recuperación por reforzar.",
+      "stable": "En Emocional: tus respuestas reflejan un equilibrio favorable entre demandas y recuperación."
+    },
+    "Límites": {
+      "critical": "En Emocional: las demandas o expectativas parecen superar tus límites con frecuencia.",
+      "attention": "En Emocional: puedes poner algunos límites, pero cuesta mantenerlos.",
+      "improvement": "En Emocional: proteges parte de tu disponibilidad y puedes ajustar algunos compromisos.",
+      "stable": "En Emocional: tus respuestas reflejan límites que respetan tu disponibilidad y tus necesidades."
+    },
+    "Coherencia": {
+      "critical": "En Emocional: aparece distancia entre lo que te importa y cómo se organiza tu día a día.",
+      "attention": "En Emocional: algunas decisiones encajan con tus prioridades y otras siguen la inercia.",
+      "improvement": "En Emocional: tus decisiones reflejan buena parte de tus prioridades, con algunos ajustes pendientes.",
+      "stable": "En Emocional: tus respuestas muestran un encaje consistente entre prioridades y decisiones."
+    }
+  },
+  "transversal_note": "Estas señales proceden solo de las respuestas de Emocional y requieren al menos dos respuestas por factor. Son provisionales y no se combinan todavía con otras áreas.",
+  "emotional_patterns": [
+    {
+      "id": "dimension_1_strong_2_weak",
+      "condition": "Gestión emocional >= 7.5 and Estrés y carga mental < 6",
+      "headline": "Entiendes lo que sientes, pero la carga sigue siendo alta.",
+      "text": "Reconocer las emociones no elimina las demandas. Revisa qué responsabilidades o límites necesitan un ajuste."
+    },
+    {
+      "id": "dimension_2_strong_3_weak",
+      "condition": "Estrés y carga mental >= 7.5 and Autoestima < 6",
+      "headline": "Gestionas la carga, pero te tratas con exigencia.",
+      "text": "El margen que consigues puede ayudarte a observar el diálogo contigo y reconocer tus esfuerzos."
+    },
+    {
+      "id": "dimension_3_strong_4_weak",
+      "condition": "Autoestima >= 7.5 and Calma y satisfacción < 6",
+      "headline": "Te respetas, pero falta calma cotidiana.",
+      "text": "Tu base de autoestima convive con poco espacio para estar presente. Revisa las condiciones para desconectar."
+    },
+    {
+      "id": "dimension_4_strong_1_weak",
+      "condition": "Calma y satisfacción >= 7.5 and Gestión emocional < 6",
+      "headline": "Encuentras calma, pero cuesta abordar lo que te afecta.",
+      "text": "Los momentos tranquilos pueden ofrecer un espacio para reconocer y expresar las emociones pendientes."
+    },
+    {
+      "id": "balanced_progress",
+      "condition": "all dimensions >= 6, after all_stable",
+      "headline": "En Emocional hay una base equilibrada para mejorar.",
+      "text": "Las cuatro dimensiones tienen una base funcional. Elige un ajuste concreto en la más baja y conserva las prácticas que ya te ayudan."
+    },
+    {
+      "id": "all_low",
+      "condition": "all dimensions < 6",
+      "headline": "En Emocional conviene empezar por una base pequeña y sostenible.",
+      "text": "Las cuatro dimensiones muestran puntos de atención. Revisa el contexto y empieza por el foco más bajo sin intentar cambiarlo todo a la vez."
+    },
+    {
+      "id": "all_stable",
+      "condition": "all dimensions >= 7.5",
+      "headline": "En Emocional las cuatro dimensiones muestran una base sólida.",
+      "text": "Tus respuestas reflejan un equilibrio consistente. Puedes mantener lo que funciona y revisar cómo cambian tus necesidades."
+    },
+    {
+      "id": "mixed",
+      "condition": "fallback",
+      "headline": "En Emocional aparecen fortalezas y necesidades diferentes.",
+      "text": "El promedio no cuenta toda la historia. Revisa la dimensión más baja junto con las demás y con tus circunstancias actuales."
+    }
+  ]
+}

@@ -1,12 +1,30 @@
 {
-  "schema_version": "0.2-poc",
+  "schema_version": "0.5-all-areas",
   "method": "Rueda de la Vida — 8 áreas · 32 dimensiones",
-  "notes": "Una pregunta por dimensión (4 por área) para no saturar la POC. Las preguntas de Finanzas y Trabajo proceden del piloto example/rueda_vida_demo_finanzas_trabajo.json.",
+  "notes": "Ocho áreas completas: 28 preguntas por área (22 puntuables con factores transversales, 2 de prioridades y 4 de contexto). Cada área mantiene sus cuatro dimensiones, con 5, 5, 6 y 6 preguntas y un peso del 25 % por dimensión. La percepción inicial se recoge en la autoevaluación.",
   "scales": {
     "frecuencia": {
-      "options": ["Nunca", "Rara vez", "A veces", "A menudo", "Siempre"],
-      "positive": { "Nunca": 0, "Rara vez": 2.5, "A veces": 5, "A menudo": 7.5, "Siempre": 10 },
-      "negative": { "Nunca": 10, "Rara vez": 7.5, "A veces": 5, "A menudo": 2.5, "Siempre": 0 }
+      "options": [
+        "Nunca",
+        "Rara vez",
+        "A veces",
+        "A menudo",
+        "Siempre"
+      ],
+      "positive": {
+        "Nunca": 0,
+        "Rara vez": 2.5,
+        "A veces": 5,
+        "A menudo": 7.5,
+        "Siempre": 10
+      },
+      "negative": {
+        "Nunca": 10,
+        "Rara vez": 7.5,
+        "A veces": 5,
+        "A menudo": 2.5,
+        "Siempre": 0
+      }
     },
     "valoracion_1_10": {
       "normalization": "(respuesta - 1) * 10 / 9",
@@ -14,9 +32,9 @@
     }
   },
   "thresholds": {
-    "priority_score": 7,
+    "priority_score": 7.5,
     "critical_score": 4,
-    "gap_neutral": 0.5,
+    "gap_neutral": 1,
     "gap_strong": 2
   },
   "areas": [
@@ -27,7 +45,13 @@
       "color": "#ef4444",
       "question": "¿Estoy cuidando mi cuerpo de una manera que me permita vivir como quiero?",
       "desc": "Hábitos, energía y vitalidad, cuidado preventivo, relación con el cuerpo.",
-      "dimensions": ["Hábitos", "Energía y vitalidad", "Cuidado preventivo", "Relación con el cuerpo"]
+      "dimensions": [
+        "Hábitos",
+        "Energía y vitalidad",
+        "Cuidado preventivo",
+        "Relación con el cuerpo"
+      ],
+      "questionnaireHint": "Piensa en las últimas semanas y en tus posibilidades actuales. Este bloque recoge tu experiencia de cuidado y bienestar físico."
     },
     {
       "id": "emocional",
@@ -36,7 +60,13 @@
       "color": "#f97316",
       "question": "¿Cómo estoy por dentro y cómo gestiono lo que me ocurre?",
       "desc": "Gestión emocional, estrés y carga mental, autoestima, calma y satisfacción.",
-      "dimensions": ["Gestión emocional", "Estrés y carga mental", "Autoestima", "Calma y satisfacción"]
+      "dimensions": [
+        "Gestión emocional",
+        "Estrés y carga mental",
+        "Autoestima",
+        "Calma y satisfacción"
+      ],
+      "questionnaireHint": "Responde pensando en las últimas semanas. Las preguntas recogen tu experiencia cotidiana y no son una evaluación clínica."
     },
     {
       "id": "relaciones",
@@ -45,7 +75,13 @@
       "color": "#f59e0b",
       "question": "¿Mis relaciones me aportan conexión, apoyo y equilibrio?",
       "desc": "Calidad de los vínculos, comunicación, límites, apoyo y reciprocidad.",
-      "dimensions": ["Calidad de los vínculos", "Comunicación", "Límites", "Apoyo y reciprocidad"]
+      "dimensions": [
+        "Calidad de los vínculos",
+        "Comunicación",
+        "Límites",
+        "Apoyo y reciprocidad"
+      ],
+      "questionnaireHint": "Piensa en tus vínculos significativos actuales. La calidad del apoyo y el respeto importa más que el número de personas con las que te relacionas."
     },
     {
       "id": "familia",
@@ -54,7 +90,13 @@
       "color": "#eab308",
       "question": "¿Cómo estoy viviendo mi papel dentro de mi familia?",
       "desc": "Conexión, comunicación, reparto de responsabilidades, tiempo y presencia.",
-      "dimensions": ["Conexión", "Comunicación", "Reparto de responsabilidades", "Tiempo y presencia"]
+      "dimensions": [
+        "Conexión",
+        "Comunicación",
+        "Reparto de responsabilidades",
+        "Tiempo y presencia"
+      ],
+      "questionnaireHint": "Toma como referencia a quienes consideras tu familia, convivan contigo o no. Mantener distancia también puede ser una decisión de cuidado; ten en cuenta tu contexto al interpretar la nota."
     },
     {
       "id": "trabajo",
@@ -63,7 +105,12 @@
       "color": "#84cc16",
       "question": "¿Mi vida profesional está alineada con la vida que quiero construir?",
       "desc": "Satisfacción, desarrollo, condiciones y proyección profesional.",
-      "dimensions": ["Satisfacción", "Desarrollo", "Condiciones", "Proyección"]
+      "dimensions": [
+        "Satisfacción",
+        "Desarrollo",
+        "Condiciones",
+        "Proyección"
+      ]
     },
     {
       "id": "finanzas",
@@ -72,7 +119,12 @@
       "color": "#10b981",
       "question": "¿Tengo suficiente control sobre mi dinero para tomar decisiones con tranquilidad?",
       "desc": "Control, seguridad, hábitos financieros y proyección. No se mide cuánto dinero tienes, sino tu relación con tus recursos.",
-      "dimensions": ["Control", "Seguridad", "Hábitos financieros", "Proyección"]
+      "dimensions": [
+        "Control",
+        "Seguridad",
+        "Hábitos financieros",
+        "Proyección"
+      ]
     },
     {
       "id": "crecimiento",
@@ -81,7 +133,13 @@
       "color": "#06b6d4",
       "question": "¿Estoy evolucionando en una dirección que tiene sentido para mí?",
       "desc": "Autoconocimiento, aprendizaje, objetivos y coherencia.",
-      "dimensions": ["Autoconocimiento", "Aprendizaje", "Objetivos", "Coherencia"]
+      "dimensions": [
+        "Autoconocimiento",
+        "Aprendizaje",
+        "Objetivos",
+        "Coherencia"
+      ],
+      "questionnaireHint": "Piensa en los cambios y aprendizajes que tienen sentido para ti ahora. Crecer también puede consistir en consolidar, descansar o revisar una meta."
     },
     {
       "id": "ocio",
@@ -90,18 +148,143 @@
       "color": "#6366f1",
       "question": "¿Tengo espacio para vivir, disfrutar y recuperar energía?",
       "desc": "Tiempo disponible, disfrute, descanso y prioridad personal.",
-      "dimensions": ["Tiempo disponible", "Disfrute", "Descanso", "Prioridad personal"]
+      "dimensions": [
+        "Tiempo disponible",
+        "Disfrute",
+        "Descanso",
+        "Prioridad personal"
+      ],
+      "questionnaireHint": "Piensa en las últimas semanas. Incluye formas sencillas de disfrute y descanso que encajen con tus intereses, recursos y posibilidades."
     }
   ],
   "questions": [
+    {
+      "id": "SAL_IMP_01",
+      "areaId": "salud",
+      "dimension": "Prioridades",
+      "text": "¿Qué importancia tiene para ti mejorar tu cuidado físico cotidiano en este momento?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
+    {
+      "id": "SAL_CAM_01",
+      "areaId": "salud",
+      "dimension": "Prioridades",
+      "text": "¿Cuánto deseas realizar cambios en tu cuidado físico cotidiano?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
     {
       "id": "SAL_HAB_01",
       "areaId": "salud",
       "dimension": "Hábitos",
       "text": "Mantengo rutinas de alimentación, movimiento y sueño que me sostienen durante la semana.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "positiva",
-      "factors": ["Hábitos / Consistencia", "Gestión de energía"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "SAL_HAB_02",
+      "areaId": "salud",
+      "dimension": "Hábitos",
+      "text": "Organizo mis comidas de forma que pueda mantener una rutina incluso en días ocupados.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "SAL_HAB_03",
+      "areaId": "salud",
+      "dimension": "Hábitos",
+      "text": "Encuentro momentos para moverme de una manera que se adapta a mis posibilidades.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "SAL_HAB_04",
+      "areaId": "salud",
+      "dimension": "Hábitos",
+      "text": "Reservo un tiempo de sueño y descanso acorde con mis necesidades.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "SAL_HAB_05",
+      "areaId": "salud",
+      "dimension": "Hábitos",
+      "text": "Abandono mis rutinas de cuidado cuando se acumulan otras obligaciones.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Límites": 1
+      }
     },
     {
       "id": "SAL_ENE_01",
@@ -110,16 +293,214 @@
       "text": "Llego al final del día con energía suficiente para hacer algo que me importa.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Gestión de energía"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "SAL_ENE_02",
+      "areaId": "salud",
+      "dimension": "Energía y vitalidad",
+      "text": "Reconozco qué actividades me dan energía y cuáles me la consumen.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "SAL_ENE_03",
+      "areaId": "salud",
+      "dimension": "Energía y vitalidad",
+      "text": "Ajusto el ritmo de mis actividades cuando noto que necesito recuperar energía.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "SAL_ENE_04",
+      "areaId": "salud",
+      "dimension": "Energía y vitalidad",
+      "text": "Mi cansancio me deja sin margen para atender mis necesidades cotidianas.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "SAL_ENE_05",
+      "areaId": "salud",
+      "dimension": "Energía y vitalidad",
+      "text": "Dispongo de momentos de recuperación entre las actividades que más me exigen.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Control / Agencia": 1
+      }
     },
     {
       "id": "SAL_PRE_01",
       "areaId": "salud",
       "dimension": "Cuidado preventivo",
       "text": "Aplazo revisiones, molestias o señales del cuerpo hasta que se convierten en un problema.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "negativa",
-      "factors": ["Proyección", "Hábitos / Consistencia"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "SAL_PRE_02",
+      "areaId": "salud",
+      "dimension": "Cuidado preventivo",
+      "text": "Tengo localizadas las revisiones o cuidados que me han indicado y cuándo corresponde atenderlos.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "SAL_PRE_03",
+      "areaId": "salud",
+      "dimension": "Cuidado preventivo",
+      "text": "Reservo tiempo para ocuparme de las gestiones relacionadas con mi cuidado físico.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Proyección"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Proyección": 1
+      }
+    },
+    {
+      "id": "SAL_PRE_04",
+      "areaId": "salud",
+      "dimension": "Cuidado preventivo",
+      "text": "Cuando necesito orientación sobre mi cuidado físico, sé dónde buscar apoyo adecuado.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Conexión / Apoyo"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Conexión / Apoyo": 1
+      }
+    },
+    {
+      "id": "SAL_PRE_05",
+      "areaId": "salud",
+      "dimension": "Cuidado preventivo",
+      "text": "Preparo las dudas que quiero aclarar cuando consulto sobre mi cuidado físico.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Perspectiva",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Perspectiva": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "SAL_PRE_06",
+      "areaId": "salud",
+      "dimension": "Cuidado preventivo",
+      "text": "Reviso si mis rutinas de cuidado siguen siendo adecuadas para mi situación actual.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Perspectiva",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Perspectiva": 1,
+        "Hábitos / Consistencia": 1
+      }
     },
     {
       "id": "SAL_CUE_01",
@@ -128,26 +509,486 @@
       "text": "Trato a mi cuerpo con respeto, sin exigirle por encima de lo que puede sostener.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Autoconocimiento", "Límites"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Límites": 1
+      }
     },
-
+    {
+      "id": "SAL_CUE_02",
+      "areaId": "salud",
+      "dimension": "Relación con el cuerpo",
+      "text": "Escucho mis señales de cansancio, hambre o necesidad de descanso antes de exigirme más.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "SAL_CUE_03",
+      "areaId": "salud",
+      "dimension": "Relación con el cuerpo",
+      "text": "Me comparo físicamente con otras personas de una manera que me hace tratarme peor.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "SAL_CUE_04",
+      "areaId": "salud",
+      "dimension": "Relación con el cuerpo",
+      "text": "Valoro lo que mi cuerpo me permite hacer, más allá de su aspecto.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Coherencia"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Coherencia": 1
+      }
+    },
+    {
+      "id": "SAL_CUE_05",
+      "areaId": "salud",
+      "dimension": "Relación con el cuerpo",
+      "text": "Puedo expresar que necesito una pausa o una adaptación sin sentir que debo justificarme continuamente.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Comunicación"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Comunicación": 1
+      }
+    },
+    {
+      "id": "SAL_CUE_06",
+      "areaId": "salud",
+      "dimension": "Relación con el cuerpo",
+      "text": "Mis decisiones de cuidado tienen en cuenta mis necesidades y no solo expectativas externas.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "SAL_CTX_01",
+      "areaId": "salud",
+      "dimension": "Contexto",
+      "text": "¿Hay alguna circunstancia física o de acceso a cuidados que esté condicionando tu día a día?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "no",
+          "label": "No de forma relevante"
+        },
+        {
+          "value": "temporal",
+          "label": "Sí, una circunstancia temporal"
+        },
+        {
+          "value": "mantenida",
+          "label": "Sí, una circunstancia mantenida"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "SAL_CTX_02",
+      "areaId": "salud",
+      "dimension": "Contexto",
+      "text": "¿Hasta qué punto la falta de tiempo, recursos o apoyo dificulta tu cuidado físico?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "no",
+          "label": "No de forma relevante"
+        },
+        {
+          "value": "algo",
+          "label": "En parte"
+        },
+        {
+          "value": "mucho",
+          "label": "De forma importante"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "SAL_CTX_03",
+      "areaId": "salud",
+      "dimension": "Contexto",
+      "text": "Durante los últimos 12 meses, ¿cómo ha cambiado tu situación en el área de Salud?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "mejorado_bastante",
+          "label": "Ha mejorado bastante"
+        },
+        {
+          "value": "mejorado_algo",
+          "label": "Ha mejorado algo"
+        },
+        {
+          "value": "similar",
+          "label": "Ha permanecido similar"
+        },
+        {
+          "value": "empeorado_algo",
+          "label": "Ha empeorado algo"
+        },
+        {
+          "value": "empeorado_bastante",
+          "label": "Ha empeorado bastante"
+        }
+      ]
+    },
+    {
+      "id": "SAL_CTX_04",
+      "areaId": "salud",
+      "dimension": "Contexto",
+      "text": "¿Cuál es actualmente tu principal preocupación en el área de Salud?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "habitos",
+          "label": "Mantener rutinas de cuidado"
+        },
+        {
+          "value": "energia",
+          "label": "Cansancio y falta de energía"
+        },
+        {
+          "value": "cuidados",
+          "label": "Cuidados o gestiones pendientes"
+        },
+        {
+          "value": "cuerpo",
+          "label": "Relación con mi cuerpo"
+        },
+        {
+          "value": "acceso",
+          "label": "Acceso a recursos o apoyo"
+        },
+        {
+          "value": "ninguna",
+          "label": "No tengo una preocupación importante en esta área"
+        },
+        {
+          "value": "otra",
+          "label": "Otra"
+        }
+      ]
+    },
+    {
+      "id": "EMO_IMP_01",
+      "areaId": "emocional",
+      "dimension": "Prioridades",
+      "text": "¿Qué importancia tiene para ti mejorar tu bienestar emocional cotidiano en este momento?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
+    {
+      "id": "EMO_CAM_01",
+      "areaId": "emocional",
+      "dimension": "Prioridades",
+      "text": "¿Cuánto deseas realizar cambios en tu bienestar emocional cotidiano?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
     {
       "id": "EMO_GES_01",
       "areaId": "emocional",
       "dimension": "Gestión emocional",
       "text": "Cuando algo me afecta, identifico lo que siento y puedo gestionarlo sin que me desborde.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "positiva",
-      "factors": ["Autoconocimiento", "Control / Agencia"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "EMO_GES_02",
+      "areaId": "emocional",
+      "dimension": "Gestión emocional",
+      "text": "Puedo poner nombre a lo que siento y reconocer qué situación lo ha despertado.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "EMO_GES_03",
+      "areaId": "emocional",
+      "dimension": "Gestión emocional",
+      "text": "Antes de reaccionar cuando algo me altera, encuentro una forma de hacer una pausa.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "EMO_GES_04",
+      "areaId": "emocional",
+      "dimension": "Gestión emocional",
+      "text": "Expreso lo que siento a alguien de confianza cuando necesito acompañamiento.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Conexión / Apoyo"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Conexión / Apoyo": 1
+      }
+    },
+    {
+      "id": "EMO_GES_05",
+      "areaId": "emocional",
+      "dimension": "Gestión emocional",
+      "text": "Aparto lo que siento durante tanto tiempo que después me cuesta entender lo que me ocurre.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Perspectiva": 1
+      }
     },
     {
       "id": "EMO_EST_01",
       "areaId": "emocional",
       "dimension": "Estrés y carga mental",
       "text": "Siento que llevo demasiadas cosas en la cabeza y no consigo soltarlas.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "negativa",
-      "factors": ["Gestión de energía", "Límites"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "EMO_EST_02",
+      "areaId": "emocional",
+      "dimension": "Estrés y carga mental",
+      "text": "Distingo qué asuntos requieren mi atención ahora y cuáles pueden esperar.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "EMO_EST_03",
+      "areaId": "emocional",
+      "dimension": "Estrés y carga mental",
+      "text": "Puedo reducir o renegociar alguna demanda cuando mi carga se vuelve excesiva.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "EMO_EST_04",
+      "areaId": "emocional",
+      "dimension": "Estrés y carga mental",
+      "text": "Mantengo un espacio para desconectar de mis preocupaciones durante el día.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "EMO_EST_05",
+      "areaId": "emocional",
+      "dimension": "Estrés y carga mental",
+      "text": "Asumo preocupaciones o responsabilidades ajenas aunque ya no tenga margen.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Gestión de energía": 1
+      }
     },
     {
       "id": "EMO_AUT_01",
@@ -156,18 +997,405 @@
       "text": "Me hablo a mí mismo/a con el mismo respeto con el que hablaría a alguien que aprecio.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Autoconocimiento"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "EMO_AUT_02",
+      "areaId": "emocional",
+      "dimension": "Autoestima",
+      "text": "Reconozco mis esfuerzos incluso cuando el resultado no es el que esperaba.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "EMO_AUT_03",
+      "areaId": "emocional",
+      "dimension": "Autoestima",
+      "text": "Un error concreto me lleva a descalificarme como persona.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "EMO_AUT_04",
+      "areaId": "emocional",
+      "dimension": "Autoestima",
+      "text": "Puedo reconocer cualidades propias sin necesitar que alguien las confirme.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "EMO_AUT_05",
+      "areaId": "emocional",
+      "dimension": "Autoestima",
+      "text": "Me permito pedir ayuda sin interpretarlo como un fracaso personal.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1,
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "EMO_AUT_06",
+      "areaId": "emocional",
+      "dimension": "Autoestima",
+      "text": "Mis decisiones tienen en cuenta mis necesidades, además de la aprobación de otras personas.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Límites": 1
+      }
     },
     {
       "id": "EMO_CAL_01",
       "areaId": "emocional",
       "dimension": "Calma y satisfacción",
       "text": "Tengo momentos de calma real a lo largo de la semana, sin sensación de urgencia.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "positiva",
-      "factors": ["Gestión de energía", "Perspectiva"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Perspectiva": 1
+      }
     },
-
+    {
+      "id": "EMO_CAL_02",
+      "areaId": "emocional",
+      "dimension": "Calma y satisfacción",
+      "text": "Encuentro momentos en los que puedo estar presente sin repasar continuamente lo pendiente.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Perspectiva",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Perspectiva": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "EMO_CAL_03",
+      "areaId": "emocional",
+      "dimension": "Calma y satisfacción",
+      "text": "Identifico experiencias cotidianas que me aportan satisfacción o serenidad.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Coherencia"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Coherencia": 1
+      }
+    },
+    {
+      "id": "EMO_CAL_04",
+      "areaId": "emocional",
+      "dimension": "Calma y satisfacción",
+      "text": "Reservo espacio para actividades que me ayudan a recuperar calma.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "EMO_CAL_05",
+      "areaId": "emocional",
+      "dimension": "Calma y satisfacción",
+      "text": "La sensación de urgencia continúa incluso cuando tengo un momento libre.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "EMO_CAL_06",
+      "areaId": "emocional",
+      "dimension": "Calma y satisfacción",
+      "text": "Puedo disfrutar de algo agradable sin sentir que debería estar atendiendo otra obligación.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Coherencia"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Coherencia": 1
+      }
+    },
+    {
+      "id": "EMO_CTX_01",
+      "areaId": "emocional",
+      "dimension": "Contexto",
+      "text": "¿Estás atravesando un cambio, una pérdida o una situación especialmente exigente?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "no",
+          "label": "No en este momento"
+        },
+        {
+          "value": "reciente",
+          "label": "Sí, una situación reciente"
+        },
+        {
+          "value": "mantenida",
+          "label": "Sí, una situación que se mantiene"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "EMO_CTX_02",
+      "areaId": "emocional",
+      "dimension": "Contexto",
+      "text": "¿Hasta qué punto te faltan tiempo, privacidad o apoyo para atender cómo te sientes?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "no",
+          "label": "No de forma relevante"
+        },
+        {
+          "value": "algo",
+          "label": "En parte"
+        },
+        {
+          "value": "mucho",
+          "label": "De forma importante"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "EMO_CTX_03",
+      "areaId": "emocional",
+      "dimension": "Contexto",
+      "text": "Durante los últimos 12 meses, ¿cómo ha cambiado tu situación en el área de Emocional?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "mejorado_bastante",
+          "label": "Ha mejorado bastante"
+        },
+        {
+          "value": "mejorado_algo",
+          "label": "Ha mejorado algo"
+        },
+        {
+          "value": "similar",
+          "label": "Ha permanecido similar"
+        },
+        {
+          "value": "empeorado_algo",
+          "label": "Ha empeorado algo"
+        },
+        {
+          "value": "empeorado_bastante",
+          "label": "Ha empeorado bastante"
+        }
+      ]
+    },
+    {
+      "id": "EMO_CTX_04",
+      "areaId": "emocional",
+      "dimension": "Contexto",
+      "text": "¿Cuál es actualmente tu principal preocupación en el área de Emocional?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "emociones",
+          "label": "Reconocer o gestionar lo que siento"
+        },
+        {
+          "value": "carga",
+          "label": "Estrés y carga mental"
+        },
+        {
+          "value": "autoestima",
+          "label": "Autocrítica y autoestima"
+        },
+        {
+          "value": "calma",
+          "label": "Falta de calma o satisfacción"
+        },
+        {
+          "value": "apoyo",
+          "label": "Falta de apoyo"
+        },
+        {
+          "value": "ninguna",
+          "label": "No tengo una preocupación importante en esta área"
+        },
+        {
+          "value": "otra",
+          "label": "Otra"
+        }
+      ]
+    },
+    {
+      "id": "REL_IMP_01",
+      "areaId": "relaciones",
+      "dimension": "Prioridades",
+      "text": "¿Qué importancia tiene para ti mejorar tus relaciones personales en este momento?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
+    {
+      "id": "REL_CAM_01",
+      "areaId": "relaciones",
+      "dimension": "Prioridades",
+      "text": "¿Cuánto deseas realizar cambios en tus relaciones personales?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
     {
       "id": "REL_VIN_01",
       "areaId": "relaciones",
@@ -175,25 +1403,316 @@
       "text": "Tengo relaciones en las que puedo mostrarme tal como soy.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Conexión / Apoyo"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1
+      }
+    },
+    {
+      "id": "REL_VIN_02",
+      "areaId": "relaciones",
+      "dimension": "Calidad de los vínculos",
+      "text": "Me siento escuchado/a y tenido/a en cuenta en mis vínculos más importantes.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo",
+        "Comunicación"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1,
+        "Comunicación": 1
+      }
+    },
+    {
+      "id": "REL_VIN_03",
+      "areaId": "relaciones",
+      "dimension": "Calidad de los vínculos",
+      "text": "Busco momentos para cuidar las relaciones que quiero mantener.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Conexión / Apoyo"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Conexión / Apoyo": 1
+      }
+    },
+    {
+      "id": "REL_VIN_04",
+      "areaId": "relaciones",
+      "dimension": "Calidad de los vínculos",
+      "text": "Oculto lo que pienso o necesito por miedo a perder el vínculo.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "REL_VIN_05",
+      "areaId": "relaciones",
+      "dimension": "Calidad de los vínculos",
+      "text": "Mis relaciones dejan espacio para mis intereses y mi forma de ser.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Conexión / Apoyo"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Conexión / Apoyo": 1
+      }
     },
     {
       "id": "REL_COM_01",
       "areaId": "relaciones",
       "dimension": "Comunicación",
       "text": "Digo lo que necesito antes de que la situación se acumule o estalle.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "positiva",
-      "factors": ["Comunicación", "Límites"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "REL_COM_02",
+      "areaId": "relaciones",
+      "dimension": "Comunicación",
+      "text": "Escucho a la otra persona e intento comprender su punto de vista antes de responder.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "REL_COM_03",
+      "areaId": "relaciones",
+      "dimension": "Comunicación",
+      "text": "Puedo expresar un desacuerdo sin descalificar ni sentir que debo callarme.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "REL_COM_04",
+      "areaId": "relaciones",
+      "dimension": "Comunicación",
+      "text": "Cuando hay un malentendido, busco aclararlo en lugar de dar por hecho lo que la otra persona piensa.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "REL_COM_05",
+      "areaId": "relaciones",
+      "dimension": "Comunicación",
+      "text": "Pospongo conversaciones necesarias hasta que se vuelve difícil abordarlas.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Control / Agencia": 1
+      }
     },
     {
       "id": "REL_LIM_01",
       "areaId": "relaciones",
       "dimension": "Límites",
       "text": "Digo que sí a planes o peticiones aunque después me pesen o me dejen sin tiempo.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "negativa",
-      "factors": ["Límites", "Gestión de energía"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "REL_LIM_02",
+      "areaId": "relaciones",
+      "dimension": "Límites",
+      "text": "Expreso con claridad cuándo una petición supera mi disponibilidad.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Comunicación"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Comunicación": 1
+      }
+    },
+    {
+      "id": "REL_LIM_03",
+      "areaId": "relaciones",
+      "dimension": "Límites",
+      "text": "Puedo mantener una decisión personal aunque otra persona se sienta decepcionada.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "REL_LIM_04",
+      "areaId": "relaciones",
+      "dimension": "Límites",
+      "text": "Reviso cuánto tiempo y energía puedo dedicar antes de comprometerme.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "REL_LIM_05",
+      "areaId": "relaciones",
+      "dimension": "Límites",
+      "text": "Respeto los límites de otras personas sin insistir para que cambien de opinión.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "REL_LIM_06",
+      "areaId": "relaciones",
+      "dimension": "Límites",
+      "text": "Puedo tomar distancia de una interacción que me hace daño sin sentir que debo sostenerla a cualquier precio.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Autoconocimiento": 1
+      }
     },
     {
       "id": "REL_APO_01",
@@ -202,9 +1721,285 @@
       "text": "Si necesitara ayuda, sé a quién podría acudir y creo que estaría.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Conexión / Apoyo"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1
+      }
     },
-
+    {
+      "id": "REL_APO_02",
+      "areaId": "relaciones",
+      "dimension": "Apoyo y reciprocidad",
+      "text": "Pido ayuda de forma concreta cuando la necesito.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo",
+        "Comunicación"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1,
+        "Comunicación": 1
+      }
+    },
+    {
+      "id": "REL_APO_03",
+      "areaId": "relaciones",
+      "dimension": "Apoyo y reciprocidad",
+      "text": "En mis vínculos importantes hay espacio tanto para mis necesidades como para las de la otra persona.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo",
+        "Coherencia"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1,
+        "Coherencia": 1
+      }
+    },
+    {
+      "id": "REL_APO_04",
+      "areaId": "relaciones",
+      "dimension": "Apoyo y reciprocidad",
+      "text": "Ofrezco apoyo sin asumir más de lo que puedo sostener.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "REL_APO_05",
+      "areaId": "relaciones",
+      "dimension": "Apoyo y reciprocidad",
+      "text": "Siento que siempre debo sostener a otras personas sin recibir apoyo cuando lo necesito.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "REL_APO_06",
+      "areaId": "relaciones",
+      "dimension": "Apoyo y reciprocidad",
+      "text": "Hablo sobre cómo apoyarnos cuando nuestras necesidades o circunstancias cambian.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Conexión / Apoyo"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Conexión / Apoyo": 1
+      }
+    },
+    {
+      "id": "REL_CTX_01",
+      "areaId": "relaciones",
+      "dimension": "Contexto",
+      "text": "¿Ha cambiado recientemente tu red de relaciones o tu posibilidad de mantener el contacto?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "no",
+          "label": "No de forma importante"
+        },
+        {
+          "value": "distancia",
+          "label": "Sí, por distancia o cambios de residencia"
+        },
+        {
+          "value": "cambio",
+          "label": "Sí, por una pérdida, separación u otro cambio"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "REL_CTX_02",
+      "areaId": "relaciones",
+      "dimension": "Contexto",
+      "text": "¿Hasta qué punto la falta de tiempo, accesibilidad o disponibilidad mutua dificulta cuidar tus vínculos?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "no",
+          "label": "No de forma relevante"
+        },
+        {
+          "value": "algo",
+          "label": "En parte"
+        },
+        {
+          "value": "mucho",
+          "label": "De forma importante"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "REL_CTX_03",
+      "areaId": "relaciones",
+      "dimension": "Contexto",
+      "text": "Durante los últimos 12 meses, ¿cómo ha cambiado tu situación en el área de Relaciones?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "mejorado_bastante",
+          "label": "Ha mejorado bastante"
+        },
+        {
+          "value": "mejorado_algo",
+          "label": "Ha mejorado algo"
+        },
+        {
+          "value": "similar",
+          "label": "Ha permanecido similar"
+        },
+        {
+          "value": "empeorado_algo",
+          "label": "Ha empeorado algo"
+        },
+        {
+          "value": "empeorado_bastante",
+          "label": "Ha empeorado bastante"
+        }
+      ]
+    },
+    {
+      "id": "REL_CTX_04",
+      "areaId": "relaciones",
+      "dimension": "Contexto",
+      "text": "¿Cuál es actualmente tu principal preocupación en el área de Relaciones?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "conexion",
+          "label": "Falta de conexión o confianza"
+        },
+        {
+          "value": "comunicacion",
+          "label": "Conversaciones pendientes"
+        },
+        {
+          "value": "limites",
+          "label": "Dificultad para poner límites"
+        },
+        {
+          "value": "apoyo",
+          "label": "Falta de apoyo o reciprocidad"
+        },
+        {
+          "value": "contacto",
+          "label": "Dificultad para mantener el contacto"
+        },
+        {
+          "value": "ninguna",
+          "label": "No tengo una preocupación importante en esta área"
+        },
+        {
+          "value": "otra",
+          "label": "Otra"
+        }
+      ]
+    },
+    {
+      "id": "FAM_IMP_01",
+      "areaId": "familia",
+      "dimension": "Prioridades",
+      "text": "¿Qué importancia tiene para ti mejorar tu vida familiar en este momento?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
+    {
+      "id": "FAM_CAM_01",
+      "areaId": "familia",
+      "dimension": "Prioridades",
+      "text": "¿Cuánto deseas realizar cambios en tu vida familiar?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
     {
       "id": "FAM_CON_01",
       "areaId": "familia",
@@ -212,16 +2007,196 @@
       "text": "Me siento conectado/a con las personas de mi familia más cercana.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Conexión / Apoyo"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1
+      }
+    },
+    {
+      "id": "FAM_CON_02",
+      "areaId": "familia",
+      "dimension": "Conexión",
+      "text": "Encuentro en mi familia espacios en los que puedo mostrar cómo estoy realmente.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1,
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "FAM_CON_03",
+      "areaId": "familia",
+      "dimension": "Conexión",
+      "text": "Muestro interés por lo que están viviendo las personas de mi familia.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "FAM_CON_04",
+      "areaId": "familia",
+      "dimension": "Conexión",
+      "text": "Siento que debo representar un papel que no encaja conmigo para mantener la armonía familiar.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "FAM_CON_05",
+      "areaId": "familia",
+      "dimension": "Conexión",
+      "text": "Puedo contar con alguna persona de mi familia para compartir algo importante.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo",
+        "Comunicación"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1,
+        "Comunicación": 1
+      }
     },
     {
       "id": "FAM_COM_01",
       "areaId": "familia",
       "dimension": "Comunicación",
       "text": "En mi familia evitamos hablar de los temas que realmente importan.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "negativa",
-      "factors": ["Comunicación", "Perspectiva"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "FAM_COM_02",
+      "areaId": "familia",
+      "dimension": "Comunicación",
+      "text": "Expreso mis necesidades familiares de forma concreta, sin esperar que las adivinen.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "FAM_COM_03",
+      "areaId": "familia",
+      "dimension": "Comunicación",
+      "text": "Podemos escuchar puntos de vista distintos sin descalificarnos.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "FAM_COM_04",
+      "areaId": "familia",
+      "dimension": "Comunicación",
+      "text": "Cuando surge un desacuerdo, buscamos un momento adecuado para retomarlo.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "FAM_COM_05",
+      "areaId": "familia",
+      "dimension": "Comunicación",
+      "text": "Los acuerdos importantes se hablan con las personas a las que afectan.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Conexión / Apoyo"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Conexión / Apoyo": 1
+      }
     },
     {
       "id": "FAM_RES_01",
@@ -230,18 +2205,411 @@
       "text": "El reparto de tareas y responsabilidades en casa me parece equilibrado.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Límites", "Comunicación"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Comunicación"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Comunicación": 1
+      }
+    },
+    {
+      "id": "FAM_RES_02",
+      "areaId": "familia",
+      "dimension": "Reparto de responsabilidades",
+      "text": "Está claro quién se ocupa de las tareas o compromisos familiares que compartimos.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Comunicación"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Comunicación": 1
+      }
+    },
+    {
+      "id": "FAM_RES_03",
+      "areaId": "familia",
+      "dimension": "Reparto de responsabilidades",
+      "text": "Revisamos los acuerdos cuando cambian las necesidades o la disponibilidad de alguien.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Perspectiva",
+        "Comunicación"
+      ],
+      "factorWeights": {
+        "Perspectiva": 1,
+        "Comunicación": 1
+      }
+    },
+    {
+      "id": "FAM_RES_04",
+      "areaId": "familia",
+      "dimension": "Reparto de responsabilidades",
+      "text": "Asumo por defecto tareas o cuidados que superan lo que puedo sostener.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "FAM_RES_05",
+      "areaId": "familia",
+      "dimension": "Reparto de responsabilidades",
+      "text": "Puedo pedir que se redistribuya una responsabilidad cuando me resulta excesiva.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "FAM_RES_06",
+      "areaId": "familia",
+      "dimension": "Reparto de responsabilidades",
+      "text": "Las tareas de organización y planificación se reconocen además de las tareas visibles.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Perspectiva",
+        "Coherencia"
+      ],
+      "factorWeights": {
+        "Perspectiva": 1,
+        "Coherencia": 1
+      }
     },
     {
       "id": "FAM_TIE_01",
       "areaId": "familia",
       "dimension": "Tiempo y presencia",
       "text": "Cuando estoy con mi familia estoy presente de verdad, sin la cabeza en otra parte.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "positiva",
-      "factors": ["Gestión de energía", "Coherencia"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Coherencia"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Coherencia": 1
+      }
     },
-
+    {
+      "id": "FAM_TIE_02",
+      "areaId": "familia",
+      "dimension": "Tiempo y presencia",
+      "text": "Reservo momentos de contacto familiar que encajan con nuestra disponibilidad.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Conexión / Apoyo"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Conexión / Apoyo": 1
+      }
+    },
+    {
+      "id": "FAM_TIE_03",
+      "areaId": "familia",
+      "dimension": "Tiempo y presencia",
+      "text": "Cuando compartimos tiempo, puedo apartar otras demandas durante un rato.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "FAM_TIE_04",
+      "areaId": "familia",
+      "dimension": "Tiempo y presencia",
+      "text": "El tiempo que dedico a mi familia refleja el lugar que quiero darle en mi vida.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "FAM_TIE_05",
+      "areaId": "familia",
+      "dimension": "Tiempo y presencia",
+      "text": "El contacto familiar se limita casi siempre a resolver tareas o problemas.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Conexión / Apoyo",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Conexión / Apoyo": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "FAM_TIE_06",
+      "areaId": "familia",
+      "dimension": "Tiempo y presencia",
+      "text": "Buscamos formas de mantener el contacto que respeten los ritmos y límites de cada persona.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "FAM_CTX_01",
+      "areaId": "familia",
+      "dimension": "Contexto",
+      "text": "¿Qué circunstancia describe mejor el contexto familiar desde el que respondes?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "convivencia",
+          "label": "Convivo con las personas de referencia"
+        },
+        {
+          "value": "distancia",
+          "label": "Nos relacionamos desde hogares o lugares distintos"
+        },
+        {
+          "value": "cuidados",
+          "label": "Hay responsabilidades de cuidado importantes"
+        },
+        {
+          "value": "contacto_limitado",
+          "label": "El contacto es limitado o he elegido tomar distancia"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "FAM_CTX_02",
+      "areaId": "familia",
+      "dimension": "Contexto",
+      "text": "¿Hasta qué punto el tiempo, los recursos o la disponibilidad de otras personas limitan los cambios que necesitas en tu vida familiar?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "no",
+          "label": "No de forma relevante"
+        },
+        {
+          "value": "algo",
+          "label": "En parte"
+        },
+        {
+          "value": "mucho",
+          "label": "De forma importante"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "FAM_CTX_03",
+      "areaId": "familia",
+      "dimension": "Contexto",
+      "text": "Durante los últimos 12 meses, ¿cómo ha cambiado tu situación en el área de Familia?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "mejorado_bastante",
+          "label": "Ha mejorado bastante"
+        },
+        {
+          "value": "mejorado_algo",
+          "label": "Ha mejorado algo"
+        },
+        {
+          "value": "similar",
+          "label": "Ha permanecido similar"
+        },
+        {
+          "value": "empeorado_algo",
+          "label": "Ha empeorado algo"
+        },
+        {
+          "value": "empeorado_bastante",
+          "label": "Ha empeorado bastante"
+        }
+      ]
+    },
+    {
+      "id": "FAM_CTX_04",
+      "areaId": "familia",
+      "dimension": "Contexto",
+      "text": "¿Cuál es actualmente tu principal preocupación en el área de Familia?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "conexion",
+          "label": "Conexión y confianza"
+        },
+        {
+          "value": "comunicacion",
+          "label": "Conversaciones o desacuerdos"
+        },
+        {
+          "value": "reparto",
+          "label": "Reparto de tareas y cuidados"
+        },
+        {
+          "value": "tiempo",
+          "label": "Tiempo y presencia"
+        },
+        {
+          "value": "distancia",
+          "label": "Distancia o contacto familiar"
+        },
+        {
+          "value": "ninguna",
+          "label": "No tengo una preocupación importante en esta área"
+        },
+        {
+          "value": "otra",
+          "label": "Otra"
+        }
+      ]
+    },
+    {
+      "id": "TRA_IMP_01",
+      "areaId": "trabajo",
+      "dimension": "Prioridades",
+      "text": "¿Qué importancia tiene para ti mejorar tu situación profesional en este momento?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
+    {
+      "id": "TRA_CAM_01",
+      "areaId": "trabajo",
+      "dimension": "Prioridades",
+      "text": "¿Cuánto deseas realizar cambios en tu situación profesional actual?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
     {
       "id": "TRA_SAT_01",
       "areaId": "trabajo",
@@ -249,25 +2617,312 @@
       "text": "En conjunto, me siento satisfecho/a con mi situación profesional actual.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Coherencia"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia"
+      ],
+      "factorWeights": {
+        "Coherencia": 1
+      }
+    },
+    {
+      "id": "TRA_SAT_02",
+      "areaId": "trabajo",
+      "dimension": "Satisfacción",
+      "text": "Termino la mayoría de mis jornadas sintiendo que mi trabajo ha tenido sentido para mí.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "TRA_SAT_03",
+      "areaId": "trabajo",
+      "dimension": "Satisfacción",
+      "text": "Pienso con frecuencia que no quiero seguir mucho tiempo en mi situación profesional actual.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Proyección"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Proyección": 1
+      }
+    },
+    {
+      "id": "TRA_SAT_04",
+      "areaId": "trabajo",
+      "dimension": "Satisfacción",
+      "text": "Las tareas que realizo encajan con mis intereses y con lo que considero importante en mi vida profesional.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "TRA_SAT_05",
+      "areaId": "trabajo",
+      "dimension": "Satisfacción",
+      "text": "Identifico qué aspectos de mi actividad profesional me satisfacen y cuáles necesitaría cambiar.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Perspectiva": 1
+      }
     },
     {
       "id": "TRA_DES_01",
       "areaId": "trabajo",
       "dimension": "Desarrollo",
       "text": "Estoy aprendiendo o mejorando habilidades útiles para mi futuro profesional.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "positiva",
-      "factors": ["Proyección", "Hábitos / Consistencia"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "TRA_DES_02",
+      "areaId": "trabajo",
+      "dimension": "Desarrollo",
+      "text": "Busco activamente oportunidades para aprender, asumir nuevos retos o mejorar profesionalmente.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "TRA_DES_03",
+      "areaId": "trabajo",
+      "dimension": "Desarrollo",
+      "text": "Siento que mi trabajo actual me permite seguir creciendo profesionalmente.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección"
+      ],
+      "factorWeights": {
+        "Proyección": 1
+      }
+    },
+    {
+      "id": "TRA_DES_04",
+      "areaId": "trabajo",
+      "dimension": "Desarrollo",
+      "text": "Reservo tiempo para practicar o aplicar las habilidades que estoy aprendiendo.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "TRA_DES_05",
+      "areaId": "trabajo",
+      "dimension": "Desarrollo",
+      "text": "Reviso mis resultados o busco comentarios útiles para identificar qué puedo mejorar profesionalmente.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Perspectiva",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Perspectiva": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "TRA_CON_01",
+      "areaId": "trabajo",
+      "dimension": "Condiciones",
+      "text": "Puedo desconectar del trabajo fuera de mi horario habitual.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "TRA_CON_02",
+      "areaId": "trabajo",
+      "dimension": "Condiciones",
+      "text": "Mi carga de trabajo habitual es sostenible sin vivir en un estado constante de agotamiento.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Límites": 1
+      }
     },
     {
       "id": "TRA_CON_03",
       "areaId": "trabajo",
       "dimension": "Condiciones",
       "text": "Acepto tareas o responsabilidades adicionales aunque no tenga tiempo o capacidad real para asumirlas.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "negativa",
-      "factors": ["Límites", "Gestión de energía"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "TRA_CON_04",
+      "areaId": "trabajo",
+      "dimension": "Condiciones",
+      "text": "Dispongo de los recursos y del apoyo necesarios para realizar mi actividad profesional.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "TRA_CON_05",
+      "areaId": "trabajo",
+      "dimension": "Condiciones",
+      "text": "Puedo expresar mis límites y negociar prioridades cuando las demandas superan mi capacidad.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "TRA_CON_06",
+      "areaId": "trabajo",
+      "dimension": "Condiciones",
+      "text": "Las condiciones de mi actividad profesional me permiten reservar tiempo y energía para mi vida personal.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Gestión de energía": 1
+      }
     },
     {
       "id": "TRA_PRO_01",
@@ -276,46 +2931,917 @@
       "text": "Tengo bastante claro hacia dónde quiero avanzar profesionalmente en los próximos años.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Proyección", "Autoconocimiento"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Autoconocimiento": 1
+      }
     },
-
+    {
+      "id": "TRA_PRO_02",
+      "areaId": "trabajo",
+      "dimension": "Proyección",
+      "text": "Realizo acciones concretas para acercarme a la situación profesional que quiero.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "TRA_PRO_03",
+      "areaId": "trabajo",
+      "dimension": "Proyección",
+      "text": "Reviso si mi trabajo actual sigue siendo coherente con la vida profesional que quiero construir.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "TRA_PRO_04",
+      "areaId": "trabajo",
+      "dimension": "Proyección",
+      "text": "Tengo definido un siguiente paso profesional concreto y un plazo orientativo para darlo.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "TRA_PRO_05",
+      "areaId": "trabajo",
+      "dimension": "Proyección",
+      "text": "Exploro alternativas profesionales y compruebo qué requisitos necesitaría para acceder a ellas.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "TRA_PRO_06",
+      "areaId": "trabajo",
+      "dimension": "Proyección",
+      "text": "Pospongo las acciones hacia mi futuro profesional aun cuando tengo posibilidad de dar un pequeño paso.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "TRA_CTX_01",
+      "areaId": "trabajo",
+      "dimension": "Contexto",
+      "text": "¿Cuál es tu situación profesional actual?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "cuenta_ajena",
+          "label": "Trabajo por cuenta ajena"
+        },
+        {
+          "value": "cuenta_propia",
+          "label": "Trabajo por cuenta propia"
+        },
+        {
+          "value": "busqueda",
+          "label": "Estoy buscando empleo"
+        },
+        {
+          "value": "formacion",
+          "label": "Estoy estudiando o preparándome profesionalmente"
+        },
+        {
+          "value": "pausa",
+          "label": "Estoy en una pausa profesional"
+        },
+        {
+          "value": "otra",
+          "label": "Otra situación"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "TRA_CTX_02",
+      "areaId": "trabajo",
+      "dimension": "Contexto",
+      "text": "¿Hay circunstancias que limitan actualmente tus opciones profesionales, como responsabilidades de cuidados, salud o falta de oportunidades?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "no",
+          "label": "No de forma relevante"
+        },
+        {
+          "value": "algo",
+          "label": "Sí, en parte"
+        },
+        {
+          "value": "mucho",
+          "label": "Sí, de forma importante"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "TRA_CTX_03",
+      "areaId": "trabajo",
+      "dimension": "Contexto",
+      "text": "Durante los últimos 12 meses, mi situación profesional ha...",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "mejorado_bastante",
+          "label": "Mejorado bastante"
+        },
+        {
+          "value": "mejorado_algo",
+          "label": "Mejorado algo"
+        },
+        {
+          "value": "similar",
+          "label": "Permanecido similar"
+        },
+        {
+          "value": "empeorado_algo",
+          "label": "Empeorado algo"
+        },
+        {
+          "value": "empeorado_bastante",
+          "label": "Empeorado bastante"
+        }
+      ]
+    },
+    {
+      "id": "TRA_CTX_04",
+      "areaId": "trabajo",
+      "dimension": "Contexto",
+      "text": "¿Cuál es actualmente tu principal preocupación profesional?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "satisfaccion",
+          "label": "Falta de satisfacción o sentido"
+        },
+        {
+          "value": "desarrollo",
+          "label": "Pocas oportunidades de aprendizaje"
+        },
+        {
+          "value": "carga",
+          "label": "Carga de trabajo y dificultad para desconectar"
+        },
+        {
+          "value": "condiciones",
+          "label": "Condiciones, recursos o apoyo"
+        },
+        {
+          "value": "estabilidad",
+          "label": "Estabilidad o acceso al empleo"
+        },
+        {
+          "value": "direccion",
+          "label": "Falta de dirección profesional"
+        },
+        {
+          "value": "ninguna",
+          "label": "No tengo una preocupación profesional importante"
+        },
+        {
+          "value": "otra",
+          "label": "Otra"
+        }
+      ]
+    },
+    {
+      "id": "FIN_IMP_01",
+      "areaId": "finanzas",
+      "dimension": "Prioridades personales",
+      "text": "¿Cuánta importancia tiene para ti mejorar tus finanzas en este momento?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "responseScale": "perception_0_10",
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {}
+    },
+    {
+      "id": "FIN_DES_01",
+      "areaId": "finanzas",
+      "dimension": "Prioridades personales",
+      "text": "¿Cuánto deseas cambiar o mejorar tu situación financiera actual?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "responseScale": "perception_0_10",
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {}
+    },
     {
       "id": "FIN_CON_01",
       "areaId": "finanzas",
       "dimension": "Control",
-      "text": "Reviso mis movimientos bancarios y sé en qué se ha ido mi dinero.",
-      "type": "frecuencia",
+      "text": "Sé aproximadamente cuánto dinero entra y cuánto sale de mi economía cada mes.",
+      "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Control / Agencia", "Hábitos / Consistencia"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "FIN_CON_02",
+      "areaId": "finanzas",
+      "dimension": "Control",
+      "text": "Reviso mis cuentas y movimientos bancarios.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "FIN_CON_03",
+      "areaId": "finanzas",
+      "dimension": "Control",
+      "text": "Sé cuáles son mis principales categorías de gasto y cuánto representan aproximadamente.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "FIN_CON_04",
+      "areaId": "finanzas",
+      "dimension": "Control",
+      "text": "Sé qué pagos o gastos importantes tendré que afrontar durante los próximos meses.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Proyección"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Proyección": 1
+      }
+    },
+    {
+      "id": "FIN_CON_05",
+      "areaId": "finanzas",
+      "dimension": "Control",
+      "text": "Evito revisar mis cuentas porque me genera incomodidad o prefiero no saber exactamente cómo estoy.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Perspectiva": 1
+      }
     },
     {
       "id": "FIN_SEG_01",
       "areaId": "finanzas",
       "dimension": "Seguridad",
-      "text": "Puedo afrontar un gasto imprevisto necesario sin que desestabilice por completo mis finanzas.",
+      "text": "Si apareciera mañana un gasto imprevisto importante, podría afrontarlo sin endeudarme ni dejar de pagar gastos esenciales.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Control / Agencia"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "FIN_SEG_02",
+      "areaId": "finanzas",
+      "dimension": "Seguridad",
+      "text": "Tengo una reserva económica destinada específicamente a imprevistos.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "emergency_fund",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Proyección"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Proyección": 1
+      }
+    },
+    {
+      "id": "FIN_SEG_03",
+      "areaId": "finanzas",
+      "dimension": "Seguridad",
+      "text": "Si mis ingresos principales desaparecieran temporalmente, ¿durante cuánto tiempo podría mantener mis gastos esenciales?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "income_buffer",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Proyección"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Proyección": 1
+      }
+    },
+    {
+      "id": "FIN_SEG_04",
+      "areaId": "finanzas",
+      "dimension": "Seguridad",
+      "text": "Mis deudas o pagos pendientes limitan de forma importante mis decisiones económicas mensuales.",
+      "type": "valoracion_1_10",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "FIN_SEG_05",
+      "areaId": "finanzas",
+      "dimension": "Seguridad",
+      "text": "Me preocupa no poder afrontar gastos necesarios o llegar a final de mes.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "FIN_HAB_01",
+      "areaId": "finanzas",
+      "dimension": "Hábitos financieros",
+      "text": "Aparto dinero para ahorro, reserva u objetivos antes de gastarlo en otras cosas.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Proyección"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Proyección": 1
+      }
+    },
+    {
+      "id": "FIN_HAB_02",
+      "areaId": "finanzas",
+      "dimension": "Hábitos financieros",
+      "text": "Antes de realizar una compra importante compruebo si encaja en mis posibilidades y prioridades.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Control / Agencia": 1
+      }
     },
     {
       "id": "FIN_HAB_03",
       "areaId": "finanzas",
       "dimension": "Hábitos financieros",
-      "text": "Hago compras que después me obligan a ajustar gastos importantes o me generan preocupación.",
-      "type": "frecuencia",
+      "text": "Realizo compras impulsivas que después considero innecesarias o me obligan a ajustar otros gastos.",
+      "type": "single_select",
       "polarity": "negativa",
-      "factors": ["Hábitos / Consistencia", "Control / Agencia"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "FIN_HAB_04",
+      "areaId": "finanzas",
+      "dimension": "Hábitos financieros",
+      "text": "Comparo alternativas antes de contratar o renovar servicios importantes, como seguros, suministros, financiación o suscripciones.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "FIN_HAB_05",
+      "areaId": "finanzas",
+      "dimension": "Hábitos financieros",
+      "text": "Reviso gastos recurrentes para comprobar si sigo necesitándolos.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "FIN_HAB_06",
+      "areaId": "finanzas",
+      "dimension": "Hábitos financieros",
+      "text": "Cuando recibo ingresos extraordinarios, decido conscientemente qué parte gastar, ahorrar o destinar a otros objetivos.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Proyección"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Proyección": 1
+      }
+    },
+    {
+      "id": "FIN_PRO_01",
+      "areaId": "finanzas",
+      "dimension": "Proyección",
+      "text": "Tengo definidos uno o varios objetivos económicos concretos para los próximos 1–3 años.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Autoconocimiento": 1
+      }
     },
     {
       "id": "FIN_PRO_02",
       "areaId": "finanzas",
       "dimension": "Proyección",
-      "text": "Reviso periódicamente si mis decisiones económicas me acercan a mis objetivos.",
-      "type": "frecuencia",
+      "text": "Sé aproximadamente cuánto dinero necesito para alcanzar mis principales objetivos económicos.",
+      "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Proyección", "Hábitos / Consistencia"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Control / Agencia": 1
+      }
     },
-
+    {
+      "id": "FIN_PRO_03",
+      "areaId": "finanzas",
+      "dimension": "Proyección",
+      "text": "Destino dinero de manera regular a objetivos futuros.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "FIN_PRO_04",
+      "areaId": "finanzas",
+      "dimension": "Proyección",
+      "text": "Reviso periódicamente si mis decisiones económicas me acercan a mis objetivos.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "FIN_PRO_05",
+      "areaId": "finanzas",
+      "dimension": "Proyección",
+      "text": "Planifico con antelación gastos importantes que sé que llegarán.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "FIN_PRO_06",
+      "areaId": "finanzas",
+      "dimension": "Proyección",
+      "text": "Tengo una idea razonablemente clara de cómo quiero que sea mi situación financiera dentro de cinco años.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "FIN_CTX_01",
+      "areaId": "finanzas",
+      "dimension": "Contexto",
+      "text": "¿Tus ingresos habituales cubren actualmente tus gastos necesarios?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "options": [
+        {
+          "value": "si_margen",
+          "label": "Sí, con margen"
+        },
+        {
+          "value": "si_poco_margen",
+          "label": "Sí, pero con poco margen"
+        },
+        {
+          "value": "justos",
+          "label": "Llegan muy justos"
+        },
+        {
+          "value": "no_siempre",
+          "label": "No siempre"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ],
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {}
+    },
+    {
+      "id": "FIN_CTX_02",
+      "areaId": "finanzas",
+      "dimension": "Contexto",
+      "text": "¿Tienes actualmente deudas distintas de una hipoteca habitual?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "options": [
+        {
+          "value": "no",
+          "label": "No"
+        },
+        {
+          "value": "si_manejables",
+          "label": "Sí, pero son manejables"
+        },
+        {
+          "value": "si_condicionan",
+          "label": "Sí, y condicionan de forma importante mi economía"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ],
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {}
+    },
+    {
+      "id": "FIN_CTX_03",
+      "areaId": "finanzas",
+      "dimension": "Contexto",
+      "text": "Durante los últimos 12 meses, mi situación económica ha...",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "options": [
+        {
+          "value": "mejorado_bastante",
+          "label": "Mejorado bastante"
+        },
+        {
+          "value": "mejorado_algo",
+          "label": "Mejorado algo"
+        },
+        {
+          "value": "similar",
+          "label": "Permanecido similar"
+        },
+        {
+          "value": "empeorado_algo",
+          "label": "Empeorado algo"
+        },
+        {
+          "value": "empeorado_bastante",
+          "label": "Empeorado bastante"
+        }
+      ],
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {}
+    },
+    {
+      "id": "FIN_CTX_04",
+      "areaId": "finanzas",
+      "dimension": "Contexto",
+      "text": "¿Cuál es actualmente tu principal preocupación económica?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "options": [
+        {
+          "value": "dia_a_dia",
+          "label": "Gastos del día a día"
+        },
+        {
+          "value": "deudas",
+          "label": "Deudas"
+        },
+        {
+          "value": "falta_ahorro",
+          "label": "Falta de ahorro"
+        },
+        {
+          "value": "imprevistos",
+          "label": "Imprevistos"
+        },
+        {
+          "value": "vivienda",
+          "label": "Vivienda"
+        },
+        {
+          "value": "ingresos",
+          "label": "Ingresos insuficientes o inestables"
+        },
+        {
+          "value": "futuro",
+          "label": "Futuro y jubilación"
+        },
+        {
+          "value": "ninguna",
+          "label": "No tengo una preocupación económica importante"
+        },
+        {
+          "value": "otra",
+          "label": "Otra"
+        }
+      ],
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {}
+    },
+    {
+      "id": "CRE_IMP_01",
+      "areaId": "crecimiento",
+      "dimension": "Prioridades",
+      "text": "¿Qué importancia tiene para ti mejorar tu crecimiento personal en este momento?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
+    {
+      "id": "CRE_CAM_01",
+      "areaId": "crecimiento",
+      "dimension": "Prioridades",
+      "text": "¿Cuánto deseas realizar cambios en tu crecimiento personal?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
     {
       "id": "CRE_AUT_01",
       "areaId": "crecimiento",
@@ -323,16 +3849,198 @@
       "text": "Entiendo con suficiente claridad qué quiero, qué necesito y qué me está pasando.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Autoconocimiento", "Perspectiva"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "CRE_AUT_02",
+      "areaId": "crecimiento",
+      "dimension": "Autoconocimiento",
+      "text": "Dedico momentos a revisar qué me está aportando bienestar y qué me está desgastando.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "CRE_AUT_03",
+      "areaId": "crecimiento",
+      "dimension": "Autoconocimiento",
+      "text": "Puedo distinguir lo que yo quiero de lo que otras personas esperan de mí.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Coherencia"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Coherencia": 1
+      }
+    },
+    {
+      "id": "CRE_AUT_04",
+      "areaId": "crecimiento",
+      "dimension": "Autoconocimiento",
+      "text": "Reconozco mis fortalezas y los apoyos que necesito para afrontar un reto.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "CRE_AUT_05",
+      "areaId": "crecimiento",
+      "dimension": "Autoconocimiento",
+      "text": "Repito decisiones que no me funcionan sin detenerme a observar qué ocurre.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Perspectiva",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Perspectiva": 1,
+        "Autoconocimiento": 1
+      }
     },
     {
       "id": "CRE_APR_01",
       "areaId": "crecimiento",
       "dimension": "Aprendizaje",
       "text": "Dedico tiempo a aprender algo que me interesa, aunque no sea urgente.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "positiva",
-      "factors": ["Hábitos / Consistencia", "Proyección"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Proyección"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Proyección": 1
+      }
+    },
+    {
+      "id": "CRE_APR_02",
+      "areaId": "crecimiento",
+      "dimension": "Aprendizaje",
+      "text": "Pongo en práctica algo de lo que aprendo en situaciones de mi vida cotidiana.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "CRE_APR_03",
+      "areaId": "crecimiento",
+      "dimension": "Aprendizaje",
+      "text": "Busco fuentes o personas que me ayuden a entender mejor aquello que quiero aprender.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Conexión / Apoyo"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Conexión / Apoyo": 1
+      }
+    },
+    {
+      "id": "CRE_APR_04",
+      "areaId": "crecimiento",
+      "dimension": "Aprendizaje",
+      "text": "Reviso qué me ha servido de una experiencia antes de pasar a la siguiente.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Perspectiva",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Perspectiva": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "CRE_APR_05",
+      "areaId": "crecimiento",
+      "dimension": "Aprendizaje",
+      "text": "Acumulo contenidos o ideas sin darme espacio para probarlos o asimilarlos.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Perspectiva": 1
+      }
     },
     {
       "id": "CRE_OBJ_01",
@@ -341,18 +4049,405 @@
       "text": "Tengo objetivos personales concretos, no solo intenciones generales.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Proyección"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección"
+      ],
+      "factorWeights": {
+        "Proyección": 1
+      }
+    },
+    {
+      "id": "CRE_OBJ_02",
+      "areaId": "crecimiento",
+      "dimension": "Objetivos",
+      "text": "Mis objetivos responden a algo que considero valioso en mi situación actual.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "CRE_OBJ_03",
+      "areaId": "crecimiento",
+      "dimension": "Objetivos",
+      "text": "Divido una meta importante en pasos que caben en mi tiempo y recursos.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "CRE_OBJ_04",
+      "areaId": "crecimiento",
+      "dimension": "Objetivos",
+      "text": "Tengo identificado el siguiente paso de alguno de mis objetivos personales.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "CRE_OBJ_05",
+      "areaId": "crecimiento",
+      "dimension": "Objetivos",
+      "text": "Reviso mis avances y ajusto una meta si mis circunstancias cambian.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Perspectiva": 1
+      }
+    },
+    {
+      "id": "CRE_OBJ_06",
+      "areaId": "crecimiento",
+      "dimension": "Objetivos",
+      "text": "Mantengo metas por inercia aunque hayan dejado de tener sentido para mí.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Proyección"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Proyección": 1
+      }
     },
     {
       "id": "CRE_COH_01",
       "areaId": "crecimiento",
       "dimension": "Coherencia",
       "text": "Noto distancia entre lo que digo que quiero y cómo estoy viviendo en realidad.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "negativa",
-      "factors": ["Coherencia", "Perspectiva"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Perspectiva": 1
+      }
     },
-
+    {
+      "id": "CRE_COH_02",
+      "areaId": "crecimiento",
+      "dimension": "Coherencia",
+      "text": "Mis decisiones cotidianas reflejan al menos alguna de mis prioridades personales.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "CRE_COH_03",
+      "areaId": "crecimiento",
+      "dimension": "Coherencia",
+      "text": "Reservo tiempo para lo que digo que es importante para mí.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Hábitos / Consistencia": 1
+      }
+    },
+    {
+      "id": "CRE_COH_04",
+      "areaId": "crecimiento",
+      "dimension": "Coherencia",
+      "text": "Puedo renunciar a un compromiso que me aleja de mis prioridades cuando tengo margen para elegir.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Coherencia"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Coherencia": 1
+      }
+    },
+    {
+      "id": "CRE_COH_05",
+      "areaId": "crecimiento",
+      "dimension": "Coherencia",
+      "text": "Reviso con respeto hacia mí las diferencias entre mis intenciones y mis acciones.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Perspectiva",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Perspectiva": 1,
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "CRE_COH_06",
+      "areaId": "crecimiento",
+      "dimension": "Coherencia",
+      "text": "Adapto mis compromisos a lo que puedo sostener en lugar de prometerme cambios imposibles.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "CRE_CTX_01",
+      "areaId": "crecimiento",
+      "dimension": "Contexto",
+      "text": "¿En qué momento te encuentras respecto a tus prioridades personales?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "continuidad",
+          "label": "Estoy dando continuidad a mis prioridades"
+        },
+        {
+          "value": "transicion",
+          "label": "Estoy redefiniendo prioridades tras un cambio"
+        },
+        {
+          "value": "consolidacion",
+          "label": "Necesito consolidar o hacer una pausa"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "CRE_CTX_02",
+      "areaId": "crecimiento",
+      "dimension": "Contexto",
+      "text": "¿Hasta qué punto la falta de tiempo, recursos o apoyo limita tus oportunidades de aprender o avanzar en lo que te importa?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "no",
+          "label": "No de forma relevante"
+        },
+        {
+          "value": "algo",
+          "label": "En parte"
+        },
+        {
+          "value": "mucho",
+          "label": "De forma importante"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "CRE_CTX_03",
+      "areaId": "crecimiento",
+      "dimension": "Contexto",
+      "text": "Durante los últimos 12 meses, ¿cómo ha cambiado tu situación en el área de Crecimiento?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "mejorado_bastante",
+          "label": "Ha mejorado bastante"
+        },
+        {
+          "value": "mejorado_algo",
+          "label": "Ha mejorado algo"
+        },
+        {
+          "value": "similar",
+          "label": "Ha permanecido similar"
+        },
+        {
+          "value": "empeorado_algo",
+          "label": "Ha empeorado algo"
+        },
+        {
+          "value": "empeorado_bastante",
+          "label": "Ha empeorado bastante"
+        }
+      ]
+    },
+    {
+      "id": "CRE_CTX_04",
+      "areaId": "crecimiento",
+      "dimension": "Contexto",
+      "text": "¿Cuál es actualmente tu principal preocupación en el área de Crecimiento?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "claridad",
+          "label": "Aclarar lo que quiero o necesito"
+        },
+        {
+          "value": "aprendizaje",
+          "label": "Aprender y aplicar lo aprendido"
+        },
+        {
+          "value": "objetivos",
+          "label": "Concretar o revisar objetivos"
+        },
+        {
+          "value": "coherencia",
+          "label": "Acercar mis decisiones a mis prioridades"
+        },
+        {
+          "value": "recursos",
+          "label": "Falta de tiempo o recursos"
+        },
+        {
+          "value": "ninguna",
+          "label": "No tengo una preocupación importante en esta área"
+        },
+        {
+          "value": "otra",
+          "label": "Otra"
+        }
+      ]
+    },
+    {
+      "id": "OCI_IMP_01",
+      "areaId": "ocio",
+      "dimension": "Prioridades",
+      "text": "¿Qué importancia tiene para ti mejorar tu ocio y tiempo personal en este momento?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
+    {
+      "id": "OCI_CAM_01",
+      "areaId": "ocio",
+      "dimension": "Prioridades",
+      "text": "¿Cuánto deseas realizar cambios en tu ocio y tiempo personal?",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "responseScale": "perception_0_10"
+    },
     {
       "id": "OCI_TIE_01",
       "areaId": "ocio",
@@ -360,34 +4455,580 @@
       "text": "Tengo tiempo para mí durante la semana, no solo huecos sueltos.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
-      "factors": ["Límites", "Gestión de energía"]
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "OCI_TIE_02",
+      "areaId": "ocio",
+      "dimension": "Tiempo disponible",
+      "text": "Identifico con antelación algún momento de la semana que puedo dedicar a mí.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Proyección",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Proyección": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "OCI_TIE_03",
+      "areaId": "ocio",
+      "dimension": "Tiempo disponible",
+      "text": "Mis compromisos dejan huecos suficientemente amplios para hacer algo que elijo.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "OCI_TIE_04",
+      "areaId": "ocio",
+      "dimension": "Tiempo disponible",
+      "text": "Puedo reorganizar alguna obligación para disponer de tiempo personal cuando lo necesito.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Control / Agencia",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Control / Agencia": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "OCI_TIE_05",
+      "areaId": "ocio",
+      "dimension": "Tiempo disponible",
+      "text": "El tiempo que reservo para mí acaba ocupado por peticiones que podría haber pospuesto.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Hábitos / Consistencia"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Hábitos / Consistencia": 1
+      }
     },
     {
       "id": "OCI_DIS_01",
       "areaId": "ocio",
       "dimension": "Disfrute",
       "text": "Hago cosas que disfruto de verdad, no solo las que sirven para desconectar sin más.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "positiva",
-      "factors": ["Coherencia", "Autoconocimiento"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "OCI_DIS_02",
+      "areaId": "ocio",
+      "dimension": "Disfrute",
+      "text": "Sé qué actividades me resultan agradables en este momento de mi vida.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Coherencia"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Coherencia": 1
+      }
+    },
+    {
+      "id": "OCI_DIS_03",
+      "areaId": "ocio",
+      "dimension": "Disfrute",
+      "text": "Elijo parte de mi ocio por interés propio y no solo para seguir los planes de otras personas.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "OCI_DIS_04",
+      "areaId": "ocio",
+      "dimension": "Disfrute",
+      "text": "Durante una actividad que he elegido, consigo prestar atención a la experiencia.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Perspectiva",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Perspectiva": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "OCI_DIS_05",
+      "areaId": "ocio",
+      "dimension": "Disfrute",
+      "text": "Repito formas de pasar el tiempo que después me dejan insatisfecho/a, sin revisar otras opciones.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Perspectiva",
+        "Coherencia"
+      ],
+      "factorWeights": {
+        "Perspectiva": 1,
+        "Coherencia": 1
+      }
     },
     {
       "id": "OCI_DES_01",
       "areaId": "ocio",
       "dimension": "Descanso",
       "text": "Termino los fines de semana o mis días libres con la sensación de no haber descansado.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "negativa",
-      "factors": ["Gestión de energía"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "OCI_DES_02",
+      "areaId": "ocio",
+      "dimension": "Descanso",
+      "text": "Distingo qué actividades me ayudan a descansar y cuáles me estimulan pero no me recuperan.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "OCI_DES_03",
+      "areaId": "ocio",
+      "dimension": "Descanso",
+      "text": "Reservo momentos sin exigencias de rendimiento o productividad.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "OCI_DES_04",
+      "areaId": "ocio",
+      "dimension": "Descanso",
+      "text": "Ajusto mis planes de ocio cuando noto que necesito una pausa.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Autoconocimiento",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Autoconocimiento": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "OCI_DES_05",
+      "areaId": "ocio",
+      "dimension": "Descanso",
+      "text": "Las notificaciones o las tareas pendientes interrumpen el tiempo que intento dedicar a descansar.",
+      "type": "single_select",
+      "polarity": "negativa",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Gestión de energía"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Gestión de energía": 1
+      }
+    },
+    {
+      "id": "OCI_DES_06",
+      "areaId": "ocio",
+      "dimension": "Descanso",
+      "text": "Después de mi tiempo personal siento que he recuperado algo de energía o espacio mental.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Gestión de energía",
+        "Perspectiva"
+      ],
+      "factorWeights": {
+        "Gestión de energía": 1,
+        "Perspectiva": 1
+      }
     },
     {
       "id": "OCI_PRI_01",
       "areaId": "ocio",
       "dimension": "Prioridad personal",
       "text": "Mi tiempo personal es lo primero que sacrifico cuando algo se complica.",
-      "type": "frecuencia",
+      "type": "single_select",
       "polarity": "negativa",
-      "factors": ["Límites", "Control / Agencia"]
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_negative",
+      "dimensionWeight": 1,
+      "factors": [
+        "Límites",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Límites": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "OCI_PRI_02",
+      "areaId": "ocio",
+      "dimension": "Prioridad personal",
+      "text": "Considero mi tiempo personal una necesidad que merece espacio en la agenda.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Autoconocimiento"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Autoconocimiento": 1
+      }
+    },
+    {
+      "id": "OCI_PRI_03",
+      "areaId": "ocio",
+      "dimension": "Prioridad personal",
+      "text": "Comunico a otras personas cuándo quiero proteger un rato para mí.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Comunicación",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Comunicación": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "OCI_PRI_04",
+      "areaId": "ocio",
+      "dimension": "Prioridad personal",
+      "text": "Puedo disfrutar de mi tiempo libre sin sentir que debo justificar su utilidad.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Límites"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Límites": 1
+      }
+    },
+    {
+      "id": "OCI_PRI_05",
+      "areaId": "ocio",
+      "dimension": "Prioridad personal",
+      "text": "Si pierdo un espacio personal por un imprevisto, busco otro momento cuando es posible.",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "frequency_5_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Hábitos / Consistencia",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Hábitos / Consistencia": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "OCI_PRI_06",
+      "areaId": "ocio",
+      "dimension": "Prioridad personal",
+      "text": "Mis decisiones sobre el tiempo reflejan el lugar que quiero dar al descanso y al disfrute.",
+      "type": "valoracion_1_10",
+      "polarity": "positiva",
+      "scored": true,
+      "required": true,
+      "responseScale": "rating_1_10_positive",
+      "dimensionWeight": 1,
+      "factors": [
+        "Coherencia",
+        "Control / Agencia"
+      ],
+      "factorWeights": {
+        "Coherencia": 1,
+        "Control / Agencia": 1
+      }
+    },
+    {
+      "id": "OCI_CTX_01",
+      "areaId": "ocio",
+      "dimension": "Contexto",
+      "text": "¿Qué circunstancia está condicionando más tu tiempo personal actualmente?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "ninguna",
+          "label": "Ninguna de forma relevante"
+        },
+        {
+          "value": "cuidados",
+          "label": "Responsabilidades de cuidado"
+        },
+        {
+          "value": "horarios",
+          "label": "Horarios o carga de actividad"
+        },
+        {
+          "value": "acceso",
+          "label": "Accesibilidad o recursos limitados"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "OCI_CTX_02",
+      "areaId": "ocio",
+      "dimension": "Contexto",
+      "text": "¿Hasta qué punto te falta apoyo o margen para reorganizar tus obligaciones y disponer de tiempo para ti?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "no",
+          "label": "No de forma relevante"
+        },
+        {
+          "value": "algo",
+          "label": "En parte"
+        },
+        {
+          "value": "mucho",
+          "label": "De forma importante"
+        },
+        {
+          "value": "prefiero_no_responder",
+          "label": "Prefiero no responder"
+        }
+      ]
+    },
+    {
+      "id": "OCI_CTX_03",
+      "areaId": "ocio",
+      "dimension": "Contexto",
+      "text": "Durante los últimos 12 meses, ¿cómo ha cambiado tu situación en el área de Ocio?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "mejorado_bastante",
+          "label": "Ha mejorado bastante"
+        },
+        {
+          "value": "mejorado_algo",
+          "label": "Ha mejorado algo"
+        },
+        {
+          "value": "similar",
+          "label": "Ha permanecido similar"
+        },
+        {
+          "value": "empeorado_algo",
+          "label": "Ha empeorado algo"
+        },
+        {
+          "value": "empeorado_bastante",
+          "label": "Ha empeorado bastante"
+        }
+      ]
+    },
+    {
+      "id": "OCI_CTX_04",
+      "areaId": "ocio",
+      "dimension": "Contexto",
+      "text": "¿Cuál es actualmente tu principal preocupación en el área de Ocio?",
+      "type": "single_select",
+      "polarity": "positiva",
+      "scored": false,
+      "required": true,
+      "dimensionWeight": 1,
+      "factors": [],
+      "factorWeights": {},
+      "options": [
+        {
+          "value": "tiempo",
+          "label": "Falta de tiempo disponible"
+        },
+        {
+          "value": "disfrute",
+          "label": "Poco disfrute en el tiempo libre"
+        },
+        {
+          "value": "descanso",
+          "label": "No conseguir descansar"
+        },
+        {
+          "value": "prioridad",
+          "label": "Relegar mi tiempo personal"
+        },
+        {
+          "value": "acceso",
+          "label": "Falta de recursos o apoyo"
+        },
+        {
+          "value": "ninguna",
+          "label": "No tengo una preocupación importante en esta área"
+        },
+        {
+          "value": "otra",
+          "label": "Otra"
+        }
+      ]
     }
   ]
 }

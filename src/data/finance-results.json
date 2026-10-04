@@ -1,0 +1,194 @@
+{
+  "score_bands": [
+    {
+      "id": "critical",
+      "min": 0,
+      "max_exclusive": 4,
+      "label": "Atención alta"
+    },
+    {
+      "id": "attention",
+      "min": 4,
+      "max_exclusive": 6,
+      "label": "Necesita atención"
+    },
+    {
+      "id": "improvement",
+      "min": 6,
+      "max_exclusive": 7.5,
+      "label": "Área de mejora"
+    },
+    {
+      "id": "stable",
+      "min": 7.5,
+      "max_inclusive": 10,
+      "label": "Estable"
+    }
+  ],
+  "dimension_results": {
+    "Control": {
+      "critical": "Hay poca visibilidad o seguimiento de lo que ocurre con tu dinero. El primer paso es conocer con claridad ingresos, gastos, pagos próximos y movimientos.",
+      "attention": "Tienes cierta información sobre tus finanzas, pero todavía hay zonas que no controlas o revisas con suficiente regularidad.",
+      "improvement": "Tu control cotidiano es razonable. Puedes ganar claridad afinando el seguimiento, la anticipación y el conocimiento de tus gastos.",
+      "stable": "Tienes una visión clara y habitual de lo que entra, sale y se aproxima. El control financiero es actualmente una fortaleza."
+    },
+    "Seguridad": {
+      "critical": "Tu economía presenta poca capacidad para absorber imprevistos o interrupciones de ingresos. La protección financiera requiere atención prioritaria.",
+      "attention": "Existe cierta protección, pero un imprevisto relevante todavía podría tensionar de forma importante tu economía.",
+      "improvement": "Tu seguridad financiera es razonable, aunque todavía puedes reforzar reservas, margen y capacidad ante imprevistos.",
+      "stable": "Dispones de una base sólida para afrontar imprevistos y mantener tus gastos esenciales sin desestabilizarte con facilidad."
+    },
+    "Hábitos financieros": {
+      "critical": "Tus conductas financieras habituales no están apoyando suficientemente tu estabilidad u objetivos. Conviene trabajar primero sobre pocas rutinas concretas y repetibles.",
+      "attention": "Algunos hábitos te ayudan, pero otros son irregulares o dificultan mantener el control y avanzar.",
+      "improvement": "Tienes hábitos financieros bastante funcionales. El margen está en hacerlos más constantes y alineados con tus prioridades.",
+      "stable": "Tus decisiones repetidas apoyan de forma consistente el control, el ahorro y el uso consciente de tus recursos."
+    },
+    "Proyección": {
+      "critical": "La principal dificultad está en convertir tu situación actual en un plan de futuro. Faltan objetivos definidos, cuantificación o acciones regulares hacia ellos.",
+      "attention": "Tienes alguna idea de hacia dónde quieres ir, pero todavía falta convertirla en objetivos concretos y seguimiento.",
+      "improvement": "Existe una dirección financiera razonable. Puedes mejorar concretando objetivos, cantidades, plazos y revisiones.",
+      "stable": "Tienes objetivos financieros claros y realizas acciones regulares para construir la situación futura que deseas."
+    }
+  },
+  "area_results": {
+    "Finanzas": {
+      "critical": {
+        "headline": "Tus finanzas necesitan atención prioritaria.",
+        "body": "Varias partes de tu sistema financiero muestran vulnerabilidad. El resultado no mide cuánto dinero tienes, sino el grado de control, seguridad, hábitos y planificación que tienes actualmente.",
+        "action_logic": "Priorizar la dimensión con menor puntuación y evitar intentar cambiar todo a la vez."
+      },
+      "attention": {
+        "headline": "Tus finanzas tienen una base parcial, pero hay aspectos importantes que necesitan atención.",
+        "body": "No todo está funcionando igual. El valor del resultado está en identificar qué dimensiones están reduciendo tu sensación de control o tranquilidad.",
+        "action_logic": "Trabajar primero la dimensión más baja y conservar las dimensiones que ya funcionan."
+      },
+      "improvement": {
+        "headline": "Tus finanzas son funcionales, con margen claro de mejora.",
+        "body": "La base es razonable. El siguiente paso es identificar qué dimensión puede darte mayor seguridad o capacidad de avanzar.",
+        "action_logic": "Elegir una mejora concreta que eleve la dimensión más baja sin desestabilizar lo que ya funciona."
+      },
+      "stable": {
+        "headline": "Tus finanzas muestran una base sólida.",
+        "body": "El conjunto de control, seguridad, hábitos y proyección es consistente. El foco pasa de corregir problemas a consolidar y avanzar hacia objetivos.",
+        "action_logic": "Mantener el sistema y revisar periódicamente objetivos, riesgos y cambios vitales."
+      }
+    }
+  },
+  "perception_results": [
+    {
+      "condition": "abs_gap < 1",
+      "id": "aligned",
+      "text": "Tu percepción inicial y el resultado del cuestionario están bastante alineados. La imagen que tenías de tus finanzas coincide razonablemente con tus respuestas."
+    },
+    {
+      "condition": "gap >= 1 and gap < 2",
+      "id": "perception_higher_moderate",
+      "text": "Tu percepción inicial es algo más positiva que el resultado estructurado. La diferencia es moderada y conviene revisar qué dimensiones explican esa distancia."
+    },
+    {
+      "condition": "gap >= 2",
+      "id": "perception_higher_high",
+      "text": "Tu percepción inicial es claramente más positiva que lo que reflejan tus respuestas. No significa que una valoración sea verdadera y la otra falsa: señala aspectos que quizá estaban pasando más desapercibidos."
+    },
+    {
+      "condition": "gap <= -1 and gap > -2",
+      "id": "perception_lower_moderate",
+      "text": "Has valorado tus finanzas de forma algo más negativa que lo que muestran tus respuestas. Puede haber fortalezas que no estabas reconociendo suficientemente."
+    },
+    {
+      "condition": "gap <= -2",
+      "id": "perception_lower_high",
+      "text": "Tu valoración inicial es bastante más exigente que el resultado estructurado. Tus respuestas muestran recursos o fortalezas financieras que quizá estabas infravalorando."
+    }
+  ],
+  "transversal_factor_results": {
+    "Control / Agencia": {
+      "critical": "Aparece una baja sensación de control sobre decisiones y situaciones económicas que sí pueden gestionarse.",
+      "attention": "Hay margen para aumentar la sensación de agencia mediante información, decisiones y acciones financieras concretas.",
+      "improvement": "La capacidad de influir sobre tus finanzas es razonable, aunque puede reforzarse en algunos puntos.",
+      "stable": "Tus respuestas reflejan una buena capacidad para observar tu situación y actuar sobre aquello que depende de ti."
+    },
+    "Hábitos / Consistencia": {
+      "critical": "Las acciones financieras útiles aparecen poco o de forma irregular; la consistencia es un foco importante.",
+      "attention": "Existen hábitos positivos, pero todavía no son suficientemente constantes para sostener tus objetivos.",
+      "improvement": "Tus rutinas son bastante funcionales y pueden mejorar con mayor regularidad o automatización.",
+      "stable": "Tus hábitos financieros apoyan de forma consistente tus decisiones y objetivos."
+    },
+    "Proyección": {
+      "critical": "Cuesta transformar necesidades o deseos futuros en objetivos y acciones financieras concretas.",
+      "attention": "Existe cierta orientación futura, pero necesita más concreción, planificación y seguimiento.",
+      "improvement": "La dirección futura es razonable; el margen está en afinar objetivos y mantener el seguimiento.",
+      "stable": "Tus decisiones actuales están conectadas de forma clara con objetivos financieros futuros."
+    },
+    "Gestión de energía": {
+      "critical": "La preocupación económica parece consumir una cantidad importante de energía mental.",
+      "attention": "Las finanzas generan una carga mental relevante que merece ser observada junto al resto de áreas de la vida.",
+      "improvement": "Existe cierta carga mental financiera, pero parece manejable.",
+      "stable": "Con la evidencia financiera disponible, el dinero no parece estar generando una carga mental elevada."
+    },
+    "Perspectiva": {
+      "critical": "Hay señales de evitación o poca revisión que pueden dificultar observar la situación financiera con distancia y claridad.",
+      "attention": "Puedes ganar claridad revisando patrones y decisiones con mayor regularidad.",
+      "improvement": "Tu capacidad de observar la situación es razonable, con margen para revisar patrones y anticiparte.",
+      "stable": "Tus respuestas reflejan una buena capacidad para observar y revisar tu situación financiera."
+    },
+    "Autoconocimiento": {
+      "critical": "Tus objetivos o preferencias financieras futuras aparecen poco definidos.",
+      "attention": "Hay algunas ideas sobre lo que quieres, pero todavía necesitan mayor claridad.",
+      "improvement": "Tienes una dirección razonable sobre lo que quieres construir financieramente.",
+      "stable": "Tus respuestas muestran claridad sobre la situación financiera que quieres construir."
+    }
+  },
+  "transversal_note": "Los factores transversales calculados solo con Finanzas deben mostrarse como señales provisionales. Se consolidan cuando preguntas de otras áreas aportan evidencia al mismo factor.",
+  "financial_patterns": [
+    {
+      "id": "present_control_future_weak",
+      "condition": "Control >= 6 and Proyección < 6",
+      "headline": "Gestionas mejor el presente que el futuro.",
+      "text": "Tienes una base de control sobre lo que ocurre hoy, pero la planificación y construcción de objetivos futuros necesita más atención."
+    },
+    {
+      "id": "control_good_security_weak",
+      "condition": "Control >= 6 and Seguridad < 6",
+      "headline": "Sabes dónde estás, pero tienes poca protección.",
+      "text": "El problema principal no parece ser desconocer tus cuentas, sino disponer de suficiente margen para absorber imprevistos o cambios de ingresos."
+    },
+    {
+      "id": "knowledge_without_consistency",
+      "condition": "Control >= 6 and Hábitos financieros < 6",
+      "headline": "Tienes información, pero cuesta convertirla en hábitos.",
+      "text": "Conoces razonablemente tu situación, pero algunas conductas repetidas todavía no sostienen esa claridad."
+    },
+    {
+      "id": "habits_good_projection_weak",
+      "condition": "Hábitos financieros >= 6 and Proyección < 6",
+      "headline": "Tienes buenas rutinas, pero falta dirección.",
+      "text": "Tus hábitos cotidianos son razonables, pero todavía no están suficientemente conectados con objetivos financieros futuros."
+    },
+    {
+      "id": "security_weak_projection_weak",
+      "condition": "Seguridad < 6 and Proyección < 6",
+      "headline": "La prioridad está en proteger el presente y preparar el futuro.",
+      "text": "La combinación de baja seguridad y baja proyección indica que conviene reforzar primero la capacidad ante imprevistos y después construir objetivos."
+    },
+    {
+      "id": "all_low",
+      "condition": "Control < 6 and Seguridad < 6 and Hábitos financieros < 6 and Proyección < 6",
+      "headline": "Necesitas reconstruir la base financiera paso a paso.",
+      "text": "Las cuatro dimensiones requieren atención. El método debe empezar por visibilidad y control antes de añadir objetivos más complejos."
+    },
+    {
+      "id": "all_stable",
+      "condition": "Control >= 7.5 and Seguridad >= 7.5 and Hábitos financieros >= 7.5 and Proyección >= 7.5",
+      "headline": "Tu sistema financiero es sólido y equilibrado.",
+      "text": "No aparece una debilidad principal entre las cuatro dimensiones. El foco puede pasar a consolidación, optimización y objetivos."
+    },
+    {
+      "id": "mixed",
+      "condition": "fallback",
+      "headline": "Tus finanzas no funcionan igual en todas sus dimensiones.",
+      "text": "Hay fortalezas y puntos de atención diferentes. El resultado debe priorizar la dimensión con menor puntuación y contextualizarla con las demás."
+    }
+  ]
+}

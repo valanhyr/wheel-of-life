@@ -1,0 +1,218 @@
+{
+  "score_bands": [
+    {
+      "id": "critical",
+      "min": 0,
+      "max_exclusive": 4,
+      "label": "Atención alta"
+    },
+    {
+      "id": "attention",
+      "min": 4,
+      "max_exclusive": 6,
+      "label": "Necesita atención"
+    },
+    {
+      "id": "improvement",
+      "min": 6,
+      "max_exclusive": 7.5,
+      "label": "Área de mejora"
+    },
+    {
+      "id": "stable",
+      "min": 7.5,
+      "max_inclusive": 10,
+      "label": "Estable"
+    }
+  ],
+  "dimension_results": {
+    "Hábitos": {
+      "critical": "Tus rutinas de cuidado aparecen poco sostenidas. Identifica una acción pequeña que encaje en tus posibilidades actuales.",
+      "attention": "Algunas rutinas te sostienen, pero pierden continuidad. Revisa qué obstáculos hacen difícil mantenerlas.",
+      "improvement": "Tus hábitos ofrecen una base razonable. Puedes reforzar su continuidad en los días más exigentes.",
+      "stable": "Tus respuestas muestran rutinas de cuidado consistentes y adaptadas a tu vida cotidiana."
+    },
+    "Energía y vitalidad": {
+      "critical": "Tus respuestas reflejan poco margen de energía y recuperación. Observa qué demandas te agotan y qué apoyos tienes disponibles.",
+      "attention": "La energía resulta insuficiente en algunos momentos. Revisa el ritmo y el espacio que tienes para recuperarte.",
+      "improvement": "Tienes una base de energía razonable, con margen para ajustar esfuerzos y recuperación.",
+      "stable": "Reconoces tus ritmos y cuentas con margen de energía para lo que te importa."
+    },
+    "Cuidado preventivo": {
+      "critical": "Las gestiones y la atención a tu cuidado parecen quedar relegadas. Localiza qué está pendiente y qué apoyo facilitaría atenderlo.",
+      "attention": "Atiendes parte de tu cuidado, pero hay asuntos que se posponen. Ordenar las gestiones puede ayudarte a darles continuidad.",
+      "improvement": "Tu cuidado preventivo está razonablemente atendido. Revisa los pendientes y las dudas que aún necesitas aclarar.",
+      "stable": "Tus respuestas muestran seguimiento y organización de los cuidados que corresponden a tu situación."
+    },
+    "Relación con el cuerpo": {
+      "critical": "Aparece una relación exigente con tu cuerpo o dificultad para escuchar sus necesidades. Identifica una forma de tratarte con más respeto.",
+      "attention": "Reconoces algunas necesidades, aunque la exigencia o la comparación todavía pesan. Revisa qué expectativas podrías ajustar.",
+      "improvement": "Tu relación con el cuerpo tiene una base de respeto. Puedes reforzar la escucha y la expresión de tus límites.",
+      "stable": "Tus respuestas reflejan respeto por tu cuerpo y atención a tus necesidades y posibilidades actuales."
+    }
+  },
+  "area_results": {
+    "Salud": {
+      "critical": {
+        "headline": "El área de Salud necesita atención prioritaria.",
+        "body": "La lectura reúne hábitos, energía, cuidado preventivo y relación con el cuerpo. Describe tu experiencia actual de cuidado, sin valorar tu capacidad física ni establecer un diagnóstico.",
+        "action_logic": "Empieza por la dimensión más baja y por un paso viable dentro de tu contexto."
+      },
+      "attention": {
+        "headline": "El área de Salud tiene aspectos importantes que revisar.",
+        "body": "La lectura reúne hábitos, energía, cuidado preventivo y relación con el cuerpo. Describe tu experiencia actual de cuidado, sin valorar tu capacidad física ni establecer un diagnóstico.",
+        "action_logic": "Trabaja un punto de atención concreto y conserva lo que ya te sostiene."
+      },
+      "improvement": {
+        "headline": "El área de Salud tiene una base funcional, con margen de mejora.",
+        "body": "La lectura reúne hábitos, energía, cuidado preventivo y relación con el cuerpo. Describe tu experiencia actual de cuidado, sin valorar tu capacidad física ni establecer un diagnóstico.",
+        "action_logic": "Elige una mejora que refuerce la dimensión más baja sin añadir una carga excesiva."
+      },
+      "stable": {
+        "headline": "El área de Salud muestra una base sólida.",
+        "body": "La lectura reúne hábitos, energía, cuidado preventivo y relación con el cuerpo. Describe tu experiencia actual de cuidado, sin valorar tu capacidad física ni establecer un diagnóstico.",
+        "action_logic": "Mantén lo que te ayuda y revisa periódicamente si sigue encajando con tus necesidades."
+      }
+    }
+  },
+  "perception_results": [
+    {
+      "condition": "abs_gap < 1",
+      "id": "aligned",
+      "text": "Tu percepción inicial de Salud y el cuestionario están bastante alineados. Las dimensiones ayudan a concretar esa impresión."
+    },
+    {
+      "condition": "gap >= 1 and gap < 2",
+      "id": "perception_higher_moderate",
+      "text": "Tu percepción inicial de Salud es algo más positiva que el resultado estructurado. Revisa qué dimensiones explican esa diferencia moderada."
+    },
+    {
+      "condition": "gap >= 2",
+      "id": "perception_higher_high",
+      "text": "Tu percepción inicial de Salud es claramente más positiva que el resultado estructurado. Las dimensiones pueden señalar aspectos que estaban pasando desapercibidos, sin convertir una valoración en más verdadera que la otra."
+    },
+    {
+      "condition": "gap <= -1 and gap > -2",
+      "id": "perception_lower_moderate",
+      "text": "Tu percepción inicial de Salud es algo más negativa que lo que reflejan tus respuestas. Puede haber fortalezas que no estabas reconociendo."
+    },
+    {
+      "condition": "gap <= -2",
+      "id": "perception_lower_high",
+      "text": "Tu percepción inicial de Salud es bastante más exigente que el resultado estructurado. Revisa qué recursos aparecen en tus respuestas y cómo influye tu contexto en esa diferencia."
+    }
+  ],
+  "transversal_factor_results": {
+    "Hábitos / Consistencia": {
+      "critical": "En Salud: las acciones útiles aparecen poco o de forma irregular.",
+      "attention": "En Salud: existen rutinas que ayudan, pero les falta continuidad.",
+      "improvement": "En Salud: tus rutinas son funcionales y pueden ganar regularidad.",
+      "stable": "En Salud: mantienes acciones útiles de forma consistente."
+    },
+    "Gestión de energía": {
+      "critical": "En Salud: aparece poco margen de energía o recuperación.",
+      "attention": "En Salud: algunas demandas consumen más energía de la que consigues recuperar.",
+      "improvement": "En Salud: la energía disponible es razonable, con puntos de recuperación por reforzar.",
+      "stable": "En Salud: tus respuestas reflejan un equilibrio favorable entre demandas y recuperación."
+    },
+    "Control / Agencia": {
+      "critical": "En Salud: tus respuestas muestran poco margen o pocas acciones para influir en tu situación.",
+      "attention": "En Salud: hay decisiones o apoyos que podrían ampliar tu margen de actuación.",
+      "improvement": "En Salud: cuentas con margen para actuar sobre algunos aspectos y puedes reforzarlo.",
+      "stable": "En Salud: identificas posibilidades y actúas sobre aquello que está a tu alcance."
+    },
+    "Autoconocimiento": {
+      "critical": "En Salud: cuesta identificar o atender tus propias necesidades y preferencias.",
+      "attention": "En Salud: reconoces algunas necesidades, aunque todavía falta claridad o espacio para atenderlas.",
+      "improvement": "En Salud: tienes una idea razonable de tus necesidades, con margen para escucharte mejor.",
+      "stable": "En Salud: tus respuestas muestran atención y claridad sobre tus necesidades y preferencias."
+    },
+    "Límites": {
+      "critical": "En Salud: las demandas o expectativas parecen superar tus límites con frecuencia.",
+      "attention": "En Salud: puedes poner algunos límites, pero cuesta mantenerlos.",
+      "improvement": "En Salud: proteges parte de tu disponibilidad y puedes ajustar algunos compromisos.",
+      "stable": "En Salud: tus respuestas reflejan límites que respetan tu disponibilidad y tus necesidades."
+    },
+    "Proyección": {
+      "critical": "En Salud: cuesta anticipar necesidades o convertir intenciones en próximos pasos.",
+      "attention": "En Salud: existe cierta anticipación, pero necesita más concreción y seguimiento.",
+      "improvement": "En Salud: tienes una dirección razonable que puede traducirse en pasos más claros.",
+      "stable": "En Salud: conectas las necesidades futuras con decisiones y pasos concretos."
+    },
+    "Conexión / Apoyo": {
+      "critical": "En Salud: la conexión o el apoyo disponible parecen escasos.",
+      "attention": "En Salud: hay vínculos o apoyos, pero no siempre resultan accesibles o suficientes.",
+      "improvement": "En Salud: cuentas con una base de conexión y apoyo que puedes cuidar.",
+      "stable": "En Salud: tus respuestas reflejan vínculos y apoyos que te sostienen."
+    },
+    "Perspectiva": {
+      "critical": "En Salud: aparecen pocas oportunidades para observar lo que ocurre y revisar tus decisiones.",
+      "attention": "En Salud: puedes ganar claridad revisando experiencias, expectativas y alternativas.",
+      "improvement": "En Salud: tienes una perspectiva razonable, con algunos patrones por revisar.",
+      "stable": "En Salud: observas tus experiencias y revisas tus decisiones con atención al contexto."
+    },
+    "Coherencia": {
+      "critical": "En Salud: aparece distancia entre lo que te importa y cómo se organiza tu día a día.",
+      "attention": "En Salud: algunas decisiones encajan con tus prioridades y otras siguen la inercia.",
+      "improvement": "En Salud: tus decisiones reflejan buena parte de tus prioridades, con algunos ajustes pendientes.",
+      "stable": "En Salud: tus respuestas muestran un encaje consistente entre prioridades y decisiones."
+    },
+    "Comunicación": {
+      "critical": "En Salud: parece difícil expresar necesidades o conversar sobre asuntos importantes.",
+      "attention": "En Salud: existe comunicación, pero algunas necesidades o conversaciones quedan pendientes.",
+      "improvement": "En Salud: expresas parte de lo que necesitas y puedes reforzar la escucha y los acuerdos.",
+      "stable": "En Salud: tus respuestas muestran expresión de necesidades y disposición a escuchar y aclarar."
+    }
+  },
+  "transversal_note": "Estas señales proceden solo de las respuestas de Salud y requieren al menos dos respuestas por factor. Son provisionales y no se combinan todavía con otras áreas.",
+  "health_patterns": [
+    {
+      "id": "dimension_1_strong_2_weak",
+      "condition": "Hábitos >= 7.5 and Energía y vitalidad < 6",
+      "headline": "Tus hábitos no se traducen en suficiente energía.",
+      "text": "Aunque sostienes rutinas, la recuperación aparece débil. Revisa las demandas y el contexto antes de exigirte más hábitos."
+    },
+    {
+      "id": "dimension_2_strong_3_weak",
+      "condition": "Energía y vitalidad >= 7.5 and Cuidado preventivo < 6",
+      "headline": "Tienes energía, pero quedan cuidados por atender.",
+      "text": "Disponer de energía puede facilitar que organices las gestiones o dudas que has ido posponiendo."
+    },
+    {
+      "id": "dimension_3_strong_4_weak",
+      "condition": "Cuidado preventivo >= 7.5 and Relación con el cuerpo < 6",
+      "headline": "Atiendes tus cuidados, pero la relación con tu cuerpo necesita espacio.",
+      "text": "La organización del cuidado convive con exigencia o poca escucha. Revisa cómo te tratas y qué expectativas pesan."
+    },
+    {
+      "id": "dimension_4_strong_1_weak",
+      "condition": "Relación con el cuerpo >= 7.5 and Hábitos < 6",
+      "headline": "Te escuchas, pero cuesta sostener las rutinas.",
+      "text": "El respeto por tus necesidades puede servir como punto de partida para una rutina pequeña y viable."
+    },
+    {
+      "id": "balanced_progress",
+      "condition": "all dimensions >= 6, after all_stable",
+      "headline": "En Salud hay una base equilibrada para mejorar.",
+      "text": "Las cuatro dimensiones tienen una base funcional. Elige un ajuste concreto en la más baja y conserva las prácticas que ya te ayudan."
+    },
+    {
+      "id": "all_low",
+      "condition": "all dimensions < 6",
+      "headline": "En Salud conviene empezar por una base pequeña y sostenible.",
+      "text": "Las cuatro dimensiones muestran puntos de atención. Revisa el contexto y empieza por el foco más bajo sin intentar cambiarlo todo a la vez."
+    },
+    {
+      "id": "all_stable",
+      "condition": "all dimensions >= 7.5",
+      "headline": "En Salud las cuatro dimensiones muestran una base sólida.",
+      "text": "Tus respuestas reflejan un equilibrio consistente. Puedes mantener lo que funciona y revisar cómo cambian tus necesidades."
+    },
+    {
+      "id": "mixed",
+      "condition": "fallback",
+      "headline": "En Salud aparecen fortalezas y necesidades diferentes.",
+      "text": "El promedio no cuenta toda la historia. Revisa la dimensión más baja junto con las demás y con tus circunstancias actuales."
+    }
+  ]
+}

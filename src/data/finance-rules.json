@@ -1,0 +1,63 @@
+{
+  "dimensions": {
+    "Control": {
+      "question_ids": [
+        "FIN_CON_01",
+        "FIN_CON_02",
+        "FIN_CON_03",
+        "FIN_CON_04",
+        "FIN_CON_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Seguridad": {
+      "question_ids": [
+        "FIN_SEG_01",
+        "FIN_SEG_02",
+        "FIN_SEG_03",
+        "FIN_SEG_04",
+        "FIN_SEG_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Hábitos financieros": {
+      "question_ids": [
+        "FIN_HAB_01",
+        "FIN_HAB_02",
+        "FIN_HAB_03",
+        "FIN_HAB_04",
+        "FIN_HAB_05",
+        "FIN_HAB_06"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Proyección": {
+      "question_ids": [
+        "FIN_PRO_01",
+        "FIN_PRO_02",
+        "FIN_PRO_03",
+        "FIN_PRO_04",
+        "FIN_PRO_05",
+        "FIN_PRO_06"
+      ],
+      "formula": "mean(question_scores)"
+    }
+  },
+  "dimensionWeights": {
+    "Control": 0.25,
+    "Seguridad": 0.25,
+    "Hábitos financieros": 0.25,
+    "Proyección": 0.25
+  },
+  "focusOrder": [
+    "Seguridad",
+    "Control",
+    "Hábitos financieros",
+    "Proyección"
+  ],
+  "contextNotes": [
+    "Los ingresos actuales no cubren de forma estable los gastos necesarios; interpretar Seguridad y hábitos dentro de esta limitación de base.",
+    "La deuda está condicionando de forma importante la economía mensual y debe aparecer en la explicación de Seguridad.",
+    "La situación ha empeorado durante el último año; distinguir un problema estructural de un cambio reciente."
+  ]
+}

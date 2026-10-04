@@ -1,0 +1,44 @@
+{
+  "source": "Ejemplo sintético de Ocio; no se precarga en la aplicación.",
+  "answers": {
+    "OCI_PER_01": 7,
+    "OCI_IMP_01": 8,
+    "OCI_CAM_01": 6,
+    "OCI_TIE_01": 8,
+    "OCI_TIE_02": "a_menudo",
+    "OCI_TIE_03": 8,
+    "OCI_TIE_04": 8,
+    "OCI_TIE_05": "rara_vez",
+    "OCI_DIS_01": "a_veces",
+    "OCI_DIS_02": 6,
+    "OCI_DIS_03": "a_veces",
+    "OCI_DIS_04": "a_veces",
+    "OCI_DIS_05": "a_veces",
+    "OCI_DES_01": "a_menudo",
+    "OCI_DES_02": 3,
+    "OCI_DES_03": "rara_vez",
+    "OCI_DES_04": "rara_vez",
+    "OCI_DES_05": "a_menudo",
+    "OCI_DES_06": 3,
+    "OCI_PRI_01": "nunca",
+    "OCI_PRI_02": 10,
+    "OCI_PRI_03": "siempre",
+    "OCI_PRI_04": 10,
+    "OCI_PRI_05": "siempre",
+    "OCI_PRI_06": 10,
+    "OCI_CTX_01": "cuidados",
+    "OCI_CTX_02": "mucho",
+    "OCI_CTX_03": "empeorado_algo",
+    "OCI_CTX_04": "tiempo"
+  },
+  "expected": {
+    "dimensions": {
+      "Tiempo disponible": 7.666666666666667,
+      "Disfrute": 5.111111111111111,
+      "Descanso": 2.4074074074074074,
+      "Prioridad personal": 10.0
+    },
+    "score": 6.296296296296297,
+    "focus": "Descanso"
+  }
+}

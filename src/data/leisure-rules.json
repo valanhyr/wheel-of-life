@@ -1,0 +1,177 @@
+{
+  "dimensions": {
+    "Tiempo disponible": {
+      "question_ids": [
+        "OCI_TIE_01",
+        "OCI_TIE_02",
+        "OCI_TIE_03",
+        "OCI_TIE_04",
+        "OCI_TIE_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Disfrute": {
+      "question_ids": [
+        "OCI_DIS_01",
+        "OCI_DIS_02",
+        "OCI_DIS_03",
+        "OCI_DIS_04",
+        "OCI_DIS_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Descanso": {
+      "question_ids": [
+        "OCI_DES_01",
+        "OCI_DES_02",
+        "OCI_DES_03",
+        "OCI_DES_04",
+        "OCI_DES_05",
+        "OCI_DES_06"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Prioridad personal": {
+      "question_ids": [
+        "OCI_PRI_01",
+        "OCI_PRI_02",
+        "OCI_PRI_03",
+        "OCI_PRI_04",
+        "OCI_PRI_05",
+        "OCI_PRI_06"
+      ],
+      "formula": "mean(question_scores)"
+    }
+  },
+  "dimensionWeights": {
+    "Tiempo disponible": 0.25,
+    "Disfrute": 0.25,
+    "Descanso": 0.25,
+    "Prioridad personal": 0.25
+  },
+  "focusOrder": [
+    "Descanso",
+    "Tiempo disponible",
+    "Prioridad personal",
+    "Disfrute"
+  ],
+  "contextNotes": [
+    "Los cuidados, horarios o recursos condicionan tu tiempo personal. No interpretes la falta de ocio únicamente como falta de prioridad.",
+    "Tienes poco apoyo o margen para reorganizar obligaciones. El primer cambio debe partir de lo que realmente puedes ajustar.",
+    "Tu situación en Ocio ha empeorado durante el último año. Distingue los cambios recientes de las dificultades mantenidas al elegir tu primer paso."
+  ],
+  "contextRules": [
+    {
+      "questionId": "OCI_CTX_01",
+      "values": [
+        "cuidados",
+        "horarios",
+        "acceso"
+      ],
+      "noteIndex": 0
+    },
+    {
+      "questionId": "OCI_CTX_02",
+      "values": [
+        "algo",
+        "mucho"
+      ],
+      "noteIndex": 1
+    },
+    {
+      "questionId": "OCI_CTX_03",
+      "values": [
+        "empeorado_algo",
+        "empeorado_bastante"
+      ],
+      "noteIndex": 2
+    }
+  ],
+  "patternRules": [
+    {
+      "id": "dimension_1_strong_2_weak",
+      "all": [
+        {
+          "dimension": "Tiempo disponible",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Disfrute",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_2_strong_3_weak",
+      "all": [
+        {
+          "dimension": "Disfrute",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Descanso",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_3_strong_4_weak",
+      "all": [
+        {
+          "dimension": "Descanso",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Prioridad personal",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_4_strong_1_weak",
+      "all": [
+        {
+          "dimension": "Prioridad personal",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Tiempo disponible",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "balanced_progress",
+      "all": [
+        {
+          "dimension": "Tiempo disponible",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Disfrute",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Descanso",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Prioridad personal",
+          "operator": "gte",
+          "value": 6
+        }
+      ]
+    }
+  ]
+}

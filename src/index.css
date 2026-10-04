@@ -537,6 +537,13 @@ ul {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.scale--choices { grid-template-columns: 1fr; min-height: 0; }
+.scale--choices .scale__label { padding: 0.75rem 1rem; text-align: left; justify-items: start; font-size: 0.85rem; }
+.dimension-list { list-style: none; padding: 0; display: grid; gap: 0.9rem; }
+.dimension-list li { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0.85rem; font-size: 0.85rem; line-height: 1.6; }
+.dimension-list span { display: block; opacity: 0.75; }
+.dimension-list p { margin: 0.4rem 0 0; }
+
 .scale--freq .scale__label:last-of-type { grid-column: 1 / -1; }
 
 .scale--freq .scale__label {

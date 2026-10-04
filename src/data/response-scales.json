@@ -1,0 +1,136 @@
+{
+  "frequency_5_positive": {
+    "type": "single_select",
+    "options": [
+      {
+        "value": "nunca",
+        "label": "Nunca",
+        "score": 0
+      },
+      {
+        "value": "rara_vez",
+        "label": "Rara vez",
+        "score": 2.5
+      },
+      {
+        "value": "a_veces",
+        "label": "A veces",
+        "score": 5
+      },
+      {
+        "value": "a_menudo",
+        "label": "A menudo",
+        "score": 7.5
+      },
+      {
+        "value": "siempre",
+        "label": "Siempre",
+        "score": 10
+      }
+    ]
+  },
+  "frequency_5_negative": {
+    "type": "single_select",
+    "options": [
+      {
+        "value": "nunca",
+        "label": "Nunca",
+        "score": 10
+      },
+      {
+        "value": "rara_vez",
+        "label": "Rara vez",
+        "score": 7.5
+      },
+      {
+        "value": "a_veces",
+        "label": "A veces",
+        "score": 5
+      },
+      {
+        "value": "a_menudo",
+        "label": "A menudo",
+        "score": 2.5
+      },
+      {
+        "value": "siempre",
+        "label": "Siempre",
+        "score": 0
+      }
+    ]
+  },
+  "rating_1_10_positive": {
+    "type": "rating",
+    "min": 1,
+    "max": 10,
+    "step": 1,
+    "normalization": "((answer - 1) * 10) / 9",
+    "invert": false
+  },
+  "rating_1_10_negative": {
+    "type": "rating",
+    "min": 1,
+    "max": 10,
+    "step": 1,
+    "normalization": "10 - (((answer - 1) * 10) / 9)",
+    "invert": true
+  },
+  "perception_0_10": {
+    "type": "rating",
+    "min": 0,
+    "max": 10,
+    "step": 0.5,
+    "normalization": "answer",
+    "invert": false
+  },
+  "emergency_fund": {
+    "type": "single_select",
+    "options": [
+      {
+        "value": "si",
+        "label": "Sí, tengo una reserva específica",
+        "score": 10
+      },
+      {
+        "value": "parcial",
+        "label": "Tengo algo reservado, pero todavía es insuficiente",
+        "score": 5
+      },
+      {
+        "value": "no",
+        "label": "No tengo una reserva específica",
+        "score": 0
+      }
+    ]
+  },
+  "income_buffer": {
+    "type": "single_select",
+    "options": [
+      {
+        "value": "menos_1_mes",
+        "label": "Menos de 1 mes",
+        "score": 0
+      },
+      {
+        "value": "1_mes",
+        "label": "Aproximadamente 1 mes",
+        "score": 2.5
+      },
+      {
+        "value": "2_3_meses",
+        "label": "Entre 2 y 3 meses",
+        "score": 5
+      },
+      {
+        "value": "4_6_meses",
+        "label": "Entre 4 y 6 meses",
+        "score": 7.5
+      },
+      {
+        "value": "mas_6_meses",
+        "label": "Más de 6 meses",
+        "score": 10
+      }
+    ]
+  }
+}

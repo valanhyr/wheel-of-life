@@ -1,0 +1,176 @@
+{
+  "dimensions": {
+    "Hábitos": {
+      "question_ids": [
+        "SAL_HAB_01",
+        "SAL_HAB_02",
+        "SAL_HAB_03",
+        "SAL_HAB_04",
+        "SAL_HAB_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Energía y vitalidad": {
+      "question_ids": [
+        "SAL_ENE_01",
+        "SAL_ENE_02",
+        "SAL_ENE_03",
+        "SAL_ENE_04",
+        "SAL_ENE_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Cuidado preventivo": {
+      "question_ids": [
+        "SAL_PRE_01",
+        "SAL_PRE_02",
+        "SAL_PRE_03",
+        "SAL_PRE_04",
+        "SAL_PRE_05",
+        "SAL_PRE_06"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Relación con el cuerpo": {
+      "question_ids": [
+        "SAL_CUE_01",
+        "SAL_CUE_02",
+        "SAL_CUE_03",
+        "SAL_CUE_04",
+        "SAL_CUE_05",
+        "SAL_CUE_06"
+      ],
+      "formula": "mean(question_scores)"
+    }
+  },
+  "dimensionWeights": {
+    "Hábitos": 0.25,
+    "Energía y vitalidad": 0.25,
+    "Cuidado preventivo": 0.25,
+    "Relación con el cuerpo": 0.25
+  },
+  "focusOrder": [
+    "Cuidado preventivo",
+    "Energía y vitalidad",
+    "Hábitos",
+    "Relación con el cuerpo"
+  ],
+  "contextNotes": [
+    "Una circunstancia física o de acceso a cuidados condiciona tus respuestas. Interpreta la energía y las rutinas dentro de tus posibilidades, sin atribuir todo a la voluntad.",
+    "La falta de tiempo, recursos o apoyo dificulta tu cuidado. El primer paso debe ajustarse a esos límites.",
+    "Tu situación en Salud ha empeorado durante el último año. Distingue los cambios recientes de las dificultades mantenidas al elegir tu primer paso."
+  ],
+  "contextRules": [
+    {
+      "questionId": "SAL_CTX_01",
+      "values": [
+        "temporal",
+        "mantenida"
+      ],
+      "noteIndex": 0
+    },
+    {
+      "questionId": "SAL_CTX_02",
+      "values": [
+        "algo",
+        "mucho"
+      ],
+      "noteIndex": 1
+    },
+    {
+      "questionId": "SAL_CTX_03",
+      "values": [
+        "empeorado_algo",
+        "empeorado_bastante"
+      ],
+      "noteIndex": 2
+    }
+  ],
+  "patternRules": [
+    {
+      "id": "dimension_1_strong_2_weak",
+      "all": [
+        {
+          "dimension": "Hábitos",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Energía y vitalidad",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_2_strong_3_weak",
+      "all": [
+        {
+          "dimension": "Energía y vitalidad",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Cuidado preventivo",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_3_strong_4_weak",
+      "all": [
+        {
+          "dimension": "Cuidado preventivo",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Relación con el cuerpo",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_4_strong_1_weak",
+      "all": [
+        {
+          "dimension": "Relación con el cuerpo",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Hábitos",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "balanced_progress",
+      "all": [
+        {
+          "dimension": "Hábitos",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Energía y vitalidad",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Cuidado preventivo",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Relación con el cuerpo",
+          "operator": "gte",
+          "value": 6
+        }
+      ]
+    }
+  ]
+}

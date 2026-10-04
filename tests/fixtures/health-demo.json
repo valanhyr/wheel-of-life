@@ -1,0 +1,44 @@
+{
+  "source": "Ejemplo sintético de Salud; no se precarga en la aplicación.",
+  "answers": {
+    "SAL_PER_01": 7,
+    "SAL_IMP_01": 8,
+    "SAL_CAM_01": 6,
+    "SAL_HAB_01": "a_menudo",
+    "SAL_HAB_02": "a_menudo",
+    "SAL_HAB_03": "a_menudo",
+    "SAL_HAB_04": "a_menudo",
+    "SAL_HAB_05": "rara_vez",
+    "SAL_ENE_01": 6,
+    "SAL_ENE_02": 6,
+    "SAL_ENE_03": "a_veces",
+    "SAL_ENE_04": "a_veces",
+    "SAL_ENE_05": 6,
+    "SAL_PRE_01": "a_menudo",
+    "SAL_PRE_02": 3,
+    "SAL_PRE_03": "rara_vez",
+    "SAL_PRE_04": 3,
+    "SAL_PRE_05": "rara_vez",
+    "SAL_PRE_06": "rara_vez",
+    "SAL_CUE_01": 10,
+    "SAL_CUE_02": "siempre",
+    "SAL_CUE_03": "nunca",
+    "SAL_CUE_04": 10,
+    "SAL_CUE_05": 10,
+    "SAL_CUE_06": 10,
+    "SAL_CTX_01": "temporal",
+    "SAL_CTX_02": "mucho",
+    "SAL_CTX_03": "empeorado_algo",
+    "SAL_CTX_04": "habitos"
+  },
+  "expected": {
+    "dimensions": {
+      "Hábitos": 7.5,
+      "Energía y vitalidad": 5.333333333333333,
+      "Cuidado preventivo": 2.4074074074074074,
+      "Relación con el cuerpo": 10.0
+    },
+    "score": 6.310185185185185,
+    "focus": "Cuidado preventivo"
+  }
+}
