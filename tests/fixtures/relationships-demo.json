@@ -1,0 +1,43 @@
+{
+  "source": "Ejemplo sintético de Relaciones; no se precarga en la aplicación.",
+  "answers": {
+    "REL_PER_01": 7,
+    "REL_IMP_01": 8,
+    "REL_VIN_01": 8,
+    "REL_VIN_02": 8,
+    "REL_VIN_03": "a_menudo",
+    "REL_VIN_04": "rara_vez",
+    "REL_VIN_05": 8,
+    "REL_COM_01": "a_veces",
+    "REL_COM_02": "a_veces",
+    "REL_COM_03": 6,
+    "REL_COM_04": "a_veces",
+    "REL_COM_05": "a_veces",
+    "REL_LIM_01": "a_menudo",
+    "REL_LIM_02": "rara_vez",
+    "REL_LIM_03": 3,
+    "REL_LIM_04": "rara_vez",
+    "REL_LIM_05": "rara_vez",
+    "REL_LIM_06": 3,
+    "REL_APO_01": 10,
+    "REL_APO_02": "siempre",
+    "REL_APO_03": 10,
+    "REL_APO_04": "siempre",
+    "REL_APO_05": "nunca",
+    "REL_APO_06": "siempre",
+    "REL_CTX_01": "distancia",
+    "REL_CTX_02": "mucho",
+    "REL_CTX_03": "empeorado_algo",
+    "REL_CTX_04": "conexion"
+  },
+  "expected": {
+    "dimensions": {
+      "Calidad de los vínculos": 7.666666666666667,
+      "Comunicación": 5.111111111111111,
+      "Límites": 2.4074074074074074,
+      "Apoyo y reciprocidad": 10.0
+    },
+    "score": 6.296296296296297,
+    "focus": "Límites"
+  }
+}

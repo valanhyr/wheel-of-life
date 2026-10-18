@@ -1,0 +1,43 @@
+{
+  "source": "Ejemplo sintético de Crecimiento; no se precarga en la aplicación.",
+  "answers": {
+    "CRE_PER_01": 7,
+    "CRE_IMP_01": 8,
+    "CRE_AUT_01": 8,
+    "CRE_AUT_02": "a_menudo",
+    "CRE_AUT_03": 8,
+    "CRE_AUT_04": 8,
+    "CRE_AUT_05": "rara_vez",
+    "CRE_APR_01": "a_veces",
+    "CRE_APR_02": "a_veces",
+    "CRE_APR_03": "a_veces",
+    "CRE_APR_04": "a_veces",
+    "CRE_APR_05": "a_veces",
+    "CRE_OBJ_01": 3,
+    "CRE_OBJ_02": 3,
+    "CRE_OBJ_03": "rara_vez",
+    "CRE_OBJ_04": 3,
+    "CRE_OBJ_05": "rara_vez",
+    "CRE_OBJ_06": "a_menudo",
+    "CRE_COH_01": "nunca",
+    "CRE_COH_02": 10,
+    "CRE_COH_03": "siempre",
+    "CRE_COH_04": 10,
+    "CRE_COH_05": "siempre",
+    "CRE_COH_06": "siempre",
+    "CRE_CTX_01": "transicion",
+    "CRE_CTX_02": "mucho",
+    "CRE_CTX_03": "empeorado_algo",
+    "CRE_CTX_04": "claridad"
+  },
+  "expected": {
+    "dimensions": {
+      "Autoconocimiento": 7.666666666666667,
+      "Aprendizaje": 5.0,
+      "Objetivos": 2.361111111111111,
+      "Coherencia": 10.0
+    },
+    "score": 6.256944444444445,
+    "focus": "Objetivos"
+  }
+}

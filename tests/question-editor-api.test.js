@@ -1,0 +1,64 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { mkdtemp, readFile, copyFile, rm } from "node:fs/promises";
+import { createServer } from "node:http";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { createQuestionEditorMiddleware, RULE_FILES } from "../server/question-editor-api.js";
+import { validateEditorSnapshot } from "../src/data/editor-validation.js";
+
+test("local API reads/writes JSON, rejects stale revisions, invalid data and foreign origins", async () => {
+  const root = await mkdtemp(join(tmpdir(), "question-editor-"));
+  await copyFile(new URL("../src/data/questions.json", import.meta.url), join(root, "questions.json"));
+  await copyFile(new URL("../src/data/response-scales.json", import.meta.url), join(root, "response-scales.json"));
+  for (const name of Object.values(RULE_FILES)) await copyFile(new URL(`../src/data/${name}`, import.meta.url), join(root, name));
+  const middleware = createQuestionEditorMiddleware(root);
+  const server = createServer((req, res) => middleware(req, res));
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  const url = `http://127.0.0.1:${server.address().port}/api/editor/questions`;
+  try {
+    const initial = await (await fetch(url)).json();
+    assert.equal(initial.document.questions.length, 216);
+    assert.equal(Object.keys(initial.rules).length, 8);
+    assert.ok(initial.scales.frequency_5_positive);
+    assert.equal(initial.fixtureAnswers.salud.SAL_HAB_01, "a_menudo");
+    assert.deepEqual(validateEditorSnapshot(initial), []);
+    const hab = initial.document.questions.findIndex((q) => q.id === "SAL_HAB_01");
+    const changed = structuredClone(initial);
+    changed.document.questions[hab].text = "Texto local actualizado";
+    const save = await fetch(url, { method: "PUT", headers: { "content-type": "application/json", origin: `http://127.0.0.1:${server.address().port}` }, body: JSON.stringify(changed) });
+    assert.equal(save.status, 200);
+    assert.notEqual((await save.json()).revision, initial.revision);
+    assert.equal(JSON.parse(await readFile(join(root, "questions.json"), "utf8")).questions[hab].text, "Texto local actualizado");
+    const conflict = await fetch(url, { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify(changed) });
+    assert.equal(conflict.status, 409);
+    const fresh = await (await fetch(url)).json();
+    fresh.document.questions[hab].id = fresh.document.questions[hab + 1].id;
+    const invalid = await fetch(url, { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify(fresh) });
+    assert.equal(invalid.status, 422);
+    const tampered = await (await fetch(url)).json();
+    tampered.document.questions[hab].uid = "qid_otra_identidad";
+    const identity = await fetch(url, { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify(tampered) });
+    assert.equal(identity.status, 422);
+    assert.equal(JSON.parse(await readFile(join(root, "questions.json"), "utf8")).questions[hab].id, "SAL_HAB_01");
+    const foreign = await fetch(url, { method: "PUT", headers: { origin: "https://example.com", "content-type": "application/json" }, body: JSON.stringify(fresh) });
+    assert.equal(foreign.status, 403);
+    const structural = await (await fetch(url)).json();
+    structural.document.questions[hab].id = "SAL_HAB_99";
+    structural.rules.salud.dimensions.Hábitos.question_ids[0] = "SAL_HAB_99";
+    structural.scales.frequency_5_positive.options[0].score = 1;
+    const structuralSave = await fetch(url, { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify(structural) });
+    assert.equal(structuralSave.status, 200);
+    assert.equal(JSON.parse(await readFile(join(root, "response-scales.json"), "utf8")).frequency_5_positive.options[0].score, 1);
+    assert.equal(JSON.parse(await readFile(join(root, "health-rules.json"), "utf8")).dimensions.Hábitos.question_ids[0], "SAL_HAB_99");
+    const removed = await (await fetch(url)).json();
+    removed.document.questions = removed.document.questions.filter((q) => q.id !== "SAL_HAB_99");
+    removed.rules.salud.dimensions.Hábitos.question_ids.shift();
+    const removal = await fetch(url, { method: "PUT", headers: { "content-type": "application/json" }, body: JSON.stringify(removed) });
+    assert.equal(removal.status, 200);
+    assert.ok(!JSON.parse(await readFile(join(root, "questions.json"), "utf8")).questions.some((q) => q.id === "SAL_HAB_99"));
+  } finally {
+    await new Promise((resolve) => server.close(resolve));
+    await rm(root, { recursive: true, force: true });
+  }
+});

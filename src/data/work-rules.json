@@ -1,0 +1,63 @@
+{
+  "dimensions": {
+    "Satisfacción": {
+      "question_ids": [
+        "TRA_SAT_01",
+        "TRA_SAT_02",
+        "TRA_SAT_03",
+        "TRA_SAT_04",
+        "TRA_SAT_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Desarrollo": {
+      "question_ids": [
+        "TRA_DES_01",
+        "TRA_DES_02",
+        "TRA_DES_03",
+        "TRA_DES_04",
+        "TRA_DES_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Condiciones": {
+      "question_ids": [
+        "TRA_CON_01",
+        "TRA_CON_02",
+        "TRA_CON_03",
+        "TRA_CON_04",
+        "TRA_CON_05",
+        "TRA_CON_06"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Proyección": {
+      "question_ids": [
+        "TRA_PRO_01",
+        "TRA_PRO_02",
+        "TRA_PRO_03",
+        "TRA_PRO_04",
+        "TRA_PRO_05",
+        "TRA_PRO_06"
+      ],
+      "formula": "mean(question_scores)"
+    }
+  },
+  "dimensionWeights": {
+    "Satisfacción": 0.25,
+    "Desarrollo": 0.25,
+    "Condiciones": 0.25,
+    "Proyección": 0.25
+  },
+  "focusOrder": [
+    "Condiciones",
+    "Satisfacción",
+    "Desarrollo",
+    "Proyección"
+  ],
+  "contextNotes": [
+    "Estás en búsqueda, formación o pausa profesional. Lee las respuestas desde tu actividad actual o tu experiencia profesional más reciente; una puntuación baja no equivale a falta de capacidad.",
+    "Hay circunstancias que limitan tus opciones profesionales. Interpreta las condiciones y las posibilidades de cambio dentro de esas restricciones, sin atribuirlas solo a tus hábitos.",
+    "Tu situación profesional ha empeorado durante el último año. Conviene distinguir un cambio reciente de una dificultad mantenida."
+  ]
+}

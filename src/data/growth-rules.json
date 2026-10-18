@@ -1,0 +1,176 @@
+{
+  "dimensions": {
+    "Autoconocimiento": {
+      "question_ids": [
+        "CRE_AUT_01",
+        "CRE_AUT_02",
+        "CRE_AUT_03",
+        "CRE_AUT_04",
+        "CRE_AUT_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Aprendizaje": {
+      "question_ids": [
+        "CRE_APR_01",
+        "CRE_APR_02",
+        "CRE_APR_03",
+        "CRE_APR_04",
+        "CRE_APR_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Objetivos": {
+      "question_ids": [
+        "CRE_OBJ_01",
+        "CRE_OBJ_02",
+        "CRE_OBJ_03",
+        "CRE_OBJ_04",
+        "CRE_OBJ_05",
+        "CRE_OBJ_06"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Coherencia": {
+      "question_ids": [
+        "CRE_COH_01",
+        "CRE_COH_02",
+        "CRE_COH_03",
+        "CRE_COH_04",
+        "CRE_COH_05",
+        "CRE_COH_06"
+      ],
+      "formula": "mean(question_scores)"
+    }
+  },
+  "dimensionWeights": {
+    "Autoconocimiento": 0.25,
+    "Aprendizaje": 0.25,
+    "Objetivos": 0.25,
+    "Coherencia": 0.25
+  },
+  "focusOrder": [
+    "Autoconocimiento",
+    "Coherencia",
+    "Objetivos",
+    "Aprendizaje"
+  ],
+  "contextNotes": [
+    "Estás redefiniendo prioridades o buscando consolidar. La falta de metas nuevas no implica por sí sola falta de crecimiento.",
+    "Tus posibilidades de aprendizaje y cambio están condicionadas por los recursos disponibles. Ajusta el primer paso a ese margen.",
+    "Tu situación en Crecimiento ha empeorado durante el último año. Distingue los cambios recientes de las dificultades mantenidas al elegir tu primer paso."
+  ],
+  "contextRules": [
+    {
+      "questionId": "CRE_CTX_01",
+      "values": [
+        "transicion",
+        "consolidacion"
+      ],
+      "noteIndex": 0
+    },
+    {
+      "questionId": "CRE_CTX_02",
+      "values": [
+        "algo",
+        "mucho"
+      ],
+      "noteIndex": 1
+    },
+    {
+      "questionId": "CRE_CTX_03",
+      "values": [
+        "empeorado_algo",
+        "empeorado_bastante"
+      ],
+      "noteIndex": 2
+    }
+  ],
+  "patternRules": [
+    {
+      "id": "dimension_1_strong_2_weak",
+      "all": [
+        {
+          "dimension": "Autoconocimiento",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Aprendizaje",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_2_strong_3_weak",
+      "all": [
+        {
+          "dimension": "Aprendizaje",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Objetivos",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_3_strong_4_weak",
+      "all": [
+        {
+          "dimension": "Objetivos",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Coherencia",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_4_strong_1_weak",
+      "all": [
+        {
+          "dimension": "Coherencia",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Autoconocimiento",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "balanced_progress",
+      "all": [
+        {
+          "dimension": "Autoconocimiento",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Aprendizaje",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Objetivos",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Coherencia",
+          "operator": "gte",
+          "value": 6
+        }
+      ]
+    }
+  ]
+}

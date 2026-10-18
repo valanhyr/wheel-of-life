@@ -1,0 +1,176 @@
+{
+  "dimensions": {
+    "Gestión emocional": {
+      "question_ids": [
+        "EMO_GES_01",
+        "EMO_GES_02",
+        "EMO_GES_03",
+        "EMO_GES_04",
+        "EMO_GES_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Estrés y carga mental": {
+      "question_ids": [
+        "EMO_EST_01",
+        "EMO_EST_02",
+        "EMO_EST_03",
+        "EMO_EST_04",
+        "EMO_EST_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Autoestima": {
+      "question_ids": [
+        "EMO_AUT_01",
+        "EMO_AUT_02",
+        "EMO_AUT_03",
+        "EMO_AUT_04",
+        "EMO_AUT_05",
+        "EMO_AUT_06"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Calma y satisfacción": {
+      "question_ids": [
+        "EMO_CAL_01",
+        "EMO_CAL_02",
+        "EMO_CAL_03",
+        "EMO_CAL_04",
+        "EMO_CAL_05",
+        "EMO_CAL_06"
+      ],
+      "formula": "mean(question_scores)"
+    }
+  },
+  "dimensionWeights": {
+    "Gestión emocional": 0.25,
+    "Estrés y carga mental": 0.25,
+    "Autoestima": 0.25,
+    "Calma y satisfacción": 0.25
+  },
+  "focusOrder": [
+    "Estrés y carga mental",
+    "Gestión emocional",
+    "Autoestima",
+    "Calma y satisfacción"
+  ],
+  "contextNotes": [
+    "Estás atravesando una situación exigente. Lee tus respuestas teniendo en cuenta ese contexto y los apoyos disponibles.",
+    "La falta de tiempo, privacidad o apoyo limita tu margen para atenderte. No todo depende de tus recursos personales.",
+    "Tu situación en Emocional ha empeorado durante el último año. Distingue los cambios recientes de las dificultades mantenidas al elegir tu primer paso."
+  ],
+  "contextRules": [
+    {
+      "questionId": "EMO_CTX_01",
+      "values": [
+        "reciente",
+        "mantenida"
+      ],
+      "noteIndex": 0
+    },
+    {
+      "questionId": "EMO_CTX_02",
+      "values": [
+        "algo",
+        "mucho"
+      ],
+      "noteIndex": 1
+    },
+    {
+      "questionId": "EMO_CTX_03",
+      "values": [
+        "empeorado_algo",
+        "empeorado_bastante"
+      ],
+      "noteIndex": 2
+    }
+  ],
+  "patternRules": [
+    {
+      "id": "dimension_1_strong_2_weak",
+      "all": [
+        {
+          "dimension": "Gestión emocional",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Estrés y carga mental",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_2_strong_3_weak",
+      "all": [
+        {
+          "dimension": "Estrés y carga mental",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Autoestima",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_3_strong_4_weak",
+      "all": [
+        {
+          "dimension": "Autoestima",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Calma y satisfacción",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_4_strong_1_weak",
+      "all": [
+        {
+          "dimension": "Calma y satisfacción",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Gestión emocional",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "balanced_progress",
+      "all": [
+        {
+          "dimension": "Gestión emocional",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Estrés y carga mental",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Autoestima",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Calma y satisfacción",
+          "operator": "gte",
+          "value": 6
+        }
+      ]
+    }
+  ]
+}

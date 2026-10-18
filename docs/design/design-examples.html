@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rueda de la Vida · Tres nuevas direcciones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Manrope:wght@400;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,700&display=swap" rel="stylesheet">
+  <style>
+    :root { color-scheme: dark; font-family: 'DM Sans', sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: #edf0ea; background: #141513; }
+    button { font: inherit; }
+    .page { max-width: 1440px; margin: auto; padding: clamp(1.25rem, 4vw, 4.25rem); }
+    .intro { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 3rem; }
+    .intro__copy { max-width: 740px; }
+    .kicker { color: #a8b5a2; font: 500 .72rem 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: .65rem 0 .85rem; font: 500 clamp(2.6rem, 7vw, 6rem)/.94 'Newsreader', serif; letter-spacing: -.055em; }
+    .intro p { max-width: 600px; margin: 0; color: #9ca39b; font-size: clamp(.95rem, 1.5vw, 1.1rem); line-height: 1.55; }
+    .count { color: #6f766e; font: .75rem 'DM Mono', monospace; white-space: nowrap; }
+    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .proposal { min-width: 0; border: 1px solid rgba(255,255,255,.12); overflow: hidden; background: #1c1e1b; }
+    .proposal__meta { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.1rem; border-bottom: 1px solid rgba(255,255,255,.12); }
+    .proposal__number { font: .72rem 'DM Mono', monospace; color: #8e9890; }
+    .proposal__tag { color: #d9ded6; font-size: .72rem; }
+    .preview { min-height: 550px; padding: 1.45rem; display: flex; flex-direction: column; justify-content: space-between; }
+    .preview__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .preview__top h2 { margin: 0; font-size: 1.25rem; line-height: 1.05; letter-spacing: -.035em; }
+    .preview__top p { margin: .55rem 0 0; max-width: 180px; font-size: .78rem; line-height: 1.45; opacity: .7; }
+    .theme-chip { display: inline-flex; width: .65rem; height: .65rem; border-radius: 50%; flex: none; }
+    .wheel { width: min(100%, 250px); aspect-ratio: 1; margin: 1.5rem auto 1.2rem; }
+    .wheel svg { width: 100%; height: 100%; overflow: visible; }
+    .wheel text { font-size: 3px; letter-spacing: .02em; }
+    .wheel .grid { fill: none; stroke-width: .35; }
+    .wheel .axis { stroke-width: .22; }
+    .wheel .shape { stroke-width: .65; }
+    .mini-panel { padding: .9rem; }
+    .panel-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: .8rem; font-size: .78rem; font-weight: 700; }
+    .panel-title span { font: .63rem 'DM Mono', monospace; opacity: .55; }
+    .metric { display: grid; grid-template-columns: 7rem 1fr 1.2rem; align-items: center; gap: .6rem; margin: .6rem 0; font-size: .72rem; }
+    .metric__bar { height: 4px; overflow: hidden; background: rgba(0,0,0,.14); }
+    .metric__bar i { display: block; height: 100%; }
+    .action { width: 100%; margin-top: 1rem; padding: .8rem 1rem; border: 0; color: inherit; cursor: pointer; font-weight: 700; font-size: .75rem; text-align: left; }
+    .proposal__footer { padding: 1.2rem 1.1rem 1.35rem; border-top: 1px solid rgba(255,255,255,.12); }
+    .proposal__footer h3 { margin: 0 0 .45rem; font-size: 1rem; }
+    .proposal__footer p { margin: 0; color: #9ba29a; font-size: .8rem; line-height: 1.5; }
+    .swatches { display: flex; gap: .35rem; margin-top: 1rem; }
+    .swatches i { width: 1.1rem; height: 1.1rem; border-radius: 50%; }
+
+    .proposal--atlas { background: #e9e5d8; color: #16231f; border-color: #b9b6a9; }
+    .proposal--atlas .proposal__meta, .proposal--atlas .proposal__footer { border-color: rgba(22,35,31,.18); }
+    .proposal--atlas .proposal__number { color: #5e7569; }
+    .proposal--atlas .preview { background: radial-gradient(circle at 70% 40%, rgba(232,176,74,.18), transparent 31%), #e9e5d8; }
+    .proposal--atlas .preview__top h2, .proposal--atlas .proposal__footer h3 { font: 500 1.6rem/1 'Newsreader', serif; }
+    .proposal--atlas .wheel .grid, .proposal--atlas .wheel .axis { stroke: #52766c; opacity: .45; }
+    .proposal--atlas .wheel .shape { fill: #e8b04a; fill-opacity: .22; stroke: #bd7339; }
+    .proposal--atlas .wheel .pin { fill: #bd7339; }
+    .proposal--atlas .wheel text { fill: #345347; }
+    .proposal--atlas .mini-panel { border-top: 1px solid rgba(22,35,31,.2); }
+    .proposal--atlas .metric__bar { background: rgba(22,35,31,.12); }
+    .proposal--atlas .metric__bar i { background: #52766c; }
+    .proposal--atlas .action { background: #16231f; color: #e9e5d8; }
+    .proposal--atlas .theme-chip { background: #e8b04a; }
+
+    .proposal--studio { background: #f3f5f7; color: #142236; border-color: #c9d1da; }
+    .proposal--studio .proposal__meta, .proposal--studio .proposal__footer { border-color: rgba(20,34,54,.14); }
+    .proposal--studio .proposal__number { color: #57708d; }
+    .proposal--studio .preview { background: linear-gradient(135deg, #f3f5f7 0%, #e5edf2 100%); }
+    .proposal--studio .preview__top h2, .proposal--studio .proposal__footer h3 { font: 700 1.28rem/1.08 'Manrope', sans-serif; letter-spacing: -.06em; }
+    .proposal--studio .wheel .grid, .proposal--studio .wheel .axis { stroke: #2a6b9b; opacity: .35; }
+    .proposal--studio .wheel .shape { fill: #e76852; fill-opacity: .2; stroke: #d84b3b; }
+    .proposal--studio .wheel .pin { fill: #142236; }
+    .proposal--studio .wheel text { fill: #2b5276; }
+    .proposal--studio .mini-panel { border: 1px solid rgba(20,34,54,.14); background: rgba(255,255,255,.45); }
+    .proposal--studio .metric__bar { background: #d3dde4; }
+    .proposal--studio .metric__bar i { background: #2a6b9b; }
+    .proposal--studio .action { background: #e76852; color: #fff; }
+    .proposal--studio .theme-chip { background: #e76852; }
+
+    .proposal--garden { background: #252036; color: #f2ecdf; border-color: #524765; }
+    .proposal--garden .proposal__meta, .proposal--garden .proposal__footer { border-color: rgba(242,236,223,.15); }
+    .proposal--garden .proposal__number { color: #aaa0bb; }
+    .proposal--garden .preview { background: radial-gradient(circle at 50% 42%, rgba(118,193,153,.18), transparent 33%), #252036; }
+    .proposal--garden .preview__top h2, .proposal--garden .proposal__footer h3 { font: 500 1.6rem/1 'Newsreader', serif; }
+    .proposal--garden .wheel .grid, .proposal--garden .wheel .axis { stroke: #91c9a7; opacity: .3; }
+    .proposal--garden .wheel .shape { fill: #91c9a7; fill-opacity: .23; stroke: #efbd67; }
+    .proposal--garden .wheel .pin { fill: #efbd67; }
+    .proposal--garden .wheel text { fill: #c6dfc9; }
+    .proposal--garden .mini-panel { border: 1px solid rgba(242,236,223,.14); background: rgba(255,255,255,.04); border-radius: 1rem; }
+    .proposal--garden .metric__bar { background: rgba(255,255,255,.12); border-radius: 999px; }
+    .proposal--garden .metric__bar i { background: #91c9a7; border-radius: inherit; }
+    .proposal--garden .action { background: #91c9a7; color: #19261f; border-radius: .7rem; }
+    .proposal--garden .theme-chip { background: #91c9a7; }
+    @media (max-width: 980px) { .intro { display: block; } .count { display: block; margin-top: 1rem; } .gallery { grid-template-columns: 1fr; } .preview { min-height: 0; } .proposal { display: grid; grid-template-columns: 1fr 1.3fr; } .proposal__meta { grid-column: 1 / -1; } .proposal__footer { grid-column: 1 / -1; } }
+    @media (max-width: 600px) { .page { padding: 1rem; } .proposal { display: block; } h1 { font-size: 3.4rem; } }
+    @media (prefers-reduced-motion: no-preference) { .proposal { transition: transform .25s ease, box-shadow .25s ease; } .proposal:hover { transform: translateY(-5px); box-shadow: 0 18px 35px rgba(0,0,0,.2); } .action { transition: filter .2s ease; } .action:hover { filter: brightness(1.08); } }
+    :focus-visible { outline: 3px solid #e8b04a; outline-offset: 3px; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="intro">
+      <div class="intro__copy">
+        <div class="kicker">Direcciones visuales · Rueda de la Vida</div>
+        <h1>Tres formas de<br>mirar tu equilibrio.</h1>
+        <p>Tres propuestas nuevas para convertir la autoevaluación en un momento con identidad: recorrer, ordenar o cultivar.</p>
+      </div>
+      <div class="count">Exploración 03 / 03</div>
+    </header>
+    <section class="gallery" aria-label="Tres propuestas visuales">
+      <article class="proposal proposal--atlas">
+        <div class="proposal__meta"><span class="proposal__number">01</span><span class="proposal__tag">orientación · mapa</span></div>
+        <div class="preview"><div class="preview__top"><div><h2>Cartografía<br>íntima</h2><p>Tu vida como un territorio que se puede leer.</p></div><i class="theme-chip" aria-hidden="true"></i></div>
+          <div class="wheel"><svg viewBox="0 0 100 100" role="img" aria-label="Rueda de Cartografía íntima"><g class="grid"><circle cx="50" cy="50" r="39"/><circle cx="50" cy="50" r="29"/><circle cx="50" cy="50" r="19"/><circle cx="50" cy="50" r="9"/></g><g class="axis"><path d="M50 11V89M11 50H89M22.4 22.4L77.6 77.6M77.6 22.4L22.4 77.6"/></g><path class="shape" d="M50 22L70 30L73 50L64 68L50 74L33 63L27 50L32 30Z"/><circle class="pin" cx="50" cy="50" r="2.4"/><text x="50" y="7" text-anchor="middle">Trabajo</text><text x="50" y="96" text-anchor="middle">Salud</text><text x="7" y="51" text-anchor="middle">Vínculos</text><text x="93" y="51" text-anchor="middle">Ocio</text></svg></div>
+          <div class="mini-panel"><div class="panel-title">Tu punto de partida <span>hoy</span></div><div class="metric"><span>Trabajo</span><div class="metric__bar"><i style="width:72%"></i></div><b>7</b></div><div class="metric"><span>Salud</span><div class="metric__bar"><i style="width:52%"></i></div><b>5</b></div><button class="action">Abrir recorrido</button></div>
+        </div>
+        <footer class="proposal__footer"><h3>Serena y con carácter</h3><p>Una experiencia de diario de viaje: cálida, táctil y con detalles de coordenadas para dar sentido al progreso.</p><div class="swatches"><i style="background:#16231f"></i><i style="background:#52766c"></i><i style="background:#e8b04a"></i><i style="background:#e9e5d8"></i></div></footer>
+      </article>
+      <article class="proposal proposal--studio">
+        <div class="proposal__meta"><span class="proposal__number">02</span><span class="proposal__tag">claridad · enfoque</span></div>
+        <div class="preview"><div class="preview__top"><div><h2>Estudio de<br>claridad</h2><p>Menos ruido para ver lo que importa.</p></div><i class="theme-chip" aria-hidden="true"></i></div>
+          <div class="wheel"><svg viewBox="0 0 100 100" role="img" aria-label="Rueda de Estudio de claridad"><g class="grid"><circle cx="50" cy="50" r="39"/><circle cx="50" cy="50" r="29"/><circle cx="50" cy="50" r="19"/><circle cx="50" cy="50" r="9"/></g><g class="axis"><path d="M50 11V89M11 50H89M22.4 22.4L77.6 77.6M77.6 22.4L22.4 77.6"/></g><path class="shape" d="M50 19L67 34L79 50L59 65L50 78L37 62L24 50L36 31Z"/><circle class="pin" cx="50" cy="50" r="2.4"/><text x="50" y="7" text-anchor="middle">Trabajo</text><text x="50" y="96" text-anchor="middle">Salud</text><text x="7" y="51" text-anchor="middle">Vínculos</text><text x="93" y="51" text-anchor="middle">Ocio</text></svg></div>
+          <div class="mini-panel"><div class="panel-title">Lectura rápida <span>4 áreas</span></div><div class="metric"><span>Trabajo</span><div class="metric__bar"><i style="width:72%"></i></div><b>7</b></div><div class="metric"><span>Salud</span><div class="metric__bar"><i style="width:52%"></i></div><b>5</b></div><button class="action">Ver prioridades</button></div>
+        </div>
+        <footer class="proposal__footer"><h3>Precisa y luminosa</h3><p>Una interfaz editorial, directa y ligera. La rueda se entiende de un vistazo y cada dato tiene un lugar claro.</p><div class="swatches"><i style="background:#142236"></i><i style="background:#2a6b9b"></i><i style="background:#e76852"></i><i style="background:#f3f5f7"></i></div></footer>
+      </article>
+      <article class="proposal proposal--garden">
+        <div class="proposal__meta"><span class="proposal__number">03</span><span class="proposal__tag">ritual · cuidado</span></div>
+        <div class="preview"><div class="preview__top"><div><h2>Jardín<br>nocturno</h2><p>Un espacio para observar qué necesita cuidado.</p></div><i class="theme-chip" aria-hidden="true"></i></div>
+          <div class="wheel"><svg viewBox="0 0 100 100" role="img" aria-label="Rueda de Jardín nocturno"><g class="grid"><circle cx="50" cy="50" r="39"/><circle cx="50" cy="50" r="29"/><circle cx="50" cy="50" r="19"/><circle cx="50" cy="50" r="9"/></g><g class="axis"><path d="M50 11V89M11 50H89M22.4 22.4L77.6 77.6M77.6 22.4L22.4 77.6"/></g><path class="shape" d="M50 27L72 33L72 50L63 69L50 72L37 65L29 50L36 36Z"/><circle class="pin" cx="50" cy="50" r="2.4"/><text x="50" y="7" text-anchor="middle">Trabajo</text><text x="50" y="96" text-anchor="middle">Salud</text><text x="7" y="51" text-anchor="middle">Vínculos</text><text x="93" y="51" text-anchor="middle">Ocio</text></svg></div>
+          <div class="mini-panel"><div class="panel-title">Lo que pide atención <span>2 señales</span></div><div class="metric"><span>Trabajo</span><div class="metric__bar"><i style="width:72%"></i></div><b>7</b></div><div class="metric"><span>Salud</span><div class="metric__bar"><i style="width:52%"></i></div><b>5</b></div><button class="action">Elegir un cuidado</button></div>
+        </div>
+        <footer class="proposal__footer"><h3>Profunda y acogedora</h3><p>Un tono más sensorial para convertir la reflexión en un pequeño ritual, sin perder legibilidad ni dirección.</p><div class="swatches"><i style="background:#252036"></i><i style="background:#91c9a7"></i><i style="background:#efbd67"></i><i style="background:#f2ecdf"></i></div></footer>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

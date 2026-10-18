@@ -1,0 +1,33 @@
+{
+  "source": "rueda_vida_demo_finanzas_trabajo_v02_cuestionario_finanzas.json",
+  "answers": {
+    "FIN_PER_01": 7.0,
+    "FIN_IMP_01": 9.0,
+    "FIN_CON_01": 8,
+    "FIN_CON_02": "a_menudo",
+    "FIN_CON_03": 7,
+    "FIN_CON_04": 5,
+    "FIN_CON_05": "rara_vez",
+    "FIN_SEG_01": 5,
+    "FIN_SEG_02": "parcial",
+    "FIN_SEG_03": "2_3_meses",
+    "FIN_SEG_04": 7,
+    "FIN_SEG_05": "a_veces",
+    "FIN_HAB_01": "a_veces",
+    "FIN_HAB_02": "a_menudo",
+    "FIN_HAB_03": "rara_vez",
+    "FIN_HAB_04": "a_menudo",
+    "FIN_HAB_05": "a_veces",
+    "FIN_HAB_06": "a_veces",
+    "FIN_PRO_01": 4,
+    "FIN_PRO_02": 4,
+    "FIN_PRO_03": "rara_vez",
+    "FIN_PRO_04": "rara_vez",
+    "FIN_PRO_05": "a_veces",
+    "FIN_PRO_06": 5,
+    "FIN_CTX_01": "si_poco_margen",
+    "FIN_CTX_02": "si_manejables",
+    "FIN_CTX_03": "similar",
+    "FIN_CTX_04": "falta_ahorro"
+  }
+}

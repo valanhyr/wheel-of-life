@@ -1,0 +1,177 @@
+{
+  "dimensions": {
+    "Conexión": {
+      "question_ids": [
+        "FAM_CON_01",
+        "FAM_CON_02",
+        "FAM_CON_03",
+        "FAM_CON_04",
+        "FAM_CON_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Comunicación": {
+      "question_ids": [
+        "FAM_COM_01",
+        "FAM_COM_02",
+        "FAM_COM_03",
+        "FAM_COM_04",
+        "FAM_COM_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Reparto de responsabilidades": {
+      "question_ids": [
+        "FAM_RES_01",
+        "FAM_RES_02",
+        "FAM_RES_03",
+        "FAM_RES_04",
+        "FAM_RES_05",
+        "FAM_RES_06"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Tiempo y presencia": {
+      "question_ids": [
+        "FAM_TIE_01",
+        "FAM_TIE_02",
+        "FAM_TIE_03",
+        "FAM_TIE_04",
+        "FAM_TIE_05",
+        "FAM_TIE_06"
+      ],
+      "formula": "mean(question_scores)"
+    }
+  },
+  "dimensionWeights": {
+    "Conexión": 0.25,
+    "Comunicación": 0.25,
+    "Reparto de responsabilidades": 0.25,
+    "Tiempo y presencia": 0.25
+  },
+  "focusOrder": [
+    "Reparto de responsabilidades",
+    "Comunicación",
+    "Conexión",
+    "Tiempo y presencia"
+  ],
+  "contextNotes": [
+    "La distancia, los cuidados o el contacto limitado forman parte de tu contexto familiar. Una nota baja de conexión no implica que debas aumentar el contacto.",
+    "Los cambios familiares dependen también de recursos y de otras personas. Diferencia lo que puedes decidir de lo que requiere acuerdos o apoyos.",
+    "Tu situación en Familia ha empeorado durante el último año. Distingue los cambios recientes de las dificultades mantenidas al elegir tu primer paso."
+  ],
+  "contextRules": [
+    {
+      "questionId": "FAM_CTX_01",
+      "values": [
+        "distancia",
+        "cuidados",
+        "contacto_limitado"
+      ],
+      "noteIndex": 0
+    },
+    {
+      "questionId": "FAM_CTX_02",
+      "values": [
+        "algo",
+        "mucho"
+      ],
+      "noteIndex": 1
+    },
+    {
+      "questionId": "FAM_CTX_03",
+      "values": [
+        "empeorado_algo",
+        "empeorado_bastante"
+      ],
+      "noteIndex": 2
+    }
+  ],
+  "patternRules": [
+    {
+      "id": "dimension_1_strong_2_weak",
+      "all": [
+        {
+          "dimension": "Conexión",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Comunicación",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_2_strong_3_weak",
+      "all": [
+        {
+          "dimension": "Comunicación",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Reparto de responsabilidades",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_3_strong_4_weak",
+      "all": [
+        {
+          "dimension": "Reparto de responsabilidades",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Tiempo y presencia",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_4_strong_1_weak",
+      "all": [
+        {
+          "dimension": "Tiempo y presencia",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Conexión",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "balanced_progress",
+      "all": [
+        {
+          "dimension": "Conexión",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Comunicación",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Reparto de responsabilidades",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Tiempo y presencia",
+          "operator": "gte",
+          "value": 6
+        }
+      ]
+    }
+  ]
+}

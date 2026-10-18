@@ -1,0 +1,206 @@
+{
+  "score_bands": [
+    {
+      "id": "critical",
+      "min": 0,
+      "max_exclusive": 4,
+      "label": "Atención alta"
+    },
+    {
+      "id": "attention",
+      "min": 4,
+      "max_exclusive": 6,
+      "label": "Necesita atención"
+    },
+    {
+      "id": "improvement",
+      "min": 6,
+      "max_exclusive": 7.5,
+      "label": "Área de mejora"
+    },
+    {
+      "id": "stable",
+      "min": 7.5,
+      "max_inclusive": 10,
+      "label": "Estable"
+    }
+  ],
+  "dimension_results": {
+    "Autoconocimiento": {
+      "critical": "Tus necesidades o preferencias aparecen poco claras. Empieza por observar qué quieres conservar y qué te gustaría cambiar.",
+      "attention": "Reconoces parte de lo que necesitas, pero las expectativas o la inercia dificultan decidir. Date espacio para revisar una elección concreta.",
+      "improvement": "Tienes una base de autoconocimiento que puedes ampliar observando tus patrones y recursos.",
+      "stable": "Tus respuestas muestran claridad sobre necesidades, prioridades, fortalezas y apoyos."
+    },
+    "Aprendizaje": {
+      "critical": "El aprendizaje tiene poco espacio o aplicación. Elige algo pequeño que te interese y una forma de probarlo.",
+      "attention": "Hay interés o contenidos disponibles, pero cuesta asimilarlos o llevarlos a la práctica.",
+      "improvement": "Aprendes y aplicas parte de ello. Puedes reforzar la revisión de experiencias y la continuidad.",
+      "stable": "El aprendizaje forma parte de tu vida y se conecta con práctica y reflexión."
+    },
+    "Objetivos": {
+      "critical": "Los objetivos o los pasos para avanzar aparecen poco definidos. Concreta una meta que tenga sentido en tu situación actual.",
+      "attention": "Tienes algunas metas, pero falta ajustar pasos, recursos o seguimiento. Revisa cuál merece realmente tu atención.",
+      "improvement": "Tus objetivos ofrecen una dirección útil. Puedes mejorar la concreción del siguiente paso y las revisiones.",
+      "stable": "Tus metas tienen sentido para ti y se traducen en pasos que revisas según tus circunstancias."
+    },
+    "Coherencia": {
+      "critical": "Aparece distancia entre tus prioridades y tu día a día. Identifica una decisión pequeña sobre la que sí tengas margen.",
+      "attention": "Hay decisiones alineadas y otras que siguen la inercia. Revisa compromisos y expectativas con realismo.",
+      "improvement": "Tus acciones reflejan una parte importante de tus prioridades. Puedes ajustar algunos compromisos para sostenerlas mejor.",
+      "stable": "Tus decisiones y compromisos están conectados con lo que consideras importante y con tus posibilidades."
+    }
+  },
+  "area_results": {
+    "Crecimiento": {
+      "critical": {
+        "headline": "El área de Crecimiento necesita atención prioritaria.",
+        "body": "La lectura reúne autoconocimiento, aprendizaje, objetivos y coherencia. No presupone avanzar más deprisa ni acumular metas: importa que la dirección elegida tenga sentido para ti.",
+        "action_logic": "Empieza por la dimensión más baja y por un paso viable dentro de tu contexto."
+      },
+      "attention": {
+        "headline": "El área de Crecimiento tiene aspectos importantes que revisar.",
+        "body": "La lectura reúne autoconocimiento, aprendizaje, objetivos y coherencia. No presupone avanzar más deprisa ni acumular metas: importa que la dirección elegida tenga sentido para ti.",
+        "action_logic": "Trabaja un punto de atención concreto y conserva lo que ya te sostiene."
+      },
+      "improvement": {
+        "headline": "El área de Crecimiento tiene una base funcional, con margen de mejora.",
+        "body": "La lectura reúne autoconocimiento, aprendizaje, objetivos y coherencia. No presupone avanzar más deprisa ni acumular metas: importa que la dirección elegida tenga sentido para ti.",
+        "action_logic": "Elige una mejora que refuerce la dimensión más baja sin añadir una carga excesiva."
+      },
+      "stable": {
+        "headline": "El área de Crecimiento muestra una base sólida.",
+        "body": "La lectura reúne autoconocimiento, aprendizaje, objetivos y coherencia. No presupone avanzar más deprisa ni acumular metas: importa que la dirección elegida tenga sentido para ti.",
+        "action_logic": "Mantén lo que te ayuda y revisa periódicamente si sigue encajando con tus necesidades."
+      }
+    }
+  },
+  "perception_results": [
+    {
+      "condition": "abs_gap < 1",
+      "id": "aligned",
+      "text": "Tu percepción inicial de Crecimiento y el cuestionario están bastante alineados. Las dimensiones ayudan a concretar esa impresión."
+    },
+    {
+      "condition": "gap >= 1 and gap < 2",
+      "id": "perception_higher_moderate",
+      "text": "Tu percepción inicial de Crecimiento es algo más positiva que el resultado estructurado. Revisa qué dimensiones explican esa diferencia moderada."
+    },
+    {
+      "condition": "gap >= 2",
+      "id": "perception_higher_high",
+      "text": "Tu percepción inicial de Crecimiento es claramente más positiva que el resultado estructurado. Las dimensiones pueden señalar aspectos que estaban pasando desapercibidos, sin convertir una valoración en más verdadera que la otra."
+    },
+    {
+      "condition": "gap <= -1 and gap > -2",
+      "id": "perception_lower_moderate",
+      "text": "Tu percepción inicial de Crecimiento es algo más negativa que lo que reflejan tus respuestas. Puede haber fortalezas que no estabas reconociendo."
+    },
+    {
+      "condition": "gap <= -2",
+      "id": "perception_lower_high",
+      "text": "Tu percepción inicial de Crecimiento es bastante más exigente que el resultado estructurado. Revisa qué recursos aparecen en tus respuestas y cómo influye tu contexto en esa diferencia."
+    }
+  ],
+  "transversal_factor_results": {
+    "Autoconocimiento": {
+      "critical": "En Crecimiento: cuesta identificar o atender tus propias necesidades y preferencias.",
+      "attention": "En Crecimiento: reconoces algunas necesidades, aunque todavía falta claridad o espacio para atenderlas.",
+      "improvement": "En Crecimiento: tienes una idea razonable de tus necesidades, con margen para escucharte mejor.",
+      "stable": "En Crecimiento: tus respuestas muestran atención y claridad sobre tus necesidades y preferencias."
+    },
+    "Perspectiva": {
+      "critical": "En Crecimiento: aparecen pocas oportunidades para observar lo que ocurre y revisar tus decisiones.",
+      "attention": "En Crecimiento: puedes ganar claridad revisando experiencias, expectativas y alternativas.",
+      "improvement": "En Crecimiento: tienes una perspectiva razonable, con algunos patrones por revisar.",
+      "stable": "En Crecimiento: observas tus experiencias y revisas tus decisiones con atención al contexto."
+    },
+    "Coherencia": {
+      "critical": "En Crecimiento: aparece distancia entre lo que te importa y cómo se organiza tu día a día.",
+      "attention": "En Crecimiento: algunas decisiones encajan con tus prioridades y otras siguen la inercia.",
+      "improvement": "En Crecimiento: tus decisiones reflejan buena parte de tus prioridades, con algunos ajustes pendientes.",
+      "stable": "En Crecimiento: tus respuestas muestran un encaje consistente entre prioridades y decisiones."
+    },
+    "Control / Agencia": {
+      "critical": "En Crecimiento: tus respuestas muestran poco margen o pocas acciones para influir en tu situación.",
+      "attention": "En Crecimiento: hay decisiones o apoyos que podrían ampliar tu margen de actuación.",
+      "improvement": "En Crecimiento: cuentas con margen para actuar sobre algunos aspectos y puedes reforzarlo.",
+      "stable": "En Crecimiento: identificas posibilidades y actúas sobre aquello que está a tu alcance."
+    },
+    "Hábitos / Consistencia": {
+      "critical": "En Crecimiento: las acciones útiles aparecen poco o de forma irregular.",
+      "attention": "En Crecimiento: existen rutinas que ayudan, pero les falta continuidad.",
+      "improvement": "En Crecimiento: tus rutinas son funcionales y pueden ganar regularidad.",
+      "stable": "En Crecimiento: mantienes acciones útiles de forma consistente."
+    },
+    "Proyección": {
+      "critical": "En Crecimiento: cuesta anticipar necesidades o convertir intenciones en próximos pasos.",
+      "attention": "En Crecimiento: existe cierta anticipación, pero necesita más concreción y seguimiento.",
+      "improvement": "En Crecimiento: tienes una dirección razonable que puede traducirse en pasos más claros.",
+      "stable": "En Crecimiento: conectas las necesidades futuras con decisiones y pasos concretos."
+    },
+    "Conexión / Apoyo": {
+      "critical": "En Crecimiento: la conexión o el apoyo disponible parecen escasos.",
+      "attention": "En Crecimiento: hay vínculos o apoyos, pero no siempre resultan accesibles o suficientes.",
+      "improvement": "En Crecimiento: cuentas con una base de conexión y apoyo que puedes cuidar.",
+      "stable": "En Crecimiento: tus respuestas reflejan vínculos y apoyos que te sostienen."
+    },
+    "Límites": {
+      "critical": "En Crecimiento: las demandas o expectativas parecen superar tus límites con frecuencia.",
+      "attention": "En Crecimiento: puedes poner algunos límites, pero cuesta mantenerlos.",
+      "improvement": "En Crecimiento: proteges parte de tu disponibilidad y puedes ajustar algunos compromisos.",
+      "stable": "En Crecimiento: tus respuestas reflejan límites que respetan tu disponibilidad y tus necesidades."
+    }
+  },
+  "transversal_note": "Estas señales proceden solo de las respuestas de Crecimiento y requieren al menos dos respuestas por factor. Son provisionales y no se combinan todavía con otras áreas.",
+  "growth_patterns": [
+    {
+      "id": "dimension_1_strong_2_weak",
+      "condition": "Autoconocimiento >= 7.5 and Aprendizaje < 6",
+      "headline": "Sabes más sobre lo que necesitas que sobre cómo aprender para ello.",
+      "text": "Tu claridad personal puede ayudarte a elegir un aprendizaje pequeño y una forma de ponerlo en práctica."
+    },
+    {
+      "id": "dimension_2_strong_3_weak",
+      "condition": "Aprendizaje >= 7.5 and Objetivos < 6",
+      "headline": "Aprendes, pero falta dirección para ese aprendizaje.",
+      "text": "Revisa qué meta merece tu atención y cómo lo aprendido podría ayudarte con un siguiente paso."
+    },
+    {
+      "id": "dimension_3_strong_4_weak",
+      "condition": "Objetivos >= 7.5 and Coherencia < 6",
+      "headline": "Tienes objetivos, pero el día a día no los acompaña.",
+      "text": "Concretar una decisión o un espacio de tiempo puede acercar tus compromisos a tus prioridades."
+    },
+    {
+      "id": "dimension_4_strong_1_weak",
+      "condition": "Coherencia >= 7.5 and Autoconocimiento < 6",
+      "headline": "Sostienes tus decisiones, pero necesitas revisar lo que quieres.",
+      "text": "La continuidad puede convivir con prioridades poco claras. Date espacio para comprobar si la dirección elegida sigue teniendo sentido."
+    },
+    {
+      "id": "balanced_progress",
+      "condition": "all dimensions >= 6, after all_stable",
+      "headline": "En Crecimiento hay una base equilibrada para mejorar.",
+      "text": "Las cuatro dimensiones tienen una base funcional. Elige un ajuste concreto en la más baja y conserva las prácticas que ya te ayudan."
+    },
+    {
+      "id": "all_low",
+      "condition": "all dimensions < 6",
+      "headline": "En Crecimiento conviene empezar por una base pequeña y sostenible.",
+      "text": "Las cuatro dimensiones muestran puntos de atención. Revisa el contexto y empieza por el foco más bajo sin intentar cambiarlo todo a la vez."
+    },
+    {
+      "id": "all_stable",
+      "condition": "all dimensions >= 7.5",
+      "headline": "En Crecimiento las cuatro dimensiones muestran una base sólida.",
+      "text": "Tus respuestas reflejan un equilibrio consistente. Puedes mantener lo que funciona y revisar cómo cambian tus necesidades."
+    },
+    {
+      "id": "mixed",
+      "condition": "fallback",
+      "headline": "En Crecimiento aparecen fortalezas y necesidades diferentes.",
+      "text": "El promedio no cuenta toda la historia. Revisa la dimensión más baja junto con las demás y con tus circunstancias actuales."
+    }
+  ]
+}

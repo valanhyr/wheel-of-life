@@ -1,0 +1,43 @@
+{
+  "source": "Ejemplo sintético de Emocional; no se precarga en la aplicación.",
+  "answers": {
+    "EMO_PER_01": 7,
+    "EMO_IMP_01": 8,
+    "EMO_GES_01": "a_menudo",
+    "EMO_GES_02": 8,
+    "EMO_GES_03": "a_menudo",
+    "EMO_GES_04": "a_menudo",
+    "EMO_GES_05": "rara_vez",
+    "EMO_EST_01": "a_veces",
+    "EMO_EST_02": 6,
+    "EMO_EST_03": 6,
+    "EMO_EST_04": "a_veces",
+    "EMO_EST_05": "a_veces",
+    "EMO_AUT_01": 3,
+    "EMO_AUT_02": "rara_vez",
+    "EMO_AUT_03": "a_menudo",
+    "EMO_AUT_04": 3,
+    "EMO_AUT_05": 3,
+    "EMO_AUT_06": 3,
+    "EMO_CAL_01": "siempre",
+    "EMO_CAL_02": "siempre",
+    "EMO_CAL_03": 10,
+    "EMO_CAL_04": "siempre",
+    "EMO_CAL_05": "nunca",
+    "EMO_CAL_06": 10,
+    "EMO_CTX_01": "reciente",
+    "EMO_CTX_02": "mucho",
+    "EMO_CTX_03": "empeorado_algo",
+    "EMO_CTX_04": "emociones"
+  },
+  "expected": {
+    "dimensions": {
+      "Gestión emocional": 7.555555555555555,
+      "Estrés y carga mental": 5.222222222222222,
+      "Autoestima": 2.314814814814815,
+      "Calma y satisfacción": 10.0
+    },
+    "score": 6.273148148148148,
+    "focus": "Autoestima"
+  }
+}

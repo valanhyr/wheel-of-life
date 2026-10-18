@@ -1,0 +1,212 @@
+{
+  "score_bands": [
+    {
+      "id": "critical",
+      "min": 0,
+      "max_exclusive": 4,
+      "label": "Atención alta"
+    },
+    {
+      "id": "attention",
+      "min": 4,
+      "max_exclusive": 6,
+      "label": "Necesita atención"
+    },
+    {
+      "id": "improvement",
+      "min": 6,
+      "max_exclusive": 7.5,
+      "label": "Área de mejora"
+    },
+    {
+      "id": "stable",
+      "min": 7.5,
+      "max_inclusive": 10,
+      "label": "Estable"
+    }
+  ],
+  "dimension_results": {
+    "Conexión": {
+      "critical": "La conexión familiar aparece limitada. Revisa qué cercanía deseas y qué distancia necesitas dentro de tu situación actual.",
+      "attention": "Existen vínculos familiares, pero no siempre puedes mostrarte o compartir lo importante. Identifica dónde encuentras más confianza.",
+      "improvement": "Hay una base de conexión familiar que puedes cuidar respetando las necesidades de cada persona.",
+      "stable": "Tus respuestas muestran conexión y confianza con las personas que consideras tu familia."
+    },
+    "Comunicación": {
+      "critical": "Hay temas importantes que parecen difíciles de conversar. Identifica qué necesitas expresar y en qué condiciones podrías hacerlo.",
+      "attention": "Algunos asuntos se hablan y otros quedan pendientes. Concretar necesidades y momentos de conversación puede ayudar.",
+      "improvement": "La comunicación tiene una base razonable, con margen para escuchar diferencias y revisar acuerdos.",
+      "stable": "Tus respuestas reflejan conversaciones en las que se expresan necesidades y se escuchan distintos puntos de vista."
+    },
+    "Reparto de responsabilidades": {
+      "critical": "El reparto de responsabilidades parece poco claro o sostenible. Haz visible qué asumes y qué necesitarías redistribuir.",
+      "attention": "Hay acuerdos parciales, pero algunas cargas quedan concentradas. Revisa la disponibilidad y las tareas menos visibles.",
+      "improvement": "El reparto funciona razonablemente, aunque puede adaptarse mejor cuando cambian las circunstancias.",
+      "stable": "Las responsabilidades se reconocen y se revisan de una forma que parece sostenible para ti."
+    },
+    "Tiempo y presencia": {
+      "critical": "El tiempo compartido o la presencia aparecen escasos. Revisa qué contacto deseas y qué formato cabe en vuestra situación.",
+      "attention": "Existe contacto, pero puede quedar absorbido por tareas o distracciones. Identifica un momento que quieras cuidar.",
+      "improvement": "Cuentas con espacios de presencia familiar que puedes proteger con mayor intención.",
+      "stable": "El tiempo familiar que eliges tiene presencia y respeta los ritmos de las personas implicadas."
+    }
+  },
+  "area_results": {
+    "Familia": {
+      "critical": {
+        "headline": "El área de Familia necesita atención prioritaria.",
+        "body": "La lectura reúne conexión, comunicación, responsabilidades y presencia. Tiene en cuenta la familia que tú defines y no presupone convivencia ni la necesidad de aumentar el contacto.",
+        "action_logic": "Empieza por la dimensión más baja y por un paso viable dentro de tu contexto."
+      },
+      "attention": {
+        "headline": "El área de Familia tiene aspectos importantes que revisar.",
+        "body": "La lectura reúne conexión, comunicación, responsabilidades y presencia. Tiene en cuenta la familia que tú defines y no presupone convivencia ni la necesidad de aumentar el contacto.",
+        "action_logic": "Trabaja un punto de atención concreto y conserva lo que ya te sostiene."
+      },
+      "improvement": {
+        "headline": "El área de Familia tiene una base funcional, con margen de mejora.",
+        "body": "La lectura reúne conexión, comunicación, responsabilidades y presencia. Tiene en cuenta la familia que tú defines y no presupone convivencia ni la necesidad de aumentar el contacto.",
+        "action_logic": "Elige una mejora que refuerce la dimensión más baja sin añadir una carga excesiva."
+      },
+      "stable": {
+        "headline": "El área de Familia muestra una base sólida.",
+        "body": "La lectura reúne conexión, comunicación, responsabilidades y presencia. Tiene en cuenta la familia que tú defines y no presupone convivencia ni la necesidad de aumentar el contacto.",
+        "action_logic": "Mantén lo que te ayuda y revisa periódicamente si sigue encajando con tus necesidades."
+      }
+    }
+  },
+  "perception_results": [
+    {
+      "condition": "abs_gap < 1",
+      "id": "aligned",
+      "text": "Tu percepción inicial de Familia y el cuestionario están bastante alineados. Las dimensiones ayudan a concretar esa impresión."
+    },
+    {
+      "condition": "gap >= 1 and gap < 2",
+      "id": "perception_higher_moderate",
+      "text": "Tu percepción inicial de Familia es algo más positiva que el resultado estructurado. Revisa qué dimensiones explican esa diferencia moderada."
+    },
+    {
+      "condition": "gap >= 2",
+      "id": "perception_higher_high",
+      "text": "Tu percepción inicial de Familia es claramente más positiva que el resultado estructurado. Las dimensiones pueden señalar aspectos que estaban pasando desapercibidos, sin convertir una valoración en más verdadera que la otra."
+    },
+    {
+      "condition": "gap <= -1 and gap > -2",
+      "id": "perception_lower_moderate",
+      "text": "Tu percepción inicial de Familia es algo más negativa que lo que reflejan tus respuestas. Puede haber fortalezas que no estabas reconociendo."
+    },
+    {
+      "condition": "gap <= -2",
+      "id": "perception_lower_high",
+      "text": "Tu percepción inicial de Familia es bastante más exigente que el resultado estructurado. Revisa qué recursos aparecen en tus respuestas y cómo influye tu contexto en esa diferencia."
+    }
+  ],
+  "transversal_factor_results": {
+    "Conexión / Apoyo": {
+      "critical": "En Familia: la conexión o el apoyo disponible parecen escasos.",
+      "attention": "En Familia: hay vínculos o apoyos, pero no siempre resultan accesibles o suficientes.",
+      "improvement": "En Familia: cuentas con una base de conexión y apoyo que puedes cuidar.",
+      "stable": "En Familia: tus respuestas reflejan vínculos y apoyos que te sostienen."
+    },
+    "Autoconocimiento": {
+      "critical": "En Familia: cuesta identificar o atender tus propias necesidades y preferencias.",
+      "attention": "En Familia: reconoces algunas necesidades, aunque todavía falta claridad o espacio para atenderlas.",
+      "improvement": "En Familia: tienes una idea razonable de tus necesidades, con margen para escucharte mejor.",
+      "stable": "En Familia: tus respuestas muestran atención y claridad sobre tus necesidades y preferencias."
+    },
+    "Hábitos / Consistencia": {
+      "critical": "En Familia: las acciones útiles aparecen poco o de forma irregular.",
+      "attention": "En Familia: existen rutinas que ayudan, pero les falta continuidad.",
+      "improvement": "En Familia: tus rutinas son funcionales y pueden ganar regularidad.",
+      "stable": "En Familia: mantienes acciones útiles de forma consistente."
+    },
+    "Coherencia": {
+      "critical": "En Familia: aparece distancia entre lo que te importa y cómo se organiza tu día a día.",
+      "attention": "En Familia: algunas decisiones encajan con tus prioridades y otras siguen la inercia.",
+      "improvement": "En Familia: tus decisiones reflejan buena parte de tus prioridades, con algunos ajustes pendientes.",
+      "stable": "En Familia: tus respuestas muestran un encaje consistente entre prioridades y decisiones."
+    },
+    "Comunicación": {
+      "critical": "En Familia: parece difícil expresar necesidades o conversar sobre asuntos importantes.",
+      "attention": "En Familia: existe comunicación, pero algunas necesidades o conversaciones quedan pendientes.",
+      "improvement": "En Familia: expresas parte de lo que necesitas y puedes reforzar la escucha y los acuerdos.",
+      "stable": "En Familia: tus respuestas muestran expresión de necesidades y disposición a escuchar y aclarar."
+    },
+    "Perspectiva": {
+      "critical": "En Familia: aparecen pocas oportunidades para observar lo que ocurre y revisar tus decisiones.",
+      "attention": "En Familia: puedes ganar claridad revisando experiencias, expectativas y alternativas.",
+      "improvement": "En Familia: tienes una perspectiva razonable, con algunos patrones por revisar.",
+      "stable": "En Familia: observas tus experiencias y revisas tus decisiones con atención al contexto."
+    },
+    "Control / Agencia": {
+      "critical": "En Familia: tus respuestas muestran poco margen o pocas acciones para influir en tu situación.",
+      "attention": "En Familia: hay decisiones o apoyos que podrían ampliar tu margen de actuación.",
+      "improvement": "En Familia: cuentas con margen para actuar sobre algunos aspectos y puedes reforzarlo.",
+      "stable": "En Familia: identificas posibilidades y actúas sobre aquello que está a tu alcance."
+    },
+    "Límites": {
+      "critical": "En Familia: las demandas o expectativas parecen superar tus límites con frecuencia.",
+      "attention": "En Familia: puedes poner algunos límites, pero cuesta mantenerlos.",
+      "improvement": "En Familia: proteges parte de tu disponibilidad y puedes ajustar algunos compromisos.",
+      "stable": "En Familia: tus respuestas reflejan límites que respetan tu disponibilidad y tus necesidades."
+    },
+    "Gestión de energía": {
+      "critical": "En Familia: aparece poco margen de energía o recuperación.",
+      "attention": "En Familia: algunas demandas consumen más energía de la que consigues recuperar.",
+      "improvement": "En Familia: la energía disponible es razonable, con puntos de recuperación por reforzar.",
+      "stable": "En Familia: tus respuestas reflejan un equilibrio favorable entre demandas y recuperación."
+    }
+  },
+  "transversal_note": "Estas señales proceden solo de las respuestas de Familia y requieren al menos dos respuestas por factor. Son provisionales y no se combinan todavía con otras áreas.",
+  "family_patterns": [
+    {
+      "id": "dimension_1_strong_2_weak",
+      "condition": "Conexión >= 7.5 and Comunicación < 6",
+      "headline": "Hay conexión familiar, pero cuesta hablar de lo importante.",
+      "text": "La cercanía puede ofrecer una base para conversar sobre necesidades o desacuerdos pendientes."
+    },
+    {
+      "id": "dimension_2_strong_3_weak",
+      "condition": "Comunicación >= 7.5 and Reparto de responsabilidades < 6",
+      "headline": "Se habla, pero los acuerdos no equilibran las cargas.",
+      "text": "Revisa cómo convertir las conversaciones en un reparto concreto que tenga en cuenta tu disponibilidad."
+    },
+    {
+      "id": "dimension_3_strong_4_weak",
+      "condition": "Reparto de responsabilidades >= 7.5 and Tiempo y presencia < 6",
+      "headline": "Las responsabilidades están organizadas, pero falta presencia.",
+      "text": "La coordinación práctica puede dejar poco espacio para compartir algo que no sea una tarea."
+    },
+    {
+      "id": "dimension_4_strong_1_weak",
+      "condition": "Tiempo y presencia >= 7.5 and Conexión < 6",
+      "headline": "Compartís tiempo, pero no siempre sientes conexión.",
+      "text": "La cantidad de contacto no garantiza confianza. Revisa qué tipo de encuentro te permite mostrarte con más libertad."
+    },
+    {
+      "id": "balanced_progress",
+      "condition": "all dimensions >= 6, after all_stable",
+      "headline": "En Familia hay una base equilibrada para mejorar.",
+      "text": "Las cuatro dimensiones tienen una base funcional. Elige un ajuste concreto en la más baja y conserva las prácticas que ya te ayudan."
+    },
+    {
+      "id": "all_low",
+      "condition": "all dimensions < 6",
+      "headline": "En Familia conviene empezar por una base pequeña y sostenible.",
+      "text": "Las cuatro dimensiones muestran puntos de atención. Revisa el contexto y empieza por el foco más bajo sin intentar cambiarlo todo a la vez."
+    },
+    {
+      "id": "all_stable",
+      "condition": "all dimensions >= 7.5",
+      "headline": "En Familia las cuatro dimensiones muestran una base sólida.",
+      "text": "Tus respuestas reflejan un equilibrio consistente. Puedes mantener lo que funciona y revisar cómo cambian tus necesidades."
+    },
+    {
+      "id": "mixed",
+      "condition": "fallback",
+      "headline": "En Familia aparecen fortalezas y necesidades diferentes.",
+      "text": "El promedio no cuenta toda la historia. Revisa la dimensión más baja junto con las demás y con tus circunstancias actuales."
+    }
+  ]
+}

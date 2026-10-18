@@ -1,3 +1,12 @@
-node_modules
-example
-dist
+node_modules/
+dist/
+work/
+.superpowers/
+.agents/
+
+# Local environment and diagnostic artifacts
+.env
+.env.*
+!.env.example
+coverage/
+*.log

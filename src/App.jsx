@@ -13,6 +13,7 @@ import {
   gapPrompts,
   animals,
   shed,
+  detailedResult,
 } from "./data/scoring";
 
 const RINGS = 10;
@@ -20,6 +21,7 @@ const VIEW = 120;
 const CENTER = VIEW / 2;
 const MAX_R = 44;
 const TOTAL = areas.length;
+const LocalQuestionEditor = import.meta.env.DEV ? React.lazy(() => import("./QuestionEditor")) : null;
 
 const colorFor = (i) => areas[i].color;
 const round1 = (n) => Math.round(n * 10) / 10;
@@ -42,7 +44,7 @@ function sectorPath(aspectIndex, ring) {
 
 /* ------------------------------------------------------------------ wheel */
 
-function Wheel({ selfEval, scores, activeIndex, onSelect }) {
+export function Wheel({ selfEval, scores, activeIndex, onSelect, onStartSection }) {
   const sectors = useMemo(() => {
     const out = [];
     for (let ring = RINGS; ring >= 1; ring--) {
@@ -115,6 +117,16 @@ function Wheel({ selfEval, scores, activeIndex, onSelect }) {
               className={`wheel__label${activeIndex === a ? " is-active" : ""}`}
               textAnchor="middle"
               dominantBaseline="middle"
+              role="button"
+              tabIndex={0}
+              aria-label={`Comenzar cuestionario de ${area.name}`}
+              onClick={() => onStartSection(a)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onStartSection(a);
+                }
+              }}
             >
               {area.name}
             </text>
@@ -150,74 +162,9 @@ function Section({ id, title, summary, meter, open, onOpen, children }) {
 
 /* ------------------------------------------------------------------ views */
 
-function SelfEvaluation({ selfEval, onChange, activeIndex, onSelect, onDone }) {
-  const [openInfo, setOpenInfo] = useState(null);
-
-  return (
-    <>
-      <p className="hint">Puntúa cada área de 0 a 10 según tu percepción, antes de responder el cuestionario.</p>
-
-      <ul className="aspects">
-        {areas.map((area, i) => {
-          const infoId = `aspect-info-${area.id}`;
-          const isOpen = openInfo === i;
-          return (
-            <li
-              key={area.id}
-              className={`aspect${activeIndex === i ? " is-active" : ""}`}
-              style={{ "--aspect-color": area.color }}
-              onFocusCapture={() => onSelect(i)}
-              onPointerEnter={() => onSelect(i)}
-            >
-              <div className="aspect__row">
-                <span className="aspect__dot" aria-hidden="true" />
-                <span className="aspect__name">{area.name}</span>
-                <span className="aspect__value">{selfEval[i]}</span>
-                <button
-                  type="button"
-                  className="aspect__info"
-                  aria-expanded={isOpen}
-                  aria-controls={infoId}
-                  aria-label={`Qué evalúa ${area.name}`}
-                  onClick={() => setOpenInfo(isOpen ? null : i)}
-                >
-                  i
-                </button>
-              </div>
-
-              <input
-                className="aspect__range"
-                type="range"
-                min="0"
-                max="10"
-                step="1"
-                value={selfEval[i]}
-                aria-label={`Puntuación de ${area.name}`}
-                onChange={(e) => onChange(i, e.target.value)}
-              />
-
-              <div id={infoId} className={`aspect__desc${isOpen ? " is-open" : ""}`}>
-                <p>
-                  <strong>{area.fullName}.</strong> {area.desc}
-                  <em className="aspect__quote">{area.question}</em>
-                </p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
-
-      <div className="row-end">
-        <button type="button" className="btn" onClick={onDone}>
-          Ir al cuestionario
-        </button>
-      </div>
-    </>
-  );
-}
-
-function Quiz({ qIndex, setQIndex, answers, onAnswer }) {
-  const current = questions[qIndex];
+export function Quiz({ qIndex, setQIndex, answers, onAnswer, onDone, areaIndex }) {
+  const areaQuestions = areaIndex != null ? questions.filter((q) => q.areaId === areas[areaIndex].id) : questions;
+  const current = areaQuestions[qIndex];
   const area = areas.find((a) => a.id === current.areaId);
   const options = optionsFor(current);
 
@@ -227,13 +174,16 @@ function Quiz({ qIndex, setQIndex, answers, onAnswer }) {
         <span className="question__badge">{area.name}</span>
         <span>{current.dimension}</span>
         <span className="question__count">
-          {qIndex + 1}/{questions.length}
+          {qIndex + 1}/{areaQuestions.length}
         </span>
       </p>
 
       <h3 className="question__text">{current.text}</h3>
 
-      <div className={`scale scale--${current.type === "frecuencia" ? "freq" : "rating"}`} role="radiogroup" aria-label={current.text}>
+      {area.id === "trabajo" && <p className="hint">Piensa en tu actividad profesional actual. Si estás en búsqueda, formación o pausa, toma como referencia tu actividad actual o tu experiencia profesional más reciente y mantén esa referencia durante el bloque.</p>}
+      {area.questionnaireHint && <p className="hint">{area.questionnaireHint}</p>}
+      {current.scored === false && <p className="hint">Esta respuesta aporta contexto y no modifica tu puntuación.</p>}
+      <div className={`scale scale--${typeof options[0].value === "number" ? "rating" : "choices"}`} role="radiogroup" aria-label={current.text}>
         {options.map((opt) => {
           const id = `${current.id}-${opt.value}`;
           return (
@@ -263,19 +213,130 @@ function Quiz({ qIndex, setQIndex, answers, onAnswer }) {
         <button
           type="button"
           className="btn"
-          disabled={qIndex >= questions.length - 1 || answers[current.id] === undefined}
-          onClick={() => setQIndex(qIndex + 1)}
+          disabled={answers[current.id] === undefined}
+          onClick={() => qIndex === areaQuestions.length - 1 ? onDone() : setQIndex(qIndex + 1)}
         >
-          Siguiente
+          {qIndex === areaQuestions.length - 1 ? "Ver resumen" : "Siguiente"}
         </button>
       </nav>
     </article>
   );
 }
 
-function ResultRow({ area, score, perception, open, onToggle }) {
-  const level = scoreLevel(score);
-  const gap = gapStatus(score, perception);
+export function SectionIntro({ area, onStart }) {
+  return (
+    <article className="section-intro" style={{ "--aspect-color": area.color }}>
+      <p className="section-intro__eyebrow">Comenzar cuestionario</p>
+      <h3 className="section-intro__title">{area.fullName}</h3>
+      <p className="section-intro__desc">{area.desc}</p>
+      <p className="section-intro__question">{area.question}</p>
+      <div className="section-intro__meta">
+        <span>27 preguntas</span>
+        <span>·</span>
+        <span>22 puntuables</span>
+        <span>·</span>
+        <span>1 prioridad</span>
+        <span>·</span>
+        <span>4 contexto</span>
+      </div>
+      <div className="section-intro__types">
+        <div className="section-intro__type">
+          <h4 className="section-intro__type-title">Preguntas puntuables (22)</h4>
+          <p className="section-intro__type-desc">
+            Miden cómo estás en este momento. Usan escalas de 1 a 10 o opciones de frecuencia
+            (Nunca, Rara vez, A veces, A menudo, Siempre). Cada una suma para la nota del área.
+          </p>
+        </div>
+        <div className="section-intro__type">
+          <h4 className="section-intro__type-title">Preguntas de prioridad (1)</h4>
+          <p className="section-intro__type-desc">
+            Te dice qué tan importante es para ti mejorar este área en este momento.
+            Usa números enteros del 1 al 10. No afecta la puntuación, pero ayuda a priorizar.
+          </p>
+        </div>
+        <div className="section-intro__type">
+          <h4 className="section-intro__type-title">Preguntas de contexto (4)</h4>
+          <p className="section-intro__type-desc">
+            Recogen tu situación actual: circunstancias que te condicionan, cambios en el último año
+            y preocupaciones principales. No afectan la puntuación, pero dan contexto a tus respuestas.
+          </p>
+        </div>
+      </div>
+      <button type="button" className="btn" onClick={onStart}>
+        Comenzar
+      </button>
+    </article>
+  );
+}
+
+export function SectionSelfEval({ area, value, onChange, onStart }) {
+  return (
+    <article className="section-selfeval" style={{ "--aspect-color": area.color }}>
+      <h3 className="section-selfeval__title">Tu percepción de {area.name}</h3>
+      <p className="section-selfeval__desc">
+        Antes de responder las preguntas, puntúa de 0 a 10 cómo crees que está este área actualmente.
+      </p>
+      <div className="section-selfeval__row">
+        <input
+          type="range"
+          min="0"
+          max="10"
+          step="1"
+          value={value}
+          onChange={(e) => onChange(Number(e.target.value))}
+          aria-label={`Puntuación de ${area.name}`}
+        />
+        <span className="section-selfeval__value">{value}/10</span>
+      </div>
+      <button type="button" className="btn" onClick={onStart}>
+        Continuar a las preguntas
+      </button>
+    </article>
+  );
+}
+
+export function SectionSummary({ area, score, perception, onBack, answers }) {
+  const level = scoreLevel(score, area.id);
+  const gap = gapStatus(score, perception, area.id);
+  const result = detailedResult(area.id, answers, perception);
+  const dimensions = result.dimensions;
+
+  return (
+    <article className="section-summary" style={{ "--aspect-color": area.color }}>
+      <h3 className="section-summary__title">Resultado de {area.name}</h3>
+      <div className="section-summary__scores">
+        <div className="section-summary__score">
+          <span className="section-summary__label">Tu percepción</span>
+          <span className="section-summary__value">{perception}/10</span>
+        </div>
+        <div className="section-summary__score">
+          <span className="section-summary__label">Resultado</span>
+          <span className="section-summary__value">{score != null ? `${round1(score)}/10` : "Pendiente"}</span>
+        </div>
+        <div className="section-summary__score">
+          <span className="section-summary__label">Brecha</span>
+          <span className="section-summary__value">{gap.gap != null ? `${gap.gap > 0 ? "+" : ""}${gap.gap}` : "—"}</span>
+        </div>
+      </div>
+      <p className={`section-summary__level section-summary__level--${level.tone}`}>{level.label}</p>
+      <div className="section-summary__dimensions">
+        {dimensions.map((d) => (
+          <div key={d.name} className="section-summary__dimension">
+            <span className="section-summary__dimension-name">{d.name}</span>
+            <span className="section-summary__dimension-value">{d.score != null ? `${round1(d.score)}/10` : "—"}</span>
+          </div>
+        ))}
+      </div>
+      <button type="button" className="btn btn--ghost" onClick={onBack}>
+        Volver a la rueda
+      </button>
+    </article>
+  );
+}
+
+function ResultRow({ area, score, perception, open, onToggle, detail }) {
+  const level = scoreLevel(score, area.id);
+  const gap = gapStatus(score, perception, area.id);
   const band = interpretationFor(score);
   const rules = priorityFor(score, gap);
   const plan = guidanceFor(area.id, score);
@@ -289,7 +350,7 @@ function ResultRow({ area, score, perception, open, onToggle }) {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={onToggle}
-        disabled={score == null}
+        disabled={score == null && !detail}
       >
         <span className="result__info">
           <span className="result__name">
@@ -297,16 +358,18 @@ function ResultRow({ area, score, perception, open, onToggle }) {
             <span className={`dot dot--${level.tone}`} title={level.label} aria-label={level.label} />
           </span>
           <span className="result__meta">
-            Percepción {perception} · Resultado {score ?? "—"}
+            Percepción {perception} · Resultado {score == null ? "—" : round1(score)}
+            {detail && !detail.complete && ` · ${detail.answered}/${detail.total} puntuables`}
           </span>
         </span>
         <span className={`badge badge--gap is-${gap.dir} is-${gap.strength}`} title={gap.label}>
-          {gap.gap == null ? "Sin responder" : `${gap.gap > 0 ? "+" : ""}${gap.gap}`}
+          {gap.gap == null ? (detail?.answered > 0 ? "Pendiente de completar" : "Sin responder") : `${gap.gap > 0 ? "+" : ""}${gap.gap}`}
         </span>
         <span className="result__chevron" aria-hidden="true" />
       </button>
 
       <div className="result__detail" id={panelId} hidden={!open}>
+        {detail ? <AreaDetail result={detail} areaName={area.name} /> : <>
         {band && (
           <p className="result__band">
             <strong>{band.label}.</strong> {band.text}
@@ -336,9 +399,35 @@ function ResultRow({ area, score, perception, open, onToggle }) {
             <p className="result__resources">Recursos: {plan.resources}</p>
           </>
         )}
+        </>}
       </div>
     </li>
   );
+}
+
+export function AreaDetail({ result, areaName }) {
+  return <>
+    {!result.complete && <p className="hint">Completa las {result.total} preguntas puntuables de {areaName} para ver su resultado en la rueda y compararlo con tu percepción. Las puntuaciones parciales por dimensión son orientativas.</p>}
+    {result.summary && <p className="result__band"><strong>{result.summary.headline}</strong> {result.summary.body}</p>}
+    {result.perceptionText && <p className="result__gap">{result.perceptionText}</p>}
+    <h4 className="result__subtitle">Tus dimensiones</h4>
+    <ul className="dimension-list">{result.dimensions.map((d) => <li key={d.name}>
+      <strong>{d.name} · {d.score == null ? "Sin responder" : `${round1(d.score)}/10`}</strong>
+      <span>{d.complete ? d.band.label : `Parcial: ${d.answered}/${d.total} respuestas`}</span>
+      {d.text && <p>{d.text}</p>}
+    </li>)}</ul>
+    {result.pattern && <p className="result__band"><strong>{result.pattern.headline}</strong> {result.pattern.text}</p>}
+    {result.complete && result.factors.length > 0 && <>
+      <h4 className="result__subtitle">Señales provisionales en {areaName}</h4>
+      <p className="hint">{result.factorNote}</p>
+      <ul className="dimension-list">{result.factors.map((f) => <li key={f.name}><strong>{f.name} · {round1(f.score)}/10</strong><p>{f.text}</p></li>)}</ul>
+    </>}
+    <h4 className="result__subtitle">Tu contexto y prioridades</h4>
+    {!result.contextComplete && <p className="hint">Quedan respuestas de contexto o prioridades por completar para personalizar esta lectura.</p>}
+    {result.importance != null && <p className="result__gap">Prioridad de esta área: {result.importance}/10.</p>}
+    {result.notes.length > 0 && <ul className="actions">{result.notes.map((note) => <li key={note}>{note}</li>)}</ul>}
+    {result.focus && <><h4 className="result__subtitle">Primer foco: {result.focus.name}</h4><p className="result__band">{result.focus.text}</p><p className="result__gap">{result.summary.action_logic}</p></>}
+  </>;
 }
 
 function Reflection() {
@@ -376,7 +465,7 @@ function Reflection() {
   );
 }
 
-function Results({ selfEval, scores }) {
+export function Results({ selfEval, scores, answers }) {
   const ranked = priorityOrder(scores, selfEval);
   const top = ranked[0];
   const [openArea, setOpenArea] = useState(null);
@@ -385,13 +474,13 @@ function Results({ selfEval, scores }) {
     <>
       <p className="hint">
         La <strong>brecha</strong> compara resultado y percepción: verde si sale a favor, naranja si sale en contra, neutra
-        si coinciden. El tono es suave por debajo de 2 puntos y marcado a partir de 2. Aparte, el resultado por debajo de 7
-        se señala como área a trabajar. Despliega un área para ver su lectura y sus acciones.
+        si la diferencia es menor de 1 punto. El tono es suave por debajo de 2 puntos y marcado a partir de 2.
+        Por debajo de 7,5 hay margen de mejora. Cada área muestra su nota al completar sus 22 preguntas puntuables. Despliega un área para ver sus cuatro dimensiones, señales transversales y contexto.
       </p>
 
       {top && (
         <p className={`callout callout--${top.level.tone}`}>
-          <strong>{top.area.name}</strong> encabeza la prioridad: {top.score}/10 · {top.level.label.toLowerCase()}.
+          <strong>{top.area.name}</strong> encabeza la prioridad: {round1(top.score)}/10 · {top.level.label.toLowerCase()}.
         </p>
       )}
 
@@ -402,6 +491,7 @@ function Results({ selfEval, scores }) {
             area={area}
             score={scores[i]}
             perception={selfEval[i]}
+            detail={detailedResult(area.id, answers, selfEval[i])}
             open={openArea === area.id}
             onToggle={() => setOpenArea((cur) => (cur === area.id ? null : area.id))}
           />
@@ -420,15 +510,16 @@ export default function App() {
   const [activeIndex, setActiveIndex] = useState(null);
   const [answers, setAnswers] = useState({});
   const [qIndex, setQIndex] = useState(0);
-  const [openSection, setOpenSection] = useState("self");
+  const [openSection, setOpenSection] = useState("quiz");
+  const [showEditor, setShowEditor] = useState(false);
+  const [sectionFlow, setSectionFlow] = useState(null);
 
   const scores = useMemo(() => areaScores(answers), [answers]);
 
   const answered = Object.keys(answers).length;
   const progress = Math.round((answered / questions.length) * 100);
-  const selfAvg = round1(selfEval.reduce((a, b) => a + b, 0) / TOTAL);
-  const alerts = scores.filter((s) => {
-    const tone = scoreLevel(s).tone;
+  const alerts = scores.filter((s, i) => {
+    const tone = scoreLevel(s, areas[i].id).tone;
     return tone === "warn" || tone === "danger";
   }).length;
 
@@ -442,13 +533,35 @@ export default function App() {
 
   function handleAnswer(id, value) {
     setAnswers((prev) => ({ ...prev, [id]: value }));
-    if (qIndex < questions.length - 1) setTimeout(() => setQIndex((i) => i + 1), 220);
+  }
+
+  function handleStartSection(areaIdx) {
+    setActiveIndex(areaIdx);
+    setSectionFlow("intro");
+    setOpenSection("quiz");
+  }
+
+  function handleSectionSelfEval() {
+    setSectionFlow("questions");
+    setQIndex(0);
+  }
+
+  function handleSectionDone() {
+    setSectionFlow("summary");
+  }
+
+  function handleBackToWheel() {
+    setSectionFlow(null);
+    setActiveIndex(null);
+    setOpenSection("quiz");
   }
 
   function reset() {
     setAnswers({});
     setQIndex(0);
-    setOpenSection("self");
+    setOpenSection("quiz");
+    setSectionFlow(null);
+    setActiveIndex(null);
   }
 
   return (
@@ -458,45 +571,19 @@ export default function App() {
           <h1 className="app__title">Rueda de la Vida</h1>
           <p className="app__subtitle">Medir · Comparar · Priorizar · Actuar</p>
         </div>
-        <button type="button" className="btn btn--ghost" onClick={reset}>
-          Reiniciar
-        </button>
+        <div className="app__header-actions">
+          {LocalQuestionEditor && !showEditor && <button type="button" className="btn btn--ghost" onClick={() => setShowEditor(true)}>Editar preguntas</button>}
+          {!showEditor && <button type="button" className="btn btn--ghost" onClick={reset}>Reiniciar</button>}
+        </div>
       </header>
 
+      {showEditor && LocalQuestionEditor ? <React.Suspense fallback={<p className="hint">Cargando editor local…</p>}><LocalQuestionEditor onClose={() => setShowEditor(false)} /></React.Suspense> :
       <main className={`layout${openSection === "quiz" ? " is-focus" : ""}`}>
         <div className="layout__wheel">
-          <Wheel selfEval={selfEval} scores={scores} activeIndex={activeIndex} onSelect={setActiveIndex} />
+          <Wheel selfEval={selfEval} scores={scores} activeIndex={activeIndex} onSelect={setActiveIndex} onStartSection={handleStartSection} />
         </div>
 
         <div className="layout__stack">
-          <Section
-            id="self"
-            title="Autoevaluación rápida"
-            summary={`Media ${selfAvg}/10`}
-            open={openSection === "self"}
-            onOpen={() => setOpenSection("self")}
-            meter={
-              <span className="chips" aria-hidden="true">
-                {selfEval.map((v, i) => (
-                  <span
-                    key={areas[i].id}
-                    className="chips__item"
-                    title={`${areas[i].name}: ${v}/10`}
-                    style={{ "--aspect-color": areas[i].color, "--fill": `${v * 10}%` }}
-                  />
-                ))}
-              </span>
-            }
-          >
-            <SelfEvaluation
-              selfEval={selfEval}
-              onChange={handleSelf}
-              activeIndex={activeIndex}
-              onSelect={setActiveIndex}
-              onDone={() => setOpenSection("quiz")}
-            />
-          </Section>
-
           <Section
             id="quiz"
             title="Cuestionario"
@@ -509,7 +596,35 @@ export default function App() {
               </span>
             }
           >
-            <Quiz qIndex={qIndex} setQIndex={setQIndex} answers={answers} onAnswer={handleAnswer} />
+            {sectionFlow === "intro" && activeIndex != null ? (
+              <SectionIntro area={areas[activeIndex]} onStart={() => setSectionFlow("selfeval")} />
+            ) : sectionFlow === "selfeval" && activeIndex != null ? (
+              <SectionSelfEval
+                area={areas[activeIndex]}
+                value={selfEval[activeIndex]}
+                onChange={(v) => handleSelf(activeIndex, v)}
+                onStart={handleSectionSelfEval}
+              />
+            ) : sectionFlow === "questions" && activeIndex != null ? (
+              <Quiz
+                qIndex={qIndex}
+                setQIndex={setQIndex}
+                answers={answers}
+                onAnswer={handleAnswer}
+                onDone={handleSectionDone}
+                areaIndex={activeIndex}
+              />
+            ) : sectionFlow === "summary" && activeIndex != null ? (
+              <SectionSummary
+                area={areas[activeIndex]}
+                score={scores[activeIndex]}
+                perception={selfEval[activeIndex]}
+                onBack={handleBackToWheel}
+                answers={answers}
+              />
+            ) : (
+              <Quiz qIndex={qIndex} setQIndex={setQIndex} answers={answers} onAnswer={handleAnswer} onDone={() => setOpenSection("results")} />
+            )}
           </Section>
 
           <Section
@@ -520,10 +635,11 @@ export default function App() {
             onOpen={() => setOpenSection("results")}
             meter={null}
           >
-            <Results selfEval={selfEval} scores={scores} />
+            <Results selfEval={selfEval} scores={scores} answers={answers} />
           </Section>
         </div>
       </main>
+      }
     </div>
   );
 }

@@ -1,0 +1,176 @@
+{
+  "dimensions": {
+    "Calidad de los vínculos": {
+      "question_ids": [
+        "REL_VIN_01",
+        "REL_VIN_02",
+        "REL_VIN_03",
+        "REL_VIN_04",
+        "REL_VIN_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Comunicación": {
+      "question_ids": [
+        "REL_COM_01",
+        "REL_COM_02",
+        "REL_COM_03",
+        "REL_COM_04",
+        "REL_COM_05"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Límites": {
+      "question_ids": [
+        "REL_LIM_01",
+        "REL_LIM_02",
+        "REL_LIM_03",
+        "REL_LIM_04",
+        "REL_LIM_05",
+        "REL_LIM_06"
+      ],
+      "formula": "mean(question_scores)"
+    },
+    "Apoyo y reciprocidad": {
+      "question_ids": [
+        "REL_APO_01",
+        "REL_APO_02",
+        "REL_APO_03",
+        "REL_APO_04",
+        "REL_APO_05",
+        "REL_APO_06"
+      ],
+      "formula": "mean(question_scores)"
+    }
+  },
+  "dimensionWeights": {
+    "Calidad de los vínculos": 0.25,
+    "Comunicación": 0.25,
+    "Límites": 0.25,
+    "Apoyo y reciprocidad": 0.25
+  },
+  "focusOrder": [
+    "Límites",
+    "Apoyo y reciprocidad",
+    "Comunicación",
+    "Calidad de los vínculos"
+  ],
+  "contextNotes": [
+    "Tu red de relaciones ha cambiado. La conexión y el apoyo actuales deben leerse dentro de esa transición.",
+    "Las condiciones de contacto limitan el cuidado de tus vínculos. Revisa opciones realistas junto con la disponibilidad de las otras personas.",
+    "Tu situación en Relaciones ha empeorado durante el último año. Distingue los cambios recientes de las dificultades mantenidas al elegir tu primer paso."
+  ],
+  "contextRules": [
+    {
+      "questionId": "REL_CTX_01",
+      "values": [
+        "distancia",
+        "cambio"
+      ],
+      "noteIndex": 0
+    },
+    {
+      "questionId": "REL_CTX_02",
+      "values": [
+        "algo",
+        "mucho"
+      ],
+      "noteIndex": 1
+    },
+    {
+      "questionId": "REL_CTX_03",
+      "values": [
+        "empeorado_algo",
+        "empeorado_bastante"
+      ],
+      "noteIndex": 2
+    }
+  ],
+  "patternRules": [
+    {
+      "id": "dimension_1_strong_2_weak",
+      "all": [
+        {
+          "dimension": "Calidad de los vínculos",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Comunicación",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_2_strong_3_weak",
+      "all": [
+        {
+          "dimension": "Comunicación",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Límites",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_3_strong_4_weak",
+      "all": [
+        {
+          "dimension": "Límites",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Apoyo y reciprocidad",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "dimension_4_strong_1_weak",
+      "all": [
+        {
+          "dimension": "Apoyo y reciprocidad",
+          "operator": "gte",
+          "value": 7.5
+        },
+        {
+          "dimension": "Calidad de los vínculos",
+          "operator": "lt",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "balanced_progress",
+      "all": [
+        {
+          "dimension": "Calidad de los vínculos",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Comunicación",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Límites",
+          "operator": "gte",
+          "value": 6
+        },
+        {
+          "dimension": "Apoyo y reciprocidad",
+          "operator": "gte",
+          "value": 6
+        }
+      ]
+    }
+  ]
+}

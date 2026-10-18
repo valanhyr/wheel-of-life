@@ -1,0 +1,206 @@
+{
+  "score_bands": [
+    {
+      "id": "critical",
+      "min": 0,
+      "max_exclusive": 4,
+      "label": "Atención alta"
+    },
+    {
+      "id": "attention",
+      "min": 4,
+      "max_exclusive": 6,
+      "label": "Necesita atención"
+    },
+    {
+      "id": "improvement",
+      "min": 6,
+      "max_exclusive": 7.5,
+      "label": "Área de mejora"
+    },
+    {
+      "id": "stable",
+      "min": 7.5,
+      "max_inclusive": 10,
+      "label": "Estable"
+    }
+  ],
+  "dimension_results": {
+    "Satisfacción": {
+      "critical": "Tus respuestas muestran poca satisfacción o sentido en tu situación profesional. Empieza por identificar qué te pesa y qué necesitarías recuperar.",
+      "attention": "Hay aspectos satisfactorios, pero también una distancia importante entre tu actividad y lo que necesitas. Concreta qué cambios tendrían más valor para ti.",
+      "improvement": "Tu satisfacción tiene una base razonable. Puedes reforzar el encaje entre tus tareas, tus intereses y tus prioridades.",
+      "stable": "Tu situación profesional encaja de forma consistente con tus intereses y tiene sentido para ti. Identifica qué sostiene esa satisfacción para conservarlo."
+    },
+    "Desarrollo": {
+      "critical": "Aparecen pocas oportunidades o acciones de aprendizaje. Revisa qué habilidad te sería útil y qué espacio o apoyo tienes para empezar.",
+      "attention": "Existe aprendizaje, pero todavía resulta limitado o irregular. Un objetivo pequeño con práctica y comentarios útiles puede darle continuidad.",
+      "improvement": "Estás desarrollando capacidades útiles. El margen está en aplicar lo aprendido y revisar tus avances con más regularidad.",
+      "stable": "El aprendizaje, la práctica y la revisión de tus resultados forman una base sólida de desarrollo profesional."
+    },
+    "Condiciones": {
+      "critical": "Tus respuestas señalan condiciones que dificultan sostener tu actividad y recuperarte. Revisa primero la carga, los recursos y el apoyo disponible.",
+      "attention": "La carga, los límites o los recursos muestran puntos de atención. Identifica qué ajuste o conversación podría mejorar la sostenibilidad de tu actividad.",
+      "improvement": "Tus condiciones son razonablemente sostenibles, aunque hay margen para reforzar límites, recursos o tiempo de recuperación.",
+      "stable": "Dispones de condiciones, recursos y límites que favorecen una actividad sostenible y espacio para tu vida personal."
+    },
+    "Proyección": {
+      "critical": "Tu dirección profesional o los pasos para avanzar aparecen poco definidos. Empieza por explorar una opción y concretar un siguiente paso realista.",
+      "attention": "Tienes algunas ideas de futuro, pero falta convertirlas en decisiones y acciones regulares ajustadas a tus posibilidades.",
+      "improvement": "Existe una dirección profesional razonable. Puedes afinar plazos, explorar alternativas y mantener el seguimiento de tus pasos.",
+      "stable": "Tienes una dirección clara y la conectas con acciones y revisión de alternativas. Mantén flexibilidad ante cambios de intereses o circunstancias."
+    }
+  },
+  "area_results": {
+    "Trabajo": {
+      "critical": {
+        "headline": "Tu situación profesional necesita atención prioritaria.",
+        "body": "Tus respuestas muestran dificultades en el conjunto de satisfacción, desarrollo, condiciones y proyección. La lectura describe tu situación actual, no tu valor o capacidad profesional.",
+        "action_logic": "Atender primero la dimensión más baja con un paso viable y el apoyo necesario."
+      },
+      "attention": {
+        "headline": "Tu situación profesional tiene una base parcial y puntos importantes de atención.",
+        "body": "Algunas dimensiones sostienen tu actividad y otras la dificultan. El desglose permite distinguir lo que puedes trabajar de las condiciones que requieren apoyo o cambios externos.",
+        "action_logic": "Trabajar la dimensión más baja y conservar lo que ya funciona."
+      },
+      "improvement": {
+        "headline": "Tu situación profesional es funcional, con margen de mejora.",
+        "body": "Hay una base razonable para avanzar. Revisa la dimensión más baja y el contexto antes de elegir un ajuste concreto.",
+        "action_logic": "Elegir una mejora concreta que refuerce la dimensión más baja."
+      },
+      "stable": {
+        "headline": "Tu situación profesional muestra una base sólida.",
+        "body": "La satisfacción, el aprendizaje, las condiciones y la dirección profesional ofrecen una base consistente. Puedes consolidarla y revisar cómo evoluciona con tus prioridades.",
+        "action_logic": "Mantener las prácticas útiles y revisar periódicamente prioridades y condiciones."
+      }
+    }
+  },
+  "perception_results": [
+    {
+      "condition": "abs_gap < 1",
+      "id": "aligned",
+      "text": "Tu percepción inicial y el resultado del cuestionario están bastante alineados. Tus respuestas son coherentes con la imagen que tenías de tu situación profesional."
+    },
+    {
+      "condition": "gap >= 1 and gap < 2",
+      "id": "perception_higher_moderate",
+      "text": "Tu percepción inicial es algo más positiva que el resultado estructurado. Revisa qué dimensiones explican esa diferencia moderada."
+    },
+    {
+      "condition": "gap >= 2",
+      "id": "perception_higher_high",
+      "text": "Tu percepción inicial es claramente más positiva que el resultado estructurado. Las dimensiones pueden ayudarte a identificar aspectos que estaban pasando desapercibidos."
+    },
+    {
+      "condition": "gap <= -1 and gap > -2",
+      "id": "perception_lower_moderate",
+      "text": "Has valorado tu situación profesional de forma algo más negativa que lo que muestran tus respuestas. Puede haber fortalezas que no estabas reconociendo."
+    },
+    {
+      "condition": "gap <= -2",
+      "id": "perception_lower_high",
+      "text": "Tu valoración inicial es bastante más exigente que el resultado estructurado. Revisa los recursos y fortalezas profesionales que reflejan tus respuestas."
+    }
+  ],
+  "transversal_factor_results": {
+    "Coherencia": {
+      "critical": "Aparece distancia entre tu actividad profesional y lo que tiene sentido para ti.",
+      "attention": "Hay aspectos de tu actividad que todavía no encajan con tus prioridades.",
+      "improvement": "Existe un encaje razonable entre tu actividad y tus intereses, con puntos por ajustar.",
+      "stable": "Tus respuestas muestran un encaje consistente entre tu actividad profesional y tus prioridades."
+    },
+    "Gestión de energía": {
+      "critical": "Tu actividad profesional parece dejar poco margen para recuperarte.",
+      "attention": "La carga y la desconexión muestran dificultades que pueden consumir energía.",
+      "improvement": "La energía que exige tu actividad parece manejable, aunque puedes mejorar la recuperación.",
+      "stable": "Tu actividad y tus condiciones parecen permitir una recuperación suficiente."
+    },
+    "Proyección": {
+      "critical": "Cuesta conectar tu situación profesional con una dirección y pasos de futuro.",
+      "attention": "Hay orientación futura, pero falta concretarla o sostener las acciones.",
+      "improvement": "Tus decisiones tienen una dirección razonable que puedes concretar mejor.",
+      "stable": "Conectas tu actividad y tu aprendizaje con pasos hacia tu futuro profesional."
+    },
+    "Hábitos / Consistencia": {
+      "critical": "Las acciones de aprendizaje y avance aparecen poco o de forma irregular.",
+      "attention": "Existen acciones útiles, pero necesitan mayor continuidad.",
+      "improvement": "Tus rutinas de aprendizaje y avance son funcionales, con margen de regularidad.",
+      "stable": "Mantienes acciones consistentes para aprender y avanzar profesionalmente."
+    },
+    "Control / Agencia": {
+      "critical": "Tus respuestas muestran poco margen o pocas acciones para influir sobre tu situación profesional.",
+      "attention": "Puedes explorar qué decisiones, apoyos o recursos aumentarían tu margen de actuación.",
+      "improvement": "Tienes un margen razonable para actuar, aunque hay puntos que puedes reforzar.",
+      "stable": "Identificas recursos y realizas acciones sobre los aspectos profesionales en los que puedes influir."
+    },
+    "Límites": {
+      "critical": "La carga y las demandas parecen desbordar tus límites con frecuencia.",
+      "attention": "Hay dificultades para proteger tu tiempo y ajustar las demandas a tu capacidad.",
+      "improvement": "Tus límites son razonablemente funcionales, con algunos ajustes pendientes.",
+      "stable": "Tus respuestas reflejan límites que ayudan a sostener tu actividad y tu vida personal."
+    },
+    "Perspectiva": {
+      "critical": "Aparecen pocas revisiones de tu actividad, resultados o alternativas profesionales.",
+      "attention": "Puedes ganar claridad revisando lo que funciona y explorando otras posibilidades.",
+      "improvement": "Revisas tu situación con una perspectiva razonable que puedes ampliar.",
+      "stable": "Observas tus resultados y alternativas para revisar tus decisiones profesionales."
+    },
+    "Autoconocimiento": {
+      "critical": "Tus intereses y necesidades profesionales aparecen poco definidos.",
+      "attention": "Reconoces algunas preferencias, pero necesitas concretar qué quieres conservar o cambiar.",
+      "improvement": "Tienes una idea razonable de tus intereses y de la dirección que quieres seguir.",
+      "stable": "Tus respuestas muestran claridad sobre tus intereses, necesidades y dirección profesional."
+    }
+  },
+  "transversal_note": "Los factores transversales calculados solo con Trabajo son señales provisionales basadas en al menos dos respuestas por factor. No se combinan todavía con las respuestas de otras áreas.",
+  "work_patterns": [
+    {
+      "id": "satisfied_conditions_weak",
+      "condition": "Satisfacción >= 6 and Condiciones < 6",
+      "headline": "Te satisface tu actividad, pero cuesta sostenerla.",
+      "text": "El sentido que encuentras en tu trabajo convive con condiciones exigentes. Revisa la carga, los límites y los apoyos antes de añadir nuevos retos."
+    },
+    {
+      "id": "development_good_projection_weak",
+      "condition": "Desarrollo >= 6 and Proyección < 6",
+      "headline": "Aprendes, pero falta conectar ese aprendizaje con una dirección.",
+      "text": "Tu desarrollo tiene una base útil. Concreta hacia dónde quieres orientarlo y qué paso permitiría ponerlo en práctica."
+    },
+    {
+      "id": "projection_good_development_weak",
+      "condition": "Proyección >= 6 and Desarrollo < 6",
+      "headline": "Tienes dirección, pero necesitas recursos para avanzar.",
+      "text": "El futuro que buscas está más definido que las oportunidades o hábitos de aprendizaje. Identifica una habilidad y un apoyo accesible."
+    },
+    {
+      "id": "conditions_good_satisfaction_weak",
+      "condition": "Condiciones >= 6 and Satisfacción < 6",
+      "headline": "Las condiciones ayudan, pero falta satisfacción.",
+      "text": "Una base sostenible no garantiza que la actividad encaje con tus intereses. Revisa qué tareas o cambios aportarían más sentido."
+    },
+    {
+      "id": "conditions_weak_projection_weak",
+      "condition": "Condiciones < 6 and Proyección < 6",
+      "headline": "Necesitas cuidar el presente y abrir opciones de futuro.",
+      "text": "Reforzar las condiciones puede darte margen para explorar alternativas y concretar una dirección sin añadir más carga."
+    },
+    {
+      "id": "all_low",
+      "condition": "all dimensions < 6",
+      "headline": "Tu situación profesional necesita una revisión por pasos.",
+      "text": "Las cuatro dimensiones piden atención. Empieza por el foco más bajo y considera los apoyos y restricciones de tu contexto."
+    },
+    {
+      "id": "all_stable",
+      "condition": "all dimensions >= 7.5",
+      "headline": "Tu situación profesional es sólida y equilibrada.",
+      "text": "Las cuatro dimensiones ofrecen una base estable. Mantén lo que funciona y revisa tus prioridades ante nuevos cambios."
+    },
+    {
+      "id": "mixed",
+      "condition": "fallback",
+      "headline": "Tu situación profesional tiene fortalezas y puntos de atención distintos.",
+      "text": "Revisa la dimensión más baja junto con tu contexto para elegir un primer paso concreto."
+    }
+  ]
+}

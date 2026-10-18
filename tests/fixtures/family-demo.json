@@ -1,0 +1,43 @@
+{
+  "source": "Ejemplo sintético de Familia; no se precarga en la aplicación.",
+  "answers": {
+    "FAM_PER_01": 7,
+    "FAM_IMP_01": 8,
+    "FAM_CON_01": 8,
+    "FAM_CON_02": 8,
+    "FAM_CON_03": "a_menudo",
+    "FAM_CON_04": "rara_vez",
+    "FAM_CON_05": 8,
+    "FAM_COM_01": "a_veces",
+    "FAM_COM_02": "a_veces",
+    "FAM_COM_03": 6,
+    "FAM_COM_04": "a_veces",
+    "FAM_COM_05": "a_veces",
+    "FAM_RES_01": 3,
+    "FAM_RES_02": 3,
+    "FAM_RES_03": "rara_vez",
+    "FAM_RES_04": "a_menudo",
+    "FAM_RES_05": 3,
+    "FAM_RES_06": 3,
+    "FAM_TIE_01": "siempre",
+    "FAM_TIE_02": "siempre",
+    "FAM_TIE_03": "siempre",
+    "FAM_TIE_04": 10,
+    "FAM_TIE_05": "nunca",
+    "FAM_TIE_06": "siempre",
+    "FAM_CTX_01": "distancia",
+    "FAM_CTX_02": "mucho",
+    "FAM_CTX_03": "empeorado_algo",
+    "FAM_CTX_04": "conexion"
+  },
+  "expected": {
+    "dimensions": {
+      "Conexión": 7.666666666666667,
+      "Comunicación": 5.111111111111111,
+      "Reparto de responsabilidades": 2.314814814814815,
+      "Tiempo y presencia": 10.0
+    },
+    "score": 6.273148148148148,
+    "focus": "Reparto de responsabilidades"
+  }
+}
