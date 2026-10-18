@@ -1,7 +1,7 @@
 {
   "schema_version": "0.5-all-areas",
   "method": "Rueda de la Vida — 8 áreas · 32 dimensiones",
-  "notes": "Ocho áreas completas: 28 preguntas por área (22 puntuables con factores transversales, 2 de prioridades y 4 de contexto). Cada área mantiene sus cuatro dimensiones, con 5, 5, 6 y 6 preguntas y un peso del 25 % por dimensión. La percepción inicial se recoge en la autoevaluación.",
+  "notes": "Ocho áreas completas: 27 preguntas por área (22 puntuables con factores transversales, 1 de prioridad y 4 de contexto). Cada área mantiene sus cuatro dimensiones, con 5, 5, 6 y 6 preguntas y un peso del 25 % por dimensión. La percepción inicial se recoge en la autoevaluación.",
   "scales": {
     "frecuencia": {
       "options": [
@@ -170,21 +170,8 @@
       "dimensionWeight": 1,
       "factors": [],
       "factorWeights": {},
-      "responseScale": "perception_0_10"
-    },
-    {
-      "id": "SAL_CAM_01",
-      "areaId": "salud",
-      "dimension": "Prioridades",
-      "text": "¿Cuánto deseas realizar cambios en tu cuidado físico cotidiano?",
-      "type": "valoracion_1_10",
-      "polarity": "positiva",
-      "scored": false,
-      "required": true,
-      "dimensionWeight": 1,
-      "factors": [],
-      "factorWeights": {},
-      "responseScale": "perception_0_10"
+      "responseScale": "priority_1_10",
+      "uid": "ee86d00b-d1dd-45fd-b352-19f45a488790"
     },
     {
       "id": "SAL_HAB_01",
@@ -204,7 +191,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "28d43951-6dc8-42e1-9207-2c3f2a4595e9"
     },
     {
       "id": "SAL_HAB_02",
@@ -224,7 +212,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "b5ec0836-5b52-41aa-ae46-8dd5a77bc5cd"
     },
     {
       "id": "SAL_HAB_03",
@@ -244,7 +233,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "6c162a6f-6c6f-45b1-abcf-53455b61f18e"
     },
     {
       "id": "SAL_HAB_04",
@@ -264,7 +254,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "40348acc-3569-44a0-8e5c-deb5e5cf0da4"
     },
     {
       "id": "SAL_HAB_05",
@@ -284,7 +275,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Límites": 1
-      }
+      },
+      "uid": "616bfa2b-25e7-4c64-bd78-7c32c0f40987"
     },
     {
       "id": "SAL_ENE_01",
@@ -302,7 +294,8 @@
       ],
       "factorWeights": {
         "Gestión de energía": 1
-      }
+      },
+      "uid": "819443d1-f848-48ee-91a9-81548558086f"
     },
     {
       "id": "SAL_ENE_02",
@@ -322,7 +315,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "a9444558-f238-4116-a8c1-e79de73a89c5"
     },
     {
       "id": "SAL_ENE_03",
@@ -342,7 +336,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Límites": 1
-      }
+      },
+      "uid": "21da5248-d3a4-443a-b961-864b3c9743ca"
     },
     {
       "id": "SAL_ENE_04",
@@ -360,7 +355,8 @@
       ],
       "factorWeights": {
         "Gestión de energía": 1
-      }
+      },
+      "uid": "a8fd2cea-e6cd-458e-a91f-904e6526082e"
     },
     {
       "id": "SAL_ENE_05",
@@ -380,7 +376,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "7b3b96ce-2166-42d1-b3ba-839b408feac7"
     },
     {
       "id": "SAL_PRE_01",
@@ -400,7 +397,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "a634b1a1-fcdc-43aa-b98c-03ed9f1720a2"
     },
     {
       "id": "SAL_PRE_02",
@@ -420,7 +418,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "c639382e-fdbd-465a-a6c8-d250042d2847"
     },
     {
       "id": "SAL_PRE_03",
@@ -440,7 +439,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Proyección": 1
-      }
+      },
+      "uid": "121f1d82-314f-4c43-91eb-ae13788c4cf1"
     },
     {
       "id": "SAL_PRE_04",
@@ -460,7 +460,8 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Conexión / Apoyo": 1
-      }
+      },
+      "uid": "7e51fb98-cadf-47b0-b410-51db182b700a"
     },
     {
       "id": "SAL_PRE_05",
@@ -480,7 +481,8 @@
       "factorWeights": {
         "Perspectiva": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "3ad96ebe-e384-4459-ba58-b9750b6e7b10"
     },
     {
       "id": "SAL_PRE_06",
@@ -500,7 +502,8 @@
       "factorWeights": {
         "Perspectiva": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "b2f810d0-89ad-4da7-a272-3500254277b4"
     },
     {
       "id": "SAL_CUE_01",
@@ -520,7 +523,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Límites": 1
-      }
+      },
+      "uid": "49105db7-5fc6-4f9a-bec5-ad31b0ef9c90"
     },
     {
       "id": "SAL_CUE_02",
@@ -540,7 +544,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "72234ba1-6d89-4504-ace6-ddd70656e920"
     },
     {
       "id": "SAL_CUE_03",
@@ -560,7 +565,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "65429cb5-7cdc-49cc-b686-a181cf77aeb6"
     },
     {
       "id": "SAL_CUE_04",
@@ -580,7 +586,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Coherencia": 1
-      }
+      },
+      "uid": "21db860b-b77e-4d9e-a4bb-e6aec3055646"
     },
     {
       "id": "SAL_CUE_05",
@@ -600,7 +607,8 @@
       "factorWeights": {
         "Límites": 1,
         "Comunicación": 1
-      }
+      },
+      "uid": "c6ba2a79-86ea-498f-9b48-118cfc6d38d7"
     },
     {
       "id": "SAL_CUE_06",
@@ -620,7 +628,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "c8f4341d-9f1e-436b-9039-aef0a46a6a50"
     },
     {
       "id": "SAL_CTX_01",
@@ -651,7 +660,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "7430cc76-b2a6-4830-a6c1-185d5116229a"
     },
     {
       "id": "SAL_CTX_02",
@@ -682,7 +692,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "93f8dd54-930e-4e85-9333-7b1983fcd244"
     },
     {
       "id": "SAL_CTX_03",
@@ -717,7 +728,8 @@
           "value": "empeorado_bastante",
           "label": "Ha empeorado bastante"
         }
-      ]
+      ],
+      "uid": "4fd48928-7ec0-4e29-94f0-fc7b5acf9654"
     },
     {
       "id": "SAL_CTX_04",
@@ -760,7 +772,8 @@
           "value": "otra",
           "label": "Otra"
         }
-      ]
+      ],
+      "uid": "c2c448b1-06f0-4f7d-a920-61271a553da7"
     },
     {
       "id": "EMO_IMP_01",
@@ -774,27 +787,14 @@
       "dimensionWeight": 1,
       "factors": [],
       "factorWeights": {},
-      "responseScale": "perception_0_10"
-    },
-    {
-      "id": "EMO_CAM_01",
-      "areaId": "emocional",
-      "dimension": "Prioridades",
-      "text": "¿Cuánto deseas realizar cambios en tu bienestar emocional cotidiano?",
-      "type": "valoracion_1_10",
-      "polarity": "positiva",
-      "scored": false,
-      "required": true,
-      "dimensionWeight": 1,
-      "factors": [],
-      "factorWeights": {},
-      "responseScale": "perception_0_10"
+      "responseScale": "priority_1_10",
+      "uid": "f1324de9-0504-4dcd-a7b4-9ed776955909"
     },
     {
       "id": "EMO_GES_01",
       "areaId": "emocional",
       "dimension": "Gestión emocional",
-      "text": "Cuando algo me afecta, identifico lo que siento y puedo gestionarlo sin que me desborde.",
+      "text": "Cuando algo me afecta, identifico lo que siento y puedo gestionarlo sin que me sobrepase.",
       "type": "single_select",
       "polarity": "positiva",
       "scored": true,
@@ -808,7 +808,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "c16bf8a5-85e8-4e72-b826-4f76ff63d0a3"
     },
     {
       "id": "EMO_GES_02",
@@ -828,7 +829,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "cec65fdb-9b61-4c2a-9233-564b52f42d90"
     },
     {
       "id": "EMO_GES_03",
@@ -848,7 +850,8 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "e2fbc5f2-aff0-42ef-9c56-eb6f246d5dcb"
     },
     {
       "id": "EMO_GES_04",
@@ -868,13 +871,14 @@
       "factorWeights": {
         "Comunicación": 1,
         "Conexión / Apoyo": 1
-      }
+      },
+      "uid": "d50a343e-6067-4762-bda8-12dcbfa1afc1"
     },
     {
       "id": "EMO_GES_05",
       "areaId": "emocional",
       "dimension": "Gestión emocional",
-      "text": "Aparto lo que siento durante tanto tiempo que después me cuesta entender lo que me ocurre.",
+      "text": "Reprimo lo que siento durante tanto tiempo que después me cuesta entender lo que me pasa.",
       "type": "single_select",
       "polarity": "negativa",
       "scored": true,
@@ -888,7 +892,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "dfbb9087-4236-42ac-99d1-ab7f2285e79b"
     },
     {
       "id": "EMO_EST_01",
@@ -908,7 +913,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Límites": 1
-      }
+      },
+      "uid": "f8dcbbb8-afb8-4bad-bb3a-1313d57417ae"
     },
     {
       "id": "EMO_EST_02",
@@ -928,7 +934,8 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "88427c84-843e-4d7f-93fe-50b972ba33e2"
     },
     {
       "id": "EMO_EST_03",
@@ -948,7 +955,8 @@
       "factorWeights": {
         "Límites": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "d2706c47-f622-42ae-a6ea-7ccbfd87cbb3"
     },
     {
       "id": "EMO_EST_04",
@@ -968,7 +976,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "35db120f-1724-4e22-bd9d-e561277a7335"
     },
     {
       "id": "EMO_EST_05",
@@ -988,7 +997,8 @@
       "factorWeights": {
         "Límites": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "b989b900-72b3-4289-a7dd-880cdc08d1b5"
     },
     {
       "id": "EMO_AUT_01",
@@ -1006,7 +1016,8 @@
       ],
       "factorWeights": {
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "dcbbf8c5-e0a3-485a-a61d-d9dbc74c6f77"
     },
     {
       "id": "EMO_AUT_02",
@@ -1026,7 +1037,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "5fff6364-6a84-4130-b568-0e6e7dfed61d"
     },
     {
       "id": "EMO_AUT_03",
@@ -1046,7 +1058,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "941aaffb-371c-4b70-a8fe-b9282d4d8326"
     },
     {
       "id": "EMO_AUT_04",
@@ -1066,7 +1079,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "a1892985-a96c-408b-8fb4-0a02c37661ca"
     },
     {
       "id": "EMO_AUT_05",
@@ -1086,7 +1100,8 @@
       "factorWeights": {
         "Conexión / Apoyo": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "18e5393e-ccc9-4c6c-a165-1c2dbef19d80"
     },
     {
       "id": "EMO_AUT_06",
@@ -1106,7 +1121,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Límites": 1
-      }
+      },
+      "uid": "17965417-3a24-42c1-89af-592b08df0ae9"
     },
     {
       "id": "EMO_CAL_01",
@@ -1126,7 +1142,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "08e71cb7-c5f3-486d-96c5-c51120b70cbf"
     },
     {
       "id": "EMO_CAL_02",
@@ -1146,7 +1163,8 @@
       "factorWeights": {
         "Perspectiva": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "9eda9405-5cf7-4e1b-9657-e2c9e10ce100"
     },
     {
       "id": "EMO_CAL_03",
@@ -1166,7 +1184,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Coherencia": 1
-      }
+      },
+      "uid": "73c24a42-45f9-442a-98b9-55c7cb775f5a"
     },
     {
       "id": "EMO_CAL_04",
@@ -1186,7 +1205,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "413df073-0e39-41c3-ab56-c0ff2b026b24"
     },
     {
       "id": "EMO_CAL_05",
@@ -1206,7 +1226,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "4807b86d-2d3a-4d1d-945e-e14a2e983b66"
     },
     {
       "id": "EMO_CAL_06",
@@ -1226,7 +1247,8 @@
       "factorWeights": {
         "Límites": 1,
         "Coherencia": 1
-      }
+      },
+      "uid": "9c5a8085-a560-45dc-81ce-dc6e2f4892bd"
     },
     {
       "id": "EMO_CTX_01",
@@ -1257,7 +1279,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "8543642e-23b3-4c86-abb6-c5d423d920c6"
     },
     {
       "id": "EMO_CTX_02",
@@ -1288,7 +1311,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "3db63a95-1210-4332-b946-0381665dd049"
     },
     {
       "id": "EMO_CTX_03",
@@ -1323,7 +1347,8 @@
           "value": "empeorado_bastante",
           "label": "Ha empeorado bastante"
         }
-      ]
+      ],
+      "uid": "f2e43ec4-1e8b-4f74-9845-f1930aec23c6"
     },
     {
       "id": "EMO_CTX_04",
@@ -1366,7 +1391,8 @@
           "value": "otra",
           "label": "Otra"
         }
-      ]
+      ],
+      "uid": "5912a385-948c-42ae-91f3-8d52a073c15b"
     },
     {
       "id": "REL_IMP_01",
@@ -1380,21 +1406,8 @@
       "dimensionWeight": 1,
       "factors": [],
       "factorWeights": {},
-      "responseScale": "perception_0_10"
-    },
-    {
-      "id": "REL_CAM_01",
-      "areaId": "relaciones",
-      "dimension": "Prioridades",
-      "text": "¿Cuánto deseas realizar cambios en tus relaciones personales?",
-      "type": "valoracion_1_10",
-      "polarity": "positiva",
-      "scored": false,
-      "required": true,
-      "dimensionWeight": 1,
-      "factors": [],
-      "factorWeights": {},
-      "responseScale": "perception_0_10"
+      "responseScale": "priority_1_10",
+      "uid": "f95c0569-2b11-4ba4-b876-3a959e890bc0"
     },
     {
       "id": "REL_VIN_01",
@@ -1412,7 +1425,8 @@
       ],
       "factorWeights": {
         "Conexión / Apoyo": 1
-      }
+      },
+      "uid": "106d7aaa-08c4-4128-bfc0-5bcf4ec967d2"
     },
     {
       "id": "REL_VIN_02",
@@ -1432,7 +1446,8 @@
       "factorWeights": {
         "Conexión / Apoyo": 1,
         "Comunicación": 1
-      }
+      },
+      "uid": "c8e86a29-1d27-49c9-95de-a6377a62a526"
     },
     {
       "id": "REL_VIN_03",
@@ -1452,7 +1467,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Conexión / Apoyo": 1
-      }
+      },
+      "uid": "77dec67e-90c7-40ab-a4c0-a445d748a2a6"
     },
     {
       "id": "REL_VIN_04",
@@ -1472,7 +1488,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Límites": 1
-      }
+      },
+      "uid": "f5f1254b-4694-4827-aa82-7f904bbe298b"
     },
     {
       "id": "REL_VIN_05",
@@ -1492,7 +1509,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Conexión / Apoyo": 1
-      }
+      },
+      "uid": "5b93659a-48b2-4282-aa82-b260d387bf8a"
     },
     {
       "id": "REL_COM_01",
@@ -1512,7 +1530,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Límites": 1
-      }
+      },
+      "uid": "5827c678-ce21-4aca-a614-e2565a607d29"
     },
     {
       "id": "REL_COM_02",
@@ -1532,7 +1551,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "c99e9d47-0f0d-4846-9cb3-fe93e402e55b"
     },
     {
       "id": "REL_COM_03",
@@ -1552,7 +1572,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Límites": 1
-      }
+      },
+      "uid": "b57d72b9-e641-4c70-9d73-5e594c94cb95"
     },
     {
       "id": "REL_COM_04",
@@ -1572,7 +1593,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "39d5e5eb-8f14-4832-84ee-6e1553a85c96"
     },
     {
       "id": "REL_COM_05",
@@ -1592,7 +1614,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "79d86d1c-12f3-4ea4-afae-92d29ac8396d"
     },
     {
       "id": "REL_LIM_01",
@@ -1612,7 +1635,8 @@
       "factorWeights": {
         "Límites": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "dc7fddec-6fa3-4d2b-8c9d-9ec93919a9e7"
     },
     {
       "id": "REL_LIM_02",
@@ -1632,7 +1656,8 @@
       "factorWeights": {
         "Límites": 1,
         "Comunicación": 1
-      }
+      },
+      "uid": "f71322c0-8475-4a18-97a9-383948c8b8bc"
     },
     {
       "id": "REL_LIM_03",
@@ -1652,7 +1677,8 @@
       "factorWeights": {
         "Límites": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "57f03995-b62b-415c-98d3-ab3a5e049f3d"
     },
     {
       "id": "REL_LIM_04",
@@ -1672,7 +1698,8 @@
       "factorWeights": {
         "Límites": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "8a855f7e-e81b-468e-80eb-51ceac131874"
     },
     {
       "id": "REL_LIM_05",
@@ -1692,7 +1719,8 @@
       "factorWeights": {
         "Límites": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "308e103f-0d2f-484a-ac25-502275e3c297"
     },
     {
       "id": "REL_LIM_06",
@@ -1712,7 +1740,8 @@
       "factorWeights": {
         "Límites": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "394fd07c-ed72-437b-9fe2-aafd6c2dd017"
     },
     {
       "id": "REL_APO_01",
@@ -1730,7 +1759,8 @@
       ],
       "factorWeights": {
         "Conexión / Apoyo": 1
-      }
+      },
+      "uid": "5cf5fecb-6bc7-4e4c-96be-11538319fc52"
     },
     {
       "id": "REL_APO_02",
@@ -1750,7 +1780,8 @@
       "factorWeights": {
         "Conexión / Apoyo": 1,
         "Comunicación": 1
-      }
+      },
+      "uid": "21445474-bf76-4669-86fb-7f03293393f4"
     },
     {
       "id": "REL_APO_03",
@@ -1770,7 +1801,8 @@
       "factorWeights": {
         "Conexión / Apoyo": 1,
         "Coherencia": 1
-      }
+      },
+      "uid": "266e4e47-6ee2-4081-877c-4d02758ca3b3"
     },
     {
       "id": "REL_APO_04",
@@ -1790,7 +1822,8 @@
       "factorWeights": {
         "Conexión / Apoyo": 1,
         "Límites": 1
-      }
+      },
+      "uid": "b10a3adc-5100-441a-a898-774a0917aece"
     },
     {
       "id": "REL_APO_05",
@@ -1810,7 +1843,8 @@
       "factorWeights": {
         "Conexión / Apoyo": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "6eda1b25-9743-4a9b-ace6-17ae3af150c3"
     },
     {
       "id": "REL_APO_06",
@@ -1830,7 +1864,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Conexión / Apoyo": 1
-      }
+      },
+      "uid": "927ecdb0-ebe7-4170-9111-a75eaa86da1f"
     },
     {
       "id": "REL_CTX_01",
@@ -1861,7 +1896,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "a292d709-1753-4349-9d9b-c0cf3a1b0442"
     },
     {
       "id": "REL_CTX_02",
@@ -1892,7 +1928,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "087de876-d8ab-48f6-b04b-89b4671ee4dc"
     },
     {
       "id": "REL_CTX_03",
@@ -1927,7 +1964,8 @@
           "value": "empeorado_bastante",
           "label": "Ha empeorado bastante"
         }
-      ]
+      ],
+      "uid": "91eb759e-9845-4547-b52a-9c1b01c079fa"
     },
     {
       "id": "REL_CTX_04",
@@ -1970,7 +2008,8 @@
           "value": "otra",
           "label": "Otra"
         }
-      ]
+      ],
+      "uid": "055b195f-fe40-44e4-99b1-394383adbb6d"
     },
     {
       "id": "FAM_IMP_01",
@@ -1984,21 +2023,8 @@
       "dimensionWeight": 1,
       "factors": [],
       "factorWeights": {},
-      "responseScale": "perception_0_10"
-    },
-    {
-      "id": "FAM_CAM_01",
-      "areaId": "familia",
-      "dimension": "Prioridades",
-      "text": "¿Cuánto deseas realizar cambios en tu vida familiar?",
-      "type": "valoracion_1_10",
-      "polarity": "positiva",
-      "scored": false,
-      "required": true,
-      "dimensionWeight": 1,
-      "factors": [],
-      "factorWeights": {},
-      "responseScale": "perception_0_10"
+      "responseScale": "priority_1_10",
+      "uid": "807581bc-ed08-4ae5-b028-3b34f2cccdd4"
     },
     {
       "id": "FAM_CON_01",
@@ -2016,7 +2042,8 @@
       ],
       "factorWeights": {
         "Conexión / Apoyo": 1
-      }
+      },
+      "uid": "19114f71-71cb-48b4-bbf2-2e542663258c"
     },
     {
       "id": "FAM_CON_02",
@@ -2036,7 +2063,8 @@
       "factorWeights": {
         "Conexión / Apoyo": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "958bc410-23ae-473f-b522-021ae4c4df60"
     },
     {
       "id": "FAM_CON_03",
@@ -2056,13 +2084,14 @@
       "factorWeights": {
         "Conexión / Apoyo": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "92253883-cad2-4ebf-b0ca-af9dcdeba8a9"
     },
     {
       "id": "FAM_CON_04",
       "areaId": "familia",
       "dimension": "Conexión",
-      "text": "Siento que debo representar un papel que no encaja conmigo para mantener la armonía familiar.",
+      "text": "Siento que actúo de una manera que no encaja conmigo para mantener la armonía familiar.",
       "type": "single_select",
       "polarity": "negativa",
       "scored": true,
@@ -2076,7 +2105,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "11c1f251-ca14-4313-9b5e-41ce314c63bd"
     },
     {
       "id": "FAM_CON_05",
@@ -2096,7 +2126,8 @@
       "factorWeights": {
         "Conexión / Apoyo": 1,
         "Comunicación": 1
-      }
+      },
+      "uid": "961ad4e6-2334-488a-a65d-78d98c9598d6"
     },
     {
       "id": "FAM_COM_01",
@@ -2116,7 +2147,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "05e1ec84-826f-407f-9909-aa3eb743c880"
     },
     {
       "id": "FAM_COM_02",
@@ -2136,7 +2168,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "3f5bc610-042b-4a3f-b5eb-54f673209748"
     },
     {
       "id": "FAM_COM_03",
@@ -2156,7 +2189,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "ff3c2532-7ae0-4338-9dc2-d42eacbc6bc3"
     },
     {
       "id": "FAM_COM_04",
@@ -2176,7 +2210,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "f7487b93-3fa2-474c-9a08-28fcc2779540"
     },
     {
       "id": "FAM_COM_05",
@@ -2196,7 +2231,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Conexión / Apoyo": 1
-      }
+      },
+      "uid": "1e4e2f5f-ac81-4af6-92de-d74b3917758b"
     },
     {
       "id": "FAM_RES_01",
@@ -2216,7 +2252,8 @@
       "factorWeights": {
         "Límites": 1,
         "Comunicación": 1
-      }
+      },
+      "uid": "921f31d3-ae45-4be9-ab94-332f89d1ff7b"
     },
     {
       "id": "FAM_RES_02",
@@ -2236,7 +2273,8 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Comunicación": 1
-      }
+      },
+      "uid": "869c143a-a1d8-4b2f-a8dc-fe3ab386be54"
     },
     {
       "id": "FAM_RES_03",
@@ -2256,7 +2294,8 @@
       "factorWeights": {
         "Perspectiva": 1,
         "Comunicación": 1
-      }
+      },
+      "uid": "2adb5913-445e-4094-ac2f-826c2ec3f51e"
     },
     {
       "id": "FAM_RES_04",
@@ -2276,7 +2315,8 @@
       "factorWeights": {
         "Límites": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "29a60631-a495-41c4-a781-2dc970891108"
     },
     {
       "id": "FAM_RES_05",
@@ -2296,7 +2336,8 @@
       "factorWeights": {
         "Límites": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "4a22534c-41fb-400f-82f3-05654e47b25f"
     },
     {
       "id": "FAM_RES_06",
@@ -2316,7 +2357,8 @@
       "factorWeights": {
         "Perspectiva": 1,
         "Coherencia": 1
-      }
+      },
+      "uid": "1469c820-912b-4d8f-9614-f3839d35b685"
     },
     {
       "id": "FAM_TIE_01",
@@ -2336,7 +2378,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Coherencia": 1
-      }
+      },
+      "uid": "480d6dfa-8aaa-4cca-b361-a6eee53279e0"
     },
     {
       "id": "FAM_TIE_02",
@@ -2356,7 +2399,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Conexión / Apoyo": 1
-      }
+      },
+      "uid": "c117b21a-998e-4342-8ee8-36cc0eafa027"
     },
     {
       "id": "FAM_TIE_03",
@@ -2376,7 +2420,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Límites": 1
-      }
+      },
+      "uid": "4a85031d-2781-45a2-8ffe-776c6500a4c9"
     },
     {
       "id": "FAM_TIE_04",
@@ -2396,7 +2441,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "4034c903-df6f-4322-8bcf-be224cd5e520"
     },
     {
       "id": "FAM_TIE_05",
@@ -2416,7 +2462,8 @@
       "factorWeights": {
         "Conexión / Apoyo": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "1c071bd5-daa1-4ec1-9473-1031f82f2d17"
     },
     {
       "id": "FAM_TIE_06",
@@ -2436,7 +2483,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Límites": 1
-      }
+      },
+      "uid": "43ab46ea-c680-4b7b-bc92-2aab559fc9d1"
     },
     {
       "id": "FAM_CTX_01",
@@ -2471,7 +2519,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "be3c4e9c-71af-4395-89af-ce1d2679bd3d"
     },
     {
       "id": "FAM_CTX_02",
@@ -2502,7 +2551,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "ffb94e4d-2c29-4df6-8feb-0a1e4b44cb78"
     },
     {
       "id": "FAM_CTX_03",
@@ -2537,7 +2587,8 @@
           "value": "empeorado_bastante",
           "label": "Ha empeorado bastante"
         }
-      ]
+      ],
+      "uid": "592eff8c-0d47-4a4e-bc4a-a4006983cdb1"
     },
     {
       "id": "FAM_CTX_04",
@@ -2580,7 +2631,8 @@
           "value": "otra",
           "label": "Otra"
         }
-      ]
+      ],
+      "uid": "dff312f7-364a-4304-ac7c-859250641d22"
     },
     {
       "id": "TRA_IMP_01",
@@ -2594,21 +2646,8 @@
       "dimensionWeight": 1,
       "factors": [],
       "factorWeights": {},
-      "responseScale": "perception_0_10"
-    },
-    {
-      "id": "TRA_CAM_01",
-      "areaId": "trabajo",
-      "dimension": "Prioridades",
-      "text": "¿Cuánto deseas realizar cambios en tu situación profesional actual?",
-      "type": "valoracion_1_10",
-      "polarity": "positiva",
-      "scored": false,
-      "required": true,
-      "dimensionWeight": 1,
-      "factors": [],
-      "factorWeights": {},
-      "responseScale": "perception_0_10"
+      "responseScale": "priority_1_10",
+      "uid": "3645546f-b523-4d9f-ae08-32c7dd216091"
     },
     {
       "id": "TRA_SAT_01",
@@ -2626,7 +2665,8 @@
       ],
       "factorWeights": {
         "Coherencia": 1
-      }
+      },
+      "uid": "c07c87ce-700d-44ad-9d33-8efc1c8da29e"
     },
     {
       "id": "TRA_SAT_02",
@@ -2646,7 +2686,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "254fbb64-f49a-49de-9740-8348c46086d5"
     },
     {
       "id": "TRA_SAT_03",
@@ -2666,7 +2707,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Proyección": 1
-      }
+      },
+      "uid": "90b33845-da17-4b3e-9780-4ec2d778cac9"
     },
     {
       "id": "TRA_SAT_04",
@@ -2686,13 +2728,14 @@
       "factorWeights": {
         "Coherencia": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "79dfa1f8-2da5-4122-80b1-e35802df7a49"
     },
     {
       "id": "TRA_SAT_05",
       "areaId": "trabajo",
       "dimension": "Satisfacción",
-      "text": "Identifico qué aspectos de mi actividad profesional me satisfacen y cuáles necesitaría cambiar.",
+      "text": "Identifico qué aspectos de mi actividad profesional me satisfacen.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
       "scored": true,
@@ -2706,7 +2749,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "2236ec6b-b94b-4c62-848a-8473f32f0c17"
     },
     {
       "id": "TRA_DES_01",
@@ -2726,7 +2770,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "cf7ce36e-79f3-466a-8912-4dbf9c85844a"
     },
     {
       "id": "TRA_DES_02",
@@ -2746,7 +2791,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "c30290f4-906c-442c-bba5-995127c4e479"
     },
     {
       "id": "TRA_DES_03",
@@ -2764,7 +2810,8 @@
       ],
       "factorWeights": {
         "Proyección": 1
-      }
+      },
+      "uid": "257bfe0a-0c19-4e33-9f7c-58f01f8744b1"
     },
     {
       "id": "TRA_DES_04",
@@ -2784,7 +2831,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "1ef40d53-9cae-4238-b1af-3c3f16eaa4c7"
     },
     {
       "id": "TRA_DES_05",
@@ -2804,7 +2852,8 @@
       "factorWeights": {
         "Perspectiva": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "4b45e1bc-86ba-4817-8733-3bc0a0492ae6"
     },
     {
       "id": "TRA_CON_01",
@@ -2824,7 +2873,8 @@
       "factorWeights": {
         "Límites": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "03b9cf46-4aa2-4a50-97b3-021cac76f70d"
     },
     {
       "id": "TRA_CON_02",
@@ -2844,7 +2894,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Límites": 1
-      }
+      },
+      "uid": "88537484-11c6-48f8-80c0-1c0120f9d649"
     },
     {
       "id": "TRA_CON_03",
@@ -2864,7 +2915,8 @@
       "factorWeights": {
         "Límites": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "803e429c-162d-4a90-8dd5-de6488c7b187"
     },
     {
       "id": "TRA_CON_04",
@@ -2882,7 +2934,8 @@
       ],
       "factorWeights": {
         "Control / Agencia": 1
-      }
+      },
+      "uid": "559e43ce-5c2a-4264-9795-a0f61d2a5877"
     },
     {
       "id": "TRA_CON_05",
@@ -2902,7 +2955,8 @@
       "factorWeights": {
         "Límites": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "5c88f839-a714-48f5-bc38-09c22297ae90"
     },
     {
       "id": "TRA_CON_06",
@@ -2922,7 +2976,8 @@
       "factorWeights": {
         "Límites": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "a8fbfab0-249a-4370-82a1-e989481796c3"
     },
     {
       "id": "TRA_PRO_01",
@@ -2942,7 +2997,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "06897158-c590-4b1d-bb13-128e34e103b5"
     },
     {
       "id": "TRA_PRO_02",
@@ -2962,7 +3018,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "b173700d-6847-4188-9350-5d8c45b1126e"
     },
     {
       "id": "TRA_PRO_03",
@@ -2982,7 +3039,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "1c6b744d-3e94-46fd-afdb-b0f7e2d75c59"
     },
     {
       "id": "TRA_PRO_04",
@@ -3002,7 +3060,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "2dd100ff-0015-45f1-b762-115aa69ae4f7"
     },
     {
       "id": "TRA_PRO_05",
@@ -3022,7 +3081,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "32dd6f28-14ef-4f8e-b95c-98147d939cc2"
     },
     {
       "id": "TRA_PRO_06",
@@ -3042,7 +3102,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "26c66936-3460-46eb-b7af-b74ffeba18bd"
     },
     {
       "id": "TRA_CTX_01",
@@ -3085,7 +3146,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "b28d7243-023f-48a4-89a2-192308b632a0"
     },
     {
       "id": "TRA_CTX_02",
@@ -3116,7 +3178,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "abce0f01-b7ac-40ee-86c7-c8022a24c607"
     },
     {
       "id": "TRA_CTX_03",
@@ -3151,7 +3214,8 @@
           "value": "empeorado_bastante",
           "label": "Empeorado bastante"
         }
-      ]
+      ],
+      "uid": "9b0ed4eb-c3e6-4ee1-ab23-eacde5b71240"
     },
     {
       "id": "TRA_CTX_04",
@@ -3198,7 +3262,8 @@
           "value": "otra",
           "label": "Otra"
         }
-      ]
+      ],
+      "uid": "97440c88-d4ea-4541-b6b8-08b6a38f1403"
     },
     {
       "id": "FIN_IMP_01",
@@ -3209,24 +3274,11 @@
       "polarity": "positiva",
       "scored": false,
       "required": true,
-      "responseScale": "perception_0_10",
+      "responseScale": "priority_1_10",
       "dimensionWeight": 1,
       "factors": [],
-      "factorWeights": {}
-    },
-    {
-      "id": "FIN_DES_01",
-      "areaId": "finanzas",
-      "dimension": "Prioridades personales",
-      "text": "¿Cuánto deseas cambiar o mejorar tu situación financiera actual?",
-      "type": "single_select",
-      "polarity": "positiva",
-      "scored": false,
-      "required": true,
-      "responseScale": "perception_0_10",
-      "dimensionWeight": 1,
-      "factors": [],
-      "factorWeights": {}
+      "factorWeights": {},
+      "uid": "655d31e9-b675-46e0-8214-34f5718338b2"
     },
     {
       "id": "FIN_CON_01",
@@ -3244,7 +3296,8 @@
       ],
       "factorWeights": {
         "Control / Agencia": 1
-      }
+      },
+      "uid": "06cad645-01e0-4352-a8d7-8d0512c1efc9"
     },
     {
       "id": "FIN_CON_02",
@@ -3264,13 +3317,14 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "5eb10aa4-055d-48af-8cb6-46c6c88a91d7"
     },
     {
       "id": "FIN_CON_03",
       "areaId": "finanzas",
       "dimension": "Control",
-      "text": "Sé cuáles son mis principales categorías de gasto y cuánto representan aproximadamente.",
+      "text": "Sé en qué categorías gasto principalmente.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
       "scored": true,
@@ -3284,7 +3338,8 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "4b2f91bc-015d-4633-b784-678f06880fca"
     },
     {
       "id": "FIN_CON_04",
@@ -3304,13 +3359,14 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Proyección": 1
-      }
+      },
+      "uid": "cb6853fc-45d9-4f65-a629-ac21f33ead55"
     },
     {
       "id": "FIN_CON_05",
       "areaId": "finanzas",
       "dimension": "Control",
-      "text": "Evito revisar mis cuentas porque me genera incomodidad o prefiero no saber exactamente cómo estoy.",
+      "text": "Evito revisar mis cuentas aunque me ayudaría a tener más claridad.",
       "type": "single_select",
       "polarity": "negativa",
       "scored": true,
@@ -3324,7 +3380,8 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "e85fecae-9494-445c-b668-cb267dcf51f1"
     },
     {
       "id": "FIN_SEG_01",
@@ -3342,7 +3399,8 @@
       ],
       "factorWeights": {
         "Control / Agencia": 1
-      }
+      },
+      "uid": "39eb2c42-0aab-4594-81fd-e4fe9cd5937c"
     },
     {
       "id": "FIN_SEG_02",
@@ -3362,7 +3420,8 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Proyección": 1
-      }
+      },
+      "uid": "e6a8e93b-d220-4584-b732-7450b4a4dc4d"
     },
     {
       "id": "FIN_SEG_03",
@@ -3382,7 +3441,8 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Proyección": 1
-      }
+      },
+      "uid": "656e9b9e-7629-4003-8da8-13c2f9a1d09a"
     },
     {
       "id": "FIN_SEG_04",
@@ -3400,7 +3460,8 @@
       ],
       "factorWeights": {
         "Control / Agencia": 1
-      }
+      },
+      "uid": "e0c17476-26b9-4139-b729-df3d68875f4f"
     },
     {
       "id": "FIN_SEG_05",
@@ -3420,7 +3481,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "faad95f4-ea2e-4ab8-981b-5e804a862459"
     },
     {
       "id": "FIN_HAB_01",
@@ -3440,7 +3502,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Proyección": 1
-      }
+      },
+      "uid": "b7190130-304a-4981-a37d-02c4793476d8"
     },
     {
       "id": "FIN_HAB_02",
@@ -3460,7 +3523,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "02dd3201-a19d-4b42-8a60-48a1b88b5274"
     },
     {
       "id": "FIN_HAB_03",
@@ -3480,7 +3544,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "8f832a52-5d6c-483a-baa6-0eded135dbe8"
     },
     {
       "id": "FIN_HAB_04",
@@ -3500,7 +3565,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "e81561d3-e955-4429-a65c-9af9539c331f"
     },
     {
       "id": "FIN_HAB_05",
@@ -3520,7 +3586,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "c2b0f029-13f8-407d-9441-c8b56712e8e0"
     },
     {
       "id": "FIN_HAB_06",
@@ -3540,7 +3607,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Proyección": 1
-      }
+      },
+      "uid": "218dd047-9b4a-4b6e-a673-1e8691846663"
     },
     {
       "id": "FIN_PRO_01",
@@ -3560,7 +3628,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "1b558c0c-c33f-4ac2-8bcd-c0767d878304"
     },
     {
       "id": "FIN_PRO_02",
@@ -3580,7 +3649,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "85c96cca-e230-45bd-a8ac-f8b2f116ccbe"
     },
     {
       "id": "FIN_PRO_03",
@@ -3600,7 +3670,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "fbc31203-78e7-4502-97eb-e1a6c879a1ea"
     },
     {
       "id": "FIN_PRO_04",
@@ -3620,7 +3691,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "811e43ff-e499-43b5-94ad-6dca711ff6d7"
     },
     {
       "id": "FIN_PRO_05",
@@ -3640,7 +3712,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "fbb39521-eb8d-431f-8755-f3bcf399bbe4"
     },
     {
       "id": "FIN_PRO_06",
@@ -3660,7 +3733,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "5aadd79f-7dff-483e-b2f3-dc54760bb25b"
     },
     {
       "id": "FIN_CTX_01",
@@ -3695,7 +3769,8 @@
       ],
       "dimensionWeight": 1,
       "factors": [],
-      "factorWeights": {}
+      "factorWeights": {},
+      "uid": "81f87b19-7ebd-45a3-a7cd-546d140683c9"
     },
     {
       "id": "FIN_CTX_02",
@@ -3726,7 +3801,8 @@
       ],
       "dimensionWeight": 1,
       "factors": [],
-      "factorWeights": {}
+      "factorWeights": {},
+      "uid": "ea9f8981-6875-4ee9-9802-36ada337b906"
     },
     {
       "id": "FIN_CTX_03",
@@ -3761,7 +3837,8 @@
       ],
       "dimensionWeight": 1,
       "factors": [],
-      "factorWeights": {}
+      "factorWeights": {},
+      "uid": "16463749-6424-4390-bbd5-25f0de7959f4"
     },
     {
       "id": "FIN_CTX_04",
@@ -3812,7 +3889,8 @@
       ],
       "dimensionWeight": 1,
       "factors": [],
-      "factorWeights": {}
+      "factorWeights": {},
+      "uid": "b749a667-7478-4d8b-80a1-c7ed7aaac7e2"
     },
     {
       "id": "CRE_IMP_01",
@@ -3826,27 +3904,14 @@
       "dimensionWeight": 1,
       "factors": [],
       "factorWeights": {},
-      "responseScale": "perception_0_10"
-    },
-    {
-      "id": "CRE_CAM_01",
-      "areaId": "crecimiento",
-      "dimension": "Prioridades",
-      "text": "¿Cuánto deseas realizar cambios en tu crecimiento personal?",
-      "type": "valoracion_1_10",
-      "polarity": "positiva",
-      "scored": false,
-      "required": true,
-      "dimensionWeight": 1,
-      "factors": [],
-      "factorWeights": {},
-      "responseScale": "perception_0_10"
+      "responseScale": "priority_1_10",
+      "uid": "8c828da5-3b33-40b5-9f70-e829412230fb"
     },
     {
       "id": "CRE_AUT_01",
       "areaId": "crecimiento",
       "dimension": "Autoconocimiento",
-      "text": "Entiendo con suficiente claridad qué quiero, qué necesito y qué me está pasando.",
+      "text": "Entiendo con suficiente claridad qué quiero y qué necesito.",
       "type": "valoracion_1_10",
       "polarity": "positiva",
       "scored": true,
@@ -3860,7 +3925,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "98c01e71-28f4-4ecc-8d90-95474fcb9648"
     },
     {
       "id": "CRE_AUT_02",
@@ -3880,7 +3946,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "74fb4de9-9bf9-4c70-b00e-6cf312c7c7b8"
     },
     {
       "id": "CRE_AUT_03",
@@ -3900,7 +3967,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Coherencia": 1
-      }
+      },
+      "uid": "c829c63e-0e86-42d8-aa79-b0db9f19625f"
     },
     {
       "id": "CRE_AUT_04",
@@ -3920,7 +3988,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "4b26e8ec-756a-4f2a-a8cb-b73d8b781371"
     },
     {
       "id": "CRE_AUT_05",
@@ -3940,7 +4009,8 @@
       "factorWeights": {
         "Perspectiva": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "0933f6c3-9472-4bca-9a6b-38fca4e64ba5"
     },
     {
       "id": "CRE_APR_01",
@@ -3960,7 +4030,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Proyección": 1
-      }
+      },
+      "uid": "a72f17d5-ceb9-4d97-84ec-1a51c0b63098"
     },
     {
       "id": "CRE_APR_02",
@@ -3980,7 +4051,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "b447bdd8-ea8f-4c02-ab58-c65a81300efb"
     },
     {
       "id": "CRE_APR_03",
@@ -4000,7 +4072,8 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Conexión / Apoyo": 1
-      }
+      },
+      "uid": "a091c584-5bf5-45bd-9cc5-e64c18dc357e"
     },
     {
       "id": "CRE_APR_04",
@@ -4020,7 +4093,8 @@
       "factorWeights": {
         "Perspectiva": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "faa0ae29-d27e-4913-8a13-15ca252bb40b"
     },
     {
       "id": "CRE_APR_05",
@@ -4040,7 +4114,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "0c71907e-290f-4265-b417-43dcfcae9c9d"
     },
     {
       "id": "CRE_OBJ_01",
@@ -4058,7 +4133,8 @@
       ],
       "factorWeights": {
         "Proyección": 1
-      }
+      },
+      "uid": "1da06d55-98bc-40b7-9eb1-aec300a259df"
     },
     {
       "id": "CRE_OBJ_02",
@@ -4078,7 +4154,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "dfcdc870-a4d6-4fd2-a563-dd2ae5990cab"
     },
     {
       "id": "CRE_OBJ_03",
@@ -4098,7 +4175,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "95f7dcb1-4403-40a1-9ca5-05ea94b9c2d5"
     },
     {
       "id": "CRE_OBJ_04",
@@ -4118,7 +4196,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "a075cffb-4100-4e41-8bbb-abdcd1e4754b"
     },
     {
       "id": "CRE_OBJ_05",
@@ -4138,7 +4217,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "21d6ae71-0c3b-476b-aba0-53170841c8b4"
     },
     {
       "id": "CRE_OBJ_06",
@@ -4158,7 +4238,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Proyección": 1
-      }
+      },
+      "uid": "61d8174e-b540-430c-99d6-970ea7b014d7"
     },
     {
       "id": "CRE_COH_01",
@@ -4178,7 +4259,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "9cb2e383-25b7-435b-87d4-45e965083de6"
     },
     {
       "id": "CRE_COH_02",
@@ -4198,7 +4280,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "56ec4a63-9654-4d78-8405-832fee7954a0"
     },
     {
       "id": "CRE_COH_03",
@@ -4218,7 +4301,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "dc49cc39-fa30-464b-80ec-39ace77a97d1"
     },
     {
       "id": "CRE_COH_04",
@@ -4238,7 +4322,8 @@
       "factorWeights": {
         "Límites": 1,
         "Coherencia": 1
-      }
+      },
+      "uid": "6dae7593-6092-4bd6-ae5b-d3003e509a35"
     },
     {
       "id": "CRE_COH_05",
@@ -4258,7 +4343,8 @@
       "factorWeights": {
         "Perspectiva": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "32dab609-c40f-45b4-b9a3-14781e9e2e45"
     },
     {
       "id": "CRE_COH_06",
@@ -4278,7 +4364,8 @@
       "factorWeights": {
         "Límites": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "68d63f43-bf32-4a0a-b2da-05fcc7ba41ef"
     },
     {
       "id": "CRE_CTX_01",
@@ -4309,7 +4396,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "79b70c1d-17b6-4283-b534-35d60268a1d4"
     },
     {
       "id": "CRE_CTX_02",
@@ -4340,7 +4428,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "e6e5b040-20a5-4884-a75b-f2a6167889c6"
     },
     {
       "id": "CRE_CTX_03",
@@ -4375,7 +4464,8 @@
           "value": "empeorado_bastante",
           "label": "Ha empeorado bastante"
         }
-      ]
+      ],
+      "uid": "27d7df35-e3f0-4208-a5b0-167c52fdbf6b"
     },
     {
       "id": "CRE_CTX_04",
@@ -4418,7 +4508,8 @@
           "value": "otra",
           "label": "Otra"
         }
-      ]
+      ],
+      "uid": "eb533620-3425-4eae-8e2a-7e6b7486f131"
     },
     {
       "id": "OCI_IMP_01",
@@ -4432,21 +4523,8 @@
       "dimensionWeight": 1,
       "factors": [],
       "factorWeights": {},
-      "responseScale": "perception_0_10"
-    },
-    {
-      "id": "OCI_CAM_01",
-      "areaId": "ocio",
-      "dimension": "Prioridades",
-      "text": "¿Cuánto deseas realizar cambios en tu ocio y tiempo personal?",
-      "type": "valoracion_1_10",
-      "polarity": "positiva",
-      "scored": false,
-      "required": true,
-      "dimensionWeight": 1,
-      "factors": [],
-      "factorWeights": {},
-      "responseScale": "perception_0_10"
+      "responseScale": "priority_1_10",
+      "uid": "a9440fdc-c5bf-449e-afd6-20ff7afd184c"
     },
     {
       "id": "OCI_TIE_01",
@@ -4466,7 +4544,8 @@
       "factorWeights": {
         "Límites": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "1813fc76-bb25-4e70-9b7f-5e93953f2132"
     },
     {
       "id": "OCI_TIE_02",
@@ -4486,7 +4565,8 @@
       "factorWeights": {
         "Proyección": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "c985ed97-a50c-4986-8e13-8302bb09a262"
     },
     {
       "id": "OCI_TIE_03",
@@ -4506,7 +4586,8 @@
       "factorWeights": {
         "Límites": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "f1e0f5b6-5b30-4e9d-933d-5c10adeb6550"
     },
     {
       "id": "OCI_TIE_04",
@@ -4526,7 +4607,8 @@
       "factorWeights": {
         "Control / Agencia": 1,
         "Límites": 1
-      }
+      },
+      "uid": "366f6830-3c14-4c27-b453-516e1e0180b2"
     },
     {
       "id": "OCI_TIE_05",
@@ -4546,7 +4628,8 @@
       "factorWeights": {
         "Límites": 1,
         "Hábitos / Consistencia": 1
-      }
+      },
+      "uid": "7b3687d1-a4a3-46b4-a7ec-f0fe591b1bde"
     },
     {
       "id": "OCI_DIS_01",
@@ -4566,7 +4649,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "eac727d9-c8c4-447e-bc98-7a7d1360ef97"
     },
     {
       "id": "OCI_DIS_02",
@@ -4586,7 +4670,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Coherencia": 1
-      }
+      },
+      "uid": "4b03f52e-05b1-4a14-9cf9-268883ca77cb"
     },
     {
       "id": "OCI_DIS_03",
@@ -4606,7 +4691,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "775b52bd-0878-4cf5-99bb-351cdfcbbe24"
     },
     {
       "id": "OCI_DIS_04",
@@ -4626,7 +4712,8 @@
       "factorWeights": {
         "Perspectiva": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "65deda8d-31e6-4675-9d23-8ef50457ab88"
     },
     {
       "id": "OCI_DIS_05",
@@ -4646,7 +4733,8 @@
       "factorWeights": {
         "Perspectiva": 1,
         "Coherencia": 1
-      }
+      },
+      "uid": "ac1fe6be-4128-4314-bc4a-6b650a041868"
     },
     {
       "id": "OCI_DES_01",
@@ -4664,7 +4752,8 @@
       ],
       "factorWeights": {
         "Gestión de energía": 1
-      }
+      },
+      "uid": "4b50881e-e89b-435e-b647-a43436c9f1a6"
     },
     {
       "id": "OCI_DES_02",
@@ -4684,7 +4773,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "02717a40-a467-498e-b0f2-0e3a03a40ed9"
     },
     {
       "id": "OCI_DES_03",
@@ -4704,7 +4794,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Límites": 1
-      }
+      },
+      "uid": "c839d07b-b6af-47af-be05-e67c44df329e"
     },
     {
       "id": "OCI_DES_04",
@@ -4724,7 +4815,8 @@
       "factorWeights": {
         "Autoconocimiento": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "807cc2cb-78e3-40a2-961e-92a66da63f74"
     },
     {
       "id": "OCI_DES_05",
@@ -4744,7 +4836,8 @@
       "factorWeights": {
         "Límites": 1,
         "Gestión de energía": 1
-      }
+      },
+      "uid": "d7a67de4-b612-4983-8d15-974d1ffc7d1c"
     },
     {
       "id": "OCI_DES_06",
@@ -4764,7 +4857,8 @@
       "factorWeights": {
         "Gestión de energía": 1,
         "Perspectiva": 1
-      }
+      },
+      "uid": "9e71723c-6b12-4e32-9699-814a2e16751b"
     },
     {
       "id": "OCI_PRI_01",
@@ -4784,7 +4878,8 @@
       "factorWeights": {
         "Límites": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "9c2458f7-9c78-4874-a4fa-9a62ab055dfd"
     },
     {
       "id": "OCI_PRI_02",
@@ -4804,7 +4899,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Autoconocimiento": 1
-      }
+      },
+      "uid": "3343fc88-baf8-43f9-bb3a-04da1287886f"
     },
     {
       "id": "OCI_PRI_03",
@@ -4824,7 +4920,8 @@
       "factorWeights": {
         "Comunicación": 1,
         "Límites": 1
-      }
+      },
+      "uid": "6f2ba71f-6259-478c-a6c8-0579a613da7d"
     },
     {
       "id": "OCI_PRI_04",
@@ -4844,7 +4941,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Límites": 1
-      }
+      },
+      "uid": "f42f7b86-f494-47c9-9eaf-8f960fba9fdc"
     },
     {
       "id": "OCI_PRI_05",
@@ -4864,7 +4962,8 @@
       "factorWeights": {
         "Hábitos / Consistencia": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "232ec754-3d68-413e-a0e6-d9b2225186ad"
     },
     {
       "id": "OCI_PRI_06",
@@ -4884,7 +4983,8 @@
       "factorWeights": {
         "Coherencia": 1,
         "Control / Agencia": 1
-      }
+      },
+      "uid": "e5d8eac3-88b4-4fc7-b0be-e913dbcef18f"
     },
     {
       "id": "OCI_CTX_01",
@@ -4919,7 +5019,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "995930b7-9072-4359-8648-0ce946aa2590"
     },
     {
       "id": "OCI_CTX_02",
@@ -4950,7 +5051,8 @@
           "value": "prefiero_no_responder",
           "label": "Prefiero no responder"
         }
-      ]
+      ],
+      "uid": "0a787a08-1d2b-431d-817e-c2bb9dd0b8a2"
     },
     {
       "id": "OCI_CTX_03",
@@ -4985,7 +5087,8 @@
           "value": "empeorado_bastante",
           "label": "Ha empeorado bastante"
         }
-      ]
+      ],
+      "uid": "788173a0-1e6f-4d5e-b285-09f8335a7429"
     },
     {
       "id": "OCI_CTX_04",
@@ -5028,7 +5131,8 @@
           "value": "otra",
           "label": "Otra"
         }
-      ]
+      ],
+      "uid": "aa6904e1-e1c2-4e2f-8b3d-6127f303ab6d"
     }
   ]
 }
