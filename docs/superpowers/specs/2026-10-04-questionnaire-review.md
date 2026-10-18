@@ -1,26 +1,33 @@
 # Revisión y evolución del cuestionario
 
 **Fecha:** 2026-10-04
-**Estado:** propuesta para validar
+**Actualizado:** 2026-10-17
+**Estado:** activo — enfocado en revisión editorial
 
 ## Objetivo
 
-Revisar las 224 preguntas del cuestionario de la Rueda de la Vida para mejorar su claridad, pertinencia, accesibilidad y utilidad, preservando la trazabilidad de la puntuación. La revisión debe distinguir entre cambios editoriales inocuos y cambios que afectan a las dimensiones, factores, escalas o resultados.
+Revisar las 216 preguntas del cuestionario de la Rueda de la Vida para mejorar su claridad, pertinencia, accesibilidad y utilidad, preservando la trazabilidad de la puntuación. La revisión debe distinguir entre cambios editoriales inocuos y cambios que afectan a las dimensiones, factores, escalas o resultados.
 
 ## Alcance actual
 
-- Ocho áreas de 28 preguntas: 22 puntuables, 2 de prioridades y 4 de contexto.
+- Ocho áreas de 27 preguntas: 22 puntuables, 1 de prioridad y 4 de contexto.
 - Cuatro dimensiones por área, ponderadas al 25 %.
 - Preguntas declaradas en `src/data/questions.json`; reglas, catálogos y pruebas dependen de sus IDs, dimensiones, polaridades, escalas y factores.
-- La aplicación exige responder las 224 preguntas para completar el recorrido actual.
+- La aplicación exige responder las 216 preguntas para completar el recorrido actual.
 
-## Hallazgos iniciales
+## Resoluciones previas (specs posteriores)
+
+| Hallazgo original | Resuelto por | Estado |
+|---|---|---|
+| Carga alta (216 respuestas obligatorias) | `2026-10-12-section-quiz-flow` | ✅ Recorrido por área con intro/self-eval/summary |
+| Escalas mixtas (frecuencia + valoración) | `2026-10-12-uniform-question-options`, `2026-10-12-whole-number-priority-scale` | ✅ Formato unificado y consistente |
+| Señales transversales reutilizan preguntas | `2026-10-10-guided-question-editor` | ✅ Análisis de impacto con fixtures |
+
+## Hallazgos pendientes
 
 1. La estructura de datos y cálculo está bien cubierta por pruebas, pero no existe una rúbrica para revisar calidad editorial, inclusividad, carga de respuesta, temporalidad o sensibilidad de las preguntas.
-2. El recorrido contiene una carga potencialmente alta (224 respuestas obligatorias). Las seis preguntas no puntuables por área también son obligatorias para completar el flujo, aunque prioridad y contexto no alteran la nota.
-3. Se alternan escalas de frecuencia de cinco opciones y valoraciones 1–10. Conviene validar que el formato elegido sea comprensible y adecuado para cada enunciado.
-4. Hay 33 preguntas con polaridad negativa. La interfaz identifica cada una como «Pregunta inversa», lo que merece una decisión de experiencia y de metodología antes de cambiarlo.
-5. Las señales transversales reutilizan preguntas de las dimensiones. Al cambiar una pregunta, sus factores y textos de interpretación también pueden cambiar de significado.
+2. Hay 33 preguntas con polaridad negativa. La interfaz identifica cada una como «Pregunta inversa», lo que merece una decisión de experiencia y de metodología antes de cambiarlo.
+3. Las seis preguntas no puntuables por área (prioridades + contexto) son obligatorias para completar el flujo. Evaluar si deben ser opcionales o mantener su obligatoriedad.
 
 ## Requisitos de la revisión
 
@@ -34,7 +41,7 @@ Revisar las 224 preguntas del cuestionario de la Rueda de la Vida para mejorar s
 
 ## Criterios de aceptación para una primera entrega
 
-- Existe un inventario revisable de las 224 preguntas con su propósito, escala, polaridad, factores, temporalidad y decisión editorial.
+- Existe un inventario revisable de las 216 preguntas con su propósito, escala, polaridad, factores, temporalidad y decisión editorial.
 - Existe un informe de hallazgos priorizados y una propuesta de recorrido con estimación de respuestas, sin modificar aún la puntuación.
 - Las decisiones de medición aprobadas tienen una matriz de impacto y casos de prueba definidos antes de editar los datos de producción.
 - Todo cambio implementado conserva las invariantes de IDs, escalas, reglas y resultados, o incluye una migración y pruebas que sustituyan explícitamente esas invariantes.
