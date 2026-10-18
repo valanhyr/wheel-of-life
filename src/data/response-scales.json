@@ -83,6 +83,14 @@
     "normalization": "answer",
     "invert": false
   },
+  "priority_1_10": {
+    "type": "rating",
+    "min": 1,
+    "max": 10,
+    "step": 1,
+    "normalization": "answer",
+    "invert": false
+  },
   "emergency_fund": {
     "type": "single_select",
     "options": [
