@@ -156,6 +156,40 @@ function Section({ id, title, summary, meter, open, onOpen, children }) {
 
 /* ------------------------------------------------------------------ views */
 
+const AREA_STEPS = [
+  { id: "initial", label: "Evaluación inicial" },
+  { id: "quiz", label: "Cuestionario" },
+  { id: "result", label: "Resultado" },
+];
+
+export function SectionStepper({ area, step, complete, onStep }) {
+  return (
+    <nav className="stepper" aria-label={`Pasos de ${area.name}`} style={{ "--aspect-color": area.color }}>
+      <span className="stepper__area">{area.name}</span>
+      <ol className="stepper__list">
+        {AREA_STEPS.map((item, i) => {
+          const active = item.id === step;
+          return (
+            <li key={item.id} className="stepper__item">
+              <button
+                type="button"
+                className={`stepper__button${active ? " is-active" : ""}`}
+                aria-current={active ? "step" : undefined}
+                aria-label={`Ir a ${item.label.toLowerCase()}`}
+                disabled={item.id === "result" && !complete}
+                onClick={() => onStep(item.id)}
+              >
+                <span className="stepper__index" aria-hidden="true">{i + 1}</span>
+                <span className="stepper__label">{item.label}</span>
+              </button>
+            </li>
+          );
+        })}
+      </ol>
+    </nav>
+  );
+}
+
 export function Quiz({ qIndex, setQIndex, answers, onAnswer, onDone, areaIndex }) {
   const areaQuestions = areaIndex != null ? questions.filter((q) => q.areaId === areas[areaIndex].id) : questions;
   const current = areaQuestions[qIndex];
@@ -429,6 +463,24 @@ export default function App() {
     setSectionFlow("summary");
   }
 
+  function handleStep(step) {
+    if (activeIndex == null) return;
+    if (step === "initial") {
+      setSectionFlow("intro");
+      return;
+    }
+    if (step === "quiz") {
+      const areaQuestions = questions.filter((q) => q.areaId === areas[activeIndex].id);
+      const firstOpen = areaQuestions.findIndex((q) => answers[q.id] === undefined);
+      setQIndex(firstOpen === -1 ? 0 : firstOpen);
+      setSectionFlow("questions");
+      return;
+    }
+    if (step === "result") setSectionFlow("summary");
+  }
+
+  const areaStep = sectionFlow === "questions" ? "quiz" : sectionFlow === "summary" ? "result" : "initial";
+
   function handleBackToWheel() {
     setSectionFlow(null);
     setActiveIndex(null);
@@ -476,6 +528,14 @@ export default function App() {
               </span>
             }
           >
+            {activeIndex != null && (
+              <SectionStepper
+                area={areas[activeIndex]}
+                step={areaStep}
+                complete={scores[activeIndex] != null}
+                onStep={handleStep}
+              />
+            )}
             {sectionFlow === "intro" && activeIndex != null ? (
               <SectionIntro area={areas[activeIndex]} onStart={() => setSectionFlow("selfeval")} />
             ) : sectionFlow === "selfeval" && activeIndex != null ? (

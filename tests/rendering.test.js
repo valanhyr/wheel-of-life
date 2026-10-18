@@ -90,6 +90,38 @@ test("area details, section summaries, wheel and priority ranking render for all
   }
 });
 
+test("the area stepper moves between initial evaluation, questionnaire and result", async () => {
+  const server = await createServer({ configFile: false, cacheDir: "node_modules/.vite-render-tests", optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, hmr: false, watch: null }, appType: "custom" });
+  try {
+    const { SectionStepper } = await server.ssrLoadModule("/src/App.jsx");
+    const render = (props) => renderToStaticMarkup(React.createElement(SectionStepper, props));
+    const area = areas[0];
+
+    const complete = render({ area, step: "initial", complete: true, onStep() {} });
+    for (const label of ["Evaluación inicial", "Cuestionario", "Resultado"]) {
+      assert.ok(complete.includes(label), `the stepper must show ${label}`);
+    }
+    assert.equal((complete.match(/<button/g) ?? []).length, 3, "the stepper must render one button per step");
+
+    // Exactly one step is current, and it is the one received.
+    for (const [step, label] of [["initial", "Evaluación inicial"], ["quiz", "Cuestionario"], ["result", "Resultado"]]) {
+      const html = render({ area, step, complete: true, onStep() {} });
+      assert.equal((html.match(/aria-current="step"/g) ?? []).length, 1, `step ${step} must be the only current one`);
+      const active = html.split("<button").find((chunk) => chunk.includes('aria-current="step"'));
+      assert.ok(active.includes(label), `step ${step} must mark ${label} as current`);
+    }
+
+    // The result is reachable only when the area has a published score.
+    const pending = render({ area, step: "quiz", complete: false, onStep() {} });
+    const resultButton = pending.split("<button").find((chunk) => chunk.includes("Resultado"));
+    assert.ok(resultButton.includes("disabled"), "the result step must be disabled while the area is incomplete");
+    const ready = render({ area, step: "quiz", complete: true, onStep() {} });
+    assert.ok(!ready.split("<button").find((chunk) => chunk.includes("Resultado")).includes("disabled"), "the result step must be enabled once the area is complete");
+  } finally {
+    await server.close();
+  }
+});
+
 test("the initial screen has no global self-evaluation; perception is collected per area", async () => {
   const server = await createServer({ configFile: false, cacheDir: "node_modules/.vite-render-tests", optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, hmr: false, watch: null }, appType: "custom" });
   try {
@@ -101,6 +133,7 @@ test("the initial screen has no global self-evaluation; perception is collected 
     assert.ok(!html.includes("Percepción vs resultado"), "the standalone results section must be removed");
     assert.ok(!html.includes("Para profundizar en cualquier área"), "the reflection block must be removed");
     assert.ok(html.includes("Ranking sugerido"), "the priority ranking must sit under the wheel");
+    assert.ok(!html.includes("Evaluación inicial"), "the area stepper must only appear inside an area");
     const selfEval = renderToStaticMarkup(React.createElement(SectionSelfEval, { area: areas[0], value: 5, onChange() {}, onStart() {} }));
     assert.ok(selfEval.includes("Tu percepción de"), "per-area perception must remain available when a section starts");
   } finally {
