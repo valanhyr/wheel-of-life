@@ -20,6 +20,14 @@ For any feature, behavior change, or bug fix, use this workflow:
 - `.superpowers/sdd/<plan-id>/` contains git-ignored execution artifacts for the plan: `progress.md`, task briefs, implementation reports, review packages, and review reports. Create and maintain the plan-specific SDD ledger; never reuse another plan's ledger.
 - Record decisions and conflicts in the SDD ledger as rulings. If a plan conflicts with its spec, the spec wins.
 
+### Trello Operational Sync (Opt-in)
+
+Trello sync is **only performed when the user explicitly requests it**. Do not create, move, or update Trello cards unless asked.
+
+- **Board:** `Rueda de la Vida — Plan de proyecto` in the `Siguiente paso` workspace. Lists: `Cronograma`, `En curso`, `Revisión y validación`, `Completado`.
+- **Task cards:** one per `Task N`, named `[<plan-id>] Task N — <short title>`, linking to spec and plan.
+- **SDD ledger:** `.superpowers/sdd/<plan-id>/progress.md` records card URL/ID, status, and rulings.
+
 For small documentation-only or maintenance changes, apply the same skills proportionally; a full spec/plan may be omitted only when the relevant skill explicitly permits it or the user explicitly waives it. Never waive TDD for a code or behavior change without the user's explicit permission.
 
 ## Commands
@@ -62,3 +70,17 @@ Single React + Vite app. All scoring logic lives in `src/data/scoring.js` as pur
 ## Frontend design
 
 For any task related to frontend design — UI layout, styling, component structure, visual hierarchy, or user experience — use the `frontend-design` skill before writing code.
+
+## Engram Persistent Memory
+
+Engram MCP server is installed and auto-starts with OpenCode. Use it to persist decisions, discoveries, and context across sessions.
+
+**When to save:**
+- After any architecture/design decision
+- After fixing a non-obvious bug
+- When discovering project conventions or gotchas
+- At the end of each task (session summary)
+
+**Topic key convention:** `<category>/<short-slug>` (e.g., `config/engram`, `bugfix/scoring`, `decision/area-registry`)
+
+**Key tools:** `mem_save`, `mem_search`, `mem_context`, `mem_session_summary`
