@@ -17,15 +17,15 @@ const answersAt = (id, dimensionScores) => Object.fromEntries(scoredFor(id).map(
   return [q.id, option.value];
 }));
 
-test("all eight areas have the same complete 28-question structure", () => {
-  assert.equal(questions.length, 224);
-  assert.equal(new Set(questions.map((q) => q.id)).size, 224);
+test("all eight areas have the same complete 27-question structure", () => {
+  assert.equal(questions.length, 216);
+  assert.equal(new Set(questions.map((q) => q.id)).size, 216);
   for (const area of areas) {
     const own = questions.filter((q) => q.areaId === area.id);
-    assert.equal(own.length, 28, area.id);
+    assert.equal(own.length, 27, area.id);
     assert.equal(own.filter((q) => q.scored).length, 22);
     assert.equal(own.filter((q) => !q.scored && q.dimension === "Contexto").length, 4);
-    assert.equal(own.filter((q) => !q.scored).length, 6);
+    assert.equal(own.filter((q) => !q.scored).length, 5);
     assert.deepEqual(area.dimensions.map((d) => own.filter((q) => q.dimension === d).length), [5, 5, 6, 6]);
     for (const q of own) {
       assert.ok(q.required);
@@ -119,9 +119,9 @@ for (const [id, config] of Object.entries(additionalAreas)) {
     assert.deepEqual(r.notes, []);
     assert.deepEqual(r.factors, original.factors);
     close(r.score, original.score);
-    const changed = detailedResult(id, { ...fixture.answers, [`${prefix}_IMP_01`]: 0, [`${prefix}_CAM_01`]: 0, [`${prefix}_CTX_04`]: "ninguna" }, 7);
+    const changed = detailedResult(id, { ...fixture.answers, [`${prefix}_IMP_01`]: 0, [`${prefix}_CTX_04`]: "ninguna" }, 7);
     assert.equal(changed.importance, 0);
-    assert.equal(changed.desire, 0);
+    assert.equal(changed.desire, undefined);
     assert.equal(changed.notes.length, 3);
     close(changed.score, r.score);
     assert.equal(detailedResult(id, { ...fixture.answers, [`${prefix}_CTX_01`]: "invalid" }).contextComplete, false);

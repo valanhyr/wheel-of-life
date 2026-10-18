@@ -193,7 +193,7 @@ export function financeResult(answers, perception) {
   return structuredResult(answers, perception, {
     areaId: "finanzas", areaName: "Finanzas", rules: financeRules, catalog: financeCatalog,
     patternChecks: financePatternChecks, patterns: financeCatalog.financial_patterns,
-    importanceId: "FIN_IMP_01", desireId: "FIN_DES_01", notes,
+    importanceId: "FIN_IMP_01", notes,
   });
 }
 
@@ -216,7 +216,7 @@ export function workResult(answers, perception) {
   return structuredResult(answers, perception, {
     areaId: "trabajo", areaName: "Trabajo", rules: workRules, catalog: workCatalog,
     patternChecks: workPatternChecks, patterns: workCatalog.work_patterns,
-    importanceId: "TRA_IMP_01", desireId: "TRA_CAM_01", notes,
+    importanceId: "TRA_IMP_01", notes,
   });
 }
 
@@ -244,7 +244,7 @@ export function detailedResult(areaId, answers, perception) {
   };
   return structuredResult(answers, perception, {
     ...config, areaId, patternChecks, notes,
-    importanceId: `${prefix}_IMP_01`, desireId: `${prefix}_CAM_01`,
+    importanceId: `${prefix}_IMP_01`,
   });
 }
 
@@ -253,7 +253,7 @@ function addConcern(notes, questionId, answers) {
   if (concern && concern.value !== "ninguna") notes.push(`Tu preocupación principal: ${concern.label.toLowerCase()}.`);
 }
 
-function structuredResult(answers, perception, { areaId, areaName, rules, catalog, patternChecks, patterns, importanceId, desireId, notes }) {
+function structuredResult(answers, perception, { areaId, areaName, rules, catalog, patternChecks, patterns, importanceId, notes }) {
   const own = questions.filter((q) => q.areaId === areaId && q.scored !== false);
   const scored = own.map((q) => ({ q, score: scoreAnswer(q, answers[q.id]) })).filter((r) => r.score != null);
   const dimensions = Object.entries(rules.dimensions).map(([name, rule]) => {
@@ -284,7 +284,7 @@ function structuredResult(answers, perception, { areaId, areaName, rules, catalo
     pattern: patterns.find((p) => p.id === patternId),
     perceptionText: catalog.perception_results.find((p) => p.id === perceptionId)?.text,
     factorNote: catalog.transversal_note,
-    importance: answers[importanceId], desire: answers[desireId],
+    importance: answers[importanceId],
     contextComplete: questions.filter((q) => q.areaId === areaId && q.scored === false).every((q) => optionsFor(q).some((option) => option.value === answers[q.id])),
   };
 }

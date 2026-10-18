@@ -14,8 +14,8 @@ const extreme = (maximum) => Object.fromEntries(own.map((q) => {
 test("all questions have unique IDs and usable scales", () => {
   assert.equal(new Set(questions.map((q) => q.id)).size, questions.length);
   assert.equal(own.length, 22);
-  assert.equal(questions.length, 224);
-  assert.equal(questions.filter((q) => !["finanzas", "trabajo"].includes(q.areaId)).length, 168);
+  assert.equal(questions.length, 216);
+  assert.equal(questions.filter((q) => !["finanzas", "trabajo"].includes(q.areaId)).length, 162);
   for (const q of questions) {
     assert.ok(optionsFor(q).length > 0);
     for (const option of optionsFor(q)) {

@@ -21,9 +21,9 @@ const extreme = (maximum) => Object.fromEntries(scored.map((q) => {
 test("Trabajo matches Finance question counts and has complete dimension and factor mappings", () => {
   const finance = questions.filter((q) => q.areaId === "finanzas");
   assert.equal(own.length, finance.length);
-  assert.equal(own.length, 28);
+  assert.equal(own.length, 27);
   assert.equal(scored.length, 22);
-  assert.equal(own.filter((q) => !q.scored && q.dimension === "Prioridades").length, 2);
+  assert.equal(own.filter((q) => !q.scored && q.dimension === "Prioridades").length, 1);
   assert.equal(own.filter((q) => !q.scored && q.dimension === "Contexto").length, 4);
   assert.deepEqual(Object.keys(rules.dimensions), areas.find((a) => a.id === "trabajo").dimensions);
   assert.deepEqual(Object.values(rules.dimensions).map((r) => r.question_ids.length), [5, 5, 6, 6]);
@@ -95,12 +95,12 @@ test("every work scored response is required before publishing to the wheel", ()
 
 test("context and priorities personalize work without changing scores or factors", () => {
   const base = workResult(fixture.answers, 7);
-  const changed = workResult({ ...fixture.answers, TRA_CTX_01: "busqueda", TRA_IMP_01: 0, TRA_CAM_01: 0 }, 7);
+  const changed = workResult({ ...fixture.answers, TRA_CTX_01: "busqueda", TRA_IMP_01: 0 }, 7);
   close(changed.score, base.score);
   assert.deepEqual(changed.factors, base.factors);
   assert.equal(changed.notes.length, 4);
   assert.equal(changed.importance, 0);
-  assert.equal(changed.desire, 0);
+  assert.equal(changed.desire, undefined);
   const onlyScored = Object.fromEntries(scored.map((q) => [q.id, fixture.answers[q.id]]));
   const r = workResult(onlyScored, 7);
   assert.equal(r.complete, true);

@@ -10,7 +10,7 @@ Aplicación React para comparar la percepción inicial de ocho áreas de la vida
 
 ## Datos y cálculo
 
-- `src/data/questions.json`: ocho áreas y 224 preguntas. Cada área aporta 22 puntuables con factores transversales, 2 de prioridades y 4 de contexto.
+- `src/data/questions.json`: ocho áreas y 216 preguntas. Cada área aporta 22 puntuables con factores transversales, 1 de prioridad y 4 de contexto.
 - `src/data/response-scales.json`: escalas compartidas de respuesta. Las opciones incluyen su puntuación y las escalas numéricas indican si se invierten.
 - `src/data/finance-rules.json`: dependencias por dimensión, pesos, desempates y notas de contexto.
 - `src/data/finance-results.json`: catálogo de interpretaciones financieras.
@@ -23,7 +23,7 @@ Aplicación React para comparar la percepción inicial de ocho áreas de la vida
 
 Finanzas procede de `work/rueda_vida_demo_finanzas_trabajo_v02_cuestionario_finanzas.json`, sección `questionnaires.Finanzas`. Las respuestas antiguas de `answers` corresponden al piloto anterior y no se usan. El ejemplo v02 está aislado en `tests/fixtures/finance-demo.json`; nunca se precarga en la aplicación.
 
-Trabajo conserva las doce preguntas de trabajo del piloto y amplía el cuestionario a 22 puntuables: Satisfacción (5), Desarrollo (5), Condiciones (6) y Proyección (6). Todas alimentan factores transversales mediante `factors` y `factorWeights`, como en Finanzas; no son preguntas adicionales. Las dos preguntas de prioridades y las cuatro de contexto completan las 28 del bloque. El ejemplo sintético está en `tests/fixtures/work-demo.json` y nunca se precarga. El deseo de cambio usa `TRA_CAM_01` para no colisionar con `TRA_DES_01`, que corresponde a Desarrollo. Las escalas reutilizan las de Finanzas.
+Trabajo conserva las doce preguntas de trabajo del piloto y amplía el cuestionario a 22 puntuables: Satisfacción (5), Desarrollo (5), Condiciones (6) y Proyección (6). Todas alimentan factores transversales mediante `factors` y `factorWeights`, como en Finanzas; no son preguntas adicionales. La pregunta de prioridad y las cuatro de contexto completan las 27 del bloque. El ejemplo sintético está en `tests/fixtures/work-demo.json` y nunca se precarga. La prioridad usa números enteros del 1 al 10. Las escalas reutilizan las de Finanzas.
 
 ## Áreas completas
 
@@ -40,9 +40,9 @@ Las seis áreas ampliadas conservan sus cuatro dimensiones y sus preguntas origi
 | Crecimiento | `growth` | Autoconocimiento · Aprendizaje · Objetivos · Coherencia |
 | Ocio | `leisure` | Tiempo disponible · Disfrute · Descanso · Prioridad personal |
 
-Por ejemplo, Salud utiliza `src/data/health-rules.json`, `src/data/health-results.json` y `tests/fixtures/health-demo.json`. Los ejemplos son sintéticos y nunca se precargan en la aplicación. Los seis nuevos ejemplos incluyen puntuaciones esperadas para verificar sus cálculos. El deseo de cambio usa el sufijo `CAM_01`, evitando colisiones con dimensiones como Descanso.
+Por ejemplo, Salud utiliza `src/data/health-rules.json`, `src/data/health-results.json` y `tests/fixtures/health-demo.json`. Los ejemplos son sintéticos y nunca se precargan en la aplicación. Los seis nuevos ejemplos incluyen puntuaciones esperadas para verificar sus cálculos.
 
-La percepción de todas las áreas se recoge en la autoevaluación. Las prioridades y el contexto se preguntan dentro del cuestionario y no afectan a la nota. Cada dimensión pesa un 25 %, independientemente de su número de preguntas. No se publica la nota del área hasta completar sus 22 preguntas puntuables; las dimensiones incompletas se etiquetan como parciales. Solo se redondea al mostrar el resultado. La rueda, la comparación, las alertas y el detalle utilizan el mismo resultado calculado.
+La percepción de cada área se recoge al iniciar su sección del cuestionario. La prioridad y el contexto se preguntan dentro del cuestionario y no afectan a la nota. Cada dimensión pesa un 25 %, independientemente de su número de preguntas. No se publica la nota del área hasta completar sus 22 preguntas puntuables; las dimensiones incompletas se etiquetan como parciales. Solo se redondea al mostrar el resultado. La rueda, la comparación, las alertas y el detalle utilizan el mismo resultado calculado.
 
 Las señales transversales se calculan por separado en las ocho áreas, exigen al menos dos respuestas por factor y se muestran como provisionales. No se combinan todavía entre áreas. El primer foco es la dimensión más baja; entre dimensiones a no más de 0,25 puntos del mínimo se utiliza el orden `focusOrder` de cada archivo de reglas. Los patrones globales de puntuaciones bajas o estables tienen precedencia sobre los patrones parciales. Finanzas y Trabajo conservan sus patrones anteriores.
 
