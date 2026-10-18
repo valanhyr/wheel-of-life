@@ -156,6 +156,40 @@ function Section({ id, title, summary, meter, open, onOpen, children }) {
 
 /* ------------------------------------------------------------------ views */
 
+export function WheelInstructions() {
+  return (
+    <article className="instructions">
+      <p className="instructions__lead">
+        La rueda resume ocho áreas de tu vida. Cada área tiene su propio cuestionario y puedes hacerlas en el orden
+        que prefieras.
+      </p>
+      <ol className="instructions__steps">
+        <li>
+          <strong>Elige un área en la rueda.</strong> Pulsa su nombre —Salud, Emocional, Relaciones, Familia,
+          Trabajo, Finanzas, Crecimiento u Ocio— para abrir su cuestionario.
+        </li>
+        <li>
+          <strong>Puntúa tu percepción (0–10).</strong> Antes de las preguntas, marca cómo crees que está esa área
+          hoy; después se compara con el resultado.
+        </li>
+        <li>
+          <strong>Responde sus 28 preguntas.</strong> 22 puntuables, 1 de prioridad y 4 de contexto. Las de contexto
+          no puntúan: matizan la lectura.
+        </li>
+        <li>
+          <strong>Lee el resultado del área.</strong> Verás percepción frente a resultado, la brecha, tus cuatro
+          dimensiones, las señales transversales y el primer foco. Puedes volver a cualquier paso cuando quieras.
+        </li>
+      </ol>
+      <p className="instructions__note">
+        La nota de un área aparece en la rueda cuando completas sus 22 preguntas puntuables; hasta entonces, los
+        parciales son orientativos. Puedes dejar un área a medias y volver más tarde: el ranking bajo la rueda
+        sugiere por dónde empezar.
+      </p>
+    </article>
+  );
+}
+
 const AREA_STEPS = [
   { id: "initial", label: "Evaluación inicial" },
   { id: "quiz", label: "Cuestionario" },
@@ -509,7 +543,7 @@ export default function App() {
       </header>
 
       {showEditor && LocalQuestionEditor ? <React.Suspense fallback={<p className="hint">Cargando editor local…</p>}><LocalQuestionEditor onClose={() => setShowEditor(false)} /></React.Suspense> :
-      <main className={`layout${openSection === "quiz" ? " is-focus" : ""}`}>
+      <main className={`layout${activeIndex != null ? " is-focus" : ""}`}>
         <div className="layout__wheel">
           <Wheel selfEval={selfEval} scores={scores} activeIndex={activeIndex} onSelect={setActiveIndex} onStartSection={handleStartSection} />
           <PriorityRanking selfEval={selfEval} scores={scores} />
@@ -518,15 +552,15 @@ export default function App() {
         <div className="layout__stack">
           <Section
             id="quiz"
-            title="Cuestionario"
-            summary={`${answered} de ${questions.length} respondidas`}
+            title={activeIndex == null ? "Cómo usar la rueda" : "Cuestionario"}
+            summary={activeIndex == null ? "Selecciona un área en la rueda" : `${answered} de ${questions.length} respondidas`}
             open={openSection === "quiz"}
             onOpen={() => setOpenSection("quiz")}
-            meter={
+            meter={activeIndex == null ? null : (
               <span className="progress" role="progressbar" aria-valuenow={progress} aria-valuemin="0" aria-valuemax="100">
                 <span className="progress__bar" style={{ width: `${progress}%` }} />
               </span>
-            }
+            )}
           >
             {activeIndex != null && (
               <SectionStepper
@@ -563,7 +597,7 @@ export default function App() {
                 answers={answers}
               />
             ) : (
-              <Quiz qIndex={qIndex} setQIndex={setQIndex} answers={answers} onAnswer={handleAnswer} onDone={handleBackToWheel} />
+              <WheelInstructions />
             )}
           </Section>
         </div>

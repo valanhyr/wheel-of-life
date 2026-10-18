@@ -122,6 +122,20 @@ test("the area stepper moves between initial evaluation, questionnaire and resul
   }
 });
 
+test("the landing instructions explain how to start from the wheel", async () => {
+  const server = await createServer({ configFile: false, cacheDir: "node_modules/.vite-render-tests", optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, hmr: false, watch: null }, appType: "custom" });
+  try {
+    const { WheelInstructions } = await server.ssrLoadModule("/src/App.jsx");
+    const html = renderToStaticMarkup(React.createElement(WheelInstructions));
+    for (const text of ["La rueda resume ocho áreas", "Elige un área en la rueda", "Puntúa tu percepción", "28 preguntas", "Lee el resultado del área", "ranking bajo la rueda"]) {
+      assert.ok(html.includes(text), `the instructions must mention "${text}"`);
+    }
+    assert.equal((html.match(/<li/g) ?? []).length, 4, "the instructions must list four steps");
+  } finally {
+    await server.close();
+  }
+});
+
 test("the initial screen has no global self-evaluation; perception is collected per area", async () => {
   const server = await createServer({ configFile: false, cacheDir: "node_modules/.vite-render-tests", optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, hmr: false, watch: null }, appType: "custom" });
   try {
@@ -129,7 +143,10 @@ test("the initial screen has no global self-evaluation; perception is collected 
     const html = renderToStaticMarkup(React.createElement(App));
     assert.ok(!html.includes("Autoevaluación rápida"), "the global self-evaluation section must be removed");
     assert.ok(!html.includes("Ir al cuestionario"), "the global self-evaluation action must be removed");
-    assert.ok(html.includes("Cuestionario"), "the questionnaire section must remain on the initial screen");
+    assert.ok(html.includes("Cómo usar la rueda"), "the landing must show the wheel instructions");
+    assert.ok(html.includes("Elige un área en la rueda"), "the instructions must point to the wheel");
+    assert.ok(!html.includes("Anterior") && !html.includes("Siguiente"), "the questionnaire must not be on the landing page");
+    assert.ok(!html.includes("scale__input"), "no question inputs on the landing page");
     assert.ok(!html.includes("Percepción vs resultado"), "the standalone results section must be removed");
     assert.ok(!html.includes("Para profundizar en cualquier área"), "the reflection block must be removed");
     assert.ok(html.includes("Ranking sugerido"), "the priority ranking must sit under the wheel");

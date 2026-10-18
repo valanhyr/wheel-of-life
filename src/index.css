@@ -1249,6 +1249,46 @@ ul {
   font-variant-numeric: tabular-nums;
 }
 
+/* -------------------------------------------------------- portada -- */
+
+.instructions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.instructions__lead,
+.instructions__note {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.instructions__steps {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.instructions__steps li::marker {
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+.instructions__steps strong {
+  color: var(--text);
+}
+
+.instructions__note {
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--border-strong);
+  background: rgba(255, 255, 255, 0.03);
+}
+
 /* ------------------------------------------------------------- stepper -- */
 
 .stepper {
