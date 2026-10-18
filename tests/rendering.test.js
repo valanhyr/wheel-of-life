@@ -4,26 +4,28 @@ import { readFileSync } from "node:fs";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { createServer } from "vite";
-import { areas, questions, areaScores, detailedResult } from "../src/data/scoring.js";
+import { areas, questions, areaScores, detailedResult, priorityOrder } from "../src/data/scoring.js";
 
-test("the questionnaire, result details and wheel render all eight completed areas", async () => {
+test("area details, section summaries, wheel and priority ranking render for all eight areas", async () => {
   const stems = ["health", "emotional", "relationships", "family", "work", "finance", "growth", "leisure"];
   const answers = Object.assign({}, ...stems.map((stem) => JSON.parse(readFileSync(new URL(`./fixtures/${stem}-demo.json`, import.meta.url), "utf8")).answers));
   const server = await createServer({ configFile: false, cacheDir: "node_modules/.vite-render-tests", optimizeDeps: { noDiscovery: true, include: [] }, server: { middlewareMode: true, hmr: false, watch: null }, appType: "custom" });
   try {
-    const { Quiz, Results, Wheel, SectionSummary, AreaDetail } = await server.ssrLoadModule("/src/App.jsx");
+    const { Quiz, PriorityRanking, Wheel, SectionSummary, AreaDetail, AreaSummaryBlock } = await server.ssrLoadModule("/src/App.jsx");
     const render = (Component, props) => renderToStaticMarkup(React.createElement(Component, props));
     const selfEval = areas.map(() => 7);
     const scores = areaScores(answers);
-    const results = render(Results, { selfEval, scores, answers });
-    assert.equal((results.match(/Tus dimensiones/g) ?? []).length, 8);
-    assert.equal((results.match(/Señales provisionales en /g) ?? []).length, 8);
-    assert.equal((results.match(/Primer foco:/g) ?? []).length, 8);
-    assert.ok(!results.includes("Sin responder"));
-    for (const area of areas) {
-      assert.ok(results.includes(`id="result-${area.id}"`));
-      for (const dimension of area.dimensions) assert.ok(results.includes(dimension));
+
+    // Each area keeps its four dimensions, transversal signals, context and focus.
+    for (const [index, area] of areas.entries()) {
+      const detail = render(AreaDetail, { result: detailedResult(area.id, answers, selfEval[index]), areaName: area.name });
+      for (const dimension of area.dimensions) assert.ok(detail.includes(dimension), `${area.id} detail must include ${dimension}`);
+      assert.ok(detail.includes("Señales provisionales en "), `${area.id} detail must include its signals`);
+      assert.ok(detail.includes("Primer foco:"), `${area.id} detail must include its focus`);
+      assert.ok(detail.includes("Prioridad de esta área"), "the area detail must show a single priority label");
+      assert.ok(!detail.includes("Deseo de cambio"), "the area detail must not show a separate desire label");
     }
+
     const wheel = render(Wheel, { selfEval, scores, activeIndex: null, onSelect() {}, onStartSection() {} });
     assert.equal((wheel.match(/r="1.4"/g) ?? []).length, 8);
     assert.ok(!wheel.includes("NaN"));
@@ -36,25 +38,17 @@ test("the questionnaire, result details and wheel render all eight completed are
       // Only the Back button on the first question should be disabled.
       assert.equal((quiz.match(/disabled=""/g) ?? []).length, qIndex === 0 ? 1 : 0);
     }
+
+    // An incomplete area keeps a partial detail and a pending summary block.
     const partialAnswers = { ...answers };
     delete partialAnswers.SAL_HAB_01;
     const partialScores = areaScores(partialAnswers);
-    const partial = render(Results, { selfEval, scores: partialScores, answers: partialAnswers });
-    assert.ok(partial.includes("21/22 puntuables"));
-    assert.ok(partial.includes("Pendiente de completar"));
-
-    // Every area row closes with the perception vs result summary; the header no longer carries it.
-    const rows = results.split('<li class="result ').slice(1);
-    assert.equal(rows.length, 8);
-    assert.ok(!results.includes("Percepción 7 · Resultado"), "the area header must not carry the perception vs result text");
-    for (const row of rows) {
-      const [head] = row.split("result__detail");
-      assert.ok(!head.includes("Percepción") && !head.includes("Resultado"), "the summary must leave the area header");
-      assert.ok(row.includes("Tu percepción"), "each area detail must close with the summary block");
-      assert.ok(row.indexOf("Brecha") > row.indexOf("Primer foco:"), "the summary block must come after the area detail");
-    }
-    assert.ok(partial.includes("Completa las 22 preguntas puntuables de Salud"));
-    assert.equal((partial.match(/Primer foco:/g) ?? []).length, 7);
+    const partialDetail = render(AreaDetail, { result: detailedResult("salud", partialAnswers, 7), areaName: "Salud" });
+    assert.ok(partialDetail.includes("Completa las 22 preguntas puntuables de Salud"));
+    assert.ok(!partialDetail.includes("Primer foco:"));
+    const pending = render(AreaSummaryBlock, { area: areas[0], score: partialScores[0], perception: 7, detail: detailedResult("salud", partialAnswers, 7) });
+    assert.ok(pending.includes("Pendiente de completar"));
+    assert.ok(pending.includes("—"));
     assert.equal((render(Wheel, { selfEval, scores: partialScores, activeIndex: null, onSelect() {}, onStartSection() {} }).match(/r="1.4"/g) ?? []).length, 7);
 
     // Section summary must show the numeric gap, never NaN.
@@ -78,10 +72,19 @@ test("the questionnaire, result details and wheel render all eight completed are
       );
     }
 
-    // The priority reading is unified into a single label.
-    const detail = render(AreaDetail, { result: detailedResult("salud", answers, 5), areaName: "Salud" });
-    assert.ok(detail.includes("Prioridad de esta área"), "the results detail must show a single priority label");
-    assert.ok(!detail.includes("Deseo de cambio"), "the results detail must not show a separate desire label");
+    // The ranking suggests priorities: worst result first, one row per scored area.
+    const ranked = priorityOrder(scores, selfEval);
+    const ranking = render(PriorityRanking, { selfEval, scores });
+    assert.ok(ranking.includes("Ranking sugerido"));
+    assert.equal((ranking.match(/class="ranking__item"/g) ?? []).length, 8);
+    assert.ok(ranking.includes(`${ranked[0].area.name}`));
+    assert.ok(
+      ranking.indexOf(ranked[0].area.name) < ranking.indexOf(ranked.at(-1).area.name),
+      "the worst area must rank before the best one",
+    );
+    const emptyRanking = render(PriorityRanking, { selfEval, scores: areas.map(() => null) });
+    assert.equal((emptyRanking.match(/class="ranking__item"/g) ?? []).length, 0);
+    assert.ok(emptyRanking.includes("Completa un área para ver su prioridad sugerida."));
   } finally {
     await server.close();
   }
@@ -95,6 +98,9 @@ test("the initial screen has no global self-evaluation; perception is collected 
     assert.ok(!html.includes("Autoevaluación rápida"), "the global self-evaluation section must be removed");
     assert.ok(!html.includes("Ir al cuestionario"), "the global self-evaluation action must be removed");
     assert.ok(html.includes("Cuestionario"), "the questionnaire section must remain on the initial screen");
+    assert.ok(!html.includes("Percepción vs resultado"), "the standalone results section must be removed");
+    assert.ok(!html.includes("Para profundizar en cualquier área"), "the reflection block must be removed");
+    assert.ok(html.includes("Ranking sugerido"), "the priority ranking must sit under the wheel");
     const selfEval = renderToStaticMarkup(React.createElement(SectionSelfEval, { area: areas[0], value: 5, onChange() {}, onStart() {} }));
     assert.ok(selfEval.includes("Tu percepción de"), "per-area perception must remain available when a section starts");
   } finally {

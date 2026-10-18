@@ -1249,6 +1249,84 @@ ul {
   font-variant-numeric: tabular-nums;
 }
 
+/* --------------------------------------------------- ranking de prioridad */
+
+.ranking {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.ranking__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ranking__list {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ranking__item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  font-size: 0.82rem;
+  min-width: 0;
+}
+
+.ranking__position {
+  flex: none;
+  width: 1.35rem;
+  height: 1.35rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--aspect-color);
+  background: color-mix(in srgb, var(--aspect-color) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--aspect-color) 40%, transparent);
+}
+
+.ranking__name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.ranking__score {
+  flex: none;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.ranking__level {
+  flex: none;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+@media (max-width: 29.99em) {
+  .ranking__level { display: none; }
+}
+
 .aspect__quote {
   display: block;
   margin-top: 0.35rem;
@@ -1289,6 +1367,8 @@ ul {
   .layout.is-focus .wheel svg { overflow: hidden; }
   .layout.is-focus .wheel__label { opacity: 0; }
   .layout.is-focus .wheel:hover { transform: none; }
+
+  .layout.is-focus .ranking { display: none; }
 }
 
 /* ≥ 768px — tablets */
@@ -1308,7 +1388,17 @@ ul {
     align-items: start;
   }
 
-  .layout__wheel { position: sticky; top: var(--gap); }
+  .layout__wheel {
+    position: sticky;
+    top: var(--gap);
+    /* La columna incluye rueda + ranking: si no cabe en el viewport, se desplaza dentro
+       de sí misma para que el ranking nunca quede inalcanzable. */
+    max-height: calc(100vh - var(--gap) * 2);
+    max-height: calc(100dvh - var(--gap) * 2);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    padding-bottom: 0.25rem;
+  }
   .aspects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .results { grid-template-columns: minmax(0, 1fr); }
 }

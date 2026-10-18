@@ -7,12 +7,6 @@ import {
   gapStatus,
   optionsFor,
   priorityOrder,
-  interpretationFor,
-  priorityFor,
-  guidanceFor,
-  gapPrompts,
-  animals,
-  shed,
   detailedResult,
 } from "./data/scoring";
 
@@ -340,73 +334,6 @@ export function AreaSummaryBlock({ area, score, perception, detail }) {
   );
 }
 
-function ResultRow({ area, score, perception, open, onToggle, detail }) {
-  const level = scoreLevel(score, area.id);
-  const gap = gapStatus(score, perception, area.id);
-  const band = interpretationFor(score);
-  const rules = priorityFor(score, gap);
-  const plan = guidanceFor(area.id, score);
-  const panelId = `result-${area.id}`;
-
-  return (
-    <li className={`result result--${level.tone}${open ? " is-open" : ""}`} style={{ "--aspect-color": area.color }}>
-      <button
-        type="button"
-        className="result__head"
-        aria-expanded={open}
-        aria-controls={panelId}
-        onClick={onToggle}
-        disabled={score == null && !detail}
-      >
-        <span className="result__info">
-          <span className="result__name">
-            {area.name}
-            <span className={`dot dot--${level.tone}`} title={level.label} aria-label={level.label} />
-          </span>
-          {detail && !detail.complete && <span className="result__meta">{detail.answered}/{detail.total} puntuables</span>}
-        </span>
-        <span className="result__chevron" aria-hidden="true" />
-      </button>
-
-      <div className="result__detail" id={panelId} hidden={!open}>
-        {detail ? <><AreaDetail result={detail} areaName={area.name} />
-          <AreaSummaryBlock area={area} score={score} perception={perception} detail={detail} /></> : <>
-        {band && (
-          <p className="result__band">
-            <strong>{band.label}.</strong> {band.text}
-          </p>
-        )}
-
-        <p className="result__gap">{gapPrompts[gap.dir === "none" ? "even" : gap.dir]}</p>
-
-        {rules.length > 0 && (
-          <p className="tags">
-            {rules.map((rule) => (
-              <span key={rule.id} className="tag" title={rule.text}>
-                {rule.id} · {rule.label}
-              </span>
-            ))}
-          </p>
-        )}
-
-        {plan && (
-          <>
-            <h4 className="result__subtitle">Acciones propuestas</h4>
-            <ul className="actions">
-              {plan.actions.map((action) => (
-                <li key={action}>{action}</li>
-              ))}
-            </ul>
-            <p className="result__resources">Recursos: {plan.resources}</p>
-          </>
-        )}
-        <AreaSummaryBlock area={area} score={score} perception={perception} detail={detail} />
-        </>}
-      </div>
-    </li>
-  );
-}
-
 export function AreaDetail({ result, areaName }) {
   return <>
     {!result.complete && <p className="hint">Completa las {result.total} preguntas puntuables de {areaName} para ver su resultado en la rueda y compararlo con tu percepción. Las puntuaciones parciales por dimensión son orientativas.</p>}
@@ -432,78 +359,30 @@ export function AreaDetail({ result, areaName }) {
   </>;
 }
 
-function Reflection() {
-  const [open, setOpen] = useState(false);
+/* ---------------------------------------------------------------- ranking */
+
+export function PriorityRanking({ selfEval, scores }) {
+  const ranked = priorityOrder(scores, selfEval);
 
   return (
-    <div className={`reflection${open ? " is-open" : ""}`}>
-      <button type="button" className="reflection__toggle" aria-expanded={open} aria-controls="reflection-body" onClick={() => setOpen((v) => !v)}>
-        <span>Para profundizar en cualquier área</span>
-        <span className="result__chevron" aria-hidden="true" />
-      </button>
-
-      <div className="reflection__body" id="reflection-body" hidden={!open}>
-        <p className="hint">
-          Los tres animales no puntúan: se aplican después del diagnóstico, sobre el área que decidas trabajar.
-        </p>
-
-        <ul className="animals">
-          {animals.map((animal) => (
-            <li key={animal.id} className={`animal animal--${animal.id}`}>
-              <span className="animal__name">
-                {animal.name} · {animal.verb}
-              </span>
-              <span className="animal__q">{animal.question}</span>
+    <section className="ranking" aria-label="Ranking sugerido de prioridad">
+      <h2 className="ranking__title">Ranking sugerido</h2>
+      {ranked.length === 0 ? (
+        <p className="hint">Completa un área para ver su prioridad sugerida.</p>
+      ) : (
+        <ol className="ranking__list">
+          {ranked.map((row, i) => (
+            <li key={row.area.id} className="ranking__item" style={{ "--aspect-color": row.area.color }}>
+              <span className="ranking__position" aria-hidden="true">{i + 1}</span>
+              <span className="ranking__name">{row.area.name}</span>
+              <span className={`dot dot--${row.level.tone}`} title={row.level.label} aria-label={row.level.label} />
+              <span className="ranking__score">{round1(row.score)}/10</span>
+              <span className="ranking__level">{row.level.label}</span>
             </li>
           ))}
-        </ul>
-
-        <p className="result__shed">
-          <strong>Cobertizo.</strong> {shed.main}
-          <span className="result__shed-alt">{shed.secondary}</span>
-        </p>
-      </div>
-    </div>
-  );
-}
-
-export function Results({ selfEval, scores, answers }) {
-  const ranked = priorityOrder(scores, selfEval);
-  const top = ranked[0];
-  const [openArea, setOpenArea] = useState(null);
-
-  return (
-    <>
-      <p className="hint">
-        La <strong>brecha</strong> compara resultado y percepción: verde si sale a favor, naranja si sale en contra, neutra
-        si la diferencia es menor de 1 punto. El tono es suave por debajo de 2 puntos y marcado a partir de 2.
-        Por debajo de 7,5 hay margen de mejora. Cada área muestra su nota al completar sus 22 preguntas puntuables.
-        Despliega un área para ver sus cuatro dimensiones, señales transversales, contexto y, al final, su resumen de
-        percepción vs resultado.
-      </p>
-
-      {top && (
-        <p className={`callout callout--${top.level.tone}`}>
-          <strong>{top.area.name}</strong> encabeza la prioridad: {round1(top.score)}/10 · {top.level.label.toLowerCase()}.
-        </p>
+        </ol>
       )}
-
-      <ul className="results">
-        {areas.map((area, i) => (
-          <ResultRow
-            key={area.id}
-            area={area}
-            score={scores[i]}
-            perception={selfEval[i]}
-            detail={detailedResult(area.id, answers, selfEval[i])}
-            open={openArea === area.id}
-            onToggle={() => setOpenArea((cur) => (cur === area.id ? null : area.id))}
-          />
-        ))}
-      </ul>
-
-      <Reflection />
-    </>
+    </section>
   );
 }
 
@@ -522,10 +401,6 @@ export default function App() {
 
   const answered = Object.keys(answers).length;
   const progress = Math.round((answered / questions.length) * 100);
-  const alerts = scores.filter((s, i) => {
-    const tone = scoreLevel(s, areas[i].id).tone;
-    return tone === "warn" || tone === "danger";
-  }).length;
 
   function handleSelf(i, value) {
     setSelfEval((prev) => {
@@ -585,6 +460,7 @@ export default function App() {
       <main className={`layout${openSection === "quiz" ? " is-focus" : ""}`}>
         <div className="layout__wheel">
           <Wheel selfEval={selfEval} scores={scores} activeIndex={activeIndex} onSelect={setActiveIndex} onStartSection={handleStartSection} />
+          <PriorityRanking selfEval={selfEval} scores={scores} />
         </div>
 
         <div className="layout__stack">
@@ -627,19 +503,8 @@ export default function App() {
                 answers={answers}
               />
             ) : (
-              <Quiz qIndex={qIndex} setQIndex={setQIndex} answers={answers} onAnswer={handleAnswer} onDone={() => setOpenSection("results")} />
+              <Quiz qIndex={qIndex} setQIndex={setQIndex} answers={answers} onAnswer={handleAnswer} onDone={handleBackToWheel} />
             )}
-          </Section>
-
-          <Section
-            id="results"
-            title="Percepción vs resultado"
-            summary={answered ? `${alerts} área(s) requieren atención` : "Aún sin respuestas"}
-            open={openSection === "results"}
-            onOpen={() => setOpenSection("results")}
-            meter={null}
-          >
-            <Results selfEval={selfEval} scores={scores} answers={answers} />
           </Section>
         </div>
       </main>
