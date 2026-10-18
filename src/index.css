@@ -1222,6 +1222,13 @@ ul {
   gap: 0.5rem;
 }
 
+.area-summary {
+  display: grid;
+  gap: 0.5rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--border-strong);
+}
+
 .section-summary__dimension {
   display: flex;
   justify-content: space-between;

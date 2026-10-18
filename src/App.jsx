@@ -296,14 +296,30 @@ export function SectionSelfEval({ area, value, onChange, onStart }) {
 }
 
 export function SectionSummary({ area, score, perception, onBack, answers }) {
-  const level = scoreLevel(score, area.id);
-  const gap = gapStatus(score, perception, area.id);
   const result = detailedResult(area.id, answers, perception);
-  const dimensions = result.dimensions;
 
   return (
     <article className="section-summary" style={{ "--aspect-color": area.color }}>
       <h3 className="section-summary__title">Resultado de {area.name}</h3>
+      <AreaDetail result={result} areaName={area.name} />
+      <AreaSummaryBlock area={area} score={score} perception={perception} detail={result} />
+      <button type="button" className="btn btn--ghost" onClick={onBack}>
+        Volver a la rueda
+      </button>
+    </article>
+  );
+}
+
+/** Bloque de cierre de área: percepción, resultado y brecha. Único para el resumen del
+ * cuestionario y para la cola de cada fila en la sección global. */
+export function AreaSummaryBlock({ area, score, perception, detail }) {
+  const level = scoreLevel(score, area.id);
+  const gap = gapStatus(score, perception, area.id);
+  const pending = score == null ? (detail?.answered > 0 ? "Pendiente de completar" : "Sin responder") : null;
+
+  return (
+    <div className="area-summary">
+      <h4 className="result__subtitle">Percepción vs resultado</h4>
       <div className="section-summary__scores">
         <div className="section-summary__score">
           <span className="section-summary__label">Tu percepción</span>
@@ -318,19 +334,9 @@ export function SectionSummary({ area, score, perception, onBack, answers }) {
           <span className="section-summary__value">{gap.gap != null ? `${gap.gap > 0 ? "+" : ""}${gap.gap}` : "—"}</span>
         </div>
       </div>
-      <p className={`section-summary__level section-summary__level--${level.tone}`}>{level.label}</p>
-      <div className="section-summary__dimensions">
-        {dimensions.map((d) => (
-          <div key={d.name} className="section-summary__dimension">
-            <span className="section-summary__dimension-name">{d.name}</span>
-            <span className="section-summary__dimension-value">{d.score != null ? `${round1(d.score)}/10` : "—"}</span>
-          </div>
-        ))}
-      </div>
-      <button type="button" className="btn btn--ghost" onClick={onBack}>
-        Volver a la rueda
-      </button>
-    </article>
+      <p className={`section-summary__level section-summary__level--${level.tone}`}>{pending ?? level.label}</p>
+      <p className="result__gap">{gap.label}</p>
+    </div>
   );
 }
 
@@ -357,19 +363,14 @@ function ResultRow({ area, score, perception, open, onToggle, detail }) {
             {area.name}
             <span className={`dot dot--${level.tone}`} title={level.label} aria-label={level.label} />
           </span>
-          <span className="result__meta">
-            Percepción {perception} · Resultado {score == null ? "—" : round1(score)}
-            {detail && !detail.complete && ` · ${detail.answered}/${detail.total} puntuables`}
-          </span>
-        </span>
-        <span className={`badge badge--gap is-${gap.dir} is-${gap.strength}`} title={gap.label}>
-          {gap.gap == null ? (detail?.answered > 0 ? "Pendiente de completar" : "Sin responder") : `${gap.gap > 0 ? "+" : ""}${gap.gap}`}
+          {detail && !detail.complete && <span className="result__meta">{detail.answered}/{detail.total} puntuables</span>}
         </span>
         <span className="result__chevron" aria-hidden="true" />
       </button>
 
       <div className="result__detail" id={panelId} hidden={!open}>
-        {detail ? <AreaDetail result={detail} areaName={area.name} /> : <>
+        {detail ? <><AreaDetail result={detail} areaName={area.name} />
+          <AreaSummaryBlock area={area} score={score} perception={perception} detail={detail} /></> : <>
         {band && (
           <p className="result__band">
             <strong>{band.label}.</strong> {band.text}
@@ -399,6 +400,7 @@ function ResultRow({ area, score, perception, open, onToggle, detail }) {
             <p className="result__resources">Recursos: {plan.resources}</p>
           </>
         )}
+        <AreaSummaryBlock area={area} score={score} perception={perception} detail={detail} />
         </>}
       </div>
     </li>
@@ -475,7 +477,9 @@ export function Results({ selfEval, scores, answers }) {
       <p className="hint">
         La <strong>brecha</strong> compara resultado y percepción: verde si sale a favor, naranja si sale en contra, neutra
         si la diferencia es menor de 1 punto. El tono es suave por debajo de 2 puntos y marcado a partir de 2.
-        Por debajo de 7,5 hay margen de mejora. Cada área muestra su nota al completar sus 22 preguntas puntuables. Despliega un área para ver sus cuatro dimensiones, señales transversales y contexto.
+        Por debajo de 7,5 hay margen de mejora. Cada área muestra su nota al completar sus 22 preguntas puntuables.
+        Despliega un área para ver sus cuatro dimensiones, señales transversales, contexto y, al final, su resumen de
+        percepción vs resultado.
       </p>
 
       {top && (

@@ -42,6 +42,17 @@ test("the questionnaire, result details and wheel render all eight completed are
     const partial = render(Results, { selfEval, scores: partialScores, answers: partialAnswers });
     assert.ok(partial.includes("21/22 puntuables"));
     assert.ok(partial.includes("Pendiente de completar"));
+
+    // Every area row closes with the perception vs result summary; the header no longer carries it.
+    const rows = results.split('<li class="result ').slice(1);
+    assert.equal(rows.length, 8);
+    assert.ok(!results.includes("Percepción 7 · Resultado"), "the area header must not carry the perception vs result text");
+    for (const row of rows) {
+      const [head] = row.split("result__detail");
+      assert.ok(!head.includes("Percepción") && !head.includes("Resultado"), "the summary must leave the area header");
+      assert.ok(row.includes("Tu percepción"), "each area detail must close with the summary block");
+      assert.ok(row.indexOf("Brecha") > row.indexOf("Primer foco:"), "the summary block must come after the area detail");
+    }
     assert.ok(partial.includes("Completa las 22 preguntas puntuables de Salud"));
     assert.equal((partial.match(/Primer foco:/g) ?? []).length, 7);
     assert.equal((render(Wheel, { selfEval, scores: partialScores, activeIndex: null, onSelect() {}, onStartSection() {} }).match(/r="1.4"/g) ?? []).length, 7);
@@ -53,6 +64,18 @@ test("the questionnaire, result details and wheel render all eight completed are
       assert.ok(!summary.includes("NaN"), `SectionSummary for ${area.id} must not render NaN`);
       const expected = Math.round((scores[index] - perception) * 10) / 10;
       assert.ok(summary.includes(`${expected > 0 ? "+" : ""}${expected}`), `SectionSummary for ${area.id} must show gap ${expected}`);
+    }
+
+    // The section summary closes with the perception vs result block, after the area detail.
+    for (const [index, area] of areas.entries()) {
+      const summary = render(SectionSummary, { area, score: scores[index], perception: 5, onBack() {}, answers });
+      for (const label of ["Tu percepción", "Resultado", "Brecha", "Tus dimensiones", "Primer foco:"]) {
+        assert.ok(summary.includes(label), `SectionSummary for ${area.id} must include ${label}`);
+      }
+      assert.ok(
+        summary.indexOf("Tus dimensiones") < summary.indexOf("Percepción vs resultado"),
+        `SectionSummary for ${area.id} must show the summary block at the end`,
+      );
     }
 
     // The priority reading is unified into a single label.
