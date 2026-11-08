@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import FinanceRecommendations from "./FinanceRecommendations";
 import {
   areas,
   questions,
@@ -364,6 +365,7 @@ export function SectionSummary({ area, score, perception, onBack, answers }) {
     <article className="section-summary" style={{ "--aspect-color": area.color }}>
       <h3 className="section-summary__title">Resultado de {area.name}</h3>
       <AreaDetail result={result} areaName={area.name} />
+      {area.id === "finanzas" && result.complete && <FinanceRecommendations result={result} answers={answers} />}
       <AreaSummaryBlock area={area} score={score} perception={perception} detail={result} />
       <button type="button" className="btn btn--ghost" onClick={onBack}>
         Volver a la rueda
