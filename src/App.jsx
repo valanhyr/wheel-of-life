@@ -1,5 +1,6 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import FinanceRecommendations from "./FinanceRecommendations";
+import { exportProgress, importProgress, MAX_PROGRESS_FILE_SIZE } from "./data/answer-transfer.js";
 import {
   areas,
   questions,
@@ -466,6 +467,8 @@ export default function App() {
   const [openSection, setOpenSection] = useState("quiz");
   const [showEditor, setShowEditor] = useState(false);
   const [sectionFlow, setSectionFlow] = useState(null);
+  const [transferStatus, setTransferStatus] = useState("");
+  const fileInput = useRef(null);
 
   const scores = useMemo(() => areaScores(answers), [answers]);
 
@@ -486,8 +489,55 @@ export default function App() {
 
   function handleStartSection(areaIdx) {
     setActiveIndex(areaIdx);
-    setSectionFlow("intro");
+    const areaQuestions = questions.filter((q) => q.areaId === areas[areaIdx].id);
+    const firstOpen = areaQuestions.findIndex((q) => answers[q.id] === undefined);
+    if (scores[areaIdx] != null) setSectionFlow("summary");
+    else if (areaQuestions.some((q) => answers[q.id] !== undefined)) {
+      setQIndex(firstOpen);
+      setSectionFlow("questions");
+    } else setSectionFlow("intro");
     setOpenSection("quiz");
+  }
+
+  function handleExport() {
+    try {
+      const blob = new Blob([exportProgress(answers, selfEval)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = `rueda-de-la-vida-${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.append(anchor);
+      anchor.click();
+      anchor.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 0);
+      setTransferStatus("Progreso exportado. Guarda el archivo en un lugar privado.");
+    } catch (error) {
+      setTransferStatus(`No se pudo exportar: ${error.message}`);
+    }
+  }
+
+  async function handleImport(event) {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    try {
+      if (file.size > MAX_PROGRESS_FILE_SIZE) throw new Error("El archivo supera el límite de 1 MB.");
+      const restored = importProgress(await file.text());
+      if (!window.confirm("¿Sustituir el progreso actual por el del archivo? Esta acción no se puede deshacer.")) {
+        setTransferStatus("Importación cancelada; tu progreso no ha cambiado.");
+        return;
+      }
+      setAnswers(restored.answers);
+      setSelfEval(restored.selfEval);
+      setActiveIndex(null);
+      setSectionFlow(null);
+      setQIndex(0);
+      setOpenSection("quiz");
+      setTransferStatus("Progreso importado. Selecciona un área para continuar o ver sus resultados y recursos actualizados.");
+    } catch (error) {
+      setTransferStatus(`No se pudo importar: ${error.message}`);
+    } finally {
+      event.target.value = "";
+    }
   }
 
   function handleSectionSelfEval() {
@@ -529,6 +579,7 @@ export default function App() {
     setOpenSection("quiz");
     setSectionFlow(null);
     setActiveIndex(null);
+    setTransferStatus("");
   }
 
   return (
@@ -540,9 +591,16 @@ export default function App() {
         </div>
         <div className="app__header-actions">
           {LocalQuestionEditor && !showEditor && <button type="button" className="btn btn--ghost" onClick={() => setShowEditor(true)}>Editar preguntas</button>}
+          <button type="button" className="btn btn--ghost" onClick={handleExport}>Exportar progreso</button>
+          <button type="button" className="btn btn--ghost" onClick={() => fileInput.current?.click()}>Importar progreso</button>
+          <input ref={fileInput} type="file" accept=".json,application/json" aria-label="Archivo JSON de progreso" hidden onChange={handleImport} />
           {!showEditor && <button type="button" className="btn btn--ghost" onClick={reset}>Reiniciar</button>}
         </div>
       </header>
+      <div className="app__transfer-note">
+        <p>El archivo JSON contiene tus respuestas y no está cifrado. Guárdalo en un lugar privado; esta página no guarda el progreso automáticamente.</p>
+        <p role="status" aria-live="polite">{transferStatus}</p>
+      </div>
 
       {showEditor && LocalQuestionEditor ? <React.Suspense fallback={<p className="hint">Cargando editor local…</p>}><LocalQuestionEditor onClose={() => setShowEditor(false)} /></React.Suspense> :
       <main className={`layout${activeIndex != null ? " is-focus" : ""}`}>
