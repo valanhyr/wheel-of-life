@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rueda de la Vida — Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Tokens por tema (misma estructura => se copian a :root de src/index.css) */
+:root,[data-theme="aurora"]{
+  --bg:#060818; --orb1:#7c3aed; --orb2:#06b6d4; --orb3:#ec4899;
+  --glass:rgba(255,255,255,.06); --glass-2:rgba(255,255,255,.10); --glass-border:rgba(255,255,255,.16); --glass-hi:rgba(255,255,255,.35);
+  --text:#f1f4ff; --muted:#a3aed0; --accent:#8b5cf6; --accent-2:#22d3ee; --accent-ink:#fff;
+  --accent-grad:linear-gradient(120deg,#8b5cf6,#22d3ee); --glow:rgba(139,92,246,.45);
+  --a1:#fb7185;--a2:#fb923c;--a3:#fbbf24;--a4:#a3e635;--a5:#34d399;--a6:#22d3ee;--a7:#818cf8;--a8:#e879f9;
+  --blur:22px; --orb-op:.55; --shadow:0 30px 80px -20px rgba(0,0,0,.6);
+}
+[data-theme="neon"]{
+  --bg:#05050a; --orb1:#ff2e93; --orb2:#7cff3a; --orb3:#2e6bff;
+  --glass:rgba(255,255,255,.045); --glass-2:rgba(255,255,255,.09); --glass-border:rgba(255,255,255,.13); --glass-hi:rgba(255,255,255,.3);
+  --text:#f5f5fa; --muted:#a0a0b8; --accent:#ff2e93; --accent-2:#7cff3a; --accent-ink:#0a0a0f;
+  --accent-grad:linear-gradient(120deg,#ff2e93,#ff9a3a); --glow:rgba(255,46,147,.5);
+  --a1:#ff2e6d;--a2:#ff7a1a;--a3:#ffd60a;--a4:#7cff3a;--a5:#19f0b4;--a6:#18c8ff;--a7:#6b7bff;--a8:#d65cff;
+  --blur:26px; --orb-op:.45; --shadow:0 30px 80px -20px rgba(255,46,147,.25);
+}
+[data-theme="oceano"]{
+  --bg:#04121c; --orb1:#0ea5e9; --orb2:#14b8a6; --orb3:#6366f1;
+  --glass:rgba(210,240,255,.06); --glass-2:rgba(210,240,255,.11); --glass-border:rgba(170,225,255,.2); --glass-hi:rgba(210,245,255,.4);
+  --text:#eaf7ff; --muted:#93b4c6; --accent:#38bdf8; --accent-2:#2dd4bf; --accent-ink:#031620;
+  --accent-grad:linear-gradient(120deg,#38bdf8,#2dd4bf); --glow:rgba(56,189,248,.45);
+  --a1:#fb7185;--a2:#fdba74;--a3:#fde047;--a4:#86efac;--a5:#2dd4bf;--a6:#38bdf8;--a7:#818cf8;--a8:#c4b5fd;
+  --blur:24px; --orb-op:.5; --shadow:0 30px 80px -20px rgba(0,20,40,.7);
+}
+[data-theme="perla"]{
+  --bg:#eef1fb; --orb1:#a78bfa; --orb2:#67e8f9; --orb3:#f9a8d4;
+  --glass:rgba(255,255,255,.55); --glass-2:rgba(255,255,255,.75); --glass-border:rgba(255,255,255,.9); --glass-hi:rgba(255,255,255,1);
+  --text:#1b2140; --muted:#5d6788; --accent:#6d4aff; --accent-2:#0ea5c6; --accent-ink:#fff;
+  --accent-grad:linear-gradient(120deg,#6d4aff,#0ea5c6); --glow:rgba(109,74,255,.35);
+  --a1:#f43f5e;--a2:#f97316;--a3:#eab308;--a4:#84cc16;--a5:#10b981;--a6:#06b6d4;--a7:#6366f1;--a8:#c026d3;
+  --blur:20px; --orb-op:.6; --shadow:0 24px 60px -24px rgba(60,50,140,.35);
+}
+
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.55 Inter,system-ui,sans-serif;min-height:100dvh;overflow-x:hidden;transition:background .5s,color .4s}
+
+/* Fondo vivo: orbes difuminados + rejilla + grano */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:var(--orb-op);will-change:transform;transition:background .6s}
+.orb.o1{width:46rem;height:46rem;left:-12rem;top:-14rem;background:var(--orb1);animation:float1 22s ease-in-out infinite}
+.orb.o2{width:40rem;height:40rem;right:-10rem;top:10rem;background:var(--orb2);animation:float2 26s ease-in-out infinite}
+.orb.o3{width:36rem;height:36rem;left:30%;bottom:-16rem;background:var(--orb3);animation:float3 30s ease-in-out infinite}
+.bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--glass) 1px,transparent 1px),linear-gradient(90deg,var(--glass) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(70% 60% at 50% 30%,#000,transparent);opacity:.6}
+@keyframes float1{50%{transform:translate(8rem,6rem) scale(1.12)}}
+@keyframes float2{50%{transform:translate(-7rem,8rem) scale(.92)}}
+@keyframes float3{50%{transform:translate(6rem,-6rem) scale(1.1)}}
+
+/* Selector de tema (solo demo) */
+.switch{position:sticky;top:.75rem;z-index:10;width:max-content;max-width:calc(100% - 1.5rem);margin:.75rem auto 0;display:flex;gap:.25rem;padding:.3rem;border-radius:999px;background:var(--glass-2);border:1px solid var(--glass-border);backdrop-filter:blur(var(--blur)) saturate(1.6);-webkit-backdrop-filter:blur(var(--blur)) saturate(1.6);box-shadow:var(--shadow);overflow-x:auto}
+.switch button{font:600 .82rem Inter;cursor:pointer;color:var(--muted);background:transparent;border:0;border-radius:999px;padding:.5rem .95rem;white-space:nowrap;transition:.25s}
+.switch button[aria-pressed="true"]{color:var(--accent-ink);background:var(--accent-grad);box-shadow:0 4px 18px -4px var(--glow)}
+.switch button:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+
+.app{max-width:82rem;margin:auto;padding:1.5rem 1rem 4rem;display:grid;gap:1.5rem}
+header{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:.9rem}
+.logo{width:3rem;height:3rem;border-radius:16px;background:conic-gradient(from 0deg,var(--a1),var(--a2),var(--a3),var(--a4),var(--a5),var(--a6),var(--a7),var(--a8),var(--a1));box-shadow:0 0 28px -4px var(--glow),inset 0 0 0 1px var(--glass-hi);animation:spin 18s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+h1{font:800 clamp(1.7rem,4.5vw,2.6rem)/1.05 Sora,sans-serif;letter-spacing:-.035em;margin:0;background:linear-gradient(180deg,var(--text),color-mix(in srgb,var(--text) 65%,var(--accent-2)));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin:.2rem 0 0;color:var(--muted);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase}
+.actions{display:flex;gap:.5rem;flex-wrap:wrap}
+
+/* Botones */
+.btn{position:relative;overflow:hidden;font:600 .9rem Inter;cursor:pointer;color:var(--text);background:var(--glass-2);border:1px solid var(--glass-border);border-radius:999px;padding:.65rem 1.15rem;min-height:44px;backdrop-filter:blur(12px);transition:transform .2s,box-shadow .25s,border-color .25s}
+.btn:hover{transform:translateY(-2px);border-color:var(--glass-hi)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn--primary{color:var(--accent-ink);background:var(--accent-grad);border-color:transparent;box-shadow:0 10px 30px -8px var(--glow)}
+.btn--primary::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:shine 4s ease-in-out infinite}
+@keyframes shine{60%,100%{transform:translateX(120%)}}
+.btn:focus-visible,.opt:focus-visible,.hot:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
+
+/* Tarjeta de cristal: borde degradado + brillo interior + reflejo */
+.grid{display:grid;gap:1.5rem}
+@media(min-width:980px){.grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start}}
+.card{position:relative;isolation:isolate;border-radius:28px;padding:clamp(1.1rem,3vw,1.9rem);background:linear-gradient(145deg,var(--glass-2),var(--glass));backdrop-filter:blur(var(--blur)) saturate(1.7);-webkit-backdrop-filter:blur(var(--blur)) saturate(1.7);box-shadow:var(--shadow),inset 0 1px 0 var(--glass-hi);opacity:0;transform:translateY(18px);animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards}
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(145deg,var(--glass-hi),transparent 35%,transparent 65%,var(--accent-2));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.7;pointer-events:none;z-index:-1}
+.card:nth-child(2){animation-delay:.12s}
+.stack>.card:nth-child(2){animation-delay:.24s}
+@keyframes rise{to{opacity:1;transform:none}}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font:700 .72rem Inter;text-transform:uppercase;letter-spacing:.14em;color:var(--muted)}
+.eyebrow::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--accent-2);box-shadow:0 0 12px var(--accent-2);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{opacity:.35;transform:scale(.7)}}
+h2{font:700 1.3rem Sora;letter-spacing:-.02em;margin:.2rem 0 0}
+
+/* Rueda */
+.wheelbox{position:relative;max-width:36rem;margin:.5rem auto 0}
+.wheel{width:100%;display:block;overflow:visible;filter:drop-shadow(0 18px 40px var(--glow))}
+.sector{transform-origin:60px 60px;transform:scale(0);animation:grow .9s cubic-bezier(.2,.9,.25,1.15) forwards;cursor:pointer;transition:filter .25s,opacity .25s}
+@keyframes grow{to{transform:scale(1)}}
+.wheel:hover .sector{opacity:.55}
+.wheel .sector:hover,.wheel .sector.sel{opacity:1;filter:brightness(1.18) drop-shadow(0 0 3px currentColor)}
+.ring{fill:none;stroke:var(--glass-border);stroke-width:.25}
+.wheel text{font:700 3.2px Inter;fill:var(--text);pointer-events:none;paint-order:stroke;stroke:var(--bg);stroke-width:.5px;stroke-opacity:.5}
+.hub{fill:var(--bg);fill-opacity:.55;stroke:var(--glass-hi);stroke-width:.3}
+.hubnum{font:800 8px Sora !important;stroke:none !important}
+.hubsub{font:600 2.4px Inter !important;fill:var(--muted) !important;letter-spacing:.2px;stroke:none !important}
+.legend{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center;margin-top:1rem}
+.chip{font:600 .78rem Inter;display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .75rem;border-radius:999px;background:var(--glass);border:1px solid var(--glass-border);backdrop-filter:blur(8px);cursor:pointer;color:var(--text);transition:.2s}
+.chip:hover,.chip.sel{background:var(--glass-2);border-color:var(--glass-hi);transform:translateY(-1px)}
+.chip i{width:.65rem;height:.65rem;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}
+
+/* Stepper + progreso */
+.ring-progress{--p:43;display:grid;place-items:center;width:3.4rem;height:3.4rem;border-radius:50%;background:conic-gradient(var(--accent-2) calc(var(--p)*1%),var(--glass-border) 0);font:700 .8rem Sora;position:relative}
+.ring-progress::before{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--bg);opacity:.75}
+.ring-progress span{position:relative}
+.qhead{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.stepper{display:flex;gap:.4rem;padding:.3rem;border-radius:999px;background:var(--glass);border:1px solid var(--glass-border);margin-bottom:1.2rem}
+.step{flex:1;text-align:center;font:600 .78rem Inter;padding:.5rem .3rem;border-radius:999px;color:var(--muted)}
+.step.done{color:var(--accent-2)}
+.step.on{color:var(--accent-ink);background:var(--accent-grad);box-shadow:0 6px 18px -6px var(--glow)}
+.q{font:600 1.2rem/1.35 Sora;letter-spacing:-.02em;margin:0 0 1rem}
+.opts{display:grid;gap:.55rem}
+.opt{display:flex;align-items:center;gap:.8rem;text-align:left;font:500 .95rem Inter;cursor:pointer;color:var(--text);background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:.85rem 1rem;min-height:50px;backdrop-filter:blur(8px);transition:transform .2s,background .2s,border-color .2s,box-shadow .25s}
+.opt:hover{background:var(--glass-2);transform:translateX(4px)}
+.opt .dot{width:1.15rem;height:1.15rem;border-radius:50%;border:2px solid var(--muted);flex:none;transition:.2s}
+.opt[aria-checked="true"]{border-color:var(--accent);background:linear-gradient(120deg,color-mix(in srgb,var(--accent) 22%,transparent),var(--glass));box-shadow:0 8px 28px -10px var(--glow)}
+.opt[aria-checked="true"] .dot{border-color:var(--accent-2);background:radial-gradient(var(--accent-2) 42%,transparent 46%);box-shadow:0 0 12px var(--accent-2)}
+
+/* Ranking */
+.rank{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.6rem}
+.rank li{display:grid;grid-template-columns:auto 1fr auto;gap:.85rem;align-items:center;padding:.8rem 1rem;border-radius:18px;background:var(--glass);border:1px solid var(--glass-border);transition:.25s}
+.rank li:hover{background:var(--glass-2);transform:translateY(-2px);box-shadow:0 14px 30px -14px var(--glow)}
+.rank .n{width:2.1rem;height:2.1rem;border-radius:12px;display:grid;place-items:center;font:800 .95rem Sora;color:var(--accent-ink);background:var(--accent-grad)}
+.rank b{display:block}.rank small{color:var(--muted)}
+.score{font:800 1.25rem Sora}
+.meter{height:5px;border-radius:9px;background:var(--glass-border);margin-top:.4rem;overflow:hidden}
+.meter i{display:block;height:100%;border-radius:inherit;background:var(--c);box-shadow:0 0 10px var(--c)}
+.note{margin-top:1rem;padding:.9rem 1rem;border-radius:16px;border:1px dashed var(--glass-border);color:var(--muted);font-size:.86rem}
+.about{max-width:82rem;margin:0 auto;padding:0 1rem 3rem;color:var(--muted);font-size:.88rem}
+.about code{background:var(--glass-2);padding:.1rem .4rem;border-radius:6px}
+
+@media(max-width:560px){.hide-sm{display:none}.orb{filter:blur(70px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}.card{opacity:1;transform:none}.sector{transform:none}}
+@supports not (backdrop-filter:blur(1px)){.card,.btn,.opt,.chip,.switch{background:var(--glass-2)}[data-theme="perla"] .card{background:#fff}}
+</style>
+</head>
+<body data-theme="aurora">
+<div class="bg" aria-hidden="true"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div></div>
+
+<div class="switch" role="group" aria-label="Tema">
+  <button aria-pressed="true" data-t="aurora">Aurora</button>
+  <button aria-pressed="false" data-t="neon">Neón</button>
+  <button aria-pressed="false" data-t="oceano">Océano</button>
+  <button aria-pressed="false" data-t="perla">Perla (claro)</button>
+</div>
+
+<div class="app">
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div><h1>Rueda de la Vida</h1><p class="sub">Medir · Comparar · Priorizar · Actuar</p></div>
+    </div>
+    <div class="actions">
+      <button class="btn hide-sm">Importar</button>
+      <button class="btn hide-sm">Exportar</button>
+      <button class="btn btn--primary">Elegir un área</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <section class="card" aria-label="Rueda">
+      <span class="eyebrow">Tu equilibrio hoy</span>
+      <div class="wheelbox"><svg id="wheel" class="wheel" viewBox="-6 -6 132 132" role="img" aria-label="Rueda de ocho áreas"></svg></div>
+      <div id="legend" class="legend"></div>
+    </section>
+
+    <div class="stack" style="display:grid;gap:1.5rem">
+      <section class="card">
+        <div class="qhead">
+          <div><span class="eyebrow">Salud</span><h2>Pregunta 12 de 28</h2></div>
+          <div class="ring-progress" style="--p:43" role="progressbar" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"><span>43%</span></div>
+        </div>
+        <div class="stepper"><div class="step done">✓ Percepción</div><div class="step on">Cuestionario</div><div class="step">Resultado</div></div>
+        <p class="q">¿Con qué frecuencia duermes lo suficiente para sentirte descansado?</p>
+        <div class="opts" role="radiogroup" aria-label="Frecuencia">
+          <button class="opt" role="radio" aria-checked="false"><span class="dot"></span>Casi nunca</button>
+          <button class="opt" role="radio" aria-checked="false"><span class="dot"></span>A veces</button>
+          <button class="opt" role="radio" aria-checked="true"><span class="dot"></span>Con frecuencia</button>
+          <button class="opt" role="radio" aria-checked="false"><span class="dot"></span>Casi siempre</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <span class="eyebrow">Prioridades</span><h2>Ranking sugerido</h2>
+        <ul class="rank" id="rank"></ul>
+        <div class="note">Las notas aparecen en la rueda al completar las 22 preguntas puntuables de un área.</div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="about">
+  Efectos: orbes animados de fondo, <code>backdrop-filter</code> con saturación, borde degradado por máscara, brillo interior, sectores con entrada elástica y hover con foco, anillo de progreso cónico, botón con destello, entrada escalonada. Respeta <code>prefers-reduced-motion</code> y tiene fallback sin <code>backdrop-filter</code>. Todo se controla con variables CSS por tema.
+</div>
+
+<script>
+const areas=[["Salud",7.8],["Emocional",6.2],["Relaciones",6.9],["Familia",7.4],["Trabajo",5.8],["Finanzas",4.1],["Crecimiento",6.5],["Ocio",5.3]];
+const svg=document.getElementById("wheel"),legend=document.getElementById("legend");
+const C=60,R=44,N=areas.length,ns="http://www.w3.org/2000/svg",fmt=v=>String(v).replace(".",",");
+const pt=(r,a)=>[C+r*Math.sin(a),C-r*Math.cos(a)];
+const el=(t,a,p=svg)=>{const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);p.append(e);return e};
+for(let r=1;r<=5;r++)el("circle",{cx:C,cy:C,r:R*r/5,class:"ring"});
+for(let i=0;i<N;i++){const[x,y]=pt(R,i*2*Math.PI/N);el("line",{x1:C,y1:C,x2:x,y2:y,class:"ring"})}
+const avg=(areas.reduce((s,a)=>s+a[1],0)/N).toFixed(1);
+const secs=[],chips=[];
+areas.forEach(([name,v],i)=>{
+  const a0=i*2*Math.PI/N,a1=(i+1)*2*Math.PI/N,r=R*v/10,[x0,y0]=pt(r,a0),[x1,y1]=pt(r,a1);
+  const p=el("path",{d:`M${C} ${C}L${x0} ${y0}A${r} ${r} 0 0 1 ${x1} ${y1}Z`,class:"sector",fill:`var(--a${i+1})`,"fill-opacity":.9,stroke:"var(--bg)","stroke-width":.5,style:`color:var(--a${i+1});animation-delay:${.15+i*.07}s`,tabindex:0,role:"button","aria-label":`${name} ${fmt(v)}`});
+  const[lx,ly]=pt(R+9,(a0+a1)/2);
+  el("text",{x:lx,y:ly,"text-anchor":"middle","dominant-baseline":"middle"}).textContent=name;
+  const c=document.createElement("button");c.className="chip";c.style.setProperty("--c",`var(--a${i+1})`);c.innerHTML=`<i></i>${name} ${fmt(v)}`;legend.append(c);
+  secs.push(p);chips.push(c);
+  const sel=on=>{p.classList.toggle("sel",on);c.classList.toggle("sel",on);hubN.textContent=on?fmt(v):fmt(avg);hubS.textContent=on?name.toUpperCase():"MEDIA"};
+  [p,c].forEach(n=>{n.addEventListener("mouseenter",()=>sel(true));n.addEventListener("mouseleave",()=>sel(false));n.addEventListener("focus",()=>sel(true));n.addEventListener("blur",()=>sel(false))});
+});
+el("circle",{cx:C,cy:C,r:11,class:"hub"});
+const hubN=el("text",{x:C,y:C-.5,"text-anchor":"middle","dominant-baseline":"middle",class:"hubnum"});hubN.textContent=fmt(avg);
+const hubS=el("text",{x:C,y:C+6.5,"text-anchor":"middle",class:"hubsub"});hubS.textContent="MEDIA";
+
+const rank=document.getElementById("rank");
+[["Finanzas",4.1,6,"Brecha −2,4 · Prioridad alta"],["Ocio",5.3,8,"Brecha −1,6 · Necesita atención"],["Trabajo",5.8,5,"Brecha −0,9 · Necesita atención"]].forEach(([n,v,k,s],i)=>{
+  rank.insertAdjacentHTML("beforeend",`<li><span class="n">${i+1}</span><div><b>${n}</b><small>${s}</small><div class="meter"><i style="--c:var(--a${k});width:${v*10}%"></i></div></div><span class="score">${fmt(v)}</span></li>`)});
+
+const btns=document.querySelectorAll(".switch button");
+function setTheme(t){document.body.dataset.theme=t;btns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===t));try{localStorage.glass=t}catch{}}
+btns.forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+try{if(localStorage.glass)setTheme(localStorage.glass)}catch{}
+if(location.hash.slice(1))setTheme(location.hash.slice(1));
+document.querySelectorAll(".opt").forEach(o=>o.onclick=()=>document.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-checked",x===o)));
+</script>
+</body>
+</html>

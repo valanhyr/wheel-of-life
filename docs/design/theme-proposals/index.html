@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rueda de la Vida — Propuestas de tema</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;600;800&family=Space+Grotesk:wght@500;700&family=Sora:wght@400;600;700&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Tokens por tema. Misma estructura => se traslada 1:1 a :root de src/index.css ===== */
+:root, [data-theme="aurora"] {
+  --font-display: "Sora", system-ui, sans-serif; --font-body: "Inter", system-ui, sans-serif;
+  --bg: #070a1a; --bg-grad: radial-gradient(60rem 36rem at 10% -10%, #3b1d8f55, transparent 60%), radial-gradient(50rem 30rem at 100% 100%, #0891b233, transparent 60%);
+  --surface: #ffffff0d; --surface-2: #ffffff14; --border: #ffffff1f; --text: #eef2ff; --muted: #9aa6c4;
+  --accent: #8b5cf6; --accent-2: #22d3ee; --accent-ink: #fff; --accent-grad: linear-gradient(135deg, #8b5cf6, #22d3ee);
+  --radius: 20px; --radius-sm: 12px; --shadow: 0 24px 60px #02061799; --blur: blur(16px); --title-weight: 700; --title-ls: -.03em;
+  --a1:#f43f5e; --a2:#fb923c; --a3:#fbbf24; --a4:#a3e635; --a5:#34d399; --a6:#22d3ee; --a7:#818cf8; --a8:#c084fc;
+  --track: #ffffff14; --wheel-bg: #ffffff08;
+}
+[data-theme="papel"] {
+  --font-display: "Fraunces", Georgia, serif; --font-body: "Inter", system-ui, sans-serif;
+  --bg: #f6f1e7; --bg-grad: radial-gradient(40rem 24rem at 90% -10%, #e9c9a255, transparent 60%);
+  --surface: #fffdf8; --surface-2: #f0e9db; --border: #e2d8c3; --text: #2b2418; --muted: #7a6d57;
+  --accent: #b4532a; --accent-2: #5b7a5a; --accent-ink: #fff8ef; --accent-grad: linear-gradient(135deg, #b4532a, #d98a4e);
+  --radius: 14px; --radius-sm: 8px; --shadow: 0 1px 0 #e2d8c3, 0 14px 30px #7a5b2e1f; --blur: none; --title-weight: 700; --title-ls: -.02em;
+  --a1:#c0472b; --a2:#d9822b; --a3:#c9a227; --a4:#7d9a3f; --a5:#4f8a6b; --a6:#3f7f8c; --a7:#6a6fa8; --a8:#9a5a8a;
+  --track: #e8dfcc; --wheel-bg: #fffdf8;
+}
+[data-theme="cenit"] {
+  --font-display: "Space Grotesk", system-ui, sans-serif; --font-body: "Manrope", system-ui, sans-serif;
+  --bg: #f4f5f7; --bg-grad: none;
+  --surface: #ffffff; --surface-2: #eceef2; --border: #14161c; --text: #14161c; --muted: #5b6270;
+  --accent: #2f4bff; --accent-2: #ff5a3c; --accent-ink: #fff; --accent-grad: linear-gradient(135deg, #2f4bff, #2f4bff);
+  --radius: 18px; --radius-sm: 10px; --shadow: 5px 5px 0 #14161c; --blur: none; --title-weight: 700; --title-ls: -.04em;
+  --a1:#ff5a3c; --a2:#ff9f1c; --a3:#ffd23f; --a4:#3ddc84; --a5:#17b8a6; --a6:#2f4bff; --a7:#7a5cff; --a8:#ff4fa3;
+  --track: #e1e4ea; --wheel-bg: #fff;
+}
+[data-theme="bosque"] {
+  --font-display: "Lora", Georgia, serif; --font-body: "Manrope", system-ui, sans-serif;
+  --bg: #0e1a16; --bg-grad: radial-gradient(50rem 30rem at 0% 0%, #1f3d3166, transparent 60%), radial-gradient(40rem 24rem at 100% 100%, #3a2f1a55, transparent 60%);
+  --surface: #162821; --surface-2: #1d342b; --border: #2b4639; --text: #ecf1e6; --muted: #98ad9f;
+  --accent: #d6b36a; --accent-2: #7fc8a0; --accent-ink: #1b1608; --accent-grad: linear-gradient(135deg, #d6b36a, #e8cf93);
+  --radius: 24px; --radius-sm: 14px; --shadow: 0 20px 50px #00000066; --blur: none; --title-weight: 700; --title-ls: -.01em;
+  --a1:#e07a5f; --a2:#e9a45c; --a3:#d6b36a; --a4:#a9c46c; --a5:#7fc8a0; --a6:#5fb3b3; --a7:#8aa0d8; --a8:#b89ad0;
+  --track: #223a30; --wheel-bg: #12221c;
+}
+
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);background-image:var(--bg-grad);background-attachment:fixed;color:var(--text);font-family:var(--font-body);line-height:1.5;min-height:100dvh;transition:background .3s,color .3s}
+.switch{position:sticky;top:0;z-index:5;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;padding:.7rem 1rem;background:#0b0d14;color:#e8eaf2;font:600 .85rem system-ui}
+.switch b{margin-right:.5rem;opacity:.7;font-weight:600}
+.switch button{font:inherit;cursor:pointer;color:#e8eaf2;background:#1b1f2d;border:1px solid #333a50;border-radius:999px;padding:.4rem .9rem}
+.switch button[aria-pressed="true"]{background:#e8eaf2;color:#0b0d14}
+.switch button:focus-visible{outline:2px solid #22d3ee;outline-offset:2px}
+.app{max-width:80rem;margin:auto;padding:1.25rem 1rem 3rem;display:grid;gap:1.25rem}
+header{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+h1{font-family:var(--font-display);font-weight:var(--title-weight);letter-spacing:var(--title-ls);font-size:clamp(1.8rem,5vw,2.8rem);margin:0;line-height:1.05}
+.sub{color:var(--muted);margin:.25rem 0 0;font-size:.9rem;letter-spacing:.04em}
+.actions{display:flex;gap:.5rem;flex-wrap:wrap}
+.btn{font:600 .9rem var(--font-body);cursor:pointer;color:var(--text);background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:.6rem 1.05rem;min-height:44px;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn--primary{background:var(--accent-grad);color:var(--accent-ink);border-color:transparent}
+.btn:focus-visible,.opt:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
+.grid{display:grid;gap:1.25rem;grid-template-columns:1fr}
+@media(min-width:960px){.grid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:start}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);backdrop-filter:var(--blur);padding:clamp(1rem,3vw,1.6rem)}
+.card h2{font-family:var(--font-display);font-size:1.25rem;margin:0 0 .25rem;letter-spacing:var(--title-ls)}
+.eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700}
+.wheel{width:100%;max-width:34rem;margin:auto;display:block}
+.wheel text{font:700 3.1px var(--font-body);fill:var(--text)}
+.legend{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;margin-top:.75rem}
+.chip{font-size:.78rem;font-weight:600;padding:.25rem .65rem;border-radius:999px;background:var(--surface-2);border:1px solid var(--border);display:inline-flex;gap:.4rem;align-items:center}
+.chip i{width:.6rem;height:.6rem;border-radius:50%;display:inline-block}
+.stepper{display:flex;gap:.4rem;margin:1rem 0}
+.step{flex:1;text-align:center;font-size:.8rem;font-weight:700;padding:.55rem .4rem;border-radius:var(--radius-sm);background:var(--surface-2);border:1px solid var(--border);color:var(--muted)}
+.step.on{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.step.done{color:var(--accent-2);border-color:var(--accent-2)}
+.q{font-family:var(--font-display);font-size:1.15rem;margin:.5rem 0 1rem;letter-spacing:var(--title-ls)}
+.opts{display:grid;gap:.5rem}
+.opt{display:flex;align-items:center;gap:.75rem;text-align:left;font:500 .95rem var(--font-body);cursor:pointer;color:var(--text);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.8rem 1rem;min-height:48px}
+.opt .dot{width:1.1rem;height:1.1rem;border-radius:50%;border:2px solid var(--muted);flex:none}
+.opt[aria-checked="true"]{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 35%,transparent)}
+.opt[aria-checked="true"] .dot{border-color:var(--accent);background:radial-gradient(var(--accent) 45%,transparent 50%)}
+.bar{height:8px;border-radius:99px;background:var(--track);overflow:hidden;margin:.5rem 0 1rem}
+.bar span{display:block;height:100%;width:38%;background:var(--accent-grad);border-radius:99px}
+.rank{list-style:none;margin:.75rem 0 0;padding:0;display:grid;gap:.55rem}
+.rank li{display:grid;grid-template-columns:auto 1fr auto;gap:.75rem;align-items:center;padding:.7rem .9rem;background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.rank .n{font:700 1rem var(--font-display);width:1.9rem;height:1.9rem;display:grid;place-items:center;border-radius:50%;background:var(--accent);color:var(--accent-ink)}
+.rank small{color:var(--muted);display:block}
+.score{font:700 1.1rem var(--font-display)}
+.note{margin-top:1rem;padding:.9rem 1rem;border:1px dashed var(--border);border-radius:var(--radius-sm);color:var(--muted);font-size:.88rem}
+.about{margin:2rem auto 0;max-width:80rem;padding:0 1rem 3rem;color:var(--muted);font-size:.9rem}
+.about code{background:var(--surface-2);padding:.1rem .35rem;border-radius:6px}
+</style>
+</head>
+<body data-theme="aurora">
+<div class="switch" role="group" aria-label="Tema">
+  <b>Tema:</b>
+  <button aria-pressed="true" data-t="aurora">1 · Aurora</button>
+  <button aria-pressed="false" data-t="papel">2 · Papel</button>
+  <button aria-pressed="false" data-t="cenit">3 · Cénit</button>
+  <button aria-pressed="false" data-t="bosque">4 · Bosque</button>
+</div>
+
+<div class="app">
+  <header>
+    <div>
+      <h1>Rueda de la Vida</h1>
+      <p class="sub">Medir · Comparar · Priorizar · Actuar</p>
+    </div>
+    <div class="actions">
+      <button class="btn">Importar</button>
+      <button class="btn">Exportar</button>
+      <button class="btn btn--primary">Empezar</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <section class="card" aria-label="Rueda">
+      <div class="eyebrow">Tu equilibrio hoy</div>
+      <svg id="wheel" class="wheel" viewBox="-4 -4 128 128" role="img" aria-label="Rueda de ocho áreas"></svg>
+      <div id="legend" class="legend"></div>
+    </section>
+
+    <div style="display:grid;gap:1.25rem">
+      <section class="card">
+        <div class="eyebrow">Salud · 12 de 28</div>
+        <div class="bar" role="progressbar" aria-valuenow="43"><span></span></div>
+        <div class="stepper"><div class="step done">✓ Percepción</div><div class="step on">Cuestionario</div><div class="step">Resultado</div></div>
+        <p class="q">¿Con qué frecuencia duermes lo suficiente para sentirte descansado?</p>
+        <div class="opts" role="radiogroup">
+          <button class="opt" role="radio" aria-checked="false"><span class="dot"></span>Casi nunca</button>
+          <button class="opt" role="radio" aria-checked="false"><span class="dot"></span>A veces</button>
+          <button class="opt" role="radio" aria-checked="true"><span class="dot"></span>Con frecuencia</button>
+          <button class="opt" role="radio" aria-checked="false"><span class="dot"></span>Casi siempre</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Ranking sugerido</h2>
+        <ul class="rank">
+          <li><span class="n">1</span><div><b>Finanzas</b><small>Brecha −2,4 · Prioridad alta</small></div><span class="score">4,1</span></li>
+          <li><span class="n">2</span><div><b>Ocio</b><small>Brecha −1,6 · Necesita atención</small></div><span class="score">5,3</span></li>
+          <li><span class="n">3</span><div><b>Salud</b><small>Alineada · Estable</small></div><span class="score">7,8</span></li>
+        </ul>
+        <div class="note">Las notas aparecen en la rueda al completar las 22 preguntas puntuables de un área.</div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="about">
+  <p>Cada tema es un bloque de variables CSS con la misma estructura (<code>--bg</code>, <code>--surface</code>, <code>--accent</code>, <code>--a1…--a8</code> para las áreas, tipografías, radio, sombra). Adoptar uno = copiar su bloque a <code>:root</code> en <code>src/index.css</code>; es seguro para los tests porque no cambia lógica ni textos.</p>
+</div>
+
+<script>
+const areas=[["Salud",7.8],["Emocional",6.2],["Relaciones",6.9],["Familia",7.4],["Trabajo",5.8],["Finanzas",4.1],["Crecimiento",6.5],["Ocio",5.3]];
+const svg=document.getElementById("wheel"),legend=document.getElementById("legend");
+const C=60,R=44,N=areas.length,ns="http://www.w3.org/2000/svg";
+const pt=(r,a)=>[C+r*Math.sin(a),C-r*Math.cos(a)];
+function el(t,a,p=svg){const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);p.append(e);return e}
+for(let r=1;r<=5;r++)el("circle",{cx:C,cy:C,r:R*r/5,fill:r==5?"var(--wheel-bg)":"none",stroke:"var(--border)","stroke-width":.25});
+areas.forEach(([name,v],i)=>{
+  const a0=i*2*Math.PI/N,a1=(i+1)*2*Math.PI/N,r=R*v/10,[x0,y0]=pt(r,a0),[x1,y1]=pt(r,a1);
+  el("path",{d:`M${C} ${C}L${x0} ${y0}A${r} ${r} 0 0 1 ${x1} ${y1}Z`,fill:`var(--a${i+1})`,"fill-opacity":.88,stroke:"var(--bg)","stroke-width":.6});
+  const [lx,ly]=pt(R+10,(a0+a1)/2);
+  el("text",{x:lx,y:ly,"text-anchor":"middle","dominant-baseline":"middle"}).textContent=name;
+  legend.insertAdjacentHTML("beforeend",`<span class="chip"><i style="background:var(--a${i+1})"></i>${name} ${String(v).replace(".",",")}</span>`);
+});
+const btns=document.querySelectorAll(".switch button");
+function setTheme(t){document.body.dataset.theme=t;btns.forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===t));try{localStorage.theme=t}catch{}}
+btns.forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+try{if(localStorage.theme)setTheme(localStorage.theme)}catch{}
+if(location.hash.slice(1))setTheme(location.hash.slice(1));
+document.querySelectorAll(".opt").forEach(o=>o.onclick=()=>{document.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-checked",x===o))});
+</script>
+</body>
+</html>

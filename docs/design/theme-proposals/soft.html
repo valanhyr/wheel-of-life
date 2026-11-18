@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rueda de la Vida — Soft UI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+/* FAMILIA: Soft UI. Relieve suave (sombras dobles), radios grandes, bento grid, pasteles apagados, tipografía redondeada. */
+[data-theme="nube"]{--bg:#e9eef5;--card:#eef2f8;--hi:#fff;--lo:#c9d2e0;--ink:#2b3447;--muted:#7a869c;--accent:#5b7cfa;--accent-soft:#dbe3ff;--p1:#e8a5a5;--p2:#ecb98d;--p3:#e8d58f;--p4:#b8d99a;--p5:#8fd3bd;--p6:#8cc6e6;--p7:#a9b4ee;--p8:#cfa8e8}
+[data-theme="salvia"]{--bg:#e6ece6;--card:#ecf1ec;--hi:#fbfdfb;--lo:#c3cfc3;--ink:#27362b;--muted:#74887a;--accent:#4f8a66;--accent-soft:#d3e8da;--p1:#e3a69b;--p2:#e6b98a;--p3:#e0cf8a;--p4:#b5d08f;--p5:#8bcaa6;--p6:#8bbfc4;--p7:#a2b4dd;--p8:#c4a9d6}
+[data-theme="lino"]{--bg:#efe9df;--card:#f4eee4;--hi:#fffcf6;--lo:#d8cebd;--ink:#3a3024;--muted:#8d7f6b;--accent:#c0693b;--accent-soft:#f3dccb;--p1:#e2a091;--p2:#e6b27f;--p3:#e0c97f;--p4:#b9ca88;--p5:#92c2a0;--p6:#8fb9c0;--p7:#a8a9d6;--p8:#c9a3c8}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 "DM Sans",system-ui,sans-serif;transition:background .4s,color .3s}
+.wrap{max-width:78rem;margin:auto;padding:1.25rem 1rem 6rem}
+.raised{background:var(--card);border-radius:28px;box-shadow:10px 10px 24px var(--lo),-10px -10px 24px var(--hi);transition:box-shadow .3s,transform .3s}
+.inset{background:var(--card);border-radius:18px;box-shadow:inset 4px 4px 10px var(--lo),inset -4px -4px 10px var(--hi)}
+header{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;padding:.5rem .25rem 1.25rem}
+.brand{display:flex;gap:.85rem;align-items:center}
+.mark{width:3rem;height:3rem;border-radius:16px;display:grid;place-items:center;font:800 1.3rem Nunito;color:var(--accent);background:var(--card);box-shadow:5px 5px 12px var(--lo),-5px -5px 12px var(--hi)}
+h1{font:800 clamp(1.4rem,3.6vw,2rem) Nunito;margin:0;letter-spacing:-.01em}
+.sub{margin:0;color:var(--muted);font-size:.88rem}
+.actions{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn{font:700 .9rem "DM Sans";cursor:pointer;color:var(--ink);background:var(--card);border:0;border-radius:16px;padding:.75rem 1.2rem;min-height:46px;box-shadow:5px 5px 12px var(--lo),-5px -5px 12px var(--hi);transition:box-shadow .2s,transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{box-shadow:inset 3px 3px 8px var(--lo),inset -3px -3px 8px var(--hi);transform:none}
+.btn--primary{background:var(--accent);color:#fff;box-shadow:6px 6px 14px color-mix(in srgb,var(--accent) 40%,var(--lo)),-5px -5px 12px var(--hi)}
+.btn:focus-visible,.opt:focus-visible,.petal:focus-visible{outline:3px solid var(--accent-soft);outline-offset:2px;box-shadow:0 0 0 2px var(--accent)}
+.bento{display:grid;gap:1.25rem;grid-template-columns:repeat(2,minmax(0,1fr))}
+.t{padding:clamp(1.1rem,2.5vw,1.7rem)}
+.t h2{font:800 1.1rem Nunito;margin:0 0 .15rem}
+.t .cap{color:var(--muted);font-size:.85rem;margin:0 0 1rem}
+.wheelt{grid-column:1/-1}
+.kpi{display:flex;flex-direction:column;justify-content:space-between;gap:.5rem}
+.kpi .v{font:800 2.6rem/1 Nunito}
+.kpi .l{color:var(--muted);font-size:.85rem}
+.kpi .tag{align-self:flex-start;font:700 .75rem "DM Sans";padding:.25rem .7rem;border-radius:99px;color:var(--accent);background:var(--accent-soft)}
+.qt,.rt{grid-column:1/-1}
+@media(min-width:1000px){
+  .bento{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .wheelt{grid-column:1/3;grid-row:1/4}
+  .kpi{grid-column:span 1}
+  .qt{grid-column:3/5}
+  .rt{grid-column:3/5}
+}
+.wheel{width:100%;max-width:30rem;display:block;margin:auto}
+.petal{cursor:pointer;transform-origin:60px 60px;transform:scale(0);animation:pop .8s cubic-bezier(.2,1.1,.3,1) forwards;transition:filter .25s}
+@keyframes pop{to{transform:scale(1)}}
+.petal:hover,.petal.sel{filter:brightness(.94) saturate(1.1)}
+.wheel text{font:800 3px Nunito;fill:var(--muted);pointer-events:none}
+.wheel .sel-t{fill:var(--ink)}
+.core{fill:var(--card)}
+.corenum{font:800 8px Nunito!important;fill:var(--ink)!important}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:1rem}
+.chip{font:700 .8rem "DM Sans";cursor:pointer;color:var(--ink);background:var(--card);border:0;border-radius:99px;padding:.45rem .9rem;box-shadow:3px 3px 8px var(--lo),-3px -3px 8px var(--hi);display:inline-flex;gap:.4rem;align-items:center}
+.chip i{width:.6rem;height:.6rem;border-radius:50%;background:var(--c)}
+.chip.sel{box-shadow:inset 2px 2px 6px var(--lo),inset -2px -2px 6px var(--hi)}
+.steps{display:flex;gap:.5rem;margin-bottom:1rem}
+.step{flex:1;text-align:center;font:700 .8rem "DM Sans";padding:.6rem .3rem;border-radius:14px;color:var(--muted)}
+.step.on{color:var(--accent);background:var(--accent-soft)}
+.q{font:800 1.3rem/1.3 Nunito;margin:.25rem 0 1rem}
+.opts{display:grid;gap:.7rem}
+.opt{display:flex;align-items:center;gap:.8rem;text-align:left;font:500 .95rem "DM Sans";cursor:pointer;color:var(--ink);background:var(--card);border:0;border-radius:18px;padding:.9rem 1.1rem;min-height:52px;box-shadow:4px 4px 10px var(--lo),-4px -4px 10px var(--hi);transition:box-shadow .2s,color .2s}
+.opt .dot{width:1.2rem;height:1.2rem;border-radius:50%;flex:none;box-shadow:inset 2px 2px 4px var(--lo),inset -2px -2px 4px var(--hi)}
+.opt[aria-checked="true"]{box-shadow:inset 3px 3px 8px var(--lo),inset -3px -3px 8px var(--hi);color:var(--accent);font-weight:700}
+.opt[aria-checked="true"] .dot{background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.rank{list-style:none;padding:0;margin:0;display:grid;gap:.8rem}
+.rank li{display:grid;grid-template-columns:auto 1fr auto;gap:.9rem;align-items:center;padding:.8rem 1rem}
+.rank .n{width:2.2rem;height:2.2rem;border-radius:50%;display:grid;place-items:center;font:800 .95rem Nunito;color:var(--accent);background:var(--accent-soft)}
+.rank b{display:block}.rank small{color:var(--muted)}
+.rank .sc{font:800 1.2rem Nunito}
+.rise{opacity:0;transform:translateY(14px);animation:rs .7s ease forwards}
+@keyframes rs{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}.rise{opacity:1;transform:none}.petal{transform:none}}
+</style>
+</head>
+<body data-theme="nube">
+<nav class="demo-nav"><a href="index.html">Temas v1</a><a href="glass.html">Glass</a><a href="minimal.html">Minimal</a><a href="soft.html" aria-current="page">Soft</a><a href="panel.html">Panel</a></nav>
+<div class="wrap">
+  <header class="rise">
+    <div class="brand"><div class="mark" aria-hidden="true">◐</div><div><h1>Rueda de la Vida</h1><p class="sub">Medir · Comparar · Priorizar · Actuar</p></div></div>
+    <div class="actions"><button class="btn">Importar</button><button class="btn">Exportar</button><button class="btn btn--primary">Elegir un área</button></div>
+  </header>
+
+  <div class="bento">
+    <section class="raised t wheelt rise" style="animation-delay:.05s">
+      <h2>Tu equilibrio hoy</h2><p class="cap">Toca un pétalo para ver el detalle del área.</p>
+      <svg id="wheel" class="wheel" viewBox="-8 -8 136 136" role="img" aria-label="Rueda de ocho áreas"></svg>
+      <div class="chips" id="chips"></div>
+    </section>
+
+    <div class="raised t kpi rise" style="animation-delay:.12s"><span class="tag">Media</span><div class="v">6,2</div><div class="l">de 10 en 8 áreas</div></div>
+    <div class="raised t kpi rise" style="animation-delay:.16s"><span class="tag">Foco</span><div class="v">Finanzas</div><div class="l">Menor puntuación · 4,1</div></div>
+
+    <section class="raised t qt rise" style="animation-delay:.2s">
+      <div class="steps"><div class="step">Percepción</div><div class="step on">Cuestionario 12/28</div><div class="step">Resultado</div></div>
+      <p class="q">¿Con qué frecuencia duermes lo suficiente para sentirte descansado?</p>
+      <div class="opts" role="radiogroup" aria-label="Frecuencia">
+        <button class="opt" role="radio" aria-checked="false"><span class="dot"></span>Casi nunca</button>
+        <button class="opt" role="radio" aria-checked="false"><span class="dot"></span>A veces</button>
+        <button class="opt" role="radio" aria-checked="true"><span class="dot"></span>Con frecuencia</button>
+        <button class="opt" role="radio" aria-checked="false"><span class="dot"></span>Casi siempre</button>
+      </div>
+    </section>
+
+    <section class="raised t rt rise" style="animation-delay:.26s">
+      <h2>Ranking sugerido</h2><p class="cap">Dónde empezar, según la brecha entre percepción y resultado.</p>
+      <ul class="rank" id="rank"></ul>
+    </section>
+  </div>
+</div>
+<div class="demo-bar"><span>Tema</span><button data-t="nube">Nube</button><button data-t="salvia">Salvia</button><button data-t="lino">Lino</button></div>
+<script src="common.js"></script>
+<script>
+const {areas,fmt,el,pt}=WOL,svg=document.getElementById("wheel"),chips=document.getElementById("chips"),C=60,N=areas.length,Rin=15,Rout=46;
+const avg=(areas.reduce((s,a)=>s+a.v,0)/N).toFixed(1);
+for(let r=1;r<=3;r++)el(svg,"circle",{cx:C,cy:C,r:Rin+(Rout-Rin)*r/3,fill:"none",stroke:"var(--lo)","stroke-width":.3,"stroke-dasharray":"1 1.5"});
+const hubN=()=>hn;
+areas.forEach((a,i)=>{
+  const gap=.05,a0=i*2*Math.PI/N+gap,a1=(i+1)*2*Math.PI/N-gap,ro=Rin+(Rout-Rin)*a.v/10;
+  const [x0,y0]=pt(C,ro,a0),[x1,y1]=pt(C,ro,a1),[x2,y2]=pt(C,Rin,a1),[x3,y3]=pt(C,Rin,a0);
+  const p=el(svg,"path",{d:`M${x0} ${y0}A${ro} ${ro} 0 0 1 ${x1} ${y1}L${x2} ${y2}A${Rin} ${Rin} 0 0 0 ${x3} ${y3}Z`,class:"petal",fill:`var(--p${i+1})`,stroke:`var(--p${i+1})`,"stroke-width":3,"stroke-linejoin":"round",style:`animation-delay:${.1+i*.06}s`,tabindex:0,role:"button","aria-label":a.name+" "+fmt(a.v)});
+  const [lx,ly]=pt(C,Rout+8,(a0+a1)/2);
+  const t=el(svg,"text",{x:lx,y:ly,"text-anchor":"middle","dominant-baseline":"middle"});t.textContent=a.name;
+  const c=document.createElement("button");c.className="chip";c.style.setProperty("--c",`var(--p${i+1})`);c.innerHTML=`<i></i>${a.name} ${fmt(a.v)}`;chips.append(c);
+  const on=s=>{c.classList.toggle("sel",s);t.classList.toggle("sel-t",s);p.classList.toggle("sel",s);hn.textContent=s?fmt(a.v):fmt(avg);hs.textContent=s?a.name:"media"};
+  [p,c].forEach(n=>{n.onmouseenter=n.onfocus=()=>on(true);n.onmouseleave=n.onblur=()=>on(false)});
+});
+el(svg,"circle",{cx:C,cy:C,r:Rin-2.5,class:"core"});
+const hn=el(svg,"text",{x:C,y:C,"text-anchor":"middle","dominant-baseline":"middle",class:"corenum"});hn.textContent=fmt(avg);
+const hs=el(svg,"text",{x:C,y:C+6,"text-anchor":"middle"});hs.textContent="media";
+const rank=document.getElementById("rank");
+[["Finanzas",4.1,"Brecha −2,4 · Prioridad alta"],["Ocio",5.3,"Brecha −1,6 · Necesita atención"],["Trabajo",5.8,"Brecha −1,2 · Necesita atención"]].forEach(([n,v,s],i)=>rank.insertAdjacentHTML("beforeend",`<li class="inset"><span class="n">${i+1}</span><div><b>${n}</b><small>${s}</small></div><span class="sc">${fmt(v)}</span></li>`));
+document.querySelectorAll(".opt").forEach(o=>o.onclick=()=>document.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-checked",x===o)));
+WOL.initThemes("soft");
+</script>
+</body>
+</html>
